@@ -1,7 +1,7 @@
 ---
 id: loda1552310618406
 layout: post
-title: ThanosJS làm biến mất 1 nửa DỮ LIỆU máy bạn với 1 dòng lệnh
+title: ThanosJS làm biến mất 1 nửa DỮ LIỆU máy tính với 1 dòng lệnh
 author: loda
 categories: [ ruby, thanosjs ]
 image: assets/images/loda1552310618406/1.jpg

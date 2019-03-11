@@ -8,6 +8,7 @@ image: assets/images/loda1551586738/1.jpg
 description: "Trợ lý ảo (Virtual Assistant) - một cụm từ “hot” được nhắc tới rất nhiều trong khoảng 3 năm trở lại đây. Nó đang tạo ra một cuộc đua ngầm trong thế giới công nghệ."
 featured: true
 hidden: true
+type: machine-learning
 rating: 4.5
 ---
 

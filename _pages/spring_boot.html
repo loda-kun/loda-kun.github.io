@@ -1,0 +1,22 @@
+---
+layout: page
+title: Spring boot
+permalink: /springboot
+comments: true
+---
+
+<section class="featured-posts">
+    <div class="row">
+        
+    {% for post in site.posts %}
+
+        {% if post.type == 'spring-boot' %}
+
+            {% include featuredbox.html %}
+
+        {% endif %}
+
+    {% endfor %}
+        
+    </div>
+</section>

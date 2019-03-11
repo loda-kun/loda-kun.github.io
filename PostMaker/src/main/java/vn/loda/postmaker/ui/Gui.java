@@ -84,9 +84,11 @@ public class Gui extends javax.swing.JFrame {
         for (Component c : ((javax.swing.JPanel) tvAuthor.getParent()).getComponents()) {
             if (c instanceof JTextField) {
                 JTextField tf = (JTextField) c;
-                if (null == tf || tf.getText().equals("")) {
-                    JOptionPane.showMessageDialog(this, "There are some field are empty");
-                    throw new RuntimeException("There are some field are empty");
+                if (tf != tvFolderId) {
+                    if (null == tf || tf.getText().equals("")) {
+                        JOptionPane.showMessageDialog(this, "There are some field are empty");
+                        throw new RuntimeException("There are some field are empty");
+                    }
                 }
             }
         }
@@ -368,7 +370,7 @@ public class Gui extends javax.swing.JFrame {
             // download image and set it to the post
             String image = PostHelper.normalizeImagePath(downloadImage(tvImage.getText().trim(), maker.id(), 1));
             maker.image(image);
-            
+
             // create folder and post template
             String folder = tv_Post.getText() + maker.getFileName();
             FileUtils.writeStringToFile(
@@ -389,9 +391,10 @@ public class Gui extends javax.swing.JFrame {
   }//GEN-LAST:event_btnGenerateActionPerformed
 
     /**
-     * get available number for image name 
+     * get available number for image name
+     *
      * @param folderId
-     * @return 
+     * @return
      */
     private int getAvailableNumber(String folderId) {
         File folder = new File(tv_Images.getText() + folderId);
@@ -433,11 +436,11 @@ public class Gui extends javax.swing.JFrame {
         for (String line : textArea.getText().split("\n")) {
             if (line != null && !line.isEmpty()) {
                 String filename = downloadImage(line, tvFolderId.getText(), getAvailableNumber(tvFolderId.getText()));
-                textAreaOutput.append("![image-title-here]("+PostHelper.normalizeImagePath(filename)+"){:class=\"center-image\"}");
+                textAreaOutput.append("![image-title-here](" + PostHelper.normalizeImagePath(filename) + "){:class=\"center-image\"}");
                 textAreaOutput.append("\n\n");
             }
         }
-        JOptionPane.showMessageDialog(this, "Successful download all images to folder: "+tvFolderId.getText());
+        JOptionPane.showMessageDialog(this, "Successful download all images to folder: " + tvFolderId.getText());
         textArea.setText("");
 
   }//GEN-LAST:event_btnDownloadActionPerformed

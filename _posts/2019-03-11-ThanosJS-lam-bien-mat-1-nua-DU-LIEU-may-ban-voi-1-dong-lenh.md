@@ -1,7 +1,7 @@
 ---
 id: loda1552310618406
 layout: post
-title: ThanosJS làm biến mất 1 nửa DỮ LIỆU máy tính với 1 dòng lệnh
+title: ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh
 author: loda
 categories: [ ruby, thanosjs ]
 image: assets/images/loda1552310618406/1.jpg
@@ -20,43 +20,43 @@ Nếu chưa, thì làm như mình hướng dẫn nhé :3
 Trước hết bạn cần cài Ruby Gem.
 
 Windows:
-```yml
+```css
 https://rubyinstaller.org/downloads/
 ```
 
 Unix:
-```yml
+```css
 sudo apt-get install ruby-dev
 ```
 
 #### Xóa nửa dân số
 
 Lắp ngọc `Power`
-```yml
+```css
 gem install power
 ```
 Lắp ngọc `Reality`
-```yml
+```css
 gem install reality
 ```
 Lắp ngọc `Mind`
-```yml
+```css
 gem install mind
 ```
 Lắp ngọc `Space`
-```yml
+```css
 gem install space
 ```
 Lắp ngọc `Time`
-```yml
+```css
 gem install time
 ```
 Lắp ngọc `Soul`
-```yml
+```css
 gem install soul
 ```
 Búng tay
-```yml
+```css
 thanos snap-fingers --with-glove
 ```
 

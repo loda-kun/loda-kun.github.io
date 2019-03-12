@@ -6,8 +6,8 @@ author: loda
 categories: [ Machine Learning, deep learning, neural network, Python ]
 image: https://cdn.ereka.vn/2018/06/24/c41f7da2e8698e1a8616572f668b3a5d.jpg
 description: Đây là bài viết nói về cả quá trình và các bước thực hiện trong 1 mạng neural, nên sẽ không đi sau chi tiết từng phần nhưng vẫn cung cấp cho bạn kiến thức để hiểu được vai trò của nó trong cả kiến trúc.
-featured: true
-hidden: true
+featured: false
+hidden: false
 type: machine-learning
 rating: 5
 ---

@@ -6,8 +6,8 @@ author: loda
 categories: [ Machine Learning, deep learning, neural network ]
 image: https://cdn.ereka.vn/2018/06/14/0e1b0b8d5dbf9b6f5b8792e435ba308a.png
 description: Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì.
-featured: true
-hidden: true
+featured: false
+hidden: false
 type: machine-learning
 rating: 4
 ---

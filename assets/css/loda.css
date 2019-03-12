@@ -35,3 +35,16 @@ Make it child lay in center
 .wrapper-center{
     text-align: center;
 }
+
+.listfeaturedtag{
+    border-radius: 0rem;
+}
+
+img.img-fluid {
+    height: 100%;
+}
+
+
+.maxthumb {
+    height: 300px;
+}

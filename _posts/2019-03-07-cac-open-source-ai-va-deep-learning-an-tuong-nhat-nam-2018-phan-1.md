@@ -8,6 +8,7 @@ image: https://cdn.ereka.vn/2018/06/15/c36599450abfa7403e91f9068b7609ef.jpg
 description: Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì.
 featured: true
 hidden: true
+type: machine-learning
 rating: 4
 ---
 

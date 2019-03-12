@@ -8,6 +8,7 @@ image: https://cdn.ereka.vn/2018/04/09/c2958b20690f5b747b1fab63d9a488df.png
 description:  Dữ liệu dán nhãn không luôn luôn có sẵn đối với mọi tác vụ, và chi phí để có thể thu thập một lượng dữ liệu dán nhãn đủ là rất đắt đỏ.
 featured: false
 hidden: false
+type: machine-learning
 rating: 0
 ---
 

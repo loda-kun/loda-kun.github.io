@@ -8,6 +8,7 @@ image: https://cdn.ereka.vn/2018/05/05/600eec890d081916dbd0bb73a285a215.jpg
 description: Dưới đây là danh sách Top các ứng dụng Deep Learning/AI được dự đoán sẽ góp phần thay đổi thế giới trong tương lai.
 featured: false
 hidden: false
+type: machine-learning
 rating: 0
 ---
 

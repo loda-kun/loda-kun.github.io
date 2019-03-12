@@ -8,6 +8,7 @@ image: assets/images/loda1551603987/1.png
 description: "Cùng mình làm xe tự lái nào. Em xe này có tốc độ chạy tối đa 25 km/h"
 featured: true
 hidden: true
+type: java
 rating: 5
 ---
 

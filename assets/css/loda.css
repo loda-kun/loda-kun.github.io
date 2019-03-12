@@ -40,11 +40,6 @@ Make it child lay in center
     border-radius: 0rem;
 }
 
-img.img-fluid {
-    height: 100%;
-}
-
-
-.maxthumb {
-    height: 300px;
+.maxthumb .img-fluid {
+    min-height: 300px;
 }

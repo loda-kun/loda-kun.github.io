@@ -1,25 +1,32 @@
 ---
 layout: default
 ---
+    
+<div class="container">
+
+<div class="row justify-content-center">
+
+    <div class="col-md-8">
 
 
-<section>
-    <div class="section-title">
-        <h2><span>{{ page.title }}</span></h2>
+             {% if page.image %} 
+                <img class="card-img-top mb-2 border" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | absolute_url }}{% endif %}" alt="{{ page.title }}"> 
+            {% endif %}
+
+            <div class="card-body">
+
+                <h1 class="display-5 mb-4">
+                    {{page.title}} 
+                </h1>
+                
+                <div class="page-content">
+                {{ content }}
+                </div>
+
+            </div>  
+
     </div>
-    
-    <div class="article-post">
-    {{content}}
-    </div>
-    
-    {% if page.comments == true %}
-    
-    <div id="comments" class="row mb-5">
-        <div class="col-md-8">              
-            {% include disqus.html %}                
-        </div>
-    </div>
-    
-    {% endif %}
-    
-</section>
+
+</div>
+
+</div>

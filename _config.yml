@@ -1,63 +1,49 @@
 # Site
-name: "loda"
-title: "loda"
-description: "Nơi chia sẻ kiến thức về lập trình và trí tuệ nhân tạo"
-meta_description: "Chia sẻ, hướng dẫn lập trình ngôn ngữ và trí tuệ nhân tạo, chi tiết nhất. Java, Python, Machine Learning, Deep learning, AI, .."
+name: 'Mundana'
+description: 'Mundana is a free Jekyll theme for awesome people like you, Medium like.'
 logo: 'assets/images/logo.png'
-favicon: 'assets/images/logo.png'
+favicon: 'assets/images/favicon.ico'
 baseurl: ''
-google_analytics: 'UA-135687402-1'
-google_adsense: 'ca-pub-1825244585932187'
-disqus: 'https-loda-me'
-# mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+disqus: 'demowebsite'
+email: 'wowthemesnet@gmail.com'
+mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+
 include: ["_pages"]
 permalink: /:title/
 
-# Authors
-authors:
-  loda:
-    name: loda
-    display_name: loda
-    gravatar: 12ee17b3fe90f0f025cfe3b8201c06dd
-    email: loda.namnh@gmail.com
-    web: https://www.loda-kun.github.io
-    facebook: https://www.facebook.com/nam.tehee
-    description: "Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối... Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng."
-  tct:
-    name: tct
-    display_name: tct
-    gravatar: 12ee17b3fe90f0f025cfe3b8201c06dd
-    email:
-    web:
-    facebook:
-    description: "Updating..."
-# Plugins
 # Plugins
 plugins: 
-  - jekyll-paginate
-  - jekyll-sitemap
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
   - jekyll-seo-tag
-  - jekyll-archives
-    
-# Archives
-jekyll-archives:
-  enabled:
-    - categories
-  layout: archive
-  permalinks:
-    category: '/category/:name/'
-    
-# Pagination 
-paginate: 6
-paginate_path: /page/:num/
-    
-# Other
-markdown: kramdown
+ 
+# Defaults
+defaults:
 
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
+  # all posts
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      author: sal
+      avatar: /assets/images/avatar1.jpg
+      
+  # all pages
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+      
+      
+# Syntax
+markdown: kramdown
+highlighter: rouge
+
+# Paginate
+paginate: 10
+
+
+
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]

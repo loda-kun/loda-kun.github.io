@@ -1,9 +1,5 @@
 _site
-.DS_Store
-*.swp
 .sass-cache
-*~
-/PostMaker/target/
-.class
-.iml
-.idea/
+.jekyll-metadata
+node_modules
+Gemfile.lock

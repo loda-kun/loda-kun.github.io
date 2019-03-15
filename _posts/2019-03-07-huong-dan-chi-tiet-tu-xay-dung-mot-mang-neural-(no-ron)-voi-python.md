@@ -6,10 +6,7 @@ author: loda
 categories: [ Machine Learning, deep learning, neural network, Python ]
 image: https://cdn.ereka.vn/2018/06/24/c41f7da2e8698e1a8616572f668b3a5d.jpg
 description: Đây là bài viết nói về cả quá trình và các bước thực hiện trong 1 mạng neural, nên sẽ không đi sau chi tiết từng phần nhưng vẫn cung cấp cho bạn kiến thức để hiểu được vai trò của nó trong cả kiến trúc.
-featured: false
-hidden: false
 type: machine-learning
-rating: 5
 ---
 
 Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật khó để biết được các cách thức hoạt động đằng sau của từng thành phần trong mô hình. Bài viết này sẽ hướng dẫn các bạn cách xây dựng mạng neural một cách chi tiết qua từng dòng lệnh, từ đó có một cái nhìn rõ ràng hơn về cách hoạt động của chúng.

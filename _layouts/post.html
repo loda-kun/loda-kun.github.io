@@ -1,151 +1,131 @@
 ---
 layout: default
-disqus: false
-archive: false
-post_class: post-template
 ---
-
-<!-- Begin Article
-================================================== -->
+{% assign author = site.authors[page.author] %}
 <div class="container">
-	<div class="row">
-
-		<!-- Post Share -->
-		<div class="col-md-1 pl-0">
-			{% include share.html %}
-		</div>
-
-
-		<!-- Post -->
-		{% assign author = site.authors[page.author] %}
-
-		<div class="col-md-9">
-			<div class="mainheading">
-
-				<!-- Author Box -->
-				{% if page.author %}
-				<div class="row post-top-meta">
-					<div class="col-md-2">
-						<img class="author-thumb" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=250&d=mm&r=x" alt="{{ author.display_name }}">
-					</div>
-					<div class="col-md-10">
-						<a target="_blank" class="link-dark" href="{{ author.web }}">{{ author.display_name }}</a>
-
-						<!-- Follow feature is disable for now -->
-						<!-- <a target="_blank" href="{{ author.twitter }}" class="btn follow">Follow</a> -->
-
-						<span class="author-description">{{ author.description }}</span>
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row {% if page.image %} justify-content-between {% else %} justify-content-center {% endif %}">
+				<div class="{% if page.image %} col-md-6 {% else %} col-md-8 {% endif %} pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						{% for category in page.categories %}
+                          <a class="sscroll text-danger" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category | downcase }}</a><span class="sep">, </span>
+                        {% endfor %}
+                        </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">{{ page.title }}</h1>
+					<div class="d-flex align-items-center">
+                        {% if author.avatar %}
+                        <img class="rounded-circle" src="{{site.baseurl}}/{{author.avatar}}" alt="{{author.name}}" width="70"/>
+                        {% endif %}
+						<small class="ml-3"> {{ author.name }} <span><a target="_blank" href="{{ author.facebook }}" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">{{ page.date | date: '%b %d, %Y' }} · {% include meta-read-time.html %}</span>
+						</small>
 					</div>
 				</div>
-				{% endif %}
-
-				<!-- Post Title -->
-				<h1 class="posttitle">{{ page.title }}</h1>
-
+                {% if page.image %}
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | absolute_url }}{% endif %}" alt="{{ page.title }}">
+				</div>
+                {% endif %}
 			</div>
-
-			<!-- Post Featured Image -->
-			{% if page.image %}<img class="featured-image img-fluid" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ page.image | absolute_url }}{% endif %}" alt="{{ page.title }}">{% endif %}
-			<!-- End Featured Image -->
-
-			<!-- Post Content -->
-			<div class="article-post">
-				{{content}}
-			</div>
-
-			<!-- Rating -->
-			{% if page.rating %}
-			<div class="rating mb-4 d-flex align-items-center">
-				<strong class="mr-1">Rating:</strong> {% include star_rating.html %}
-			</div>
-			{% endif %}
-
-			<!-- Post Date -->
-			<p>
-				<small>
-					<span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>
-					{% if page.last_modified_at %}
-					(Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
-					{% endif %}
-				</small>
-			</p>
-
-			<!-- Post Categories -->
-			<div class="after-post-tags">
-				<ul class="tags">
-					{% assign sortedCategories = page.categories | sort %}
-					{% for category in sortedCategories %}
-					<li>
-						<a class="smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | replace: " ","-" }}">{{ category }}</a>
-					</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<!-- End Categories -->
-
-			<!-- Prev/Next -->
-			<div class="row PageNavigation d-flex justify-content-between font-weight-bold">
-				{% if page.previous.url %}
-				<a class="prev d-block col-md-6" href="{{page.previous.url | absolute_url}}"> &laquo; {{page.previous.title}}</a>
-				{% endif %}
-				{% if page.next.url %}
-				<a class="next d-block col-md-6 text-lg-right" href="{{page.next.url | absolute_url}}">{{page.next.title}} &raquo; </a>
-				{% endif %}
-				<div class="clearfix"></div>
-			</div>
-			<!-- End Categories -->
-
-		</div>
-		<!-- End Post -->
-
-		<!-- FAcebook Share -->
-		<div class="col-md-2" style="height: 70px">
-				<div class="fb-page" data-href="https://www.facebook.com/loda.fanpage/" data-tabs="timeline" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/loda.fanpage/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/loda.fanpage/">Loda</a></blockquote></div>
 		</div>
 	</div>
 </div>
-<!-- End Article
-================================================== -->
 
 
 
-<!-- Begin Comments
-================================================== -->
-{% if page.comments != false %}
-<div class="container">
-	<div id="comments" class="row justify-content-center mb-5">
-		<div class="col-md-8">
-			{% include disqus.html %}
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				{% include sidebar-share.html %}
+			</div>
 		</div>
+        
+        
+		<div class="col-md-12 col-lg-8">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			{{ content }}                
+			</article>
+            
+ 
+            <!-- Mailchimp Subscribe Form -->
+            {% if site.mailchimp-list %}
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+                            <form action="{{site.mailchimp-list}}" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                            <div class="mc-field-group">
+							
+								<input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+							
+							
+								<button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+							
+                            </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            {% endif %}
+            
+            
+             <!-- Author Box -->
+                {% if page.author %}				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         {% if author.avatar %}
+                        <img class="rounded-circle" src="{{site.baseurl}}/{{author.avatar}}" alt="{{author.name}}" width="90"/>
+                        {% endif %} 
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by {{ author.name }} {% if author.twitter %}<span><a target="_blank" href="{{ author.facebook }}" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span>{% endif %}</h5>
+						{{ author.bio }}					
+					</div>
+				</div>				
+                {% endif %}
+            
+            <!-- Comments -->
+            {% if page.comments != false %}
+                {% include comments.html %}
+            {% endif %}
+            
+		</div>
+        
+        
 	</div>
 </div>
-{% endif %}
-<!--End Comments
-================================================== -->
 
 
-<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first:
-https://search.google.com/structured-data/testing-tool/u/0/
-================================================== -->
-{% if page.rating %}
-<script type="application/ld+json">
-	{
-		"@context": "http://schema.org/",
-		"@type": "Review",
-		"itemReviewed": {
-			"@type": "Thing",
-			"name": "{{ page.title }}"
-		},
-		"author": {
-			"@type": "Person",
-			"name": "{{ author.display_name }}"
-		},
-		"datePublished": "{{ page.date | date:" % Y - % m - % d " }}",
-		"reviewRating": {
-			"@type": "Rating",
-			"ratingValue": "{{ page.rating }}",
-			"bestRating": "5"
-		}
-	}
-</script>
-{% endif %}
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          {% if page.previous.url %}
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="{{page.previous.url | absolute_url}}">{% if page.previous.image %} <img height="30px" class="mr-1" src="{{page.previous.image | absolute_url}}"> {% endif %} {{page.previous.title}}</a>
+            </div>
+          {% endif %}
+          {% if page.next.url %}
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="{{page.next.url | absolute_url}}"> {{page.next.title}} {% if page.next.image %} <img height="30px" class="ml-1" src="{{page.next.image | absolute_url}}"> {% endif %}</a>
+            </div>
+          {% endif %}
+        </div>
+    </div>
+</div>

@@ -6,10 +6,7 @@ author: loda
 categories: [ Machine Learning, image processing, deep learning, neural network, CNN, Convolutional ]
 image: assets/images/loda1551717776514/7.jpg
 description:  Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát triển của trí tuệ nhân tạo nói chung và xử lý ảnh nói riêng.
-featured: false
-hidden: false
 type: machine-learning
-rating: 5
 ---
 
 Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát triển của trí tuệ nhân tạo nói chung và xử lý ảnh nói riêng.

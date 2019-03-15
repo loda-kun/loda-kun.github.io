@@ -1,0 +1,99 @@
+<!--  Replace menu links here -->
+<!-- 
+<li class="nav-item">
+<a class="nav-link" href="{{site.baseurl}}/index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{site.baseurl}}/authors-list.html">Authors</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{site.baseurl}}/contact.html">Contact</a>
+</li>
+<li class="nav-item">
+<a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mundana-wordpress/">WP version</a>
+</li>
+<li class="nav-item">
+<a target="_blank" class="nav-link" href="https://www.wowthemes.net/donate/">Buy me a coffee <i class="fa fa-coffee text-danger"></i></a>
+</li> -->
+
+{% if page.url == "/" %}
+    <li class="nav-item active">
+      {% else %}
+    </li>
+
+    <li class="nav-item">
+      {% endif %}
+      <a class="nav-link" href="{{ site.baseurl }}/">Home</a>
+    </li>
+    <!-- End Blog -->
+
+    <!-- Java -->
+    {% if page.url == "/java" %}
+    <li class="nav-item active">
+      {% else %}
+    </li>
+
+    <li class="nav-item">
+      {% endif %}
+      <a class="nav-link" href="{{ site.baseurl }}/java">Java</a>
+    </li>
+    <!-- End Java -->
+
+    <!-- Machine learning -->
+    {% if page.url == "/machine-learning" %}
+    <li class="nav-item active">
+      {% else %}
+    </li>
+
+    <li class="nav-item">
+      {% endif %}
+      <a class="nav-link" href="{{ site.baseurl }}/machine-learning">Machine-learning</a>
+    </li>
+    <!-- End Machine learning -->
+
+    <!--Spring boot -->
+    {% if page.url == "/spring-boot" %}
+    <li class="nav-item active">
+      {% else %}
+    </li>
+
+    <li class="nav-item">
+      {% endif %}
+      <a class="nav-link" href="{{ site.baseurl }}/spring-boot">Spring-boot</a>
+    </li>
+    <!-- End Spring boot -->
+
+    <!-- Python -->
+    {% if page.url == "/python" %}
+    <li class="nav-item active">
+      {% else %}
+    </li>
+
+    <li class="nav-item">
+      {% endif %}
+      <a class="nav-link" href="{{ site.baseurl }}/python">Python</a>
+    </li>
+    <!-- End Python -->
+
+    <!-- About -->
+    {% if page.url == "/about" %}
+    <li class="nav-item active">
+      {% else %}
+    </li>
+
+    <li class="nav-item">
+      {% endif %}
+      <a class="nav-link" href="{{ site.baseurl }}/about">About</a>
+    </li>
+    <!-- End About -->
+
+    <!-- JetBrains -->
+    {% if page.url == "/jetbrains" %}
+    <li class="nav-item active">
+      {% else %}
+    </li>
+
+    <li class="nav-item">
+      {% endif %}
+      <a class="btn btn-outline-success" href="{{ site.baseurl }}/jetbrains">JetBrains Key</a>
+    </li>

@@ -4,6 +4,7 @@ description: 'Chia sẻ, hướng dẫn lập trình Java miễn phí và chất
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ''
+hostname: 'https://loda.me'
 disqus: 'loda-me'
 email: 'loda.namnh@gmail.com'
 

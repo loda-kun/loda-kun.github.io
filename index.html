@@ -49,7 +49,7 @@ description: "Chia sẻ kiến thức lập trình Java mới và hay nhát. Gi�
             {% if recent_post.image %}
             <div class="col-md-4">
             <a href="{{site.baseurl}}{{recent_post.url}}">
-                <img class="w-100" src="{% if recent_post.image contains "://" %}{{ recent_post.image }}{% else %}{{ recent_post.image | absolute_url }}{% endif %}" alt="{{ recent_post.title }}">
+                <img class="w-100" src="{% if recent_post.image contains "://" %}{{ recent_post.image }}{% else %}{{site.baseurl}}/{{ recent_post.image }}{% endif %}" alt="{{ recent_post.title }}">
             </a>
             </div>
             {% endif %}                

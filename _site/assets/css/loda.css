@@ -1,0 +1,100 @@
+/*!
+ * loda v.1.0.0
+ *
+*/
+
+/* make the image is center in the parent */
+
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
+
+/* make embeded youtube video fit to post */
+
+.youtube-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.youtube-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+
+Make it child lay in center
+
+*/
+.wrapper-center{
+    text-align: center;
+}
+
+/* Make img in the home page max-height only 300px */
+.main-loop-card img{
+    max-height: 300px;
+}
+
+/* Gradient loda logo */
+.loda-logo{
+    background: linear-gradient(to right, #7fd9ff 0%, #ea80fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Code block */
+pre {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: #E3EDF3 1px solid;
+    width: 100%;
+    padding: 7px;
+    font-family: monospace, sans-serif;
+    font-size: 14px;
+    white-space: pre;
+    overflow: auto;
+    background: #fff;
+    border-radius: 0px;
+    line-height: 1.6;
+    color:#333;
+     margin-bottom:-rem;
+}
+
+
+/* title post or heading in _posts*/
+h1, h2, h3, h4, h5, h6{
+    font-weight:bold;
+}
+
+/* Share side bar */
+.share {
+    text-align:center;
+}
+.share p {
+    margin-bottom:10px;
+    font-size:0.95rem;
+}
+.share ul li {
+    /* display:inline-block; */
+    margin-bottom:9px; 
+}
+.share ul {
+    list-style-type: none;
+    padding-left:0;
+    margin-left:0;
+}
+.share ul li i.fa {
+   border:1px solid #ddd;
+    width:30px;
+    height:30px;
+    line-height:30px;
+   text-align:center;
+   border-radius:50%;
+}

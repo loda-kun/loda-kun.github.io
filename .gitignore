@@ -12,3 +12,4 @@ Gemfile.lock
 .idea/
 .vscode/
 .lock
+_site/

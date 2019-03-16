@@ -11,3 +11,5 @@ Gemfile.lock
 .class
 .iml
 .idea/
+.vscode/
+.lock

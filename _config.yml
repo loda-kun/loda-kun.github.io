@@ -18,8 +18,9 @@ permalink: /:title/
 plugins: 
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-seo-tag
+  
   
 authors:
     loda:
@@ -59,7 +60,20 @@ kramdown:
   #     line_numbers: true
 
 # Paginate
-paginate: 10
+pagination:
+  enabled: true
+  debug: true
+  per_page: 6
+  permalink: '/page/:num/'
+  # title: ' - page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+  indexpage: 'index'
+  trail: 
+    before: 2 # The number of links before the current page
+    after: 2  # The number of links after the current page
+
 
 
 

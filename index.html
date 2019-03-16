@@ -1,20 +1,15 @@
 ---
 title: "Loda - develop your own style"
 layout: default
-pagination:
-    enabled: true
+permalink: /
+pagination: 
+  enabled: true
 description: "Chia sẻ kiến thức lập trình Java mới và hay nhát. Giúp bạn trở thành master."
-permalink: '/'
 ---
 
-
 <div class="container">
-    
-{% if page.url == "/" %}
-    
-    
-    
 <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
+<div id="index-top-container">
 <div class="row remove-site-content-margin">
     
     <!-- latest post -->
@@ -48,88 +43,33 @@ permalink: '/'
     </div>
     
     <div class="col-md-6">
-        
-        <!-- second latest post -->
-        {%- assign second_post = site.posts[1] -%}        
+        <!-- three latest post -->
+        {% for recent_post in site.posts offset:1 limit:3 %}
         <div class="mb-3 d-flex align-items-center">                
-                {% if second_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{second_post.url}}">
-                 <img class="w-100" src="{% if second_post.image contains "://" %}{{ second_post.image }}{% else %}{{ second_post.image | absolute_url }}{% endif %}" alt="{{ second_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{second_post.url}}">{{ second_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in second_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ second_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
+            {% if recent_post.image %}
+            <div class="col-md-4">
+            <a href="{{site.baseurl}}{{recent_post.url}}">
+                <img class="w-100" src="{% if recent_post.image contains "://" %}{{ recent_post.image }}{% else %}{{ recent_post.image | absolute_url }}{% endif %}" alt="{{ recent_post.title }}">
+            </a>
             </div>
-        
-        <!-- third latest post -->
-        {%- assign third_post = site.posts[2] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if third_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{third_post.url}}">
-                 <img class="w-100" src="{% if third_post.image contains "://" %}{{ third_post.image }}{% else %}{{ third_post.image | absolute_url }}{% endif %}" alt="{{ third_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{third_post.url}}">{{ third_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in third_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ third_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
+            {% endif %}                
+            <div>
+                <h2 class="mb-2 h6 font-weight-bold">
+                <a class="text-dark" href="{{site.baseurl}}{{recent_post.url}}">{{ recent_post.title }}</a>
+                </h2>
+                <small class="d-block text-muted">
+                    In <span class="catlist">
+                    {% for category in recent_post.categories %}
+                    <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
+                    {% endfor %}
+                    </span>                   
+                </small>
+                <small class="text-muted">
+                    {{ recent_post.date | date: '%b %d, %Y' }}
+                </small>
             </div>
-        
-        <!-- fourth latest post -->
-        {%- assign fourth_post = site.posts[3] -%}        
-        <div class="mb-3 d-flex align-items-center">                
-                {% if fourth_post.image %}
-                <div class="col-md-4">
-                <a href="{{site.baseurl}}{{fourth_post.url}}">
-                <img class="w-100" src="{% if fourth_post.image contains "://" %}{{ fourth_post.image }}{% else %}{{ fourth_post.image | absolute_url }}{% endif %}" alt="{{ fourth_post.title }}">
-                </a>
-                </div>
-                {% endif %}                
-                <div>
-                    <h2 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{site.baseurl}}{{fourth_post.url}}">{{ fourth_post.title }}</a>
-                    </h2>
-                    <small class="d-block text-muted">
-                        In <span class="catlist">
-                        {% for category in fourth_post.categories %}
-                        <a class="text-capitalize text-muted smoothscroll" href="{{site.baseurl}}/categories.html#{{ category | downcase }}">{{ category }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="text-muted">
-                        {{ fourth_post.date | date: '%b %d, %Y' }}
-                    </small>
-                </div>
-            </div>
-        
+        </div>
+        {% endfor %}
     </div>
     
 </div>
@@ -139,16 +79,12 @@ permalink: '/'
     
 <!-- Highlight (your own choice of highlighting a link, no post here) -->
 {% include home-highligh-box.html %}
-    
-
-
-{% endif %} <!--endif page url is / -->
-    
-
+        
+</div>
 
 <!-- Now the rest of the posts with the usual loop but with an offset:4 on the first page so we can skeep the first 4 posts displayed above -->
     
-<div class="row mt-3">
+<div class="row mt-3" id="all-posts-container">
    
     <div class="col-md-8 main-loop">
         
@@ -161,35 +97,7 @@ permalink: '/'
         
         {% endfor %}
         
-        <div class="mt-5">
-         <!-- Pagination links -->
-            {% if paginator.total_pages > 1 %}
-            <ul class="pagination"> 
-              {% if paginator.previous_page %}
-                <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a></li>
-              {% else %}
-                <li class="page-item disabled"><span class="prev page-link">&laquo;</span></li>
-              {% endif %}
-
-              {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-                <li class="page-item disabled"><span class="webjeda page-link">{{ page }}</span></li>
-                {% elsif page == 1 %}
-                <li class="page-item"><a class="page-link" href="{{site.baseurl}}/">{{ page }}</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
-                {% endif %}
-              {% endfor %}
-
-              {% if paginator.next_page %}
-                <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a></li>
-              {% else %}
-                <li class="page-item disabled"><span class="next page-link">&raquo;</span></li>
-              {% endif %}
-            </ul>
-            {% endif %}      
-        </div>
-        
+        {% include bottom-bar-paginator.html %}
     </div>
     
     <div class="col-md-4">
@@ -199,5 +107,14 @@ permalink: '/'
 </div>
 
 
-
 </div>
+
+<script>
+    $(document).ready(function () {
+        if (window.location.pathname.includes("/page/")) {
+            $('html, body').animate({
+                scrollTop: $("#all-posts-container").offset().top
+            }, 500);
+        }
+    });
+</script>

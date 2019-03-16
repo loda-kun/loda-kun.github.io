@@ -15,20 +15,20 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <title>404 | Loda</title>
+    <title>Authors | Loda</title>
 
     <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>404 | Loda</title>
+<title>Authors | Loda</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="404" />
+<meta property="og:title" content="Authors" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất." />
 <meta property="og:description" content="Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất." />
-<link rel="canonical" href="http://localhost:4000/404" />
-<meta property="og:url" content="http://localhost:4000/404" />
+<link rel="canonical" href="http://localhost:4000/authors-list.html" />
+<meta property="og:url" content="http://localhost:4000/authors-list.html" />
 <meta property="og:site_name" content="Loda" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/404","headline":"404","description":"Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/authors-list.html","headline":"Authors","description":"Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -168,17 +168,17 @@ var documents = [{
     "id": 2,
     "url": "http://localhost:4000/author-jane.html",
     "title": "Jane",
-    "body": "                        {{page. title}} Follow:         {{ site. authors. jane. site }}         {{ site. authors. jane. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , jane  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
+    "body": "                        Jane Follow:                                                    Posts by Jane:               "
     }, {
     "id": 3,
     "url": "http://localhost:4000/author-sal.html",
     "title": "Sal",
-    "body": "                        {{page. title}} Follow:         {{ site. authors. sal. site }}         {{ site. authors. sal. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , sal  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
+    "body": "                        Sal Follow:                                                    Posts by Sal:               "
     }, {
     "id": 4,
     "url": "http://localhost:4000/authors-list.html",
     "title": "Authors",
-    "body": "{{page. title}}:     {% for author in site. authors %}                                         {{ author[1]. name }} :       (View Posts)      {{ author[1]. bio }}                          &nbsp;       &nbsp;                                    {% endfor %}  "
+    "body": "Authors:                                             loda :       (View Posts)      Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối. . . Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.                           &nbsp;       &nbsp;                                      "
     }, {
     "id": 5,
     "url": "http://localhost:4000/buy-me-a-coffee.html",
@@ -361,27 +361,33 @@ function lunr_search(term) {
 
     <!-- Content -->
     <main role="main" class="site-content">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
+        <div class="container">
+<h4 class="font-weight-bold spanborder"><span>Authors</span></h4>
+    <div class="row gap-y listrecent listrecent listauthor">
+    
+        <div class="col-lg-6 mb-4">
+            <div class="p-4 border rounded">
+            <div class="row">
+            <div class="col-md-3 mb-4 mb-md-0"><img alt="loda" src="/assets/images/loda.jpg" class="rounded-circle" height="80" width="80"></div>
+            <div class="col-md-9">
+            <a href="/author-loda">
+            <h4 class="text-dark mb-0"> loda </h4>
+            <small class="d-inline-block mt-1 mb-3 font-weight-normal">(View Posts)</small>
+            <div class="excerpt">Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối... Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.</div>
+            </a>
+            <div class="icon-block mt-3 d-flex justify-content-between">  
+            <div>
+            <a target="_blank" href="https://twitter.com/wowthemesnet"><i class="fab fa-twitter text-muted" aria-hidden="true"></i></a>  &nbsp;
+            <a target="_blank" href="https://www.loda.me"><i class="fa fa-globe text-muted" aria-hidden="true"></i></a> &nbsp;
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    
+    </div>
 </div>
-
     </main>
 
 

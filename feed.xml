@@ -5,9 +5,112 @@
     <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Mar 2019 06:19:54 +0000</pubDate>
-    <lastBuildDate>Sun, 17 Mar 2019 06:19:54 +0000</lastBuildDate>
+    <pubDate>Sun, 17 Mar 2019 13:01:53 +0000</pubDate>
+    <lastBuildDate>Sun, 17 Mar 2019 13:01:53 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>&lt;Nâng cao/&gt; Hướng dẫn sử dụng Criteria API trong Hibernate</title>
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;JPA Criteria API&lt;/code&gt; cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; (JPQL) như thế này:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tương đương với câu lệnh trên nhưng xây dựng bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; thì sẽ như này:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CriteriaBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCriteriaBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;CriteriaQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nhìn có vẻ dài dòng và khó hiểu phải không &amp;gt;”&amp;lt; Yea, thì đúng là như thế đấy ==!&lt;/p&gt;
+
+&lt;p&gt;Nếu nó dài dòng như vậy, tại sao người ta lại tạo ra và sử dụng nó thay cho câu lệnh &lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt; bình thường? Các bạn đọc phần tiếp theo sẽ rõ nha.&lt;/p&gt;
+
+&lt;h4 id=&quot;jpql-vs-criteria-api&quot;&gt;JPQL vs Criteria API&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt; có thể làm đầy đủ chức năng chúng ta cần chỉ với 1 câu lệnh, tuy nhiên, chính vì điều đó, chúng ta thường khó tùy biến hay sử dụng lại nó, thậm chí khó kiểm soát lỗi của nó hơn. Với một câu lệnh phức tạp, chúng ta không biết được nó có lỗi hay không cho tới khi chạy chương trình hay debug (Mà chương trình đã chạy được rồi thì vẫn có lỗi tiềm ẩn :v chời đậu).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; thì ngược lại, nó cho phép chúng ta xây dựng câu lệnh một cách &lt;code class=&quot;highlighter-rouge&quot;&gt;Dynamic&lt;/code&gt;, rất linh động, và không bị &lt;code class=&quot;highlighter-rouge&quot;&gt;hardcode&lt;/code&gt; trong một &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; và có thể &lt;code class=&quot;highlighter-rouge&quot;&gt;tái sử dụng&lt;/code&gt; lại được. Đặc biệt, vì là Java Object, nên chúng ta sẽ biết một câu lệnh bị lỗi, không đúng quy tắc ngay khi biên dịch chương trình rồi.&lt;/p&gt;
+
+&lt;p&gt;Túm váy lại, với một lệnh đơn giản như ví dụ đầu bài, thì các bạn nên xài &lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt;, còn với những câu lệnh phức hợp, thay đổi theo &lt;code class=&quot;highlighter-rouge&quot;&gt;context&lt;/code&gt; của chương trình thì nên sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;how-to-use&quot;&gt;How to use.&lt;/h4&gt;
+
+&lt;p&gt;Quay trở lại với ví dụ ban đầu nhé:&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CriteriaBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCriteriaBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;CriteriaQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Chúng ta cùng tìm hiểu từng dòng lệnh:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaBuilder&lt;/code&gt;: Để xây dựng một câu query, các bạn sẽ cần tới &lt;code class=&quot;highlighter-rouge&quot;&gt;interface&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaBuilder&lt;/code&gt;, mục đích của nó là giúp tạo ra đối tượng chứa câu lệnh truy vấn &lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaQuery&lt;/code&gt; và cung cấp cơ số các phép biến đổi, phép logic, điều kiện cho câu lệnh (and, or, not, avg, greater than,v.v…)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaQuery&lt;/code&gt;: Đối tượng chính của chúng ta đây, nó được tạo ra bởi &lt;code class=&quot;highlighter-rouge&quot;&gt;builder.createQuery(Office.class)&lt;/code&gt;. Mục đích là khai báo đối tượng bạn muốn lấy ra sau khi thực hiện query. Nó tương đương với đoạn ngoặc đơn ở dưới đây:
+    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`o`&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Root&lt;/code&gt;: root là khai báo đối tượng bạn sẽ sử dụng trong query, tương đương với đối tượng sau mệnh đề &lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;
+    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`Office o`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cuối cùng, để hoàn thiện câu lệnh &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; chỉ đơn giản là lấy đối tượng &lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaQuery&lt;/code&gt; đã khai báo là sử dụng function &lt;code class=&quot;highlighter-rouge&quot;&gt;select&lt;/code&gt;. Đối tượng truyền vào chính là cái &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; (hay cái đối tượng của &lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;) kia.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Trông vậy chứ cũng dễ dễ rồi đấy nhỉ :)))&lt;/p&gt;
+
+&lt;p&gt;Okie, có điều này không biết đã bạn nào để ý chưa 😅 chúng ta mới tạo ra câu lệnh, chứ chưa hề gọi nó xuống &lt;code class=&quot;highlighter-rouge&quot;&gt;Database&lt;/code&gt; 😅&lt;/p&gt;
+
+&lt;p&gt;Để sử dụng câu lệnh đã tạo, các bạn làm giống với &lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt; đó là sử dụng đối tượng &lt;code class=&quot;highlighter-rouge&quot;&gt;EntityManager&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;TypedQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getResultList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Oh right, thế là implement xong ví dụ đơn giản đâu tiên, không cóa gì khó khăn 🤔 (chém). Bây giờ thử advanced lên tý nhỉ:&lt;/p&gt;
+
+&lt;p&gt;Bây giờ mình muốn lấy tất cả &lt;code class=&quot;highlighter-rouge&quot;&gt;Office&lt;/code&gt; ở thành phố &lt;code class=&quot;highlighter-rouge&quot;&gt;hanoi&lt;/code&gt; thì sẽ làm như nào?&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;city&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hanoi'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lúc này query của chúng ta sẽ như thế này:&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;city&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;hanoi&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Các bạn để ý đoạn này nhé. Mình sử &lt;code class=&quot;highlighter-rouge&quot;&gt;builder&lt;/code&gt; để lấy hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;equal&lt;/code&gt; (phép toán logic, như mình đề cập ở trên, chuẩn chưa nào). Tiếp tới là cái &lt;code class=&quot;highlighter-rouge&quot;&gt;root.get(&quot;city&quot;)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; chính là đối tượng chúng ta đã khai báo, bây giờ chúng ta sẽ lấy trường &lt;code class=&quot;highlighter-rouge&quot;&gt;city&lt;/code&gt; của nó và kiểm tra nó với &lt;code class=&quot;highlighter-rouge&quot;&gt;hanoi&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Có thể nói &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; đã hiện thực hóa rất thành công câu lệnh JPQL (hay HQL) thành những api java cực kì dễ dọc, dễ hiểu và dễ sử dụng. Khi đã hiểu được câu lệnh gốc, bạn có thể dễ dàng chuyển nó thành &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria&lt;/code&gt; và ngược lại.&lt;/p&gt;
+
+&lt;p&gt;Trong bài viết tới ở chương &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;, mình sẽ hướng dẫn các bạn sử dụng tới &lt;code class=&quot;highlighter-rouge&quot;&gt;Specifications&lt;/code&gt; kết hợp &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; để tạo ra một vụ nổ khi giao tiếp với db bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; (vãi cả chém 😂)&lt;/p&gt;
+
+&lt;p&gt;Chúc các bạn sử dụng thành công &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; và đừng quên like or chia sẻ bài viết cho bạn bè hihi, cảm ơn các bạn đã theo dõi!&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 17 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/</link>
+        <guid isPermaLink="true">/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/</guid>
+        
+        
+        <category>Java</category>
+        
+        <category>Hibernate</category>
+        
+        <category>JPA</category>
+        
+        <category>Criteria</category>
+        
+      </item>
     
       <item>
         <title>Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%</title>
@@ -961,86 +1064,6 @@ public class Champion {
         <category>CNN</category>
         
         <category>Convolutional</category>
-        
-      </item>
-    
-      <item>
-        <title>Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019</title>
-        <description>&lt;p&gt;Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple Siri, Google Assistant, Amazon Alexa, Microsoft Cortana.&lt;/p&gt;
-
-&lt;p&gt;Và đương nhiên vẫn còn nhiều trợ lý ảo khác được phát triển bởi các công ty công nghệ trên thế giới, có cả Việt Nam. Trong đó có cả Viettel, nơi mình và team đang phát triển 1 trợ lý ảo.&lt;/p&gt;
-
-&lt;h2 id=&quot;trợ-lý-ảo-là-gì-mà-lại-trở-thành-xu-hướng-công-nghệ-2019&quot;&gt;Trợ lý ảo là gì mà lại trở thành xu hướng công nghệ 2019?&lt;/h2&gt;
-
-&lt;p&gt;Có thể hiểu đơn giản trợ lý ảo là phần mềm, công cụ được xây dựng dựa trên nền tảng trí thông minh nhân tạo (AI) và thường được các nhà phát triển công nghệ tích hợp sâu vào trong hệ điều hành với mục đích chính là hỗ trợ người dùng thiết bị dễ dàng hơn bằng chính thói quen mà người dùng thường làm trên thiết bị (như các trợ lý ảo mình liệt kê ở trên).&lt;/p&gt;
-
-&lt;h2 id=&quot;ưu-điểm-của-trợ-lý-ảo-là-gì&quot;&gt;Ưu điểm của trợ lý ảo là gì?&lt;/h2&gt;
-
-&lt;h3 id=&quot;khả-năng-nhận-diện-giọng-nói-và-phân-tích-văn-bản-voice-to-text--text-to-voice&quot;&gt;Khả năng nhận diện giọng nói và phân tích văn bản (Voice to Text – Text to Voice)&lt;/h3&gt;
-
-&lt;p&gt;Bằng trí thông minh nhân tạo, những trợ lý ảo có thể nhận diện giọng nói chính xác, cho phép người dùng có thể tương tác với máy tính bằng giọng nói dễ dàng. Ví dụ, trợ lý ảo Siri của Apple sẽ bắt đầu khởi chạy ngay khi bạn nói “Hey Siri” thay vì phải nhấn giữ nút Home trên iPhone, iPad, sau đó có thể tiếp tục ra lệnh cho Siri thực hiện những điều bạn muốn.&lt;/p&gt;
-
-&lt;h3 id=&quot;khả-năng-xử-lý-ngôn-ngữ-tự-nhiên-công-nghệ-nlp--natual-language-process&quot;&gt;Khả năng xử lý ngôn ngữ tự nhiên (Công nghệ NLP – Natual Language Process)&lt;/h3&gt;
-
-&lt;p&gt;Trợ lý ảo còn có thể xử lý ngôn ngữ và đưa ra những câu trả lời phản hồi người dùng, tạo nên sự tương tác giữa người dùng và thiết bị giống hệt cuộc nói chuyện giữa người với người.&lt;/p&gt;
-
-&lt;h4 id=&quot;sức-mạnh-tìm-kiếm-search-engine&quot;&gt;Sức mạnh tìm kiếm (Search Engine)&lt;/h4&gt;
-
-&lt;p&gt;“Đứng sau” trợ giúp cho tính năng tìm kiếm của các trợ lý ảo chính là những công cụ đình đám như Bing, Google Search, thư viện bách khoa toàn thư Wikipedia hay Wolfram Alpha. Với những kho dữ liệu khổng lồ như vậy, rõ ràng những trợ lý ảo sẽ có khả năng tìm kiếm cực kỳ mạnh mẽ cả về tốc độ lẫn sự chính xác trong kết quả tìm kiếm.&lt;/p&gt;
-
-&lt;h4 id=&quot;khả-năng-học-từ-người-dùng&quot;&gt;Khả năng học từ người dùng&lt;/h4&gt;
-
-&lt;p&gt;Trợ lý ảo hoàn toàn có thể thu thập dữ liệu từ các thói quen sử dụng, tìm kiếm dữ liệu của người dùng và đưa ra những gợi ý chính xác nhất, và Trợ lý ảo sẽ “học” từ thói quen người dùng và trở nên “giỏi” hơn mỗi ngày.&lt;/p&gt;
-
-&lt;h4 id=&quot;trợ-lý-ảo-được-thực-tế-hóa-ở-các-phiên-bản&quot;&gt;Trợ lý ảo được thực tế hóa ở các phiên bản:&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Robot&lt;/li&gt;
-  &lt;li&gt;Website&lt;/li&gt;
-  &lt;li&gt;Mobile Application&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;mô-hình-khái-quát-về-việc-lập-trình-trợ-lý-ảo-mà-team-mình-đang-phát-triển&quot;&gt;Mô hình khái quát về việc lập trình Trợ lý ảo mà team mình đang phát triển:&lt;/h3&gt;
-
-&lt;p&gt;Hệ thống sẽ nhận đầu vào là giọng nói hoặc văn bản. Lúc này hệ thống sẽ tiền xử lý dữ liệu, nếu là giọng nói sẽ chuyển thành văn bản để xử lý bằng công nghệ speech2text (Model này là của công ty mình tự huấn luyện). Sau đó văn bản sẽ được xử lý và trích xuất thông tin thông qua tầng xử lý ngôn ngữ.&lt;/p&gt;
-
-&lt;p&gt;Lúc này các thông tin được trích xuất bao gồm Intent (dự định, ý định) của người dùng, Object (Đối tượng) trong câu nói đó, ngoài ra còn nhiều thông tin bổ sung khác như Location, Name, v.v.. Các thông tin này sẽ được bọn mình xử lý trên các model hoặc AIML training sẵn. Từ đó trả dữ liệu về cho người dùng.&lt;/p&gt;
-
-&lt;p&gt;Đặc biệt, điểm mạnh của trợ lý ảo hiện nay vẫn nằm ở hệ thống Search Engine, đa phần người dùng sẽ có thiên hướng tìm kiếm và hỏi đáp. Vậy nên khi xác định Intent của người dùng là tìm kiếm, bọn mình sẽ sử dụng hệ thống SE do công ty tự phát triển để tìm kiếm các thông tin chính xác nhất và gửi kêt quả về cho người dùng.&lt;/p&gt;
-
-&lt;p&gt;Hằng ngày team mình sẽ tối ưu Trợ lý ảo bằng các công nghệ:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Công nghệ nhận dạng và xử lý tiếng nói (Voice to text - Text to voice)&lt;/li&gt;
-  &lt;li&gt;Xử lý ngôn ngữ tự nhiên (Natural Language Processing)&lt;/li&gt;
-  &lt;li&gt;Trí tuệ nhận tạo (AI)&lt;/li&gt;
-  &lt;li&gt;AIML&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Đây là sản phẩm Trợ lý ảo do team mình đang xây dựng:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;youtube-container&quot;&gt;
-    &lt;iframe src=&quot;https://www.youtube.com/embed/r8i3kQDufjk&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;p&gt;Công việc của một lập trình viên làm Trợ lý ảo với mình rất thú vị. Tuy nhiên mình cũng nhận được nhiều câu hỏi rằng Trợ lý ảo rất phát triển và là xu hướng Công nghệ mới nhưng là ở nước rất phát triển, không phải ở Việt Nam. Vậy theo mọi người, &lt;strong&gt;Cơ hội và thách thức cho các nhà phát triển, kỹ sư lập trình Trợ lý ảo tại Việt Nam là gì? Đây có thực sự là cơ hội mới cho các lập trình viên?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Một vài số liệu thú vị về trợ lý ảo:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Số lượng thiết bị thông minh được tích hợp tính năng trợ lý ảo sẽ vượt mốc 7,5 tỷ vào năm 2021, cao hơn dân số toàn cầu hiện nay.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Dự kiến tới năm 2021, 47,6% thiết bị sử dụng trợ lý ảo thông qua giọng nói sẽ xuất hiện tại châu Á và châu Đại Dương. Các nền tảng trợ lý ảo đến từ Trung Quốc như Baidu, iFlytek…sẽ được sử dụng trên khoảng 43 triệu thiết bị, đi theo xu hướng tiếp tục tăng trưởng mạnh mẽ&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Theo nghiên cứu và nhận định từ Ovum).&lt;/em&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/Tro-ly-ao-van-se-la-xu-huong-cong-nghe-2019/</link>
-        <guid isPermaLink="true">/Tro-ly-ao-van-se-la-xu-huong-cong-nghe-2019/</guid>
-        
-        
-        <category>Virtual Assistant</category>
-        
-        <category>Machine Learning</category>
-        
-        <category>AI</category>
         
       </item>
     

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+    <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <title><Nâng cao/> Hướng dẫn sử dụng Criteria API trong Hibernate | Loda</title>
+
+    <!-- Begin Jekyll SEO tag v2.6.0 -->
+<title>Hướng dẫn sử dụng Criteria API trong Hibernate | Loda</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Hướng dẫn sử dụng Criteria API trong Hibernate" />
+<meta name="author" content="loda" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java" />
+<meta property="og:description" content="JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java" />
+<meta property="og:site_name" content="Loda" />
+<meta property="og:image" content="/assets/images/loda1552815848300/1.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-17T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java","author":{"@type":"Person","name":"loda"},"@type":"BlogPosting","url":"/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"},"name":"loda"},"image":"/assets/images/loda1552815848300/1.jpg","headline":"Hướng dẫn sử dụng Criteria API trong Hibernate","dateModified":"2019-03-17T00:00:00+00:00","datePublished":"2019-03-17T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/logo.png">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/assets/css/fontawesome/css/all.css">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/loda.css">
+
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+
+
+</head>
+
+<body class="">
+    
+    
+<!-- change your GA id in _config.yml -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-135687402-1"
+>
+  let _namnh_enviroment = 'production';
+  let _namnh_ga = true;
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-135687402-1");
+</script>
+
+<!-- Google Adsense -->
+<script
+  async
+  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1825244585932187",
+    enable_page_level_ads: true
+  });
+</script>
+
+<!-- Facebook -->
+<!-- FACEBOOK PLUGIN -->
+
+<div id="fb-root"></div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2157004821059773&autoLogAppEvents=1"
+></script>
+
+
+        
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand loda-logo" href="/"><strong>Loda</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               
+    </li>
+
+    <li class="nav-item">
+      
+      <a class="nav-link" href="/">Home</a>
+    </li>
+    <!-- End Blog -->
+
+    <!-- Java -->
+    
+    </li>
+
+    <li class="nav-item">
+      
+      <a class="nav-link" href="/java">Java</a>
+    </li>
+    <!-- End Java -->
+
+    <!--Spring boot -->
+    
+    </li>
+
+    <li class="nav-item">
+      
+      <a class="nav-link" href="/spring-boot">Spring Boot</a>
+    </li>
+    <!-- End Spring boot -->
+
+
+    <!-- Machine learning -->
+    
+    </li>
+
+    <li class="nav-item">
+      
+      <a class="nav-link" href="/machine-learning">Machine learning</a>
+    </li>
+    <!-- End Machine learning -->
+
+    <!-- Python -->
+    
+    </li>
+
+    <li class="nav-item">
+      
+      <a class="nav-link" href="/python">Python</a>
+    </li>
+    <!-- End Python -->
+
+    <!-- About -->
+    
+    </li>
+
+    <li class="nav-item">
+      
+      <a class="nav-link" href="/about">About</a>
+    </li>
+    <!-- End About -->
+
+    <!-- JetBrains -->
+    
+    </li>
+
+    <li class="nav-item">
+      
+      <a class="btn btn-outline-success" href="/jetbrains">JetBrains Key</a>
+    </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <script src="/assets/js/lunr.js"></script>
+
+<script>
+$(function() {
+    $("#lunrsearchresults").on('click', '#btnx', function () {
+        $('#lunrsearchresults').hide( 1000 );
+        $( "body" ).removeClass( "modal-open" );
+    });
+});
+    
+
+var documents = [{
+    "id": 0,
+    "url": "/404",
+    "title": "404",
+    "body": " 404 Page not found :(  The requested page could not be found. "
+    }, {
+    "id": 1,
+    "url": "/about",
+    "title": "About",
+    "body": "   Cảm ơn bạn đã ghé thăm.     Loda là blog chia sẻ về công nghệ, lập trình và  học máy được thành lập vào ngày 8/3/2019. Với tiêu chí xây dựng một trang  web blog chuyên nghiệp, lấy chất lượng làm kim chỉ nam nên chúng tôi không  ngừng cố gắng từng ngày để đem đến cho các bạn đọc Việt Nam những kiến thức  mới và hay nhất.     Các bài viết chúng tôi chia sẻ trên Loda sẽ đi từ  các kiến thức của một Software Engineer chứ không  phải dưới góc độ một Scientist. Vì thế chúng tôi đề cao tính ứng dụng của  kiến thức, khả năng hiểu vấn đề và sử dụng của nó trong công việc của bạn.   Tuy vậy, không phải vì thế bài viết sơ sài, mà ngược lại còn rất chi tiết,  để bạn hiểu kiến thức từ bản chất.     Đội ngũ của Loda hiện chỉ có 3 thành viên, vì thế  luôn mong muốn nhận được sự giúp đỡ của các bạn để cải thiện chất lượng tốt  hơn.   Mọi thông tin xin hãy liên hệ:  Gmail: loda. namnh@gmail. com  GitHub：https://github. com/loda-kun  Nếu bạn muốn đăng lại các bài viết từ blog loda, xin tuân thủ:    1. Bạn có thể đăng lại bài viết hoặc một phần của bài viết. Khi bạn trích  dẫn vui lòng ghi rõ nguồn, bao gồm liên kết (link) đến trang web này và ghi  rõ nguồn  loda. me      2. Các bài đăng lại phải là phi lợi nhuận. Nếu muốn đăng vì lợi nhuận xin  hỏi tác giả trước.     3. Nếu bạn sửa chữa nội dung bài viết, bao gồm thêm, bớt hoặc viết tiếp xin  liên hệ với tác giả.   Một lần nữa, tôi xin chân thành cảm ơn. "
+    }, {
+    "id": 2,
+    "url": "/author-jane.html",
+    "title": "Jane",
+    "body": "                        {{page. title}} Follow:         {{ site. authors. jane. site }}         {{ site. authors. jane. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , jane  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
+    }, {
+    "id": 3,
+    "url": "/author-sal.html",
+    "title": "Sal",
+    "body": "                        {{page. title}} Follow:         {{ site. authors. sal. site }}         {{ site. authors. sal. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , sal  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
+    }, {
+    "id": 4,
+    "url": "/authors-list.html",
+    "title": "Authors",
+    "body": "{{page. title}}:     {% for author in site. authors %}                                         {{ author[1]. name }} :       (View Posts)      {{ author[1]. bio }}                          &nbsp;       &nbsp;                                    {% endfor %}  "
+    }, {
+    "id": 5,
+    "url": "/buy-me-a-coffee.html",
+    "title": "Buy me a coffee",
+    "body": "Hi! I am Sal, web designer &amp; developer at WowThemes. net. The free items I create are my side projects and Mundana for Jekyll is one of them. You can find all the work I release for free here. You have my permission to use the free items I develop in your personal, commercial or client projects. If you’d like to reward my work, I would be honored and I could dedicate more time maintaining the free projects. Thank you so much! Buy me a coffee "
+    }, {
+    "id": 6,
+    "url": "/categories.html",
+    "title": "Categories",
+    "body": "          Categories          {% for category in site. categories %}     {{ category[0] }}:           {% assign pages_list = category[1] %}    {% for post in pages_list %}    {% if post. title != null %}     {% if group == null or group == post. group %}           {% include main-loop-card. html %}     {% endif %}    {% endif %}    {% endfor %}    {% assign pages_list = nil %}    {% assign group = nil %}    {% endfor %}                  {% include sidebar-featured. html %}          "
+    }, {
+    "id": 7,
+    "url": "/contact.html",
+    "title": "Contact",
+    "body": "   Please send your message to {{ site. name }}. We will reply as soon as  possible!                    "
+    }, {
+    "id": 8,
+    "url": "/en/jetbrains",
+    "title": "License key for Jetbrains IntelliJ IDEA 2019 (Updated)(Work 100%)",
+    "body": "                    Share License Key to activate copyright for products in the ecosystem of Jetbrains. You can activate the products below:                         Note::               The license belongs to the lanyu and the article only wishes to share it with the community, not        encouraging free use.                               loda. me         will not be responsible for individuals using the provided key                     If financial conditions are available, purchase products at:                  https://www. jetbrains. com/idea/buy/                     Get key:                       I have read and accepted                Get Key                   How to use:       1. Edit hosts file      Open hosts             Windows:                                                   1                                      C:\Windows\System32\drivers\etc\hosts                                                  Linux/Mac:                                                         1                                      /etc/hosts                                          Append this line to the last of the hosts file                                                   1                                      0. 0. 0. 0 account. jetbrains. com                                                 2. Add key      Open your JetBrains product       Help &gt; Register. . .       Put the code to the Activation code and OK                   Activation code work for                         Key IntelliJ IDEA Ultimate / Activation Code IntelliJ IDEA Ultimate                           Key ReSharper Ultimate / Activation Code ReSharper Ultimate                           Key Rider / Activation Code Rider                           Key GoLand / Activation Code GoLand                           Key AppCode / Activation Code AppCode                           Key CLion / Activation Code CLion                           Key PyCharm Professional / Activation Code PyCharm Professional                           Key WebStorm / Activation Code WebStorm                           Key RubyMine / Activation Code RubyMine                                 Tặng tôi 1 cốc coffee      Cảm ơn bạn đã theo dõi Loda,        ủng hộ của bạn kèm theo phản hồi sẽ giúp loda        cải thiện thêm chất lượng bài viết.       Buy me a        coffee                                            JetBrains Activation Code           &times;                          K71U8DBPNE-eyJsaWNlbnNlSWQiOiJLNzFVOERCUE5FIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiSUkiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJSUzAiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJXUyIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IlJEIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiUkMiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJEQyIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IkRCIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiUk0iLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IkFDIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiRFBOIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiR08iLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJQUyIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IkNMIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJSU1UiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifV0sImhhc2giOiI4OTA4Mjg5LzAiLCJncmFjZVBlcmlvZERheXMiOjAsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0=-Owt3/+LdCpedvF0eQ8635yYt0+ZLtCfIHOKzSrx5hBtbKGYRPFDrdgQAK6lJjexl2emLBcUq729K1+ukY9Js0nx1NH09l9Rw4c7k9wUksLl6RWx7Hcdcma1AHolfSp79NynSMZzQQLFohNyjD+dXfXM5GYd2OTHya0zYjTNMmAJuuRsapJMP9F1z7UTpMpLMxS/JaCWdyX6qIs+funJdPF7bjzYAQBvtbz+6SANBgN36gG1B2xHhccTn6WE8vagwwSNuM70egpahcTktoHxI7uS1JGN9gKAr6nbp+8DbFz3a2wd+XoF3nSJb/d2f/6zJR8yJF8AOyb30kwg3zf5cWw==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==                          Close                    "
+    }, {
+    "id": 9,
+    "url": "/jetbrains",
+    "title": "License Key Jetbrains IntelliJ IDEA cập nhật 2019 (Hoạt động 100%)",
+    "body": "                    Click here for English version                    Chia sẻ License key kích hoạt bản quyền cho các sản phẩm        trong hệ sinh thái của Jetbrains. Bạn có thể kích hoạt các sản        phẩm dưới đây:                         Lưu ý::               License thuộc về tác giả lanyu và bài viết chỉ mong muốn        chia sẻ cho cộng đồng, chứ không khuyến khích việc sử dụng miễn phí.                               loda. me         sẽ không chịu trách nhiệm cho các cá nhân sử dụng Key được        cung cấp cho các mục đích gây thiệt hại cho nhà sản xuất.                     Nếu có điều kiện, hãy mua sản phẩm chính hãng:                  https://www. jetbrains. com/idea/buy/                 Ủng hộ nhà sản xuất cũng như được hỗ trợ các tính năng mới        nhất!             Lấy key:                       Tôi đã đọc và hiểu những lưu ý ở trên.                 Get Key                   Cách cài đặt:       1. Sửa hosts      Mở file hosts             Windows:                                                   1                                      C:\Windows\System32\drivers\etc\hosts                                                  Linux/Mac:                                                         1                                      /etc/hosts                                          Thêm vào dòng cuối cùng của file hosts và lưu lại                                                   1                                      0. 0. 0. 0 account. jetbrains. com                                                 2. Nhập key      Mở sản phẩm của JetBrains bạn đang sử dụng       Help &gt; Register. . .       Nhập key vào Activation code và OK                   Key hoạt động với các sản phẩm dưới đây                         Key IntelliJ IDEA Ultimate / Activation Code IntelliJ IDEA Ultimate                           Key ReSharper Ultimate / Activation Code ReSharper Ultimate                           Key Rider / Activation Code Rider                           Key GoLand / Activation Code GoLand                           Key AppCode / Activation Code AppCode                           Key CLion / Activation Code CLion                           Key PyCharm Professional / Activation Code PyCharm Professional                           Key WebStorm / Activation Code WebStorm                           Key RubyMine / Activation Code RubyMine                                 Tặng tôi 1 cốc coffee      Cảm ơn bạn đã theo dõi Loda,        ủng hộ của bạn kèm theo phản hồi sẽ giúp loda        cải thiện thêm chất lượng bài viết.       Buy me a        coffee                                            JetBrains Activation Code           &times;                          K71U8DBPNE-eyJsaWNlbnNlSWQiOiJLNzFVOERCUE5FIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiSUkiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJSUzAiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJXUyIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IlJEIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiUkMiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJEQyIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IkRCIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiUk0iLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IkFDIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiRFBOIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiR08iLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJQUyIsInBhaWRVcFRvIjoiMjAxOS0wNS0wNCJ9LHsiY29kZSI6IkNMIiwicGFpZFVwVG8iOiIyMDE5LTA1LTA0In0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifSx7ImNvZGUiOiJSU1UiLCJwYWlkVXBUbyI6IjIwMTktMDUtMDQifV0sImhhc2giOiI4OTA4Mjg5LzAiLCJncmFjZVBlcmlvZERheXMiOjAsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0=-Owt3/+LdCpedvF0eQ8635yYt0+ZLtCfIHOKzSrx5hBtbKGYRPFDrdgQAK6lJjexl2emLBcUq729K1+ukY9Js0nx1NH09l9Rw4c7k9wUksLl6RWx7Hcdcma1AHolfSp79NynSMZzQQLFohNyjD+dXfXM5GYd2OTHya0zYjTNMmAJuuRsapJMP9F1z7UTpMpLMxS/JaCWdyX6qIs+funJdPF7bjzYAQBvtbz+6SANBgN36gG1B2xHhccTn6WE8vagwwSNuM70egpahcTktoHxI7uS1JGN9gKAr6nbp+8DbFz3a2wd+XoF3nSJb/d2f/6zJR8yJF8AOyb30kwg3zf5cWw==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==                          Close                    "
+    }, {
+    "id": 10,
+    "url": "/privacy-policy.html",
+    "title": "Privacy Policy",
+    "body": "”{{site. name}}” takes your privacy seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used. Collection of Routine Information: This website track basic information about their visitors. This information includes, but is not limited to, IP addresses, browser details, timestamps and referring pages. None of this information can personally identify specific visitor to this website. The information is tracked for routine administration and maintenance purposes. Cookies: Where necessary, this website uses cookies to store information about a visitor’s preferences and history in order to better serve the visitor and/or present the visitor with customized content. Advertisement and Other Third Parties: Advertising partners and other third parties may use cookies, scripts and/or web beacons to track visitor activities on this website in order to display advertisements and other useful information. Such tracking is done directly by the third parties through their own servers and is subject to their own privacy policies. This website has no access or control over these cookies, scripts and/or web beacons that may be used by third parties. Learn how to opt out of Google’s cookie usage. Links to Third Party Websites: We have included links on this website for your use and reference. We are not responsible for the privacy policies on these websites. You should be aware that the privacy policies of these websites may differ from our own. Security: The security of your personal information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. Changes To This Privacy Policy: This Privacy Policy is effective and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. Contact Information: For any questions or concerns regarding the privacy policy, please contact us here. "
+    }, {
+    "id": 11,
+    "url": "/robots.txt",
+    "title": "",
+    "body": "      Sitemap: {{ “sitemap. xml”   absolute_url }}   "
+    }, {
+    "id": 12,
+    "url": "/index.html",
+    "title": "Loda - develop your own style",
+    "body": "      {% assign latest_post = site. posts[0] %}          &lt;div style= background-image: url({% if latest_post. image contains  ://  %}{{ latest_post. image }}{% else %} {{site. baseurl}}/{{ latest_post. image}}{% endif %}); height: 200px;  background-size: cover;  background-repeat: no-repeat; &gt;&lt;/div&gt;           {{ latest_post. title }}  :       {{ latest_post. excerpt | strip_html | strip_newlines | truncate: 136 }}               In         {% for category in latest_post. categories %}        {{ category }},         {% endfor %}                                {{ latest_post. date | date: '%b %d, %Y' }}                        {% for recent_post in site. posts offset:1 limit:3 %}                  {% if recent_post. image %}                    &lt;img class= w-100  src= {% if recent_post. image contains  ://  %}{{ recent_post. image }}{% else %}{{site. baseurl}}/{{ recent_post. image }}{% endif %}  alt= {{ recent_post. title }} &gt;                  {% endif %}                              {{ recent_post. title }}        :                   In           {% for category in recent_post. categories %}          {{ category }},           {% endfor %}                                              {{ recent_post. date | date: '%b %d, %Y' }}                      {% endfor %}            {% include home-highligh-box. html %}                  All Stories:     {% for post in paginator. posts %}          {% include main-loop-card. html %}        {% endfor %}        {% include bottom-bar-paginator. html %}          {% include sidebar-featured. html %}      "
+    }, {
+    "id": 13,
+    "url": "/page/2/index.html",
+    "title": "Loda - develop your own style - page 2",
+    "body": "      {% assign latest_post = site. posts[0] %}          &lt;div style= background-image: url({% if latest_post. image contains  ://  %}{{ latest_post. image }}{% else %} {{site. baseurl}}/{{ latest_post. image}}{% endif %}); height: 200px;  background-size: cover;  background-repeat: no-repeat; &gt;&lt;/div&gt;           {{ latest_post. title }}  :       {{ latest_post. excerpt | strip_html | strip_newlines | truncate: 136 }}               In         {% for category in latest_post. categories %}        {{ category }},         {% endfor %}                                {{ latest_post. date | date: '%b %d, %Y' }}                        {% for recent_post in site. posts offset:1 limit:3 %}                  {% if recent_post. image %}                    &lt;img class= w-100  src= {% if recent_post. image contains  ://  %}{{ recent_post. image }}{% else %}{{site. baseurl}}/{{ recent_post. image }}{% endif %}  alt= {{ recent_post. title }} &gt;                  {% endif %}                              {{ recent_post. title }}        :                   In           {% for category in recent_post. categories %}          {{ category }},           {% endfor %}                                              {{ recent_post. date | date: '%b %d, %Y' }}                      {% endfor %}            {% include home-highligh-box. html %}                  All Stories:     {% for post in paginator. posts %}          {% include main-loop-card. html %}        {% endfor %}        {% include bottom-bar-paginator. html %}          {% include sidebar-featured. html %}      "
+    }, {
+    "id": 14,
+    "url": "/java/index.html",
+    "title": "Java",
+    "body": ""
+    }, {
+    "id": 15,
+    "url": "/machine-learning/index.html",
+    "title": "Machine Learning",
+    "body": ""
+    }, {
+    "id": 16,
+    "url": "/machine-learning/page/2/index.html",
+    "title": "Machine Learning - page 2",
+    "body": ""
+    }, {
+    "id": 17,
+    "url": "/python/index.html",
+    "title": "Python",
+    "body": ""
+    }, {
+    "id": 18,
+    "url": "/spring-boot/index.html",
+    "title": "Spring Boot",
+    "body": ""
+    }, {
+    "id": 19,
+    "url": "/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/",
+    "title": "<Nâng cao/> Hướng dẫn sử dụng Criteria API trong Hibernate",
+    "body": "2019/03/17 - JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong String (JPQL) như thế này: SELECT o FROM Office oTương đương với câu lệnh trên nhưng xây dựng bằng Criteria API thì sẽ như này: CriteriaBuilder cb = em. getCriteriaBuilder();CriteriaQuery&lt;Office&gt; q = cb. createQuery(Office. class);Root&lt;Office&gt; c = q. from(Office. class);q. select(c);Nhìn có vẻ dài dòng và khó hiểu phải không &gt;”&lt; Yea, thì đúng là như thế đấy ==! Nếu nó dài dòng như vậy, tại sao người ta lại tạo ra và sử dụng nó thay cho câu lệnh JPQL bình thường? Các bạn đọc phần tiếp theo sẽ rõ nha. JPQL vs Criteria API: JPQL có thể làm đầy đủ chức năng chúng ta cần chỉ với 1 câu lệnh, tuy nhiên, chính vì điều đó, chúng ta thường khó tùy biến hay sử dụng lại nó, thậm chí khó kiểm soát lỗi của nó hơn. Với một câu lệnh phức tạp, chúng ta không biết được nó có lỗi hay không cho tới khi chạy chương trình hay debug (Mà chương trình đã chạy được rồi thì vẫn có lỗi tiềm ẩn :v chời đậu). Criteria API thì ngược lại, nó cho phép chúng ta xây dựng câu lệnh một cách Dynamic, rất linh động, và không bị hardcode trong một String và có thể tái sử dụng lại được. Đặc biệt, vì là Java Object, nên chúng ta sẽ biết một câu lệnh bị lỗi, không đúng quy tắc ngay khi biên dịch chương trình rồi. Túm váy lại, với một lệnh đơn giản như ví dụ đầu bài, thì các bạn nên xài JPQL, còn với những câu lệnh phức hợp, thay đổi theo context của chương trình thì nên sử dụng Criteria. How to use. : Quay trở lại với ví dụ ban đầu nhé: CriteriaBuilder builder = em. getCriteriaBuilder();CriteriaQuery&lt;Office&gt; query = builder. createQuery(Office. class);Root&lt;Office&gt; root = query. from(Office. class);query. select(root);Chúng ta cùng tìm hiểu từng dòng lệnh:    CriteriaBuilder: Để xây dựng một câu query, các bạn sẽ cần tới interface CriteriaBuilder, mục đích của nó là giúp tạo ra đối tượng chứa câu lệnh truy vấn CriteriaQuery và cung cấp cơ số các phép biến đổi, phép logic, điều kiện cho câu lệnh (and, or, not, avg, greater than,v. v…)   CriteriaQuery: Đối tượng chính của chúng ta đây, nó được tạo ra bởi builder. createQuery(Office. class). Mục đích là khai báo đối tượng bạn muốn lấy ra sau khi thực hiện query. Nó tương đương với đoạn ngoặc đơn ở dưới đây:  SELECT `o` FROM Office o    Root: root là khai báo đối tượng bạn sẽ sử dụng trong query, tương đương với đối tượng sau mệnh đề FROM  SELECT o FROM `Office o`   Cuối cùng, để hoàn thiện câu lệnh SELECT chỉ đơn giản là lấy đối tượng CriteriaQuery đã khai báo là sử dụng function select. Đối tượng truyền vào chính là cái root (hay cái đối tượng của FROM) kia. query. select(root);Trông vậy chứ cũng dễ dễ rồi đấy nhỉ :))) Okie, có điều này không biết đã bạn nào để ý chưa 😅 chúng ta mới tạo ra câu lệnh, chứ chưa hề gọi nó xuống Database 😅 Để sử dụng câu lệnh đã tạo, các bạn làm giống với JPQL đó là sử dụng đối tượng EntityManager TypedQuery&lt;Office&gt; query = em. createQuery(query);List&lt;Office&gt; results = query. getResultList();Oh right, thế là implement xong ví dụ đơn giản đâu tiên, không cóa gì khó khăn 🤔 (chém). Bây giờ thử advanced lên tý nhỉ: Bây giờ mình muốn lấy tất cả Office ở thành phố hanoi thì sẽ làm như nào? SELECT o FROM Office o WHERE o. city = 'hanoi'Lúc này query của chúng ta sẽ như thế này: query. select(root). where(builder. equal(root. get( city ),  hanoi ));Các bạn để ý đoạn này nhé. Mình sử builder để lấy hàm equal (phép toán logic, như mình đề cập ở trên, chuẩn chưa nào). Tiếp tới là cái root. get( city ), root chính là đối tượng chúng ta đã khai báo, bây giờ chúng ta sẽ lấy trường city của nó và kiểm tra nó với hanoi. Có thể nói Criteria API đã hiện thực hóa rất thành công câu lệnh JPQL (hay HQL) thành những api java cực kì dễ dọc, dễ hiểu và dễ sử dụng. Khi đã hiểu được câu lệnh gốc, bạn có thể dễ dàng chuyển nó thành Criteria và ngược lại. Trong bài viết tới ở chương Spring, mình sẽ hướng dẫn các bạn sử dụng tới Specifications kết hợp Criteria API để tạo ra một vụ nổ khi giao tiếp với db bằng Java (vãi cả chém 😂) Chúc các bạn sử dụng thành công Criteria API và đừng quên like or chia sẻ bài viết cho bạn bè hihi, cảm ơn các bạn đã theo dõi! "
+    }, {
+    "id": 20,
+    "url": "/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/",
+    "title": "Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%",
+    "body": "2019/03/17 - Lombok?: Lombok là một thư viện, một plugin, giúp chúng ta giảm thiểu các đoạn code thừa (boilerplate) bằng cách tự động sinh ra các hàm Get, Set, Constructor, v. v. . Chắc hẳn ai là Java Developer chinh chiến nhiều năm thì đều ngán ngẩm với việc ngồi viết những hàm Get/Set, Các Constructor có tham số lặp đi lặp lại, mặc dù các IDE đều hỗ trợ Generate tự động, tuy nhiên khi Project lớn, việc quản lý hàng chục function như vậy trông rất rối mắt và thừa thãi. Từ đây, vị cứu tinh của chúng ta, **Lombok** ra đời :3 Với tiêu chí giúp developer tập trung vào tầng nghiệp vụ và logic thay vì mất thời gian làm những việc “thừa thãi”. Không những làm cho code sáng sửa mà còn trông rất hợp lý, dễ quản lý hơn (Per con ông phệch). Sức mạnh của Lombok không chỉ dừng ở việc Get/Set mà còn nhiều khả năng tuyệt vời khác nữa, mình cũng tìm hiểu ở dưới nhé. Cài đặt: Để sử dụng được Lombok bạn cần có 2 điều kiện sau:  Thư viện lombok trong project của bạn IDE cao cấp, hỗ trợ lombok (IntelliJ IDEA, Eclipse, . . )Chúng ta đi vào từng phần: Bước 1Cách nhanh nhất để đưa 1 lib java vào project của bạn là sử dụng Maven, hoặc Gradle :3 Maven &lt;!-- https://mvnrepository. com/artifact/org. projectlombok/lombok --&gt;&lt;dependency&gt;  &lt;groupId&gt;org. projectlombok&lt;/groupId&gt;  &lt;artifactId&gt;lombok&lt;/artifactId&gt;  &lt;version&gt;1. 18. 4&lt;/version&gt;  &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt;Gradle // https://mvnrepository. com/artifact/org. projectlombok/lombokprovided group: 'org. projectlombok', name: 'lombok', version: '1. 18. 4'Nếu bạn chưa biết Maven hay Gradle là gì thì xem tại đây nhé Bước 2Góc giải thích nhẹ (Bạn có thể bỏ qua và xuống phần cài đặt luôn)Bạn cần cài Lombok plugin cho IDE của bạn, vì sao? Bạn hiểu là IDE chỉ nhìn thấy những dòng code của bạn hiện tại, và từ đó tham chiếu tới nó, bây giờ bạn không viết hàm Get/Set nữa, thì nó không nhìn thấy, và điều gì sẽ xảy ra nếu bạn viết user. getName() trong khi function getName() không hề tồn tại :v oh siệc man. Thông báo lỗi đỏ lè. Bản thân Lombok là một thư viện, nó sẽ tự động thêm Get/Set khi project của bạn được build. Tức tự viết thêm code vào class đó trước khi nó thành file jar. Nên để IDE hiểu rằng class User đã có các hàm Get/ Set/ Constructor này rồi, hiển thị nó cho tao, thì bạn phải cài Lombok Plugin Cài đặt Lombok cho IntelliJ IDEAMình sử dụng IntelliJ IDEA nha mọi người, Eclipse cũng tương tự nhé (khác mỗi chỗ cài đặt :”) ) Các bạn vào File &gt; Setting &gt; Plugins . . Search: “Lombok” Chọn Lombok Plugin và nhấn Install Chớ quên Apply nhé! Tadaaa, Chưa xong đâu ==! nếu là lần đầu, bạn sẽ phải làm thêm 2 bước này nữa. Restart IDE &gt; File &gt; Setting &gt; Other Setting &gt; Lombok Plugin &gt; Enable Lombok plugin for this project &gt; Apply File &gt; Setting &gt; Build, Execution, Deployment &gt; Complier &gt; Annotation Processors &gt; Apply Rồi, chính thức là xong! Bây giờ project của bạn đã có Lombok Sử dụng Lombok: Lombok dùng Annotation để khai báo với trình biên dịch. @DataNhìn lại vào ví dụ đầu tiên, 2 đoạn code này là tương đương.  @Data sẽ có tác dụng generate ra Constructor rỗng hoặc có tham số theo yêu cầu (cái này sẽ nói sau), toàn bộ Get/Set, hàm equals, hashCode, toString() Khi bạn đã đánh dấu 1 class là @Data, thì tại bất cứ đâu trong project. Khi sử dụng tới class này, nó sẽ tự có các function đã generate mà không cần code thêm bất kì dòng nào: Constructor với @NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructorTrong trường hợp bạn muốn định nghĩa các Constructor theo ý mình, thì Lombok hỗ trợ 3 Annotation:  @NoArgsConstructor: Hàm khởi tạo rỗng, đã đề cập ở trên @AllArgsConstructor: Hàm khởi tạo chứa tất cả thuộc tính, ví dụ Champion(String name, String type) @RequiredArgsConstructor: Hàm khởi tạo theo yêu cầu. Bạn chỉ muốn hàm khởi tạo có vài thuộc tính do bạn chọn thôi, thì bạn thêm final trước thuộc tính trong class, nó sẽ tự sinh ra Constructor như thế. @RequiredArgsConstructorpublic class Champion { private final String name; private String type;// @RequiredArgsConstructor + final đồng nghĩa với Constructor như thế này. // public Champion(String name) {//  this. name = name;// }}@RequiredArgsConstructor là một vũ khí cực kì, cực kì lợi hại nhé :3 Sau này khi tới các bài về Spring và nâng cao hơn, mình sẽ cho các bạn thấy tác dụng kì riệu của e nó :3 @Getter/@SetterKhi bạn chỉ muốn generate mỗi Get/Set thôi và không muốn dùng @Data vì nó quá nhiều chức năng, thì có thể xài 2 câu thần chú @Getter và @Setter @Getter@Setterpublic class Champion { private String name; private String type;}Nâng cao hơn, bạn chỉ muốn xài Get/Set cho 1 thuộc tính thì sao? thì như này nè :3 public class Champion { // Tạo ra get/set cho name @Getter @Setter private String name; // Tạo ra protected setType(String) thay vì public @Setter(AccessLevel. PROTECTED) private String type;}@ToString và @EqualsAndHashCodeNhìn tên các bạn cũng đoán ra phải không, để tý thì đây đều là các chức năng riêng rẽ mà đã được @Data gom lại thành 1.  @ToString: Tạo ra hàm toString() từ thuộc tính class.  @EqualsAndHashCode: Tạo ra hàm equals và hashCodeCái này ví dụ ở đầu bài viết mình đã chỉ ra rồi, phần này có một vấn đề thôi, là nếu bạn không muốn làm toString hay equals KHÔNG tác động tới 1 thuộc tính nào đó, thì làm như nào? Lúc này chúng ta sẽ dùng tới Exclude @ToStringpublic class Champion { private String name; @ToString. Exclude private String type; // Thuộc tính type đã bị bỏ qua// @Override// public String toString() {//  return  Champion{  +  name='  + name + '\'' + '}';// }}@BuilderChắc hẳn ai cũng ngại khi viết 1 class Builder cổ điển phải không, tự dưng phải tạo thêm 1 class nữa, gấp đôi số lượng thuộc tính khai báo, gấp đôi số hàm cần viết huhu. :”(( Và một lần nữa, vị cứu tinh Lombok lại đến và lau đi nước mắt của loda với @Builder. Đây là một chức năng đặc biệt dành cho người lười biếng (như mình). Put @Data@Builderpublic class Champion { private String name; private String type;}Then Champion loda = Champion. builder()    . name( loda )    . type( Support )    . build();Lời kết: Cảm ơn chúa, cảm ơn Reinier Zwitserloot và cộng đồng mã nguồn mở đã cứu rỗi lấy linh hồn của những thánh lười như loda :3 Lombok còn rất nhiều tính năng hay ho, mình đã giới thiệu các phần thông dụng nhất mà project nào cũng sẽ cần đến và cách sử dụng nó, khi tới các bài viết về các framework của Java, mình sẽ đề cập thêm các yếu tố nâng cao hơn của nó. Còn bạn nào muốn tìm hiểu thêm thì hãy vào trang chủ của Lombok. Cảm ơn các bạn đã đọc hết bài viết, theo dõi loda để cập nhật các bài viết mới và thú vị nhé! Và đừng quên chia sẻ cho bạn bè kaka :v "
+    }, {
+    "id": 21,
+    "url": "/ThanosJS-lam-bien-mat-1-nua-DU-LIEU-may-ban-voi-1-dong-lenh/",
+    "title": "ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh",
+    "body": "2019/03/11 - Nhìn hình thì các bạn cũng biết phải làm gì rồi chứ :))) Bưng, nửa số files trong máy bạn biến mất. Nếu chưa, thì làm như mình hướng dẫn nhé :3 Cài đặt: Trước hết bạn cần cài Ruby Gem. Windows: https://rubyinstaller. org/downloads/Unix: sudo apt-get install ruby-devXóa nửa dân số: Lắp ngọc Power gem install powerLắp ngọc Reality gem install realityLắp ngọc Mind gem install mindLắp ngọc Space gem install spaceLắp ngọc Time gem install timeLắp ngọc Soul gem install soulBúng tay thanos snap-fingers --with-gloveChúc bạn khôi phục dữ liệu may mắn! "
+    }, {
+    "id": 22,
+    "url": "/Minh-da-lam-xe-tu-lai-nhu-the-nao/",
+    "title": "Mình đã làm xe tự lái như thế nào?",
+    "body": "2019/03/10 - Đôi nét về Xe tự hành: Chắc hẳn những cụm từ như “Xe tự hành” (hay “Xe tự lái”) đã không còn xa lạ đối với những người quan tâm tới công nghệ trong suốt thời gian qua. Đã có rất nhiều tập đoàn, công ty lớn tham gia vào vào cuộc đua nghiên cứu xe tự hành này, tiêu biểu có thể kể tới như Uber, Apple, Ford, Honda, BWM, Liên minh Renault – Nissan – Mitsubishi,. . Theo số liệu báo cáo từ KPMG thì tổng số tiền đầu tư vào lĩnh vực này trong 05 năm vừa qua đã đạt tới con số hơn 50 tỷ USD (ờ hớ ờ hớ) Cho những bạn chưa biết, thì “xe tự hành” có thể hiểu là ôtô có khả năng hoạt động mà không cần đến sự điều khiển hay can thiệp của con người. Nếu xe tự hành được nghiên cứu và áp dụng thành công thì những lợi ích mà nó đem lại sẽ có tác động rất tích cực đến chất lượng đời sống của con người như: giảm tỷ lệ tai nạn giao thông do bất cẩn của người lái, giảm thiểu chi phí sửa chữa ô tô; hỗ trợ người tàn tật, người già di chuyển dễ dàng, chủ động hơn. Hành trình đáng nhớ với “Cuộc đua số”: Đây là chân dung chiếc xe tự hành mini của chúng mình. Xe được xây dựng trên tỉ lệ 1:20 so với xe thật, có kích thước chiều dài khoảng 40cm và chiều cao 30cm. Em xe này có tốc độ chạy tối đa 25 km/h, có thể leo trèo bãi đất, bãi cát, leo dốc 45 độ, lội nước sâu tầm 10 cm, lội tuyết, sình lầy (cũng khá ngầu phải không :P)   Chi tiết hơn thì chiếc xe gồm có:  Động cơ điều khiển bánh Vi mạch Jetson TX1 Camera Cảm biến vật cản Màn hình led và các phím chức năng Dây nối tín hiệu cho mạch và dây nguồn cho động cơ/mạchSau đây, mình sẽ chia sẻ qua một chút về quá trình team mình lập trình chiếc xe này và đi vào từng bài toán mà bọn mình cần giải quyết. Thật đáng tiếc là cuộc thi đã trôi qua được 1 năm, và source code mình đã gửi lại cho ban tổ chức, cũng như không còn lưu giữ gì về nó :’( mình sẽ chia sẻ hướng giải quyết vấn đề. còn source code sẽ tự bổ sung lại dần dần sau này. Xác định 2 biên đường: Để xe có thể đi đúng thì cần xác định 2 biên đường để đảm bảo xe luôn đi trong đó. Đây là một bài toán xử lý ảnh cơ bản vì 2 làn đường có màu trắng trên nền đen và bỏ qua yếu tố ngoại cảnh như nhiễu hạt hay vật cản. Ngoài ra, xe chỉ cần xác định đoạn đường trước nó không xa, nên mình cắt 1 nửa ảnh, lấy đoạn đường phía dưới để xử lý. Mình đã sử dụng lọc màu trên kênh HSV để làm nổi bật các đường màu trắng, sau đó sử dụng thuật toán Canny để cho ra biên ảnh. Từ Canny mình có thể xác định được các đường thẳng trong ảnh =&gt; chính là các làn đường trong ảnh.   Tham khảo thuật toán Canny tại đây. Xác định tâm đường: Khi đã xác định được 2 làn đường, việc xác định tâm đường sẽ đơn giản với đoạn đường thẳng đó là lấy trung điểm của 2 làn đường. Tại mỗi lần di chuyển, hình ảnh camera bắt được sẽ thay đổi theo thời gian nên tâm đường sẽ bị dịch chuyển, nhưng phải nằm trong giới hạn thay đổi nhất định, tâm đường mới không được quá lệch với tâm đường trước, thuật toán của bọn mình sẽ đặt ra 1 giới hạn để tránh tâm đường thay đổi đột ngột. Tuy nhiên, có trường hợp đặc biệt là đoạn đường cong. Sẽ không thể lấy trung điểm nữa mà phải sử dụng thuật toán hồi quy để suy diễn từ các tâm đường trước đó. Đây là thuật toán chính để giúp xe luôn đi trong đường quy định. Mình sẽ bổ sung thuật toán này sớm nhất khi nhớ lại source code huhu. Xe di chuyển: Khi đã xác định được tâm đường, thì việc cho xe di chuyển chỉ là đi theo cái tâm ý, và cứ nhăm nhăm mà đi thôi. Chỉ khó ở việc cho xe rẽ ở đoạn đường cong, sẽ phải điều chỉnh độ nghiêng của bánh lớn hơn 2 lần. Tốc độ di chuyển giảm xuống khoảng 0. 65 Xác định vật cản: Trên đường đi, vật cản được quy định là khối hộp màu xanh và đỏ điều này khá dễ dàng để có thể nhận biết, chỉ 1 vài phép biến đổi ảnh đơn giản như Color Filter, Convex Hull là sẽ ra. Thuật toán bạn tham khảo tại đây tại đây   Xác định biển báo rẽ đường: Trong phần xác định biển báo rẽ trái hoặc rẽ phải. Mình sẽ dụng màu xanh nước biển là bộ lọc, sau đó xác định Contour và bao viền biển báo. Cái này cần ốp machine learning mạnh mẽ vào :v Khi đã biết được biển báo ở đâu, mình sẽ sử dụng thuật toán trích đặc trưng của biển báo là HOG và đưa vào một bộ nhận dạng đã được huấn luyện từ trước là SVM để xác định xem biển báo là gì =&gt; Lúc này sẽ biết được biển báo đó là rẽ trái hay rẽ phải và điều khiển xe theo hướng đó   Trên đây là toàn bộ những chia sẻ của mình về việc mình đã được tham gia lập trình một chiếc Xe tự hành ở level “đơn giản” như thế nào. Hy vọng là trong tương lai sẽ không còn là dạng “mô hình” hay “level đơn giản” nữa :D Một lần nữa xin lỗi bạn đọc vì không có source code ở đây, nhưng mình sẽ bổ sung trong thời gian sớm nhất có thể. ít ra trong bài viết có những keywords khá quan trọng nếu bạn muốn tìm hiểu :D "
+    }, {
+    "id": 23,
+    "url": "/huong-dan-chi-tiet-tu-xay-dung-mot-mang-neural-(no-ron)-voi-python/",
+    "title": "Hướng dẫn chi tiết tự xây dựng một mạng neural với Python",
+    "body": "2019/03/07 - Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật khó để biết được các cách thức hoạt động đằng sau của từng thành phần trong mô hình. Bài viết này sẽ hướng dẫn các bạn cách xây dựng mạng neural một cách chi tiết qua từng dòng lệnh, từ đó có một cái nhìn rõ ràng hơn về cách hoạt động của chúng. Đây là bài viết nói về cả quá trình và các bước thực hiện trong 1 mạng neural, nên sẽ không đi sau chi tiết từng phần nhưng vẫn cung cấp cho bạn kiến thức để hiểu được vai trò của nó trong cả kiến trúc. Mạng neural là gì?: Mạng neural có thể coi là một phương thức để miêu tả cách hoạt động trong bộ não của con người. Nói một cách đơn giản hơn, mạng neural là một hàm nhận một đầu vào x, xử lý nó và đưa ra một đầu ra y tương ứng. Mạng neural gồm những thành phần sau:  Một lớp biểu diễn đầu vào x Một số lượng các lớp ẩn - hidden layers Một lớp biểu diễn đầu ra y Một bộ các chỉ số weights(W) và bias(b) giữa các lớp Một hàm kích hoạt - activation function giữa các lớpHình dưới đây miêu tả một kiến trúc mạng neural gồm 2 lớp (lớp đầu vào x thường không được tính vào số lượng lớp của mạng)   Giờ thì chúng ta sẽ bắt đầu xây dựng kiến trúc trên với Python. Đầu tiên là khởi tạo class NeuralNetwork. Để đơn giản hóa mô hình, ta sẽ mặc định là các biến bias bằng 0.    Huấn luyện mạng neural: Với kiến trúc trên, biến ŷ thể hiển đầu ra của mạng sẽ được tính theo công thức:   Theo công thức trên, có thể thấy được rằng các biến weights W và bias b đóng vai trò quyết định đầu ra ŷ. Giá trị của các biến này cần được tinh chỉnh để tăng độ chính xác trong những dự đoán của mạng neural. Quá trình tinh chỉnh các biến này được gọi là quá trình huấn luyện mạng. Quá trình này là một vòng lặp gồm các bước:  Feedforward: Tính toán đầu ra ŷ Backpropagation: Cập nhật các giá trị W và bMỗi vòng lặp trong quá trình huấn luyện diễn ra như sau:   Chúng ta sẽ đi vào chi tiết từng phần Feedforward:   Code hàm feedforward:   Sau bước feedforward, ta đã tính được đầu ra ŷ của mạng neural. Tuy nhiên ta vẫn chưa xây dựng một cách thức để đánh giá mức độ đúng đắn của dự đoán này. Phương thức phổ biến nhất dùng để đánh giá mức độ chênh lệch giữa dự đoán ŷ (Giá trị output của mạng) với kết quả mong muốn y (Giá trị output thực sự mà ta muốn) là sử dụng hàm mất mát - Loss function. hàm mất mát - Loss function: Là một hàm để tính toán mức độ chênh lệch giữa ŷ và y. Vì giá trị độ chênh lệch này biểu diễn sự sai sót trong quá trình dự đoán của mạng nên giá trị này còn được gọi là giá trị lỗi. Giá trị lỗi càng nhỏ thì dự đoán của mạng neural càng chính xác. Có rất nhiều biến thể của hàm mất mát phù hợp cho từng bài toán khác nhau, trong bài viết này ta sẽ sử dụng hàm tổng bình phương lỗi (Sum of square error):   Giống như cái tên hàm tổng bình phương lỗi, giá trị lỗi được tính theo tổng bình phương của độ chệnh lệch của từng dự đoán ŷ với mong muốn y tương ứng. Mục tiêu của việc huấn luyện mạng là giảm giá trị lỗi này đến mức tối thiểu và quá trình backpropagation sẽ thực hiện điều đó. Backpropagation: Sau khi đã tính được giá trị lỗi, ta cần phải cập nhật các biến W và b sao cho các dự đoán ŷ về sau có giá trị lỗi nhỏ nhất có thể. Nhắc lại kiến thức về giải tích, để tìm cực tiểu của một hàm số ta phải tính đạo hàm của hàm số đó theo từng biến. Các giá trị đạo hàm nói cho ta biết về các “hướng” cần di chuyển các biến để hàm số đi về cực tiểu. Vì vậy, một khi ta đã có đạo hàm của hàm mất mát theo từng biến W và b, ta sẽ cập nhật các giá trị của chúng theo giá trị các đạo hàm tương ứng. Phương pháp này được gọi là gradient descent.   Để tính toán các đạo hàm của hàm mất mát theo từng biến W và b, ta sử dụng quy tắc tính đạo hàm của hàm số hợp như sau:   Code hàm Backpropagate:   Để có thể hiểu rõ hơn nữa về quá trình backpropagate và các tính toán đằng sau nó, các bạn nên xem video này:   Tổng hợp lại: Vậy là mạng neural 2 lớp đã được xây dựng xong, cũng không quá phức tạp phải không. Giờ ta sẽ chạy thử nó với một ví dụ đơn giản:   Ta có một tập hợp đầu vào X và đầu ra Y như trên. Ta sẽ bắt đầu quá trình huấn luyện với 1500 vòng lặp của các bước feedforward - backpropagate và xem biểu đồ biến thiên của hàm mất mát:   Sau khi đã học xong, với mỗi đầu vào theo thứ tự trên ta có đầu ra ŷ như sau:   Khá tốt phải không. Mỗi dự đoán ŷ đã ở rất gần so với mong muốn y rồi. Vậy là mạng neural đã được huấn luyện thành công. Hy vọng các bạn học được nhiều điều mới qua bài viết này :D. "
+    }, {
+    "id": 24,
+    "url": "/cac-open-source-ai-va-deep-learning-an-tuong-nhat-nam-2018-phan-2/",
+    "title": "Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)",
+    "body": "2019/03/07 - Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại: Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1) #11 Style2Paints: Trí tuệ nhân tạo có khả năng nhìn ảnh vẽ và tô màu cho nó [3310 stars on Github].    #12 Tensor2Tensor: Thư viện sinh mô hình sequence to sequence trên tensorflow - Google Research [3087 stars on Github]. Bởi Ryan Sepassi tại Google Brain Paper này ra đời đã tạo một làn sóng trong giới khoa học, khi cho phép biến 1 bức ảnh bình thường trở thành tuyệt đẹp nhờ copy style của 1 bức ảnh khác. #13 Image-to-image: Mô hình chuyển đổi xuôi và ngược từ ảnh thật sang ảnh vẽ, thay đổi object trong bức ảnh, mô hình, cực kì hay.    #14 Faiss: Một thư viện mạnh mẽ cho việc tìm kiếm dữ liệu liên quan và phân nhóm vectors. [2629 stars on Github]. Thuộc Facebook Research   #15 Fashion-mnist: Một bộ dữ liệu giống MNIST nhưng nó bao gồm các sản phẩm thời trang như quần áo. [2780 stars on Github]. Bởi Han Xiao thuộc Research Scientist Zalando Tech   #16 Parl: Một framework cho việc training và evaluating AI model trên một tổ hợp rộng lớn dữ liệu về hội thoại [2578 stars - Github]. Bởi Alexander Miller thuộc Facebook Research   #17 iGAN: Model có khả năng sinh ra ảnh vẽ chỉ từ vài mô tả của người dùng. [2369 stars - Github].    #18 Deep-image-prior: Sản phẩm này cũng ấn tượng không kém, khi model có khả năng phục hồi ảnh bị xóa 1 vùng, bị nhòe trở về ảnh gốc đẹp đẽ. [2188 stars - Github]   Các mạng học sâu đang ngày càng thể hiện sức mạnh của mình trong rất nhiều lĩnh vực mà cách đây nhiều năm chưa ai nghĩ một chiếc máy tính có khả năng tư duy được như thế. Đặc biệt, qua các project mình đã giới thiệu, có thể thấy đa phần các công nghệ mới này 3/4 là đến từ các ông lớn công nghệ như Google, Facebook, v. v. . =&gt; Cho thấy học máy đang là một lĩnh vực lớn được chú trọng quan tâm nhất thời điểm hiện tại. "
+    }, {
+    "id": 25,
+    "url": "/cac-open-source-ai-va-deep-learning-an-tuong-nhat-nam-2018-phan-1/",
+    "title": "Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)",
+    "body": "2019/03/07 - Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%) Đây là một danh sách phải đánh giá là có tính cạnh tranh cực cao, và được cân nhắc kỹ lưỡng bởi các chuyên gia. Nó bao gồm các thư viện, datasets và apps được ra mắt trong năm vừa qua. Thước đo của các project được đánh giá qua chỉ số phổ biến trong cộng đồng, mức độ tương tác, lần truy cập gần đây và ý tưởng chất, mức Star trung bình của các project trên Github là 3,558. NHỮNG CON SỐ ẤN TƯỢNG: Open source là một nguồn kiến thức dồi dào cho các kĩ sư. Bạn có thể học cách code và build những sản phẩm tuyệt vời trên nền tảng của nó. Hãy dành thời gian xem qua và chơi với các dự án Machine learning tuyệt vời này nhé. Hãy xem 1 năm qua chúng ta bỏ lỡ những gì nào! #1 Fast text: Thư viện cho text representation và classification. [11786 stars - Github] bởi Facebook Research   #2 Deep-photo-styletransfer: Code và data của paper “Deep Photo Style Transfer” [9747 stars - Github]. Bởi Fujun Luan, Ph. D. thuộc Cornell University   Paper này ra đời đã tạo một làn sóng trong giới khoa học, khi cho phép biến 1 bức ảnh bình thường trở thành tuyệt đẹp nhờ copy style của 1 bức ảnh khác. #3: API nhận diện khuôn mặt đơn giản nhất thế giới, chạy bởi Python hoặc trực tiếp trên command line. [8672 stars - Github]. Bởi Adam Geitgey   #4 Magenta: Sáng tác nhạc và ảnh nghệ thuật tự động dựa trên Trí thông minh nhân tạo. [8113 stars - Github].    #5 Sonnet: Thư viện mã nguồn mở xây dựng trên nền tensorflow, phục vụ xây dựng các mạng nơ-ron network một cách đơn giản hơn. [5731 stars - Github]. Bởi Malcolm Reynolds thuộc Deepmind (Google)   #6 deeplearn. js: Thư viện machine learning và deep learning trên nền tảng web. [5462 stars - Github]. Bởi Nikhil Thorat thuộc Google Brain   #7 Fast Style Transfer: Xây đựng trên nền tảng tensorflow [4843 stars - Github]. Bởi Logan Engstrom tại MIT. Cho phéo sinh ra một bức ảnh là kết hợp style từ 2 bức ảnh đầu vào.    #8 Pysc2: Pysc2: StarCraft II Learning Enviroment [3683 stars - Github]. Bởi Timo Ewalds thuộc DeepMind Một thư viện môi trường để ở đó trí tuệ nhân tạo chơi game StarCraft II. Và mục tiêu thắng con người.    #9 AirSim: Open source mô phỏng thế giới thực dựa trên Unreal Engine dành cho xe tự lái của Microsoft AI &amp; Research [3861 stars - Github]. Bởi Shital Shah   #10 Facets: Công cụ Visualizations dành cho dữ liệu học máy [3371 stars - Github] thuộc Google Brain   Phần 2:Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2) "
+    }, {
+    "id": 26,
+    "url": "/Nhung-ung-dung-tri-tue-nhan-tao-ai-se-thong-tri-the-gioi/",
+    "title": "Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới",
+    "body": "2019/03/07 - Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. Nổi lên như một bằng chứng của Cuộc cách mạng Công nghiệp 4. 0, AI nói chung và Deep Learning nói riêng đã được ứng dụng thành công trong thực tiễn, mang lại hiệu quả vượt trội so với các phương pháp học máy truyền thống. Có thể khẳng định, Deep Learning chính là một công cụ tuyệt vời trong việc tạo ra các ứng dụng AI. Dưới đây là danh sách Top các ứng dụng Deep Learning/AI được dự đoán sẽ góp phần thay đổi thế giới trong tương lai gần:   "
+    }, {
+    "id": 27,
+    "url": "/Ban-da-biet-ve-Learning-to-Learn-Linh-vuc-rat-moi-cua-Tri-tue-nhan-tao/",
+    "title": "Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?",
+    "body": "2019/03/07 - Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy vậy, vẫn tồn tại một vấn đề rất lớn mà các nhà nghiên cứu trong lĩnh vực Trí tuệ Nhân tạo phải đối mặt, đó là các thuật toán Machine Learning đòi hỏi một lượng dữ liệu dán nhãn cực lớn, Deep Learning còn đòi hỏi một lượng dữ liệu lớn hơn nhiều lần. Dữ liệu dán nhãn không luôn luôn có sẵn đối với mọi tác vụ, và chi phí để có thể thu thập một lượng dữ liệu dán nhãn đủ để có thể training các thuật toán một cách tốt nhất là rất đắt đỏ. Vì thế mà đã có nhiều nghiên cứu được thực hiện và một số phương pháp được đề xuất để phần nào đó giải quyết vấn đề nan giải này. Những phương pháp này thường được gọi là “Learning to Learn”: Transfer Learning: Trước tiên, hãy nói về Transfer Learning, một khái niệm dường như phổ biến, được nhiều người biết đến hơn. Trong hội thảo NIPS 2016, Andrew Ng đã nhận định rằng Transfer Learning, sau Supervise Learning, sẽ là động lực chính để định hướng cho sự phát triển của Machine Learning trong tương lai.   Khái niệm Transfer Learning được nhắc đến lần đầu tiên tại workshop có tên là “Learning to learn”, bàn về những phương pháp Machine Learning cho phép lưu giữ và tái sử dụng những thông tin thuật toán đã học được, trong hội thảo NIPS-95. Kể từ đó, Transfer Learning thu hút ngày càng nhiều sự chú ý. Ý tưởng chung của Transfer Learning là chia sẻ các kiến thức mà hệ thống AI đã nhận được từ quá trình training của tác vụ/domain gốc (source) sang cho một tác vụ /domain mục tiêu (target). Multitask Learning: Multitask Learning được phân chia như là một nhóm nhỏ trong Transfer Learning. Tuy vậy, không phải nhà khoa học nào cũng đồng ý với sự phân biệt này, một số coi Multitask Learning và Transfer Learning là những khái niệm tương đồng. Sự khác biệt lớn nhất ở đây là trong Transfer Learning, có sự phân biệt giữa tác vụ/domain gốc và tác vụ/domain mục tiêu. Mà trong đó, tác vụ/domain mục tiêu có vai trò quan trọng hơn. Trong Multitask Learning, các tác vụ/domain có vai trò bình đẳng hơn. Meta Learning: Meta Learning là một thuật ngữ xuất phát từ lĩnh vực Tâm lý Xã hội với định nghĩa gốc là “the process by which learners become aware of and increasingly in control of habits of perception, inquiry, learning, and growth that they have internalized”. Nói một cách ngắn gọn, Meta Learning được dùng để chỉ việc con người nhận thức và làm chủ được quá trình tiếp thu kiến thức của mình. =&gt; Learning to Learn vẫn còn là một lĩnh vực rất mới trong Trí tuệ Nhân tạo. 03 phương pháp tiếp cận được nêu trên cũng chỉ là những đại diện nổi bật nhất của Learning to Learn. Thông tin ở bài viết trên đây được tham khảo từ nguồn Tạp chí AI. "
+    }, {
+    "id": 28,
+    "url": "/Chia-se-ve-Mang-no-ron-tich-chap-(Convolutional-Neural-Networks-or-ConvNEts)/",
+    "title": "Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)",
+    "body": "2019/03/04 - Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát triển của trí tuệ nhân tạo nói chung và xử lý ảnh nói riêng. Sơ lược: Một trong các ứng dụng quan trọng của mạng nơ-ron tích chập đó là cho phép các máy tính có khả năng “nhìn” và “phân tích”. Nó được lấy cảm hứng từ vỏ não thị giác. Nôm na là Convnets (Convolutional Neural Networks) được sử dụng để nhận dạng hình ảnh bằng cách đưa nó qua mạng nơ-ron với nhiều layer, mỗi layer là các bộ lọc tích chập. Sau khi đi qua các layer này chúng ta có được đặc trưng và dùng nó nhận dạng ra đối tượng. Mỗi khi chúng ta nhìn thấy một cái gì đó, một loạt các lớp tế bào thần kinh được kích hoạt, và mỗi lớp thần kinh sẽ phát hiện một tập hợp các đặc trưng như đường thẳng, cạnh, màu sắc,v. v. v của đối tượng. lớp thần kinh càng cao sẽ phát hiện các đặc trưng phức tạp hơn để nhận ra những gì chúng ta đã thấy. Bài viết này sẽ trình bày một cách ngắn gọn về cấu tạo của Mạng nơ-ron tích chập, nói là ngắn gọn nhưng không hề ngắn ngọn chút nào… (?? :D ??) ý mình mình sẽ viết một cách đơn gián nhất để cho những bạn chỉ mới biết căn bản của học máy hay chưa từng biết gì về xử lý ảnh cũng có thể nắm bắt được tư tưởng của mạng tích chập. Chi tiết hơn cho mỗi phần mình sẽ viết cụ thể ở các bài sau. ConvNet có 02 phần chính: Lớp trích lọc đặc trưng của ảnh (Conv, Relu và Pool) và Lớp phân loại (FC và softmax).   Đầu vào (dữ liệu training):: Đầu vào của Convnets là một bức ảnh được biểu diển bởi ma trận pixel với kích thước: [w x h x d]  W: chiều rộng H: chiều cao D: Là độ sâu, hay dễ hiểu là số lớp màu của ảnh. Ví dụ ảnh RBG sẽ là 3 lớp ảnh Red, Green, Blue  Ví dụ về khái niệm channel (kênh màu) của ảnh RBG và ảnh xám Conv Layer:: Trước khi nói vào lớp conv layer, chúng ta cần biết phép tích chập là cái gì đã :v. Rất dễ thôi, bạn nhìn ảnh này:   Chúng ta có một ma trận là Kernel, khi chiếu nó lên 1 vùng của bức ảnh. Mấy từng phần tử tương ứng của ảnh, nhân nó với phần tử tương ứng của Kernel. Sau đó lấy tổng. Ta-daaaa. Mục tiêu của các lớp tích chập là trích chọn các đặc trưng của ảnh đầu vào.   Ví dụ của Conv layer. (Nguồn : CS231n notes. ) Thực chất, ở các layer đầu tiên, phép tích chập đơn giản là phép tìm biên ảnh, nếu các bạn có kiến thức cơ bản về xử lý ảnh. Còn nếu không thì bạn có thể hiểu đơn giản như này, sau khi cho qua bộ lọc thì (với 9 điểm ảnh chẳng hạn), nó sẽ lấy ra 1 diểm nổi bật nhất, làm hiện lên các đặc trưng của đối tượng trong ảnh như đường viền xung quanh đối tượng, các góc cạnh,v. v. . , và các layer tiếp theo sẽ lại trích xuất tiếp các đặc trưng của đặc trưng của các đối tượng đó, việc có nhiều layer như vậy cho phép chúng ta chia nhỏ đặc trưng của ảnh tới mức nhỏ nhất có thể. Vì thế mới gọi là mạng đặc trưng. Dưới đây là một số các khái niệm cơ bản của phần này:: Filter, Kernel hay Feature Detector đều là cách gọi của ma trận tích chập filter matrix (như mình đã đề cập ở trên), ma trận này là 1 ma trận hệ số, và quét toàn bộ bức ảnh, mỗi lần quét thì tính tích chập trên vùng bị quét. Thông thường, ở các lớp đầu tiên của ma trận này sẽ có kích thước là [5x5x3] Convolved Feature, Activation Map hay Feature Map là đầu ra của ảnh khi cho bộ lọc chạy hết bức ảnh với phép tích chập. Receptive field là vùng ảnh được chọn để tính tích chập, hay bằng đúng cái kích thước của bộ lọc. Depth là số lượng bộ lọc. Lưu ý: ở đây là số lượng bộ lọc (filter) chứ không phải số lượng kênh màu RBG như ở trên. Stride được hiểu là khoảng cách dịch chuyển của bộ lọc sau mỗi lần tính. Ví dụ khi stride=2. Tức sau khi tính xong tại 1 vùng ảnh, nó sẽ dịch sang phải 2 pixel. Tương tự với việc dịch xuống dưới Zero-Padding là việc thêm các giá trị 0 ở xung quanh biên ảnh, để đảm bảo phép tích chập được thực hiện đủ trên toàn ảnh. Vậy kích thước đầu ra của ảnh với mỗi layer được tính như thế nào?: Giả sử ảnh đầu ra là [W2 x H2 x D2] Thì:    W2 = (W1 – F + 2P) / S + 1     H2 = (H1 – F +2P) / S + 1     D2 = K  Trong đó:    [W1xH1xD1]: Kích thước ảnh đầu vào     F: Kích thước của bộ lọc Kernel (NxN)     S: giá trị Stride     P: số lượng zero-padding thêm vào viền ảnh     K: Số lượng bộ lọc (Depth)  Ví dụ: Kích thước đầu ra của lớp đầu tiên trong kiến trúc Deep Convolutional Neural Networks đã từng chiến thắng ImageNet Chanllenge 2012 là: Đầu vào: [227x227x3], W=227, F=11, S=4, P=0, and K=96. Đầu ra: (227 - 11) / 4 + 1 = 55Vậy kích thước đầu ra của layer đầu tiên là [55x55x96]. ReLU Layer:: ReLU Layer áp dụng các hàm kích hoạt (activation function) max(0,x) lên đầu ra của Conv Layer, có tác dụng đưa các giá trị âm về thành 0. Layer này không thay đổi kích thước của ảnh và không có thêm bất kì tham số nào. Mục đích của lớp ReLu là đưa ảnh một mức ngưỡng, ở đây là 0. Để loại bỏ các giá trị âm không cần thiết mà có thể sẽ ảnh hưởng cho việc tính toán ở các layer sau đó. Pool Layer:: Pool Layer thực hiện chức năng làm giảm chiều không gian của đầu vào và giảm độ phức tạp tính toán của model. Ngoài ra, Pool Layer còn giúp kiểm soát hiện tượng overffiting. Thông thường, Pool layer có nhiều hình thức khác nhau phù hợp cho nhiều bài toán, tuy nhiên Max Pooling là được sử dụng nhiều và phổ biến hơn cả, với ý tưởng cũng rất sát với thực tế: “Giữ lại chi tiết quan trọng” hay hiểu ở trong bài toán này chính giữ lại pixel có giá trị lớn nhất. Ví dụ: Max pooling với bộ lọc 2x2 và stride = 2. Bộ lọc sẽ chạy dọc ảnh. Và với mỗi vùng ảnh được chọn, sẽ chọn ra 1 giá trị lớn nhất và giữ lại.   Max pooling kernel 2x2, stride = 2. Nguồn: Wikipedia Thông thường max pooling có kích thước là 2x2 và stride=2. Nếu lấy giá trị quá lớn, thay vì giúp đỡ thì nó lại làm phá vỡ cấu trúc ảnh và mất mát thông tin nghiêm trọng (==!). Vì vậy mà một số chuyên gia không thích sử dụng layer này mà thay vào đó sử dụng thêm các lớp Conv Layer và tăng số stride lên mỗi lần. Fully_Connected Layer (FC):: Tên tiếng việt là Mạng liên kết đầy đủ. Tại lớp mạng này, mỗi một nơ-ron của layer này sẽ liên kết tới mọi nơ-ron của lớp khác. Để đưa ảnh từ các layer trước vào mạng này, buộc phải dàn phẳng bức ảnh ra thành 1 vector thay vì là mảng nhiều chiều như trước. Tại layer cuối cùng sẽ sử dụng 1 hàm kinh điển trong học máy mà bất kì ai cũng từng sử dụng đó là softmax để phân loại đối tượng dựa vào vector đặc trưng đã được tính toán của các lớp trước đó. Trên đây là tóm tắt kiến trúc cơ bản của một mạng tích chập, trên thực tế sẽ có nhiều kiến trúc phức tạp hơn rất nhiều với độ chính xác gần bằng con người. Mình sẽ viết các bài tiếp theo kĩ hơn vào từng phần và giới thiệu cho các bạn các kiến trúc mới. "
+    }, {
+    "id": 29,
+    "url": "/Tro-ly-ao-van-se-la-xu-huong-cong-nghe-2019/",
+    "title": "Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019",
+    "body": "2019/03/03 - Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple Siri, Google Assistant, Amazon Alexa, Microsoft Cortana. Và đương nhiên vẫn còn nhiều trợ lý ảo khác được phát triển bởi các công ty công nghệ trên thế giới, có cả Việt Nam. Trong đó có cả Viettel, nơi mình và team đang phát triển 1 trợ lý ảo. Trợ lý ảo là gì mà lại trở thành xu hướng công nghệ 2019?: Có thể hiểu đơn giản trợ lý ảo là phần mềm, công cụ được xây dựng dựa trên nền tảng trí thông minh nhân tạo (AI) và thường được các nhà phát triển công nghệ tích hợp sâu vào trong hệ điều hành với mục đích chính là hỗ trợ người dùng thiết bị dễ dàng hơn bằng chính thói quen mà người dùng thường làm trên thiết bị (như các trợ lý ảo mình liệt kê ở trên). Ưu điểm của trợ lý ảo là gì?: Khả năng nhận diện giọng nói và phân tích văn bản (Voice to Text – Text to Voice): Bằng trí thông minh nhân tạo, những trợ lý ảo có thể nhận diện giọng nói chính xác, cho phép người dùng có thể tương tác với máy tính bằng giọng nói dễ dàng. Ví dụ, trợ lý ảo Siri của Apple sẽ bắt đầu khởi chạy ngay khi bạn nói “Hey Siri” thay vì phải nhấn giữ nút Home trên iPhone, iPad, sau đó có thể tiếp tục ra lệnh cho Siri thực hiện những điều bạn muốn. Khả năng xử lý ngôn ngữ tự nhiên (Công nghệ NLP – Natual Language Process): Trợ lý ảo còn có thể xử lý ngôn ngữ và đưa ra những câu trả lời phản hồi người dùng, tạo nên sự tương tác giữa người dùng và thiết bị giống hệt cuộc nói chuyện giữa người với người. Sức mạnh tìm kiếm (Search Engine): “Đứng sau” trợ giúp cho tính năng tìm kiếm của các trợ lý ảo chính là những công cụ đình đám như Bing, Google Search, thư viện bách khoa toàn thư Wikipedia hay Wolfram Alpha. Với những kho dữ liệu khổng lồ như vậy, rõ ràng những trợ lý ảo sẽ có khả năng tìm kiếm cực kỳ mạnh mẽ cả về tốc độ lẫn sự chính xác trong kết quả tìm kiếm. Khả năng học từ người dùng: Trợ lý ảo hoàn toàn có thể thu thập dữ liệu từ các thói quen sử dụng, tìm kiếm dữ liệu của người dùng và đưa ra những gợi ý chính xác nhất, và Trợ lý ảo sẽ “học” từ thói quen người dùng và trở nên “giỏi” hơn mỗi ngày. Trợ lý ảo được thực tế hóa ở các phiên bản::  Robot Website Mobile ApplicationMô hình khái quát về việc lập trình Trợ lý ảo mà team mình đang phát triển:: Hệ thống sẽ nhận đầu vào là giọng nói hoặc văn bản. Lúc này hệ thống sẽ tiền xử lý dữ liệu, nếu là giọng nói sẽ chuyển thành văn bản để xử lý bằng công nghệ speech2text (Model này là của công ty mình tự huấn luyện). Sau đó văn bản sẽ được xử lý và trích xuất thông tin thông qua tầng xử lý ngôn ngữ. Lúc này các thông tin được trích xuất bao gồm Intent (dự định, ý định) của người dùng, Object (Đối tượng) trong câu nói đó, ngoài ra còn nhiều thông tin bổ sung khác như Location, Name, v. v. . Các thông tin này sẽ được bọn mình xử lý trên các model hoặc AIML training sẵn. Từ đó trả dữ liệu về cho người dùng. Đặc biệt, điểm mạnh của trợ lý ảo hiện nay vẫn nằm ở hệ thống Search Engine, đa phần người dùng sẽ có thiên hướng tìm kiếm và hỏi đáp. Vậy nên khi xác định Intent của người dùng là tìm kiếm, bọn mình sẽ sử dụng hệ thống SE do công ty tự phát triển để tìm kiếm các thông tin chính xác nhất và gửi kêt quả về cho người dùng. Hằng ngày team mình sẽ tối ưu Trợ lý ảo bằng các công nghệ:  Công nghệ nhận dạng và xử lý tiếng nói (Voice to text - Text to voice) Xử lý ngôn ngữ tự nhiên (Natural Language Processing) Trí tuệ nhận tạo (AI) AIMLĐây là sản phẩm Trợ lý ảo do team mình đang xây dựng:   Công việc của một lập trình viên làm Trợ lý ảo với mình rất thú vị. Tuy nhiên mình cũng nhận được nhiều câu hỏi rằng Trợ lý ảo rất phát triển và là xu hướng Công nghệ mới nhưng là ở nước rất phát triển, không phải ở Việt Nam. Vậy theo mọi người, Cơ hội và thách thức cho các nhà phát triển, kỹ sư lập trình Trợ lý ảo tại Việt Nam là gì? Đây có thực sự là cơ hội mới cho các lập trình viên? Một vài số liệu thú vị về trợ lý ảo: Số lượng thiết bị thông minh được tích hợp tính năng trợ lý ảo sẽ vượt mốc 7,5 tỷ vào năm 2021, cao hơn dân số toàn cầu hiện nay. Dự kiến tới năm 2021, 47,6% thiết bị sử dụng trợ lý ảo thông qua giọng nói sẽ xuất hiện tại châu Á và châu Đại Dương. Các nền tảng trợ lý ảo đến từ Trung Quốc như Baidu, iFlytek…sẽ được sử dụng trên khoảng 43 triệu thiết bị, đi theo xu hướng tiếp tục tăng trưởng mạnh mẽ (Theo nghiên cứu và nhận định từ Ovum). "
+    }];
+
+var idx = lunr(function () {
+    this.ref('id')
+    this.field('title')
+    this.field('body')
+
+    documents.forEach(function (doc) {
+        this.add(doc)
+    }, this)
+});
+
+
+    
+function lunr_search(term) {
+    $('#lunrsearchresults').show( 1000 );
+    $( "body" ).addClass( "modal-open" );
+    
+    document.getElementById('lunrsearchresults').innerHTML = '<div id="resultsmodal" class="modal fade show d-block"  tabindex="-1" role="dialog" aria-labelledby="resultsmodal"> <div class="modal-dialog shadow-lg" role="document"> <div class="modal-content"> <div class="modal-header" id="modtit"> <button type="button" class="close" id="btnx" data-dismiss="modal" aria-label="Close"> &times; </button> </div> <div class="modal-body"> <ul class="mb-0"> </ul>    </div> <div class="modal-footer"><button id="btnx" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button></div></div> </div></div>';
+    if(term) {
+        document.getElementById('modtit').innerHTML = "<h5 class='modal-title'>Search results for '" + term + "'</h5>" + document.getElementById('modtit').innerHTML;
+        //put results on the screen.
+        var results = idx.search(term);
+        if(results.length>0){
+            //console.log(idx.search(term));
+            //if results
+            for (var i = 0; i < results.length; i++) {
+                // more statements
+                var ref = results[i]['ref'];
+                var url = documents[ref]['url'];
+                var title = documents[ref]['title'];
+                var body = documents[ref]['body'].substring(0,160)+'...';
+                document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML + "<li class='lunrsearchresult'><a href='" + url + "'><span class='title'>" + title + "</span><br /><small><span class='body'>"+ body +"</span><br /><span class='url'>"+ url +"</span></small></a></li>";
+            }
+        } else {
+            document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = "<li class='lunrsearchresult'>Sorry, no results found. Close & try a different search!</li>";
+        }
+    }
+    return false;
+}
+</script>
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+
+
+<form class="bd-search hidden-sm-down" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+<input type="text" class="form-control text-small"  id="lunrsearch" name="q" value="" placeholder="Type keyword and enter..."> 
+</form>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#java">java</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#hibernate">hibernate</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#jpa">jpa</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#criteria">criteria</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline"><Nâng cao/> Hướng dẫn sử dụng Criteria API trong Hibernate</h1>
+					<div class="d-flex align-items-center">
+                        
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="70"/>
+                        
+						<small class="ml-3"> loda <span><a target="_blank" href="https://www.facebook.com/loda.fanpage" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 17, 2019 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+    </span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/loda1552815848300/1.jpg" alt="<Nâng cao/> Hướng dẫn sử dụng Criteria API trong Hibernate">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=<Nâng cao/> Hướng dẫn sử dụng Criteria API trong Hibernate&url=https://loda.me/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https://loda.me/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://plus.google.com/share?url=https://loda.me/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <i class="fab fa-google"></i>
+        </a>
+        </li>
+        
+    </ul>
+    
+    <div class="sep">
+    </div>				
+    <ul>
+        <li> 
+        <a  class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p><code class="highlighter-rouge">JPA Criteria API</code> cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong <code class="highlighter-rouge">String</code> (JPQL) như thế này:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">o</span> <span class="k">FROM</span> <span class="n">Office</span> <span class="n">o</span>
+</code></pre></div></div>
+
+<p>Tương đương với câu lệnh trên nhưng xây dựng bằng <code class="highlighter-rouge">Criteria API</code> thì sẽ như này:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CriteriaBuilder</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">getCriteriaBuilder</span><span class="o">();</span>
+
+<span class="n">CriteriaQuery</span><span class="o">&lt;</span><span class="n">Office</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="n">cb</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">Office</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">Root</span><span class="o">&lt;</span><span class="n">Office</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">Office</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">q</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Nhìn có vẻ dài dòng và khó hiểu phải không &gt;”&lt; Yea, thì đúng là như thế đấy ==!</p>
+
+<p>Nếu nó dài dòng như vậy, tại sao người ta lại tạo ra và sử dụng nó thay cho câu lệnh <code class="highlighter-rouge">JPQL</code> bình thường? Các bạn đọc phần tiếp theo sẽ rõ nha.</p>
+
+<h4 id="jpql-vs-criteria-api">JPQL vs Criteria API</h4>
+
+<p><code class="highlighter-rouge">JPQL</code> có thể làm đầy đủ chức năng chúng ta cần chỉ với 1 câu lệnh, tuy nhiên, chính vì điều đó, chúng ta thường khó tùy biến hay sử dụng lại nó, thậm chí khó kiểm soát lỗi của nó hơn. Với một câu lệnh phức tạp, chúng ta không biết được nó có lỗi hay không cho tới khi chạy chương trình hay debug (Mà chương trình đã chạy được rồi thì vẫn có lỗi tiềm ẩn :v chời đậu).</p>
+
+<p><code class="highlighter-rouge">Criteria API</code> thì ngược lại, nó cho phép chúng ta xây dựng câu lệnh một cách <code class="highlighter-rouge">Dynamic</code>, rất linh động, và không bị <code class="highlighter-rouge">hardcode</code> trong một <code class="highlighter-rouge">String</code> và có thể <code class="highlighter-rouge">tái sử dụng</code> lại được. Đặc biệt, vì là Java Object, nên chúng ta sẽ biết một câu lệnh bị lỗi, không đúng quy tắc ngay khi biên dịch chương trình rồi.</p>
+
+<p>Túm váy lại, với một lệnh đơn giản như ví dụ đầu bài, thì các bạn nên xài <code class="highlighter-rouge">JPQL</code>, còn với những câu lệnh phức hợp, thay đổi theo <code class="highlighter-rouge">context</code> của chương trình thì nên sử dụng <code class="highlighter-rouge">Criteria</code>.</p>
+
+<h4 id="how-to-use">How to use.</h4>
+
+<p>Quay trở lại với ví dụ ban đầu nhé:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CriteriaBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">getCriteriaBuilder</span><span class="o">();</span>
+
+<span class="n">CriteriaQuery</span><span class="o">&lt;</span><span class="n">Office</span><span class="o">&gt;</span> <span class="n">query</span> <span class="o">=</span>  <span class="n">builder</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">Office</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">Root</span><span class="o">&lt;</span><span class="n">Office</span><span class="o">&gt;</span> <span class="n">root</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">Office</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">query</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+</code></pre></div></div>
+<p>Chúng ta cùng tìm hiểu từng dòng lệnh:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">CriteriaBuilder</code>: Để xây dựng một câu query, các bạn sẽ cần tới <code class="highlighter-rouge">interface</code> <code class="highlighter-rouge">CriteriaBuilder</code>, mục đích của nó là giúp tạo ra đối tượng chứa câu lệnh truy vấn <code class="highlighter-rouge">CriteriaQuery</code> và cung cấp cơ số các phép biến đổi, phép logic, điều kiện cho câu lệnh (and, or, not, avg, greater than,v.v…)</p>
+  </li>
+  <li><code class="highlighter-rouge">CriteriaQuery</code>: Đối tượng chính của chúng ta đây, nó được tạo ra bởi <code class="highlighter-rouge">builder.createQuery(Office.class)</code>. Mục đích là khai báo đối tượng bạn muốn lấy ra sau khi thực hiện query. Nó tương đương với đoạn ngoặc đơn ở dưới đây:
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="nv">`o`</span> <span class="k">FROM</span> <span class="n">Office</span> <span class="n">o</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">Root</code>: root là khai báo đối tượng bạn sẽ sử dụng trong query, tương đương với đối tượng sau mệnh đề <code class="highlighter-rouge">FROM</code>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">o</span> <span class="k">FROM</span> <span class="nv">`Office o`</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Cuối cùng, để hoàn thiện câu lệnh <code class="highlighter-rouge">SELECT</code> chỉ đơn giản là lấy đối tượng <code class="highlighter-rouge">CriteriaQuery</code> đã khai báo là sử dụng function <code class="highlighter-rouge">select</code>. Đối tượng truyền vào chính là cái <code class="highlighter-rouge">root</code> (hay cái đối tượng của <code class="highlighter-rouge">FROM</code>) kia.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">query</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Trông vậy chứ cũng dễ dễ rồi đấy nhỉ :)))</p>
+
+<p>Okie, có điều này không biết đã bạn nào để ý chưa 😅 chúng ta mới tạo ra câu lệnh, chứ chưa hề gọi nó xuống <code class="highlighter-rouge">Database</code> 😅</p>
+
+<p>Để sử dụng câu lệnh đã tạo, các bạn làm giống với <code class="highlighter-rouge">JPQL</code> đó là sử dụng đối tượng <code class="highlighter-rouge">EntityManager</code></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TypedQuery</span><span class="o">&lt;</span><span class="n">Office</span><span class="o">&gt;</span> <span class="n">query</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">query</span><span class="o">);</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Office</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">getResultList</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>Oh right, thế là implement xong ví dụ đơn giản đâu tiên, không cóa gì khó khăn 🤔 (chém). Bây giờ thử advanced lên tý nhỉ:</p>
+
+<p>Bây giờ mình muốn lấy tất cả <code class="highlighter-rouge">Office</code> ở thành phố <code class="highlighter-rouge">hanoi</code> thì sẽ làm như nào?</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">o</span> <span class="k">FROM</span> <span class="n">Office</span> <span class="n">o</span> <span class="k">WHERE</span> <span class="n">o</span><span class="p">.</span><span class="n">city</span> <span class="o">=</span> <span class="s1">'hanoi'</span>
+</code></pre></div></div>
+
+<p>Lúc này query của chúng ta sẽ như thế này:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">query</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">root</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="n">builder</span><span class="o">.</span><span class="na">equal</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"city"</span><span class="o">),</span> <span class="s">"hanoi"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>Các bạn để ý đoạn này nhé. Mình sử <code class="highlighter-rouge">builder</code> để lấy hàm <code class="highlighter-rouge">equal</code> (phép toán logic, như mình đề cập ở trên, chuẩn chưa nào). Tiếp tới là cái <code class="highlighter-rouge">root.get("city")</code>, <code class="highlighter-rouge">root</code> chính là đối tượng chúng ta đã khai báo, bây giờ chúng ta sẽ lấy trường <code class="highlighter-rouge">city</code> của nó và kiểm tra nó với <code class="highlighter-rouge">hanoi</code>.</p>
+
+<p>Có thể nói <code class="highlighter-rouge">Criteria API</code> đã hiện thực hóa rất thành công câu lệnh JPQL (hay HQL) thành những api java cực kì dễ dọc, dễ hiểu và dễ sử dụng. Khi đã hiểu được câu lệnh gốc, bạn có thể dễ dàng chuyển nó thành <code class="highlighter-rouge">Criteria</code> và ngược lại.</p>
+
+<p>Trong bài viết tới ở chương <code class="highlighter-rouge">Spring</code>, mình sẽ hướng dẫn các bạn sử dụng tới <code class="highlighter-rouge">Specifications</code> kết hợp <code class="highlighter-rouge">Criteria API</code> để tạo ra một vụ nổ khi giao tiếp với db bằng <code class="highlighter-rouge">Java</code> (vãi cả chém 😂)</p>
+
+<p>Chúc các bạn sử dụng thành công <code class="highlighter-rouge">Criteria API</code> và đừng quên like or chia sẻ bài viết cho bạn bè hihi, cảm ơn các bạn đã theo dõi!</p>
+
+                
+			</article>
+			
+			  <!-- Your like button code -->
+  <div class="fb-like" 
+    data-href="https://loda.me/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/" 
+    data-layout="standard" 
+    data-action="like" 
+    data-show-faces="true">
+  </div>
+
+ 
+            <!-- Mailchimp Subscribe Form -->
+            
+            
+            
+             <!-- Author Box -->
+                				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by loda <span><a target="_blank" href="https://www.facebook.com/loda.fanpage" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối... Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.					
+					</div>
+				</div>				
+				
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'loda-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar" class="display:block">
+	<div class="container">
+		<div class="row prevnextlinks small font-weight-bold">
+			
+			<div class="col-md-6 rightborder pl-0">
+				<a class="text-dark" href="/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/"> <img height="30px" class="mr-1" src="/assets/images/loda1552789752787/1.jpg">  Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%</a>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+					
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/bootstrap.min.js" ></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                
+                <div>
+                        <p><span class="navbar-brand mr-2 mb-0"><strong>Loda</strong></span>
+                            <span>Copyright © <script>document.write(new Date().getFullYear())</script>.</span>
+                            <font size="2"> Made with <a target="_blank" class="text-dark font-weight-bold"
+                                    href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark"
+                                    target="_blank" href="https://www.wowthemes.net">WowThemes</a>.
+                            </font>
+                        </p>
+                </div>
+
+                <!--  Github Repo Star Btn-->
+                <!-- <a class="text-dark ml-1" target="_blank" href="https://github.com/loda-kun/loda-kun.github.io"><i class="fab fa-github"></i> Fork on Github</a> -->
+               
+                <div class="sticky-top sticky-top-80">
+  <h5>Tặng tôi 1 cốc coffee</h5>
+
+  <p>
+    Cảm ơn bạn đã theo dõi <a class="text-danger">Loda</a>, ủng hộ của bạn kèm
+    theo phản hồi sẽ giúp loda cải thiện thêm chất lượng bài viết.
+  </p>
+
+  <a
+    target="_blank"
+    href="https://unghotoi.com/1552220138m7fab"
+    class="btn btn-danger"
+    >Buy me a coffee</a
+  >
+</div>
+
+
+            </div>
+            <div class="fb-page" data-href="https://www.facebook.com/loda.fanpage/" data-small-header="true"
+                data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/loda.fanpage/" class="fb-xfbml-parse-ignore"><a
+                        href="https://www.facebook.com/loda.fanpage/">Loda</a></blockquote>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before </body> closing tag --> 
+
+
+</body>
+
+</html>

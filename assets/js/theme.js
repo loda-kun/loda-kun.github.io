@@ -101,9 +101,6 @@ function loadSearch(){
             $('#searchResults').append('<li><a href="' + entry.url + '">' + entry.title + '</li>')
         })
     })
-<<<<<<< HEAD
-}
-=======
 }
 
 
@@ -137,4 +134,3 @@ $(function() {
     }
   }
 });
->>>>>>> f5f055c9dcf55ff3c6c4cd1c4ea7f15f07cf2b53

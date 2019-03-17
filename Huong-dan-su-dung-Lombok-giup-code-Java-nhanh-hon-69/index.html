@@ -15,19 +15,22 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <title>Machine Learning - page 2 | Loda</title>
+    <title>Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69% | Loda</title>
 
     <!-- Begin Jekyll SEO tag v2.6.0 -->
-<title>Page 2 of 2 for Machine Learning - page 2 | Loda</title>
+<title>Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69% | Loda</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Machine Learning - page 2" />
+<meta property="og:title" content="Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%" />
+<meta name="author" content="loda" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất." />
-<meta property="og:description" content="Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất." />
+<meta name="description" content="Lombok là một thư viện, plugins giúp giảm thiểu các đoạn code thừa (Boilerplate) trong project của bạn." />
+<meta property="og:description" content="Lombok là một thư viện, plugins giúp giảm thiểu các đoạn code thừa (Boilerplate) trong project của bạn." />
 <meta property="og:site_name" content="Loda" />
-<link rel="prev" href="/machine-learning/index.html" />
+<meta property="og:image" content="/assets/images/loda1552789752787/1.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-17T00:00:00+00:00" />
 <script type="application/ld+json">
-{"description":"Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.","@type":"WebPage","url":"/machine-learning/page/2/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"}},"headline":"Machine Learning - page 2","@context":"https://schema.org"}</script>
+{"description":"Lombok là một thư viện, plugins giúp giảm thiểu các đoạn code thừa (Boilerplate) trong project của bạn.","author":{"@type":"Person","name":"loda"},"@type":"BlogPosting","url":"/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"},"name":"loda"},"image":"/assets/images/loda1552789752787/1.jpg","headline":"Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%","dateModified":"2019-03-17T00:00:00+00:00","datePublished":"2019-03-17T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -210,17 +213,17 @@ var documents = [{
     "id": 2,
     "url": "/author-jane.html",
     "title": "Jane",
-    "body": "                        Jane Follow:                                                    Posts by Jane:               "
+    "body": "                        {{page. title}} Follow:         {{ site. authors. jane. site }}         {{ site. authors. jane. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , jane  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
     }, {
     "id": 3,
     "url": "/author-sal.html",
     "title": "Sal",
-    "body": "                        Sal Follow:                                                    Posts by Sal:               "
+    "body": "                        {{page. title}} Follow:         {{ site. authors. sal. site }}         {{ site. authors. sal. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , sal  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
     }, {
     "id": 4,
     "url": "/authors-list.html",
     "title": "Authors",
-    "body": "Authors:                                             loda :       (View Posts)      Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối. . . Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.                           &nbsp;       &nbsp;                                      "
+    "body": "{{page. title}}:     {% for author in site. authors %}                                         {{ author[1]. name }} :       (View Posts)      {{ author[1]. bio }}                          &nbsp;       &nbsp;                                    {% endfor %}  "
     }, {
     "id": 5,
     "url": "/buy-me-a-coffee.html",
@@ -230,12 +233,12 @@ var documents = [{
     "id": 6,
     "url": "/categories.html",
     "title": "Categories",
-    "body": "          Categories               Virtual Assistant:                                  		Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019	: 		  Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple . . . 	 			In 				Virtual Assistant, 				Machine Learning, 				AI, 								Mar 03, 2019						                              Machine Learning:                                  		Mình đã làm xe tự lái như thế nào?	: 		  Đôi nét về Xe tự hành	 			In 				Image Processing, 				Machine Learning, 				AI, 								Mar 10, 2019						                                 		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)	: 		  Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại:	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)	: 		  Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%)	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới	: 		  Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?	: 		  Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                                 		Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019	: 		  Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple . . . 	 			In 				Virtual Assistant, 				Machine Learning, 				AI, 								Mar 03, 2019						                              AI:                                  		Mình đã làm xe tự lái như thế nào?	: 		  Đôi nét về Xe tự hành	 			In 				Image Processing, 				Machine Learning, 				AI, 								Mar 10, 2019						                                 		Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019	: 		  Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple . . . 	 			In 				Virtual Assistant, 				Machine Learning, 				AI, 								Mar 03, 2019						                              image processing:                                  		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              deep learning:                                  		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)	: 		  Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại:	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)	: 		  Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%)	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới	: 		  Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?	: 		  Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              neural network:                                  		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)	: 		  Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại:	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)	: 		  Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%)	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới	: 		  Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?	: 		  Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              CNN:                                  		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              Convolutional:                                  		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              Python:                                  		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                              Image Processing:                                  		Mình đã làm xe tự lái như thế nào?	: 		  Đôi nét về Xe tự hành	 			In 				Image Processing, 				Machine Learning, 				AI, 								Mar 10, 2019						                              ruby:                                  		ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh	: 		  Nhìn hình thì các bạn cũng biết phải làm gì rồi chứ :))) Bưng, nửa số files trong máy bạn biến mất. 	 			In 				ruby, 				thanosjs, 								Mar 11, 2019						                              thanosjs:                                  		ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh	: 		  Nhìn hình thì các bạn cũng biết phải làm gì rồi chứ :))) Bưng, nửa số files trong máy bạn biến mất. 	 			In 				ruby, 				thanosjs, 								Mar 11, 2019						                              Java:                                  		Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%	: 		  Lombok?	 			In 				Java, 				Lombok, 				Advanced, 								Mar 17, 2019						                              Lombok:                                  		Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%	: 		  Lombok?	 			In 				Java, 				Lombok, 				Advanced, 								Mar 17, 2019						                              Advanced:                                  		Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%	: 		  Lombok?	 			In 				Java, 				Lombok, 				Advanced, 								Mar 17, 2019						                                             Featured:    				                                          Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%                          In                     Java,                     Lombok,                     Advanced,                                                                                           ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh                          In                     ruby,                     thanosjs,                                                                                           Mình đã làm xe tự lái như thế nào?                          In                     Image Processing,                     Machine Learning,                     AI,                                                                                           Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)                          In                     Machine Learning,                     deep learning,                     neural network,                                                                   "
+    "body": "          Categories          {% for category in site. categories %}     {{ category[0] }}:           {% assign pages_list = category[1] %}    {% for post in pages_list %}    {% if post. title != null %}     {% if group == null or group == post. group %}           {% include main-loop-card. html %}     {% endif %}    {% endif %}    {% endfor %}    {% assign pages_list = nil %}    {% assign group = nil %}    {% endfor %}                  {% include sidebar-featured. html %}          "
     }, {
     "id": 7,
     "url": "/contact.html",
     "title": "Contact",
-    "body": "   Please send your message to Loda. We will reply as soon as  possible!                    "
+    "body": "   Please send your message to {{ site. name }}. We will reply as soon as  possible!                    "
     }, {
     "id": 8,
     "url": "/en/jetbrains",
@@ -250,22 +253,22 @@ var documents = [{
     "id": 10,
     "url": "/privacy-policy.html",
     "title": "Privacy Policy",
-    "body": "“Loda” takes your privacy seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used. Collection of Routine Information: This website track basic information about their visitors. This information includes, but is not limited to, IP addresses, browser details, timestamps and referring pages. None of this information can personally identify specific visitor to this website. The information is tracked for routine administration and maintenance purposes. Cookies: Where necessary, this website uses cookies to store information about a visitor’s preferences and history in order to better serve the visitor and/or present the visitor with customized content. Advertisement and Other Third Parties: Advertising partners and other third parties may use cookies, scripts and/or web beacons to track visitor activities on this website in order to display advertisements and other useful information. Such tracking is done directly by the third parties through their own servers and is subject to their own privacy policies. This website has no access or control over these cookies, scripts and/or web beacons that may be used by third parties. Learn how to opt out of Google’s cookie usage. Links to Third Party Websites: We have included links on this website for your use and reference. We are not responsible for the privacy policies on these websites. You should be aware that the privacy policies of these websites may differ from our own. Security: The security of your personal information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. Changes To This Privacy Policy: This Privacy Policy is effective and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. Contact Information: For any questions or concerns regarding the privacy policy, please contact us here. "
+    "body": "”{{site. name}}” takes your privacy seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used. Collection of Routine Information: This website track basic information about their visitors. This information includes, but is not limited to, IP addresses, browser details, timestamps and referring pages. None of this information can personally identify specific visitor to this website. The information is tracked for routine administration and maintenance purposes. Cookies: Where necessary, this website uses cookies to store information about a visitor’s preferences and history in order to better serve the visitor and/or present the visitor with customized content. Advertisement and Other Third Parties: Advertising partners and other third parties may use cookies, scripts and/or web beacons to track visitor activities on this website in order to display advertisements and other useful information. Such tracking is done directly by the third parties through their own servers and is subject to their own privacy policies. This website has no access or control over these cookies, scripts and/or web beacons that may be used by third parties. Learn how to opt out of Google’s cookie usage. Links to Third Party Websites: We have included links on this website for your use and reference. We are not responsible for the privacy policies on these websites. You should be aware that the privacy policies of these websites may differ from our own. Security: The security of your personal information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. Changes To This Privacy Policy: This Privacy Policy is effective and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website. Contact Information: For any questions or concerns regarding the privacy policy, please contact us here. "
     }, {
     "id": 11,
     "url": "/robots.txt",
     "title": "",
-    "body": "Sitemap: /sitemap. xml "
+    "body": "      Sitemap: {{ “sitemap. xml”   absolute_url }}   "
     }, {
     "id": 12,
     "url": "/index.html",
     "title": "Loda - develop your own style",
-    "body": "                          Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%  :       Lombok?               In                 Java,                 Lombok,                 Advanced,                                        Mar 17, 2019                                                                                                              ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh        :                   In                     ruby,                     thanosjs,                                                        Mar 11, 2019                                                                                                            Mình đã làm xe tự lái như thế nào?        :                   In                     Image Processing,                     Machine Learning,                     AI,                                                        Mar 10, 2019                                                                                                            Hướng dẫn chi tiết tự xây dựng một mạng neural với Python        :                   In                     Machine Learning,                     deep learning,                     neural network,                     Python,                                                        Mar 07, 2019                                                      Key JetBrains 2019 miễn phí                  Giveaway Key bản quyền Intellij IDEA, Webstorm, Clion, GoLand, RubyMine, ReSharper v. v. .                 Read More            	                        All Stories:               		Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%	: 		  Lombok?	 			In 				Java, 				Lombok, 				Advanced, 								Mar 17, 2019						                  		ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh	: 		  Nhìn hình thì các bạn cũng biết phải làm gì rồi chứ :))) Bưng, nửa số files trong máy bạn biến mất. 	 			In 				ruby, 				thanosjs, 								Mar 11, 2019						                  		Mình đã làm xe tự lái như thế nào?	: 		  Đôi nét về Xe tự hành	 			In 				Image Processing, 				Machine Learning, 				AI, 								Mar 10, 2019						                  		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                  		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)	: 		  Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại:	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                  		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)	: 		  Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%)	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                        First                    1                  2                    Last                  Featured:    				                                          Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%                          In                     Java,                     Lombok,                     Advanced,                                                                                           ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh                          In                     ruby,                     thanosjs,                                                                                           Mình đã làm xe tự lái như thế nào?                          In                     Image Processing,                     Machine Learning,                     AI,                                                                                           Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)                          In                     Machine Learning,                     deep learning,                     neural network,                                                               "
+    "body": "      {% assign latest_post = site. posts[0] %}          &lt;div style= background-image: url({% if latest_post. image contains  ://  %}{{ latest_post. image }}{% else %} {{site. baseurl}}/{{ latest_post. image}}{% endif %}); height: 200px;  background-size: cover;  background-repeat: no-repeat; &gt;&lt;/div&gt;           {{ latest_post. title }}  :       {{ latest_post. excerpt | strip_html | strip_newlines | truncate: 136 }}               In         {% for category in latest_post. categories %}        {{ category }},         {% endfor %}                                {{ latest_post. date | date: '%b %d, %Y' }}                        {% for recent_post in site. posts offset:1 limit:3 %}                  {% if recent_post. image %}                    &lt;img class= w-100  src= {% if recent_post. image contains  ://  %}{{ recent_post. image }}{% else %}{{site. baseurl}}/{{ recent_post. image }}{% endif %}  alt= {{ recent_post. title }} &gt;                  {% endif %}                              {{ recent_post. title }}        :                   In           {% for category in recent_post. categories %}          {{ category }},           {% endfor %}                                              {{ recent_post. date | date: '%b %d, %Y' }}                      {% endfor %}            {% include home-highligh-box. html %}                  All Stories:     {% for post in paginator. posts %}          {% include main-loop-card. html %}        {% endfor %}        {% include bottom-bar-paginator. html %}          {% include sidebar-featured. html %}      "
     }, {
     "id": 13,
     "url": "/page/2/index.html",
     "title": "Loda - develop your own style - page 2",
-    "body": "                          Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%  :       Lombok?               In                 Java,                 Lombok,                 Advanced,                                        Mar 17, 2019                                                                                                              ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh        :                   In                     ruby,                     thanosjs,                                                        Mar 11, 2019                                                                                                            Mình đã làm xe tự lái như thế nào?        :                   In                     Image Processing,                     Machine Learning,                     AI,                                                        Mar 10, 2019                                                                                                            Hướng dẫn chi tiết tự xây dựng một mạng neural với Python        :                   In                     Machine Learning,                     deep learning,                     neural network,                     Python,                                                        Mar 07, 2019                                                      Key JetBrains 2019 miễn phí                  Giveaway Key bản quyền Intellij IDEA, Webstorm, Clion, GoLand, RubyMine, ReSharper v. v. .                 Read More            	                        All Stories:               		Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới	: 		  Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                  		Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?	: 		  Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                  		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                  		Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019	: 		  Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple . . . 	 			In 				Virtual Assistant, 				Machine Learning, 				AI, 								Mar 03, 2019						                        First                    1                  2                    Last                  Featured:    				                                          Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%                          In                     Java,                     Lombok,                     Advanced,                                                                                           ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh                          In                     ruby,                     thanosjs,                                                                                           Mình đã làm xe tự lái như thế nào?                          In                     Image Processing,                     Machine Learning,                     AI,                                                                                           Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)                          In                     Machine Learning,                     deep learning,                     neural network,                                                               "
+    "body": "      {% assign latest_post = site. posts[0] %}          &lt;div style= background-image: url({% if latest_post. image contains  ://  %}{{ latest_post. image }}{% else %} {{site. baseurl}}/{{ latest_post. image}}{% endif %}); height: 200px;  background-size: cover;  background-repeat: no-repeat; &gt;&lt;/div&gt;           {{ latest_post. title }}  :       {{ latest_post. excerpt | strip_html | strip_newlines | truncate: 136 }}               In         {% for category in latest_post. categories %}        {{ category }},         {% endfor %}                                {{ latest_post. date | date: '%b %d, %Y' }}                        {% for recent_post in site. posts offset:1 limit:3 %}                  {% if recent_post. image %}                    &lt;img class= w-100  src= {% if recent_post. image contains  ://  %}{{ recent_post. image }}{% else %}{{site. baseurl}}/{{ recent_post. image }}{% endif %}  alt= {{ recent_post. title }} &gt;                  {% endif %}                              {{ recent_post. title }}        :                   In           {% for category in recent_post. categories %}          {{ category }},           {% endfor %}                                              {{ recent_post. date | date: '%b %d, %Y' }}                      {% endfor %}            {% include home-highligh-box. html %}                  All Stories:     {% for post in paginator. posts %}          {% include main-loop-card. html %}        {% endfor %}        {% include bottom-bar-paginator. html %}          {% include sidebar-featured. html %}      "
     }, {
     "id": 14,
     "url": "/java/index.html",
@@ -408,121 +411,365 @@ function lunr_search(term) {
 
     <!-- Content -->
     <main role="main" class="site-content">
-        <div class="container">
-<h3 class="font-weight-bold spanborder"><span>Machine Learning - page 2</span></h3>
-<div class="page-content">
-
         
-    <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/Chia-se-ve-Mang-no-ron-tich-chap-(Convolutional-Neural-Networks-or-ConvNEts)/">Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)</a>
-	</h2>
-	<p class="excerpt">
-	   Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri...
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#machine learning">Machine Learning</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#image processing">image processing</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#deep learning">deep learning</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#neural network">neural network</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#cnn">CNN</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#convolutional">Convolutional</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Mar 04, 2019
-	</small>
-</div>
-
-	<div class="col-md-3 pr-0 text-right">
-	<a href="/Chia-se-ve-Mang-no-ron-tich-chap-(Convolutional-Neural-Networks-or-ConvNEts)/">
-	<img class="w-100" src="/assets/images/loda1551717776514/7.jpg" alt="Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)">
-	</a>
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#java">java</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#lombok">lombok</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#advanced">advanced</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%</h1>
+					<div class="d-flex align-items-center">
+                        
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="70"/>
+                        
+						<small class="ml-3"> loda <span><a target="_blank" href="https://www.facebook.com/loda.fanpage" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 17, 2019 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+    </span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/loda1552789752787/1.jpg" alt="Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%">
+				</div>
+                
+			</div>
+		</div>
 	</div>
-
 </div>
 
 
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
         
-    <div class="mb-5 d-flex justify-content-between main-loop-card">
-<div class="pr-3">
-	<h2 class="mb-1 h4 font-weight-bold">
-	<a class="text-dark" href="/Tro-ly-ao-van-se-la-xu-huong-cong-nghe-2019/">Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019</a>
-	</h2>
-	<p class="excerpt">
-	   Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple ...
-	</p>
-	<small class="d-block text-muted">
-		In <span class="catlist">
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#virtual assistant">Virtual Assistant</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#machine learning">Machine Learning</a><span class="sep">, </span>
-		
-		<a class="text-capitalize text-muted smoothscroll" href="/categories.html#ai">AI</a><span class="sep">, </span>
-		
-		</span>
-	</small>
-	<small class="text-muted">
-		Mar 03, 2019
-	</small>
-</div>
-
-	<div class="col-md-3 pr-0 text-right">
-	<a href="/Tro-ly-ao-van-se-la-xu-huong-cong-nghe-2019/">
-	<img class="w-100" src="/assets/images/loda1551586738/1.jpg" alt="Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019">
-	</a>
-	</div>
-
-</div>
-
-
-
-<div class="mt-5">
-
-<ul class="pagination">
-    
-    <li class="page-item">
-        <a class="page-link" href="/machine-learning/">First</a>
-    </li>
-    
-
-
-    
         
-        <li class="page-item ">
-            <a class="page-link" href="/machine-learning/" title="Machine Learning">1</a>
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%&url=https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
         </li>
         
-        <li class="page-item disabled">
-            <a class="page-link" href="/machine-learning/page/2/" title="Machine Learning - page 2">2</a>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
         </li>
         
-    
-
-
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://plus.google.com/share?url=https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <i class="fab fa-google"></i>
+        </a>
+        </li>
         
-    <li class="page-item">
-        <a class="page-link" href="/machine-learning/page/2/">Last</a>
-    </li>
+    </ul>
     
+    <div class="sep">
+    </div>				
+    <ul>
+        <li> 
+        <a  class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<h4 id="lombok">Lombok?</h4>
+
+<p><strong>Lombok</strong> là một thư viện, một plugin, giúp chúng ta giảm thiểu các đoạn code thừa (boilerplate) bằng cách tự động sinh ra các hàm <code class="highlighter-rouge">Get</code>, <code class="highlighter-rouge">Set</code>, <code class="highlighter-rouge">Constructor</code>, v.v..</p>
+
+<p>Chắc hẳn ai là <code class="highlighter-rouge">Java Developer</code> chinh chiến nhiều năm thì đều ngán ngẩm với việc ngồi viết những hàm <code class="highlighter-rouge">Get/Set</code>, Các <code class="highlighter-rouge">Constructor</code> có tham số lặp đi lặp lại, mặc dù các IDE đều hỗ trợ Generate tự động, tuy nhiên khi Project lớn, việc quản lý hàng chục function như vậy trông rất rối mắt và thừa thãi.</p>
+
+<p>Từ đây, vị cứu tinh của chúng ta, <code class="highlighter-rouge">**Lombok**</code> ra đời :3 Với tiêu chí giúp developer tập trung vào tầng nghiệp vụ và logic thay vì mất thời gian làm những việc “thừa thãi”. Không những làm cho code sáng sửa mà còn trông rất hợp lý, dễ quản lý hơn (Per con ông phệch). Sức mạnh của <strong>Lombok</strong> không chỉ dừng ở việc <code class="highlighter-rouge">Get/Set</code> mà còn nhiều khả năng tuyệt vời khác nữa, mình cũng tìm hiểu ở dưới nhé.</p>
+
+<h4 id="cài-đặt">Cài đặt</h4>
+
+<p>Để sử dụng được <code class="highlighter-rouge">Lombok</code> bạn cần có 2 điều kiện sau:</p>
+<ul>
+  <li>Thư viện <code class="highlighter-rouge">lombok</code> trong project của bạn</li>
+  <li>IDE cao cấp, hỗ trợ <code class="highlighter-rouge">lombok</code> (IntelliJ IDEA, Eclipse, ..)</li>
 </ul>
 
-</div>
-    
-<!-- Comments -->
+<p>Chúng ta đi vào từng phần:</p>
 
+<h5 id="bước-1">Bước 1</h5>
+
+<p>Cách nhanh nhất để đưa 1 lib java vào project của bạn là sử dụng Maven, hoặc Gradle :3</p>
+
+<p><em>Maven</em></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;!--</span> <span class="nl">https:</span><span class="c1">//mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span>
+<span class="o">&lt;</span><span class="n">dependency</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="na">projectlombok</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">lombok</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.18</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">scope</span><span class="o">&gt;</span><span class="n">provided</span><span class="o">&lt;/</span><span class="n">scope</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dependency</span><span class="o">&gt;</span>
+</code></pre></div></div>
+<p><em>Gradle</em></p>
+<pre><code class="language-Java">// https://mvnrepository.com/artifact/org.projectlombok/lombok
+provided group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+</code></pre>
+<p>Nếu bạn chưa biết <code class="highlighter-rouge">Maven</code> hay <code class="highlighter-rouge">Gradle</code> là gì thì xem <a href="https://loda.me">tại đây</a> nhé</p>
+
+<h5 id="bước-2">Bước 2</h5>
+
+<h5 id="góc-giải-thích-nhẹ-bạn-có-thể-bỏ-qua-và-xuống-phần-cài-đặt-luôn">Góc giải thích nhẹ (Bạn có thể bỏ qua và xuống phần cài đặt luôn)</h5>
+
+<p>Bạn cần cài <code class="highlighter-rouge">Lombok plugin</code> cho IDE của bạn, vì sao?</p>
+
+<p>Bạn hiểu là IDE chỉ nhìn thấy những dòng code của bạn hiện tại, và từ đó tham chiếu tới nó, bây giờ bạn không viết hàm <code class="highlighter-rouge">Get/Set</code> nữa, thì nó không nhìn thấy, và điều gì sẽ xảy ra nếu bạn viết <code class="highlighter-rouge">user.getName()</code> trong khi function <code class="highlighter-rouge">getName()</code> không hề tồn tại :v oh siệc man. Thông báo lỗi <code class="highlighter-rouge">đỏ lè</code>.</p>
+
+<p>Bản thân <code class="highlighter-rouge">Lombok</code> là một thư viện, nó sẽ tự động thêm <code class="highlighter-rouge">Get/Set</code> khi project của bạn được <code class="highlighter-rouge">build</code>. Tức tự viết thêm code vào class đó trước khi nó thành file <code class="highlighter-rouge">jar</code>.</p>
+
+<p>Nên để IDE hiểu rằng class <code class="highlighter-rouge">User</code> đã có các hàm <code class="highlighter-rouge">Get/ Set/ Constructor</code> này rồi, hiển thị nó cho tao, thì bạn phải cài <code class="highlighter-rouge">Lombok Plugin</code></p>
+
+<h5 id="cài-đặt-lombok-cho-intellij-idea">Cài đặt Lombok cho IntelliJ IDEA</h5>
+
+<p>Mình sử dụng <code class="highlighter-rouge">IntelliJ IDEA</code> nha mọi người, <code class="highlighter-rouge">Eclipse</code> cũng tương tự nhé (khác mỗi chỗ cài đặt :”) )</p>
+
+<p>Các bạn vào <code class="highlighter-rouge">File</code> &gt; <code class="highlighter-rouge">Setting</code> &gt; <code class="highlighter-rouge">Plugins</code> ..</p>
+
+<p>Search: “Lombok”</p>
+
+<p>Chọn <code class="highlighter-rouge">Lombok Plugin</code> và nhấn <code class="highlighter-rouge">Install</code></p>
+
+<p><img src="/assets/images/loda1552789752787/2.png" alt="image-title-here" class="center-image" /></p>
+
+<p>Chớ quên <code class="highlighter-rouge">Apply</code> nhé!</p>
+
+<p>Tadaaa, Chưa xong đâu ==! nếu là <strong>lần đầu</strong>, bạn sẽ phải làm thêm 2 bước này nữa.</p>
+
+<p>Restart IDE &gt; <code class="highlighter-rouge">File</code> &gt; <code class="highlighter-rouge">Setting</code> &gt; <code class="highlighter-rouge">Other Setting</code> &gt; <code class="highlighter-rouge">Lombok Plugin</code> &gt; <code class="highlighter-rouge">Enable Lombok plugin for this project</code> &gt; <code class="highlighter-rouge">Apply</code>
+<img src="/assets/images/loda1552789752787/3.png" alt="image-title-here" class="center-image" /></p>
+
+<p><code class="highlighter-rouge">File</code> &gt; <code class="highlighter-rouge">Setting</code> &gt; <code class="highlighter-rouge">Build, Execution, Deployment</code> &gt; <code class="highlighter-rouge">Complier</code> &gt; <code class="highlighter-rouge">Annotation Processors</code> &gt; <code class="highlighter-rouge">Apply</code>
+<img src="/assets/images/loda1552789752787/4.png" alt="image-title-here" class="center-image" /></p>
+
+<p>Rồi, chính thức là xong! Bây giờ project của bạn đã có <code class="highlighter-rouge">Lombok</code></p>
+
+<h4 id="sử-dụng-lombok">Sử dụng Lombok</h4>
+
+<p><code class="highlighter-rouge">Lombok</code> dùng <code class="highlighter-rouge">Annotation</code> để khai báo với trình biên dịch.</p>
+
+<h5 id="data">@Data</h5>
+
+<p>Nhìn lại vào ví dụ đầu tiên, 2 đoạn code này là tương đương.</p>
+
+<p><img src="/assets/images/loda1552789752787/1.jpg" alt="image-title-here" class="center-image" /></p>
+
+<p><code class="highlighter-rouge">@Data</code> sẽ có tác dụng generate ra <code class="highlighter-rouge">Constructor</code> rỗng hoặc có tham số theo yêu cầu (cái này sẽ nói sau), toàn bộ <code class="highlighter-rouge">Get/Set</code>, hàm <code class="highlighter-rouge">equals</code>, <code class="highlighter-rouge">hashCode</code>, <code class="highlighter-rouge">toString()</code></p>
+
+<p>Khi bạn đã đánh dấu 1 class là <code class="highlighter-rouge">@Data</code>, thì tại bất cứ đâu trong project. Khi sử dụng tới class này, nó sẽ tự có các function đã generate mà không cần code thêm bất kì dòng nào:</p>
+
+<p><img src="/assets/images/loda1552789752787/5.jpg" alt="image-title-here" class="center-image" /></p>
+
+<h5 id="constructor-với-noargsconstructor-requiredargsconstructor-allargsconstructor">Constructor với <code class="highlighter-rouge">@NoArgsConstructor</code>, <code class="highlighter-rouge">@RequiredArgsConstructor</code>, <code class="highlighter-rouge">@AllArgsConstructor</code></h5>
+
+<p>Trong trường hợp bạn muốn định nghĩa các <code class="highlighter-rouge">Constructor</code> theo ý mình, thì <code class="highlighter-rouge">Lombok</code> hỗ trợ 3 <code class="highlighter-rouge">Annotation</code>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">@NoArgsConstructor</code>: Hàm khởi tạo rỗng, đã đề cập ở trên</li>
+  <li><code class="highlighter-rouge">@AllArgsConstructor</code>: Hàm khởi tạo chứa tất cả thuộc tính, ví dụ <code class="highlighter-rouge">Champion(String name, String type)</code></li>
+  <li><code class="highlighter-rouge">@RequiredArgsConstructor</code>: Hàm khởi tạo theo yêu cầu. Bạn chỉ muốn hàm khởi tạo có vài thuộc tính do bạn chọn thôi, thì bạn thêm <code class="highlighter-rouge">final</code> trước thuộc tính trong class, nó sẽ tự sinh ra <code class="highlighter-rouge">Constructor</code> như thế.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequiredArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Champion</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
+<span class="c1">//  @RequiredArgsConstructor + final đồng nghĩa với Constructor như thế này.</span>
+<span class="c1">//  public Champion(String name) {</span>
+<span class="c1">//    this.name = name;</span>
+<span class="c1">//  }</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">@RequiredArgsConstructor</code> là một vũ khí cực kì, cực kì lợi hại nhé :3 Sau này khi tới các bài về <code class="highlighter-rouge">Spring</code> và nâng cao hơn, mình sẽ cho các bạn thấy tác dụng kì riệu của e nó :3</p>
+
+<h5 id="gettersetter">@Getter/@Setter</h5>
+
+<p>Khi bạn chỉ muốn generate mỗi <code class="highlighter-rouge">Get/Set</code> thôi và không muốn dùng <code class="highlighter-rouge">@Data</code> vì nó quá nhiều chức năng, thì có thể xài 2 câu thần chú <code class="highlighter-rouge">@Getter</code> và <code class="highlighter-rouge">@Setter</code></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Champion</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Nâng cao hơn, bạn chỉ muốn xài <code class="highlighter-rouge">Get/Set</code> cho 1 thuộc tính thì sao? thì như này nè :3</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Champion</span> <span class="o">{</span>
+  <span class="c1">// Tạo ra get/set cho name</span>
+  <span class="nd">@Getter</span> <span class="nd">@Setter</span> <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="c1">// Tạo ra protected setType(String) thay vì public</span>
+  <span class="nd">@Setter</span><span class="o">(</span><span class="n">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span> <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h5 id="tostring-và-equalsandhashcode">@ToString và @EqualsAndHashCode</h5>
+
+<p>Nhìn tên các bạn cũng đoán ra phải không, để tý thì đây đều là các chức năng riêng rẽ mà đã được <code class="highlighter-rouge">@Data</code> gom lại thành 1.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">@ToString</code>: Tạo ra hàm <code class="highlighter-rouge">toString()</code> từ thuộc tính class.</li>
+  <li><code class="highlighter-rouge">@EqualsAndHashCode</code>: Tạo ra hàm <code class="highlighter-rouge">equals</code> và <code class="highlighter-rouge">hashCode</code></li>
+</ul>
+
+<p>Cái này ví dụ ở đầu bài viết mình đã chỉ ra rồi, phần này có một vấn đề thôi, là nếu bạn không muốn làm <code class="highlighter-rouge">toString</code> hay <code class="highlighter-rouge">equals</code> <strong>KHÔNG</strong> tác động tới 1 thuộc tính nào đó, thì làm như nào?</p>
+
+<p>Lúc này chúng ta sẽ dùng tới <code class="highlighter-rouge">Exclude</code></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ToString</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Champion</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="nd">@ToString</span><span class="o">.</span><span class="na">Exclude</span> <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
+  <span class="c1">// Thuộc tính type đã bị bỏ qua</span>
+<span class="c1">//  @Override</span>
+<span class="c1">//  public String toString() {</span>
+<span class="c1">//    return "Champion{" + "name='" + name + '\'' + '}';</span>
+<span class="c1">//  }</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h5 id="builder">@Builder</h5>
+
+<p>Chắc hẳn ai cũng ngại khi viết 1 class <code class="highlighter-rouge">Builder</code> cổ điển phải không, tự dưng phải tạo thêm 1 class nữa, gấp đôi số lượng thuộc tính khai báo, gấp đôi số hàm cần viết huhu. :”((</p>
+
+<p>Và một lần nữa, vị cứu tinh <code class="highlighter-rouge">Lombok</code> lại đến và lau đi nước mắt của <code class="highlighter-rouge">loda</code> với <code class="highlighter-rouge">@Builder</code>. Đây là một chức năng đặc biệt dành cho người lười biếng (như mình).</p>
+
+<p>Put</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Data
+@Builder
+public class Champion {
+  private String name;
+  private String type;
+}
+</code></pre></div></div>
+<p>Then</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Champion</span> <span class="n">loda</span> <span class="o">=</span> <span class="n">Champion</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"loda"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"Support"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h4 id="lời-kết">Lời kết</h4>
+
+<p>Cảm ơn chúa, cảm ơn <code class="highlighter-rouge">Reinier Zwitserloot</code> và cộng đồng mã nguồn mở đã cứu rỗi lấy linh hồn của những thánh lười như <code class="highlighter-rouge">loda</code> :3</p>
+
+<p><code class="highlighter-rouge">Lombok</code> còn rất nhiều tính năng hay ho, mình đã giới thiệu các phần thông dụng nhất mà project nào cũng sẽ cần đến và cách sử dụng nó, khi tới các bài viết về các <code class="highlighter-rouge">framework</code> của <code class="highlighter-rouge">Java</code>, mình sẽ đề cập thêm các yếu tố nâng cao hơn của nó. Còn bạn nào muốn tìm hiểu thêm thì hãy vào <a href="https://projectlombok.org/">trang chủ</a> của <code class="highlighter-rouge">Lombok</code>.</p>
+
+<p>Cảm ơn các bạn đã đọc hết bài viết, theo dõi <a href="www.facebook.com/loda.fanpage/"><code class="highlighter-rouge">loda</code></a> để cập nhật các bài viết mới và thú vị nhé!</p>
+
+<p>Và đừng quên chia sẻ cho bạn bè kaka :v</p>
+
+                
+			</article>
+			
+			  <!-- Your like button code -->
+  <div class="fb-like" 
+    data-href="https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/" 
+    data-layout="standard" 
+    data-action="like" 
+    data-show-faces="true">
+  </div>
+
+ 
+            <!-- Mailchimp Subscribe Form -->
+            
+            
+            
+             <!-- Author Box -->
+                				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by loda <span><a target="_blank" href="https://www.facebook.com/loda.fanpage" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối... Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.					
+					</div>
+				</div>				
+				
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'loda-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
 </div>
+            
+            
+		</div>
+        
+        
+	</div>
 </div>
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar" class="display:block">
+	<div class="container">
+		<div class="row prevnextlinks small font-weight-bold">
+			
+			<div class="col-md-6 rightborder pl-0">
+				<a class="text-dark" href="/ThanosJS-lam-bien-mat-1-nua-DU-LIEU-may-ban-voi-1-dong-lenh/"> <img height="30px" class="mr-1" src="/assets/images/loda1552310618406/1.jpg">  ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh</a>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+					
     </main>
 
 

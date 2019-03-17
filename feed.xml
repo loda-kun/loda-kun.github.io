@@ -5,9 +5,217 @@
     <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Mar 2019 02:29:49 +0000</pubDate>
-    <lastBuildDate>Sun, 17 Mar 2019 02:29:49 +0000</lastBuildDate>
+    <pubDate>Sun, 17 Mar 2019 05:50:50 +0000</pubDate>
+    <lastBuildDate>Sun, 17 Mar 2019 05:50:50 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%</title>
+        <description>&lt;h4 id=&quot;lombok&quot;&gt;Lombok?&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Lombok&lt;/strong&gt; là một thư viện, một plugin, giúp chúng ta giảm thiểu các đoạn code thừa (boilerplate) bằng cách tự động sinh ra các hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;Get&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Set&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Constructor&lt;/code&gt;, v.v..&lt;/p&gt;
+
+&lt;p&gt;Chắc hẳn ai là &lt;code class=&quot;highlighter-rouge&quot;&gt;Java Developer&lt;/code&gt; chinh chiến nhiều năm thì đều ngán ngẩm với việc ngồi viết những hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/Set&lt;/code&gt;, Các &lt;code class=&quot;highlighter-rouge&quot;&gt;Constructor&lt;/code&gt; có tham số lặp đi lặp lại, mặc dù các IDE đều hỗ trợ Generate tự động, tuy nhiên khi Project lớn, việc quản lý hàng chục function như vậy trông rất rối mắt và thừa thãi.&lt;/p&gt;
+
+&lt;p&gt;Từ đây, vị cứu tinh của chúng ta, &lt;code class=&quot;highlighter-rouge&quot;&gt;**Lombok**&lt;/code&gt; ra đời :3 Với tiêu chí giúp developer tập trung vào tầng nghiệp vụ và logic thay vì mất thời gian làm những việc “thừa thãi”. Không những làm cho code sáng sửa mà còn trông rất hợp lý, dễ quản lý hơn (Per con ông phệch). Sức mạnh của &lt;strong&gt;Lombok&lt;/strong&gt; không chỉ dừng ở việc &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/Set&lt;/code&gt; mà còn nhiều khả năng tuyệt vời khác nữa, mình cũng tìm hiểu ở dưới nhé.&lt;/p&gt;
+
+&lt;h4 id=&quot;cài-đặt&quot;&gt;Cài đặt&lt;/h4&gt;
+
+&lt;p&gt;Để sử dụng được &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt; bạn cần có 2 điều kiện sau:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Thư viện &lt;code class=&quot;highlighter-rouge&quot;&gt;lombok&lt;/code&gt; trong project của bạn&lt;/li&gt;
+  &lt;li&gt;IDE cao cấp, hỗ trợ &lt;code class=&quot;highlighter-rouge&quot;&gt;lombok&lt;/code&gt; (IntelliJ IDEA, Eclipse, ..)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Chúng ta đi vào từng phần:&lt;/p&gt;
+
+&lt;h5 id=&quot;bước-1&quot;&gt;Bước 1&lt;/h5&gt;
+
+&lt;p&gt;Cách nhanh nhất để đưa 1 lib java vào project của bạn là sử dụng Maven, hoặc Gradle :3&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Maven&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;https:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//mvnrepository.com/artifact/org.projectlombok/lombok --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dependency&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;projectlombok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;artifactId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lombok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;artifactId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.18&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;provided&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dependency&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Gradle&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Java&quot;&gt;// https://mvnrepository.com/artifact/org.projectlombok/lombok
+provided group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nếu bạn chưa biết &lt;code class=&quot;highlighter-rouge&quot;&gt;Maven&lt;/code&gt; hay &lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; là gì thì xem &lt;a href=&quot;https://loda.me&quot;&gt;tại đây&lt;/a&gt; nhé&lt;/p&gt;
+
+&lt;h5 id=&quot;bước-2&quot;&gt;Bước 2&lt;/h5&gt;
+
+&lt;h5 id=&quot;góc-giải-thích-nhẹ-bạn-có-thể-bỏ-qua-và-xuống-phần-cài-đặt-luôn&quot;&gt;Góc giải thích nhẹ (Bạn có thể bỏ qua và xuống phần cài đặt luôn)&lt;/h5&gt;
+
+&lt;p&gt;Bạn cần cài &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok plugin&lt;/code&gt; cho IDE của bạn, vì sao?&lt;/p&gt;
+
+&lt;p&gt;Bạn hiểu là IDE chỉ nhìn thấy những dòng code của bạn hiện tại, và từ đó tham chiếu tới nó, bây giờ bạn không viết hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/Set&lt;/code&gt; nữa, thì nó không nhìn thấy, và điều gì sẽ xảy ra nếu bạn viết &lt;code class=&quot;highlighter-rouge&quot;&gt;user.getName()&lt;/code&gt; trong khi function &lt;code class=&quot;highlighter-rouge&quot;&gt;getName()&lt;/code&gt; không hề tồn tại :v oh siệc man. Thông báo lỗi &lt;code class=&quot;highlighter-rouge&quot;&gt;đỏ lè&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Bản thân &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt; là một thư viện, nó sẽ tự động thêm &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/Set&lt;/code&gt; khi project của bạn được &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt;. Tức tự viết thêm code vào class đó trước khi nó thành file &lt;code class=&quot;highlighter-rouge&quot;&gt;jar&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nên để IDE hiểu rằng class &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; đã có các hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/ Set/ Constructor&lt;/code&gt; này rồi, hiển thị nó cho tao, thì bạn phải cài &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok Plugin&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;cài-đặt-lombok-cho-intellij-idea&quot;&gt;Cài đặt Lombok cho IntelliJ IDEA&lt;/h5&gt;
+
+&lt;p&gt;Mình sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;IntelliJ IDEA&lt;/code&gt; nha mọi người, &lt;code class=&quot;highlighter-rouge&quot;&gt;Eclipse&lt;/code&gt; cũng tương tự nhé (khác mỗi chỗ cài đặt :”) )&lt;/p&gt;
+
+&lt;p&gt;Các bạn vào &lt;code class=&quot;highlighter-rouge&quot;&gt;File&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Setting&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Plugins&lt;/code&gt; ..&lt;/p&gt;
+
+&lt;p&gt;Search: “Lombok”&lt;/p&gt;
+
+&lt;p&gt;Chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok Plugin&lt;/code&gt; và nhấn &lt;code class=&quot;highlighter-rouge&quot;&gt;Install&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1552789752787/2.png&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chớ quên &lt;code class=&quot;highlighter-rouge&quot;&gt;Apply&lt;/code&gt; nhé!&lt;/p&gt;
+
+&lt;p&gt;Tadaaa, Chưa xong đâu ==! nếu là &lt;strong&gt;lần đầu&lt;/strong&gt;, bạn sẽ phải làm thêm 2 bước này nữa.&lt;/p&gt;
+
+&lt;p&gt;Restart IDE &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;File&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Setting&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Other Setting&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok Plugin&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Enable Lombok plugin for this project&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Apply&lt;/code&gt;
+&lt;img src=&quot;/assets/images/loda1552789752787/3.png&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;File&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Setting&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Build, Execution, Deployment&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Complier&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation Processors&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Apply&lt;/code&gt;
+&lt;img src=&quot;/assets/images/loda1552789752787/4.png&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Rồi, chính thức là xong! Bây giờ project của bạn đã có &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;sử-dụng-lombok&quot;&gt;Sử dụng Lombok&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt; dùng &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt; để khai báo với trình biên dịch.&lt;/p&gt;
+
+&lt;h5 id=&quot;data&quot;&gt;@Data&lt;/h5&gt;
+
+&lt;p&gt;Nhìn lại vào ví dụ đầu tiên, 2 đoạn code này là tương đương.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1552789752787/1.jpg&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Data&lt;/code&gt; sẽ có tác dụng generate ra &lt;code class=&quot;highlighter-rouge&quot;&gt;Constructor&lt;/code&gt; rỗng hoặc có tham số theo yêu cầu (cái này sẽ nói sau), toàn bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/Set&lt;/code&gt;, hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;equals&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;hashCode&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Khi bạn đã đánh dấu 1 class là &lt;code class=&quot;highlighter-rouge&quot;&gt;@Data&lt;/code&gt;, thì tại bất cứ đâu trong project. Khi sử dụng tới class này, nó sẽ tự có các function đã generate mà không cần code thêm bất kì dòng nào:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1552789752787/5.jpg&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;constructor-với-noargsconstructor-requiredargsconstructor-allargsconstructor&quot;&gt;Constructor với &lt;code class=&quot;highlighter-rouge&quot;&gt;@NoArgsConstructor&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;@RequiredArgsConstructor&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;@AllArgsConstructor&lt;/code&gt;&lt;/h5&gt;
+
+&lt;p&gt;Trong trường hợp bạn muốn định nghĩa các &lt;code class=&quot;highlighter-rouge&quot;&gt;Constructor&lt;/code&gt; theo ý mình, thì &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt; hỗ trợ 3 &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@NoArgsConstructor&lt;/code&gt;: Hàm khởi tạo rỗng, đã đề cập ở trên&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@AllArgsConstructor&lt;/code&gt;: Hàm khởi tạo chứa tất cả thuộc tính, ví dụ &lt;code class=&quot;highlighter-rouge&quot;&gt;Champion(String name, String type)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@RequiredArgsConstructor&lt;/code&gt;: Hàm khởi tạo theo yêu cầu. Bạn chỉ muốn hàm khởi tạo có vài thuộc tính do bạn chọn thôi, thì bạn thêm &lt;code class=&quot;highlighter-rouge&quot;&gt;final&lt;/code&gt; trước thuộc tính trong class, nó sẽ tự sinh ra &lt;code class=&quot;highlighter-rouge&quot;&gt;Constructor&lt;/code&gt; như thế.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@RequiredArgsConstructor&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Champion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  @RequiredArgsConstructor + final đồng nghĩa với Constructor như thế này.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  public Champion(String name) {&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//    this.name = name;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  }&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@RequiredArgsConstructor&lt;/code&gt; là một vũ khí cực kì, cực kì lợi hại nhé :3 Sau này khi tới các bài về &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; và nâng cao hơn, mình sẽ cho các bạn thấy tác dụng kì riệu của e nó :3&lt;/p&gt;
+
+&lt;h5 id=&quot;gettersetter&quot;&gt;@Getter/@Setter&lt;/h5&gt;
+
+&lt;p&gt;Khi bạn chỉ muốn generate mỗi &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/Set&lt;/code&gt; thôi và không muốn dùng &lt;code class=&quot;highlighter-rouge&quot;&gt;@Data&lt;/code&gt; vì nó quá nhiều chức năng, thì có thể xài 2 câu thần chú &lt;code class=&quot;highlighter-rouge&quot;&gt;@Getter&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;@Setter&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Getter&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Champion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nâng cao hơn, bạn chỉ muốn xài &lt;code class=&quot;highlighter-rouge&quot;&gt;Get/Set&lt;/code&gt; cho 1 thuộc tính thì sao? thì như này nè :3&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Champion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Tạo ra get/set cho name&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Getter&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Tạo ra protected setType(String) thay vì public&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AccessLevel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PROTECTED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;tostring-và-equalsandhashcode&quot;&gt;@ToString và @EqualsAndHashCode&lt;/h5&gt;
+
+&lt;p&gt;Nhìn tên các bạn cũng đoán ra phải không, để tý thì đây đều là các chức năng riêng rẽ mà đã được &lt;code class=&quot;highlighter-rouge&quot;&gt;@Data&lt;/code&gt; gom lại thành 1.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@ToString&lt;/code&gt;: Tạo ra hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;toString()&lt;/code&gt; từ thuộc tính class.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@EqualsAndHashCode&lt;/code&gt;: Tạo ra hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;equals&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;hashCode&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cái này ví dụ ở đầu bài viết mình đã chỉ ra rồi, phần này có một vấn đề thôi, là nếu bạn không muốn làm &lt;code class=&quot;highlighter-rouge&quot;&gt;toString&lt;/code&gt; hay &lt;code class=&quot;highlighter-rouge&quot;&gt;equals&lt;/code&gt; &lt;strong&gt;KHÔNG&lt;/strong&gt; tác động tới 1 thuộc tính nào đó, thì làm như nào?&lt;/p&gt;
+
+&lt;p&gt;Lúc này chúng ta sẽ dùng tới &lt;code class=&quot;highlighter-rouge&quot;&gt;Exclude&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@ToString&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Champion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@ToString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Exclude&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Thuộc tính type đã bị bỏ qua&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  @Override&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  public String toString() {&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//    return &quot;Champion{&quot; + &quot;name='&quot; + name + '\'' + '}';&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  }&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;builder&quot;&gt;@Builder&lt;/h5&gt;
+
+&lt;p&gt;Chắc hẳn ai cũng ngại khi viết 1 class &lt;code class=&quot;highlighter-rouge&quot;&gt;Builder&lt;/code&gt; cổ điển phải không, tự dưng phải tạo thêm 1 class nữa, gấp đôi số lượng thuộc tính khai báo, gấp đôi số hàm cần viết huhu. :”((&lt;/p&gt;
+
+&lt;p&gt;Và một lần nữa, vị cứu tinh &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt; lại đến và lau đi nước mắt của &lt;code class=&quot;highlighter-rouge&quot;&gt;loda&lt;/code&gt; với &lt;code class=&quot;highlighter-rouge&quot;&gt;@Builder&lt;/code&gt;. Đây là một chức năng đặc biệt dành cho người lười biếng (như mình).&lt;/p&gt;
+
+&lt;p&gt;Put&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Data
+@Builder
+public class Champion {
+  private String name;
+  private String type;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Champion&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loda&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Champion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Support&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;lời-kết&quot;&gt;Lời kết&lt;/h4&gt;
+
+&lt;p&gt;Cảm ơn chúa, cảm ơn &lt;code class=&quot;highlighter-rouge&quot;&gt;Reinier Zwitserloot&lt;/code&gt; và cộng đồng mã nguồn mở đã cứu rỗi lấy linh hồn của những thánh lười như &lt;code class=&quot;highlighter-rouge&quot;&gt;loda&lt;/code&gt; :3&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt; còn rất nhiều tính năng hay ho, mình đã giới thiệu các phần thông dụng nhất mà project nào cũng sẽ cần đến và cách sử dụng nó, khi tới các bài viết về các &lt;code class=&quot;highlighter-rouge&quot;&gt;framework&lt;/code&gt; của &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;, mình sẽ đề cập thêm các yếu tố nâng cao hơn của nó. Còn bạn nào muốn tìm hiểu thêm thì hãy vào &lt;a href=&quot;https://projectlombok.org/&quot;&gt;trang chủ&lt;/a&gt; của &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Cảm ơn các bạn đã đọc hết bài viết, theo dõi &lt;a href=&quot;www.facebook.com/loda.fanpage/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;loda&lt;/code&gt;&lt;/a&gt; để cập nhật các bài viết mới và thú vị nhé!&lt;/p&gt;
+
+&lt;p&gt;Và đừng quên chia sẻ cho bạn bè kaka :v&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 17 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/</link>
+        <guid isPermaLink="true">/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>Java</category>
+        
+        <category>Lombok</category>
+        
+        <category>Advanced</category>
+        
+      </item>
     
       <item>
         <title>ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh</title>

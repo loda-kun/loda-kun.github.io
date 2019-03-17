@@ -54,6 +54,7 @@ public class Gui extends javax.swing.JFrame {
         clearAll();
         maker = new PostMaker();
         tvAuthor.setText("loda");
+        tvImage.setText("https://upload.wikimedia.org/wikipedia/commons/8/8f/Bachalpsee_reflection.jpg");
         tv_Post.setText("./_posts/");
         tv_Images.setText("./assets/images/");
         lbCurrentInstance.setText("Current Instance: " + maker.id());

@@ -26,37 +26,37 @@ import vn.loda.postmaker.util.PostHelper;
 @Accessors(chain = true, fluent = true)
 public class PostMaker implements Serializable {
 
-  private String id;
-  private String title;
-  private String author;
-  private String[] categories;
-  private String image;
-  private String description;
-  private boolean featured;
-  private boolean hidden;
-  private float rating;
+    private String id;
+    private String title;
+    private String author;
+    private String[] categories;
+    private String image;
+    private String description;
+    private boolean featured;
+    private boolean hidden;
+    private float rating;
 
-  public PostMaker() {
-    this.id = "loda" + System.currentTimeMillis();
-  }
+    public PostMaker() {
+        this.id = "loda" + System.currentTimeMillis();
+    }
 
-  private static final String NEW_LINE = "\n";
+    private static final String NEW_LINE = "\n";
 
-  public String getHeader() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("---").append(NEW_LINE)
-        .append("id: ").append(id).append(NEW_LINE)
-        .append("layout: post").append(NEW_LINE)
-        .append("title: ").append(title).append(NEW_LINE)
-        .append("author: ").append(author).append(NEW_LINE)
-        .append("categories: ").append(categoriesToString()).append(NEW_LINE)
-        .append("image: ").append(image).append(NEW_LINE)
-        .append("description: ").append(description).append(NEW_LINE)
-        .append("featured: ").append(featured).append(NEW_LINE)
-        .append("hidden: ").append(hidden).append(NEW_LINE)
-        .append("rating: ").append(rating).append(NEW_LINE)
-        .append("---").append(NEW_LINE);
-    return sb.toString();
+    public String getHeader() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("---").append(NEW_LINE)
+                .append("id: ").append(id).append(NEW_LINE)
+                .append("layout: post").append(NEW_LINE)
+                .append("title: ").append(title).append(NEW_LINE)
+                .append("author: ").append(author).append(NEW_LINE)
+                .append("categories: ").append(categoriesToString()).append(NEW_LINE)
+                .append("image: ").append(image).append(NEW_LINE)
+                .append("description: ").append(description).append(NEW_LINE);
+        if (featured) {
+            sb.append("tag: [featured]").append(NEW_LINE);
+        }
+        sb.append("---").append(NEW_LINE);
+        return sb.toString();
 //        title:  "Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019"
 //        author: loda
 //        categories: [ Virtual Assistant, Machine Learning, AI ]
@@ -65,20 +65,20 @@ public class PostMaker implements Serializable {
 //        featured: true
 //        hidden: true
 //        rating: 4.5
-  }
-
-  public String getFileName() {
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    return sdf.format(new Date()) + "-" + PostHelper.removeAccents(title) + ".md";
-  }
-
-  public String categoriesToString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("[ ");
-    for (String str : categories) {
-      sb.append(str.trim() + ", ");
     }
-    sb.append("]");
-    return sb.toString().replace(", ]", " ]");
-  }
+
+    public String getFileName() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(new Date()) + "-" + PostHelper.removeAccents(title) + ".md";
+    }
+
+    public String categoriesToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+        for (String str : categories) {
+            sb.append(str.trim() + ", ");
+        }
+        sb.append("]");
+        return sb.toString().replace(", ]", " ]");
+    }
 }

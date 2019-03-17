@@ -6,9 +6,8 @@ author: loda
 categories: [ ruby, thanosjs ]
 image: assets/images/loda1552310618406/1.jpg
 description: Nếu ai từng xem The Avengers thì chắc chắn không xa lạ gì với quyền năng của Thanos.
-featured: true
-hidden: true
-rating: 5
+type: general
+tag: featured
 ---
 
 Nhìn hình thì các bạn cũng biết phải làm gì rồi chứ :))) **Bưng**, nửa số files trong máy bạn biến mất.

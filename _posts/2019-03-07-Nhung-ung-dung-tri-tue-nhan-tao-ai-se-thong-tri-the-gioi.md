@@ -6,10 +6,7 @@ author: loda
 categories: [ Machine Learning, deep learning, neural network ]
 image: https://cdn.ereka.vn/2018/05/05/600eec890d081916dbd0bb73a285a215.jpg
 description: Dưới đây là danh sách Top các ứng dụng Deep Learning/AI được dự đoán sẽ góp phần thay đổi thế giới trong tương lai.
-featured: false
-hidden: false
 type: machine-learning
-rating: 0
 ---
 
 Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ `Trí tuệ nhân tạo (AI)` đạt được rất nhiều thành tựu nổi bật.

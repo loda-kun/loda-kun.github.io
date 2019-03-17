@@ -6,10 +6,7 @@ author: loda
 categories: [ Machine Learning, deep learning, neural network ]
 image: https://cdn.ereka.vn/2018/04/09/c2958b20690f5b747b1fab63d9a488df.png
 description:  Dữ liệu dán nhãn không luôn luôn có sẵn đối với mọi tác vụ, và chi phí để có thể thu thập một lượng dữ liệu dán nhãn đủ là rất đắt đỏ.
-featured: false
-hidden: false
 type: machine-learning
-rating: 0
 ---
 
 Trong những năm qua, lĩnh vực `Trí tuệ Nhân tạo` nói chung và `Machine Learning` nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của *Deep Learning*. Tuy vậy, vẫn tồn tại một vấn đề rất lớn mà các nhà nghiên cứu trong lĩnh vực Trí tuệ Nhân tạo phải đối mặt, đó là các thuật toán Machine Learning đòi hỏi một lượng dữ liệu dán nhãn cực lớn, Deep Learning còn đòi hỏi một lượng dữ liệu lớn hơn nhiều lần. Dữ liệu dán nhãn không luôn luôn có sẵn đối với mọi tác vụ, và chi phí để có thể thu thập một lượng dữ liệu dán nhãn đủ để có thể training các thuật toán một cách tốt nhất là rất đắt đỏ.

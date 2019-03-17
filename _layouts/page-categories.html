@@ -1,0 +1,15 @@
+---
+layout: page
+comments: true
+pagination:
+  enabled: true
+---
+
+
+{% for post in paginator.posts %}
+        
+    {% include main-loop-card.html %}
+
+{% endfor %}
+
+{% include bottom-bar-paginator.html %}

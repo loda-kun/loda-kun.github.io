@@ -1,0 +1,21 @@
+language: ruby
+cache: bundler
+before_install:
+  - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
+  - gem install bundler -v '1.16.4'
+branches:
+  only:
+  - release
+script:
+  - JEKYLL_ENV=production bundle exec jekyll build --destination site
+deploy:
+  provider: pages
+  local-dir: ./site
+  target-branch: master
+  email: deploy@travis-ci.org
+  name: Deployment Bot
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: release

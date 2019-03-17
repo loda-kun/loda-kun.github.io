@@ -1,5 +1,15 @@
-_site
 .sass-cache
 .jekyll-metadata
 node_modules
 Gemfile.lock
+.DS_Store
+*.swp
+.sass-cache
+*~
+/PostMaker/target/
+.class
+.iml
+.idea/
+.vscode/
+.lock
+_site/

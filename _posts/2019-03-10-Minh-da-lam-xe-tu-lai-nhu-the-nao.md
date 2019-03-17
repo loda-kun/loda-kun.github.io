@@ -6,10 +6,8 @@ author: loda
 categories: [ Image Processing, Machine Learning, AI ]
 image: assets/images/loda1551603987/1.png
 description: "Cùng mình làm xe tự lái nào. Em xe này có tốc độ chạy tối đa 25 km/h"
-featured: true
-hidden: true
+tag: featured
 type: python
-rating: 5
 ---
 
 ## Đôi nét về Xe tự hành

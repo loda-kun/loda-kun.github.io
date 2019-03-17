@@ -8,7 +8,7 @@ comments: true
 <div class="row justify-content-between">
     <div class="col-md-8 pr-5">
         <div class="article-post" style="font-family: Merriweather; font-size: 1.1rem;">
-            <a target="_blank" href="{{ site.baseurl }}/en{{page.url}}" class="btn btn-secondary" style="width: 100%">
+            <a target="_blank" href="{{ site.baseurl }}/en{{page.url}}" class="btn btn-outline-secondary" style="width: 100%">
                 Click here for English version
             </a>
             <p>

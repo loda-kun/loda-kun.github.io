@@ -66,6 +66,10 @@ pre {
     color:#333;
      margin-bottom:-rem;
 }
+/* Overide color of code block */
+code{
+    color: #f05f70;
+}
 
 
 /* title post or heading in _posts*/

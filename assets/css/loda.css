@@ -102,3 +102,33 @@ h1, h2, h3, h4, h5, h6{
    text-align:center;
    border-radius:50%;
 }
+
+
+/* tracking footer */
+.item-footer {
+    position: relative;
+}
+
+.item-footer a {
+    color: gray
+}
+
+.item-footer:first-child::after {
+    content: '';
+    height: 50%;
+    width: 1px;
+    border-right: 1px solid gray;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+
+.item-footer:last-child::after {
+    content: '';
+    height: 50%;
+    width: 1px;
+    border-right: 1px solid gray;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}

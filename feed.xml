@@ -5,12 +5,208 @@
     <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Mar 2019 13:01:53 +0000</pubDate>
-    <lastBuildDate>Sun, 17 Mar 2019 13:01:53 +0000</lastBuildDate>
+    <pubDate>Mon, 18 Mar 2019 14:51:30 +0000</pubDate>
+    <lastBuildDate>Mon, 18 Mar 2019 14:51:30 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>&lt;Nâng cao/&gt; Hướng dẫn sử dụng Criteria API trong Hibernate</title>
+        <title>「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles</title>
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Profiles&lt;/code&gt; là một core feature trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Framework&lt;/code&gt;, cho phép chúng ta cấu hình ứng dụng, &lt;code class=&quot;highlighter-rouge&quot;&gt;active/deactive&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; tùy theo môi trường.&lt;/p&gt;
+
+&lt;p&gt;Một kịch bản thực tế:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Mình có 1 ứng dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Boot&lt;/code&gt; dùng để đọc báo, tuy nhiên mình phải hosting nó trên &lt;code class=&quot;highlighter-rouge&quot;&gt;AWS&lt;/code&gt;. Vấn đề lúc này là khi đang viết code ở local thì mình cần kết nối với &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt; tại máy tính của mình, khi đưa lên AWS thì cần kết nối tới &lt;code class=&quot;highlighter-rouge&quot;&gt;MySQL&lt;/code&gt; của &lt;code class=&quot;highlighter-rouge&quot;&gt;AWS&lt;/code&gt;. Ngoài ra, chưa kể mình muốn cấu hình các biến cục bộ khác cho phù hợp với môi trường như &lt;code class=&quot;highlighter-rouge&quot;&gt;log&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;redis&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;secret&lt;/code&gt;, v.v.. đặc biệt là việc một số phần trong code có thể thay đổi theo môi trường nữa.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;constants&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;phase&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ALPHA&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;spring&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;clusterUri&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;redis://abdheyj3847A@10.127.155.18:7000&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;datasource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;xxx&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;none&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jdbc:mysql://10.127.233.12:2030/news?useSSL=false&amp;amp;characterEncoding=UTF-8&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;news&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;channel-id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1510354028&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;channel-secret&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;e17c94a02293b33a32629407b32b40a5&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;official-account-mid&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;connection-timeout-secs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;20&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;rất rất nhiều config phải không :((((&lt;/p&gt;
+
+&lt;p&gt;Sớm nhận ra những khó khăn trong việc config khi xây dựng ứng dụng, nên &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; đã cho ra đời &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Profiles&lt;/code&gt; để giải quyết các vấn đề này.&lt;/p&gt;
+
+&lt;h4 id=&quot;1-tạo-file-config&quot;&gt;1. Tạo file config&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Profiles&lt;/code&gt; có sẵn trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Framework&lt;/code&gt; rồi nên bạn không cần thêm bất kì thư viện nào khác.&lt;/p&gt;
+
+&lt;p&gt;Để sử dụng, các bạn tạo file config tại thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;resources&lt;/code&gt; trong project. Mặc định &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; sẽ nhận các file có tên như sau:&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;properties&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;yml&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;yml&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// .properties&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ví dụ mình có 2 môi trường là &lt;code class=&quot;highlighter-rouge&quot;&gt;local&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;aws&lt;/code&gt;, thì mình sẽ tạo ra các file như thế này:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;yml&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;yml&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;aws&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;yml&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;common&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;yml&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;application&lt;/code&gt; là file config chính khai báo các enviroment.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;application-local&lt;/code&gt; chỉ sử dụng khi chạy chương trình ở local&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;application-aws&lt;/code&gt; chỉ sử dụng khi chạy ở AWS&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;application-common&lt;/code&gt; là những config dùng chung, môi trường nào cũng cần.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bây giờ, mình sẽ khai báo trong từng file như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;application.yml&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#application.yml&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;spring.profiles&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;local&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;spring.profiles.include&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;common, local&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;spring.profiles&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;aws&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;spring.profiles.include&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;common, aws&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;application-aws.yml&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;spring&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;datasource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;xxx&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;xxx&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jdbc:mysql://10.127.24.12:2030/news?useSSL=false&amp;amp;characterEncoding=UTF-8&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;application-local.yml&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;spring&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;datasource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;root&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jdbc:mysql://localhost:3306/news?useSSL=false&amp;amp;characterEncoding=UTF-8&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;org&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hibernate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;SQL&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;debug&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;application-common.yml&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;spring&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;jpa&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hibernate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;jdbc&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;50&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;batch_versioned_data&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;hibernate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;ddl-auto&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;none&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tadaa, xong, mình giải thích chút. bạn để ý trong file &lt;code class=&quot;highlighter-rouge&quot;&gt;application.yml&lt;/code&gt; mình có khai báo 2 môi trường là &lt;code class=&quot;highlighter-rouge&quot;&gt;local&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;aws&lt;/code&gt;. Tại mỗi môi trường sẽ &lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt; (bao gồm) các file config như kia. Khi mình kích hoạt &lt;code class=&quot;highlighter-rouge&quot;&gt;aws&lt;/code&gt; chẳng hạn, &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; sẽ load tất cả config có trong &lt;code class=&quot;highlighter-rouge&quot;&gt;application-common.yml&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;application-aws.yml&lt;/code&gt;. Rất tiện phải không :3&lt;/p&gt;
+
+&lt;h4 id=&quot;2-kích-hoạt-config&quot;&gt;2. Kích hoạt config&lt;/h4&gt;
+
+&lt;p&gt;Để sử dụng một &lt;code class=&quot;highlighter-rouge&quot;&gt;Profiles&lt;/code&gt; bạn có các cách sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1: Sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;spring.profiles.active&lt;/code&gt; trong file &lt;code class=&quot;highlighter-rouge&quot;&gt;application.properties&lt;/code&gt; hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;application.yml&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;spring.profiles.active=aws&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;#2: Active trong code, trước khi chạy chương trình.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ApplicationInitializer&lt;/span&gt; 
+  &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebApplicationInitializer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+ 
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onStartup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ServletContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;servletContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServletException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;servletContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setInitParameter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&quot;spring.profiles.active&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aws&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;hoặc&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConfigurableEnvironment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setActiveProfiles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aws&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;hoặc&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpringBootProfilesApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ConfigurableEnvironment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StandardEnvironment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setActiveProfiles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aws&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setEnvironment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Mình không khuyến khích cả 3 cách này ==!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#3: Sử dụng JVM System Parameter (nên dùng)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dspring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;profiles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;aws&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;#4: Environment Variable (Unix) (nên dùng)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SPRING_PROFILES_ACTIVE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;aws
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nếu ai sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij IDEA&lt;/code&gt; thì có thể config ngay trong IDE như thế này, mỗi lần chạy nó tự active cho mình.
+&lt;img src=&quot;/assets/images/loda1552901817707/2.jpg&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;3-cách-sử-dụng-profile&quot;&gt;3. Cách sử dụng @Profile&lt;/h4&gt;
+
+&lt;p&gt;Khi đã có &lt;code class=&quot;highlighter-rouge&quot;&gt;Profile&lt;/code&gt; rồi, ngoài các biến toàn cục được thay đổi theo môi trường, bạn cũng có thể toàn quyền quyết định xem trong &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; rằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; hay &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; nào sẽ được quyền chạy ở môi trường nào. Bằng cách sử dụng annotation &lt;code class=&quot;highlighter-rouge&quot;&gt;@Profile&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Bean này Spring chỉ khởi tạo và quản lý khi môi trường là `local`&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;local&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LocalDatasourceConfig&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Ngoài ra bạn có thể sử dụng toàn tử logic ở đây, ví dụ:&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Bean này Spring chỉ khởi tạo và quản lý khi môi trường là những môi trường không phải là `local`&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;!local&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LocalDatasourceConfig&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Okiee lahhh, thế là mình đã giới thiệu xong với các bạn &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Profiles&lt;/code&gt;, Đây là một tính năng cực kì cực kì hữu ích, hi vọng các bạn hiểu và nắm được kiến thức, áp dụng vào sản phẩm của chính mình. Chúc các bạn thành công!&lt;/p&gt;
+
+&lt;p&gt;Đứng quên like và chia sẻ cho bạn bè cùng biết nhé, ahihi :3&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Huong-dan-su-dung-Spring-Profiles/</link>
+        <guid isPermaLink="true">/Huong-dan-su-dung-Spring-Profiles/</guid>
+        
+        
+        <category>spring-boot</category>
+        
+        <category>spring</category>
+        
+        <category>spring profiles</category>
+        
+        <category>java</category>
+        
+      </item>
+    
+      <item>
+        <title>「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate</title>
         <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;JPA Criteria API&lt;/code&gt; cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; (JPQL) như thế này:&lt;/p&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;
@@ -113,7 +309,7 @@
       </item>
     
       <item>
-        <title>Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%</title>
+        <title>「General」Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%</title>
         <description>&lt;h4 id=&quot;lombok&quot;&gt;Lombok?&lt;/h4&gt;
 
 &lt;p&gt;&lt;strong&gt;Lombok&lt;/strong&gt; là một thư viện, một plugin, giúp chúng ta giảm thiểu các đoạn code thừa (boilerplate) bằng cách tự động sinh ra các hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;Get&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Set&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Constructor&lt;/code&gt;, v.v..&lt;/p&gt;
@@ -900,170 +1096,6 @@ public class Champion {
         <category>deep learning</category>
         
         <category>neural network</category>
-        
-      </item>
-    
-      <item>
-        <title>Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)</title>
-        <description>&lt;p&gt;Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát triển của trí tuệ nhân tạo nói chung và xử lý ảnh nói riêng.&lt;/p&gt;
-
-&lt;h4 id=&quot;sơ-lược&quot;&gt;Sơ lược&lt;/h4&gt;
-
-&lt;p&gt;Một trong các ứng dụng quan trọng của mạng nơ-ron tích chập đó là cho phép các máy tính có khả năng “nhìn” và “phân tích”. Nó được lấy cảm hứng từ vỏ não thị giác. Nôm na là Convnets (Convolutional Neural Networks) được sử dụng để nhận dạng hình ảnh bằng cách đưa nó qua mạng nơ-ron với nhiều layer, mỗi layer là các bộ lọc tích chập. Sau khi đi qua các layer này chúng ta có được đặc trưng và dùng nó nhận dạng ra đối tượng.&lt;/p&gt;
-
-&lt;p&gt;Mỗi khi chúng ta nhìn thấy một cái gì đó, một loạt các lớp tế bào thần kinh được kích hoạt, và mỗi lớp thần kinh sẽ phát hiện một tập hợp các đặc trưng như đường thẳng, cạnh, màu sắc,v.v.v của đối tượng. lớp thần kinh càng cao sẽ phát hiện các đặc trưng phức tạp hơn để nhận ra những gì chúng ta đã thấy.&lt;/p&gt;
-
-&lt;p&gt;Bài viết này sẽ trình bày một cách ngắn gọn về cấu tạo của Mạng nơ-ron tích chập, nói là ngắn gọn nhưng không hề ngắn ngọn chút nào… (?? :D ??) ý mình mình sẽ viết một cách đơn gián nhất để cho những bạn chỉ mới biết căn bản của học máy hay chưa từng biết gì về xử lý ảnh cũng có thể nắm bắt được tư tưởng của mạng tích chập. Chi tiết hơn cho mỗi phần mình sẽ viết cụ thể ở các bài sau.&lt;/p&gt;
-
-&lt;p&gt;ConvNet có 02 phần chính: &lt;code class=&quot;highlighter-rouge&quot;&gt;Lớp trích lọc đặc trưng của ảnh (Conv, Relu và Pool)&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;Lớp phân loại (FC và softmax)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551717776514/2.jpg&quot; alt=&quot;Convolutional Neural Networks&quot; /&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;đầu-vào-dữ-liệu-training&quot;&gt;Đầu vào (dữ liệu training):&lt;/h4&gt;
-
-&lt;p&gt;Đầu vào của Convnets là một bức ảnh được biểu diển bởi ma trận pixel với kích thước: &lt;code class=&quot;highlighter-rouge&quot;&gt;[w x h x d]&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;W&lt;/code&gt;: chiều rộng&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;H&lt;/code&gt;: chiều cao&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;D&lt;/code&gt;: Là độ sâu, hay dễ hiểu là số lớp màu của ảnh. Ví dụ ảnh RBG sẽ là 3 lớp ảnh Red, Green, Blue&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551717776514/3.png&quot; alt=&quot;Convolutional Neural Networks&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Ví dụ về khái niệm channel (kênh màu) của ảnh RBG và ảnh xám&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;conv-layer&quot;&gt;Conv Layer:&lt;/h4&gt;
-
-&lt;p&gt;Trước khi nói vào lớp conv layer, chúng ta cần biết phép tích chập là cái gì đã :v. Rất dễ thôi, bạn nhìn ảnh này:&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551717776514/5.jpg&quot; alt=&quot;Convolutional Neural Networks&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Chúng ta có một ma trận là &lt;code class=&quot;highlighter-rouge&quot;&gt;Kernel&lt;/code&gt;, khi chiếu nó lên 1 vùng của bức ảnh. Mấy từng phần tử tương ứng của ảnh, nhân nó với phần tử tương ứng của &lt;code class=&quot;highlighter-rouge&quot;&gt;Kernel&lt;/code&gt;. Sau đó lấy tổng. Ta-daaaa.&lt;/p&gt;
-
-&lt;p&gt;Mục tiêu của các lớp tích chập là trích chọn các đặc trưng của ảnh đầu vào.&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551717776514/4.gif&quot; alt=&quot;Convolutional Neural Networks&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Ví dụ của Conv layer. (Nguồn : CS231n notes.)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Thực chất, ở các layer đầu tiên, phép tích chập đơn giản là phép tìm biên ảnh, nếu các bạn có kiến thức cơ bản về xử lý ảnh. Còn nếu không thì bạn có thể hiểu đơn giản như này, sau khi cho qua bộ lọc thì (với 9 điểm ảnh chẳng hạn), nó sẽ lấy ra 1 diểm nổi bật nhất, làm hiện lên các đặc trưng của đối tượng trong ảnh như đường viền xung quanh đối tượng, các góc cạnh,v.v.., và các layer tiếp theo sẽ lại trích xuất tiếp các đặc trưng của đặc trưng của các đối tượng đó, việc có nhiều layer như vậy cho phép chúng ta chia nhỏ đặc trưng của ảnh tới mức nhỏ nhất có thể. Vì thế mới gọi là mạng đặc trưng.&lt;/p&gt;
-
-&lt;h4 id=&quot;dưới-đây-là-một-số-các-khái-niệm-cơ-bản-của-phần-này&quot;&gt;Dưới đây là một số các khái niệm cơ bản của phần này:&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Filter&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Kernel&lt;/code&gt; hay &lt;code class=&quot;highlighter-rouge&quot;&gt;Feature Detector&lt;/code&gt; đều là cách gọi của ma trận tích chập &lt;code class=&quot;highlighter-rouge&quot;&gt;filter matrix&lt;/code&gt; (như mình đã đề cập ở trên), ma trận này là 1 ma trận hệ số, và quét toàn bộ bức ảnh, mỗi lần quét thì tính tích chập trên vùng bị quét. Thông thường, ở các lớp đầu tiên của ma trận này sẽ có kích thước là &lt;code class=&quot;highlighter-rouge&quot;&gt;[5x5x3]&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Convolved Feature&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Activation Map&lt;/code&gt; hay &lt;code class=&quot;highlighter-rouge&quot;&gt;Feature Map&lt;/code&gt; là đầu ra của ảnh khi cho bộ lọc chạy hết bức ảnh với phép tích chập.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Receptive field&lt;/code&gt; là vùng ảnh được chọn để tính tích chập, hay bằng đúng cái kích thước của bộ lọc.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Depth&lt;/code&gt; là số lượng bộ lọc. Lưu ý:  ở đây là số lượng bộ lọc (filter) chứ không phải số lượng kênh màu RBG như ở trên.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Stride&lt;/code&gt; được hiểu là khoảng cách dịch chuyển của bộ lọc sau mỗi lần tính. Ví dụ khi &lt;code class=&quot;highlighter-rouge&quot;&gt;stride=2&lt;/code&gt;. Tức sau khi tính xong tại 1 vùng ảnh, nó sẽ dịch sang phải 2 pixel. Tương tự với việc dịch xuống dưới&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Zero-Padding&lt;/code&gt; là việc thêm các giá trị 0 ở xung quanh biên ảnh, để đảm bảo phép tích chập được thực hiện đủ trên toàn ảnh.&lt;/p&gt;
-
-&lt;h4 id=&quot;vậy-kích-thước-đầu-ra-của-ảnh-với-mỗi-layer-được-tính-như-thế-nào&quot;&gt;Vậy kích thước đầu ra của ảnh với mỗi layer được tính như thế nào?&lt;/h4&gt;
-
-&lt;p&gt;Giả sử ảnh đầu ra là &lt;code class=&quot;highlighter-rouge&quot;&gt;[W2 x H2 x D2]&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Thì:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;W2 = (W1 – F + 2P) / S + 1&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;H2 = (H1 – F +2P) / S + 1&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;D2 = K&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Trong đó:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[W1xH1xD1]&lt;/code&gt;: Kích thước ảnh đầu vào&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;F&lt;/code&gt;: Kích thước của bộ lọc &lt;code class=&quot;highlighter-rouge&quot;&gt;Kernel&lt;/code&gt; (NxN)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;S&lt;/code&gt;: giá trị &lt;code class=&quot;highlighter-rouge&quot;&gt;Stride&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;P&lt;/code&gt;: số lượng zero-padding thêm vào viền ảnh&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;K&lt;/code&gt;: Số lượng bộ lọc (&lt;code class=&quot;highlighter-rouge&quot;&gt;Depth&lt;/code&gt;)&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ví dụ:&lt;/p&gt;
-
-&lt;p&gt;Kích thước đầu ra của lớp đầu tiên trong kiến trúc Deep Convolutional Neural Networks đã từng chiến thắng ImageNet Chanllenge 2012 là:&lt;/p&gt;
-
-&lt;p&gt;Đầu vào: &lt;code class=&quot;highlighter-rouge&quot;&gt;[227x227x3]&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;W=227&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;F=11&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;S=4&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;P=0&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;K=96&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Đầu ra:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;227&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Vậy kích thước đầu ra của layer đầu tiên là &lt;code class=&quot;highlighter-rouge&quot;&gt;[55x55x96].&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;relu-layer&quot;&gt;ReLU Layer:&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ReLU Layer&lt;/code&gt; áp dụng các hàm kích hoạt (&lt;code class=&quot;highlighter-rouge&quot;&gt;activation function&lt;/code&gt;) &lt;code class=&quot;highlighter-rouge&quot;&gt;max(0,x)&lt;/code&gt; lên đầu ra của &lt;code class=&quot;highlighter-rouge&quot;&gt;Conv Layer&lt;/code&gt;, có tác dụng đưa các giá trị âm về thành 0. Layer này không thay đổi kích thước của ảnh và không có thêm bất kì tham số nào.&lt;/p&gt;
-
-&lt;p&gt;Mục đích của lớp ReLu là đưa ảnh một mức ngưỡng, ở đây là 0. Để loại bỏ các giá trị âm không cần thiết mà có thể sẽ ảnh hưởng cho việc tính toán ở các layer sau đó.&lt;/p&gt;
-
-&lt;h4 id=&quot;pool-layer&quot;&gt;Pool Layer:&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Pool Layer&lt;/code&gt; thực hiện chức năng làm giảm chiều không gian của đầu vào và giảm độ phức tạp tính toán của model. Ngoài ra, &lt;code class=&quot;highlighter-rouge&quot;&gt;Pool Layer&lt;/code&gt; còn giúp kiểm soát hiện tượng &lt;code class=&quot;highlighter-rouge&quot;&gt;overffiting&lt;/code&gt;. Thông thường, &lt;code class=&quot;highlighter-rouge&quot;&gt;Pool layer&lt;/code&gt; có nhiều hình thức khác nhau phù hợp cho nhiều bài toán, tuy nhiên &lt;code class=&quot;highlighter-rouge&quot;&gt;Max Pooling&lt;/code&gt; là được sử dụng nhiều và phổ biến hơn cả, với ý tưởng cũng rất sát với thực tế: &lt;em&gt;“Giữ lại chi tiết quan trọng”&lt;/em&gt; hay hiểu ở trong bài toán này chính giữ lại pixel có giá trị lớn nhất.&lt;/p&gt;
-
-&lt;p&gt;Ví dụ: &lt;code class=&quot;highlighter-rouge&quot;&gt;Max pooling&lt;/code&gt; với bộ lọc &lt;code class=&quot;highlighter-rouge&quot;&gt;2x2&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;stride = 2&lt;/code&gt;. Bộ lọc sẽ chạy dọc ảnh. Và với mỗi vùng ảnh được chọn, sẽ chọn ra 1 giá trị lớn nhất và giữ lại.&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551717776514/6.png&quot; alt=&quot;Convolutional Neural Networks&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Max pooling kernel 2x2, stride = 2. Nguồn: Wikipedia&lt;/p&gt;
-
-&lt;p&gt;Thông thường max pooling có kích thước là &lt;code class=&quot;highlighter-rouge&quot;&gt;2x2&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;stride=2&lt;/code&gt;. Nếu lấy giá trị quá lớn, thay vì giúp đỡ thì nó lại làm phá vỡ cấu trúc ảnh và mất mát thông tin nghiêm trọng (==!). Vì vậy mà một số chuyên gia không thích sử dụng layer này mà thay vào đó sử dụng thêm các lớp Conv Layer và tăng số stride lên mỗi lần.&lt;/p&gt;
-
-&lt;h4 id=&quot;fully_connected-layer-fc&quot;&gt;Fully_Connected Layer (FC):&lt;/h4&gt;
-
-&lt;p&gt;Tên tiếng việt là &lt;code class=&quot;highlighter-rouge&quot;&gt;Mạng liên kết đầy đủ&lt;/code&gt;. Tại lớp mạng này, mỗi một nơ-ron của layer này sẽ liên kết tới mọi nơ-ron của lớp khác. Để đưa ảnh từ các layer trước vào mạng này, buộc phải dàn phẳng bức ảnh ra thành 1 vector thay vì là mảng nhiều chiều như trước. Tại layer cuối cùng sẽ sử dụng 1 hàm kinh điển trong học máy mà bất kì ai cũng từng sử dụng đó là &lt;code class=&quot;highlighter-rouge&quot;&gt;softmax&lt;/code&gt; để phân loại đối tượng dựa vào vector đặc trưng đã được tính toán của các lớp trước đó.&lt;/p&gt;
-
-&lt;p&gt;Trên đây là tóm tắt kiến trúc cơ bản của một mạng tích chập, trên thực tế sẽ có nhiều kiến trúc phức tạp hơn rất nhiều với độ chính xác gần bằng con người. Mình sẽ viết các bài tiếp theo kĩ hơn vào từng phần và giới thiệu cho các bạn các kiến trúc mới.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/Chia-se-ve-Mang-no-ron-tich-chap-(Convolutional-Neural-Networks-or-ConvNEts)/</link>
-        <guid isPermaLink="true">/Chia-se-ve-Mang-no-ron-tich-chap-(Convolutional-Neural-Networks-or-ConvNEts)/</guid>
-        
-        
-        <category>Machine Learning</category>
-        
-        <category>image processing</category>
-        
-        <category>deep learning</category>
-        
-        <category>neural network</category>
-        
-        <category>CNN</category>
-        
-        <category>Convolutional</category>
         
       </item>
     

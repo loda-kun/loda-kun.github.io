@@ -15,18 +15,22 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <title>Contact | Loda</title>
+    <title>「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles | Loda</title>
 
     <!-- Begin Jekyll SEO tag v2.6.0 -->
-<title>Contact | Loda</title>
+<title>「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles | Loda</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Contact" />
+<meta property="og:title" content="「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles" />
+<meta name="author" content="loda" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất." />
-<meta property="og:description" content="Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất." />
+<meta name="description" content="Hướng dẫn sử dụng Spring Profiles quản lý cấu hình ứng dụng trên các môi trường khác nhau" />
+<meta property="og:description" content="Hướng dẫn sử dụng Spring Profiles quản lý cấu hình ứng dụng trên các môi trường khác nhau" />
 <meta property="og:site_name" content="Loda" />
+<meta property="og:image" content="/assets/images/loda1552901817707/1.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-18T00:00:00+00:00" />
 <script type="application/ld+json">
-{"description":"Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.","@type":"WebPage","url":"/contact.html","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"}},"headline":"Contact","@context":"https://schema.org"}</script>
+{"description":"Hướng dẫn sử dụng Spring Profiles quản lý cấu hình ứng dụng trên các môi trường khác nhau","author":{"@type":"Person","name":"loda"},"@type":"BlogPosting","url":"/Huong-dan-su-dung-Spring-Profiles/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/images/logo.png"},"name":"loda"},"image":"/assets/images/loda1552901817707/1.jpg","headline":"「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles","dateModified":"2019-03-18T00:00:00+00:00","datePublished":"2019-03-18T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/Huong-dan-su-dung-Spring-Profiles/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -209,17 +213,17 @@ var documents = [{
     "id": 2,
     "url": "/author-jane.html",
     "title": "Jane",
-    "body": "                        Jane Follow:                                                    Posts by Jane:               "
+    "body": "                        {{page. title}} Follow:         {{ site. authors. jane. site }}         {{ site. authors. jane. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , jane  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
     }, {
     "id": 3,
     "url": "/author-sal.html",
     "title": "Sal",
-    "body": "                        Sal Follow:                                                    Posts by Sal:               "
+    "body": "                        {{page. title}} Follow:         {{ site. authors. sal. site }}         {{ site. authors. sal. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , sal  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
     }, {
     "id": 4,
     "url": "/authors-list.html",
     "title": "Authors",
-    "body": "Authors:                                             loda :       (View Posts)      Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối. . . Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.                           &nbsp;       &nbsp;                                      "
+    "body": "{{page. title}}:     {% for author in site. authors %}                                         {{ author[1]. name }} :       (View Posts)      {{ author[1]. bio }}                          &nbsp;       &nbsp;                                    {% endfor %}  "
     }, {
     "id": 5,
     "url": "/buy-me-a-coffee.html",
@@ -229,12 +233,12 @@ var documents = [{
     "id": 6,
     "url": "/categories.html",
     "title": "Categories",
-    "body": "          Categories               Virtual Assistant:                                  		Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019	: 		  Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple . . . 	 			In 				Virtual Assistant, 				Machine Learning, 				AI, 								Mar 03, 2019						                              Machine Learning:                                  		Mình đã làm xe tự lái như thế nào?	: 		  Đôi nét về Xe tự hành	 			In 				Image Processing, 				Machine Learning, 				AI, 								Mar 10, 2019						                                 		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)	: 		  Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại:	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)	: 		  Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%)	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới	: 		  Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?	: 		  Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                                 		Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019	: 		  Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple . . . 	 			In 				Virtual Assistant, 				Machine Learning, 				AI, 								Mar 03, 2019						                              AI:                                  		Mình đã làm xe tự lái như thế nào?	: 		  Đôi nét về Xe tự hành	 			In 				Image Processing, 				Machine Learning, 				AI, 								Mar 10, 2019						                                 		Trợ lý ảo vẫn sẽ là xu hướng công nghệ 2019	: 		  Những năm gần đây, Trợ lý ảo đã dần trở thành xu hướng công nghệ được đón đầu. Các “ông lớn” làng công nghệ thế giới đã cho ra đời các trợ lý ảo, được nhiều người biết đến như: Apple . . . 	 			In 				Virtual Assistant, 				Machine Learning, 				AI, 								Mar 03, 2019						                              image processing:                                  		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              deep learning:                                  		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)	: 		  Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại:	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)	: 		  Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%)	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới	: 		  Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?	: 		  Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              neural network:                                  		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)	: 		  Chúng ta tiếp tục đi tìm hiểu xem, ở ngoài kia, trên thế giới, họ đang sử dụng Machine learning vào những sản phẩm tuyệt vời gì nhé. Nếu ai chưa xem phần 1 có thể xem tại:	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)	: 		  Trong năm vừa qua, Mybridge AI đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0. 3%)	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới	: 		  Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ Trí tuệ nhân tạo (AI) đạt được rất nhiều thành tựu nổi bật. 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?	: 		  Trong những năm qua, lĩnh vực Trí tuệ Nhân tạo nói chung và Machine Learning nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của Deep Learning. Tuy. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 								Mar 07, 2019						                                 		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              CNN:                                  		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              Convolutional:                                  		Chia sẻ về Mạng nơ-ron tích chập (Convolutional Neural Networks or ConvNEts)	: 		  Với sự phát triển phần cứng mạnh mẽ cho phép tính toán song song hàng tỉ phép tính, tạo tiền đề cho Mạng nơ-ron tích chập trở nên phổ biến và đóng vai trò quan trọng trong sự phát tri. . . 	 			In 				Machine Learning, 				image processing, 				deep learning, 				neural network, 				CNN, 				Convolutional, 								Mar 04, 2019						                              Python:                                  		Hướng dẫn chi tiết tự xây dựng một mạng neural với Python	: 		  Google đã xây dựng tensorflow như một công cụ để xây dựng các mô hình deep learning một các đơn giản và tối ưu chỉ với vài dòng code. Tuy nhiên, nếu chỉ sử dụng các API này thì thật k. . . 	 			In 				Machine Learning, 				deep learning, 				neural network, 				Python, 								Mar 07, 2019						                              Image Processing:                                  		Mình đã làm xe tự lái như thế nào?	: 		  Đôi nét về Xe tự hành	 			In 				Image Processing, 				Machine Learning, 				AI, 								Mar 10, 2019						                              ruby:                                  		ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh	: 		  Nhìn hình thì các bạn cũng biết phải làm gì rồi chứ :))) Bưng, nửa số files trong máy bạn biến mất. 	 			In 				ruby, 				thanosjs, 								Mar 11, 2019						                              thanosjs:                                  		ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh	: 		  Nhìn hình thì các bạn cũng biết phải làm gì rồi chứ :))) Bưng, nửa số files trong máy bạn biến mất. 	 			In 				ruby, 				thanosjs, 								Mar 11, 2019						                              Java:                                  		「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate	: 		  JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong String (JPQL) như thế này:	 			In 				Java, 				Hibernate, 				JPA, 				Criteria, 								Mar 17, 2019						                                 		「General」Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%	: 		  Lombok?	 			In 				Java, 				Lombok, 				Advanced, 								Mar 17, 2019						                              Lombok:                                  		「General」Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%	: 		  Lombok?	 			In 				Java, 				Lombok, 				Advanced, 								Mar 17, 2019						                              Advanced:                                  		「General」Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%	: 		  Lombok?	 			In 				Java, 				Lombok, 				Advanced, 								Mar 17, 2019						                              Hibernate:                                  		「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate	: 		  JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong String (JPQL) như thế này:	 			In 				Java, 				Hibernate, 				JPA, 				Criteria, 								Mar 17, 2019						                              JPA:                                  		「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate	: 		  JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong String (JPQL) như thế này:	 			In 				Java, 				Hibernate, 				JPA, 				Criteria, 								Mar 17, 2019						                              Criteria:                                  		「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate	: 		  JPA Criteria API cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong String (JPQL) như thế này:	 			In 				Java, 				Hibernate, 				JPA, 				Criteria, 								Mar 17, 2019						                              spring-boot:                                  		「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles	: 		  Spring Profiles là một core feature trong Spring Framework, cho phép chúng ta cấu hình ứng dụng, active/deactive Bean tùy theo môi trường. 	 			In 				spring-boot, 				spring, 				spring profiles, 				java, 								Mar 18, 2019						                              spring:                                  		「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles	: 		  Spring Profiles là một core feature trong Spring Framework, cho phép chúng ta cấu hình ứng dụng, active/deactive Bean tùy theo môi trường. 	 			In 				spring-boot, 				spring, 				spring profiles, 				java, 								Mar 18, 2019						                              spring profiles:                                  		「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles	: 		  Spring Profiles là một core feature trong Spring Framework, cho phép chúng ta cấu hình ứng dụng, active/deactive Bean tùy theo môi trường. 	 			In 				spring-boot, 				spring, 				spring profiles, 				java, 								Mar 18, 2019						                              java:                                  		「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles	: 		  Spring Profiles là một core feature trong Spring Framework, cho phép chúng ta cấu hình ứng dụng, active/deactive Bean tùy theo môi trường. 	 			In 				spring-boot, 				spring, 				spring profiles, 				java, 								Mar 18, 2019						                                             Featured:    				                                          「General」Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%                          In                     Java,                     Lombok,                     Advanced,                                                                                           ThanosJS - làm biến mất 1 nửa DỮ LIỆU PC với 1 dòng lệnh                          In                     ruby,                     thanosjs,                                                                                           Mình đã làm xe tự lái như thế nào?                          In                     Image Processing,                     Machine Learning,                     AI,                                                                                           Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)                          In                     Machine Learning,                     deep learning,                     neural network,                                                                   "
+    "body": "          Categories          {% for category in site. categories %}     {{ category[0] }}:           {% assign pages_list = category[1] %}    {% for post in pages_list %}    {% if post. title != null %}     {% if group == null or group == post. group %}           {% include main-loop-card. html %}     {% endif %}    {% endif %}    {% endfor %}    {% assign pages_list = nil %}    {% assign group = nil %}    {% endfor %}                  {% include sidebar-featured. html %}          "
     }, {
     "id": 7,
     "url": "/contact.html",
     "title": "Contact",
-    "body": "   Please send your message to Loda. We will reply as soon as  possible!                    "
+    "body": "   Please send your message to {{ site. name }}. We will reply as soon as  possible!                    "
     }, {
     "id": 8,
     "url": "/en/jetbrains",
@@ -417,30 +421,355 @@ function lunr_search(term) {
 
     <!-- Content -->
     <main role="main" class="site-content">
-        <div class="container">
-<h3 class="font-weight-bold spanborder"><span>Contact</span></h3>
-<div class="page-content">
-<form action="https://formspree.io/loda.namnh@gmail.com" method="POST">
-  <p class="mb-4">
-    Please send your message to Loda. We will reply as soon as
-    possible!
-  </p>
-  <div class="form-group row">
-    <div class="col-md-6">
-      <input class="form-control" type="text" name="name" placeholder="Name*" required="" />
-    </div>
-    <div class="col-md-6">
-      <input class="form-control" type="email" name="_replyto" placeholder="E-mail Address*" required="" />
-    </div>
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#spring-boot">spring-boot</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#spring">spring</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#spring profiles">spring profiles</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/categories.html#java">java</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles</h1>
+					<div class="d-flex align-items-center">
+                        
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="70"/>
+                        
+						<small class="ml-3"> loda <span><a target="_blank" href="https://www.facebook.com/loda.fanpage" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 18, 2019 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+    </span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/loda1552901817707/1.jpg" alt="「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles&url=https://loda.me/Huong-dan-su-dung-Spring-Profiles/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https://loda.me/Huong-dan-su-dung-Spring-Profiles/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://plus.google.com/share?url=https://loda.me/Huong-dan-su-dung-Spring-Profiles/" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <i class="fab fa-google"></i>
+        </a>
+        </li>
+        
+    </ul>
+    
+    <div class="sep">
+    </div>				
+    <ul>
+        <li> 
+        <a  class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p><code class="highlighter-rouge">Spring Profiles</code> là một core feature trong <code class="highlighter-rouge">Spring Framework</code>, cho phép chúng ta cấu hình ứng dụng, <code class="highlighter-rouge">active/deactive</code> <code class="highlighter-rouge">Bean</code> tùy theo môi trường.</p>
+
+<p>Một kịch bản thực tế:</p>
+
+<blockquote>
+  <p>Mình có 1 ứng dụng <code class="highlighter-rouge">Spring Boot</code> dùng để đọc báo, tuy nhiên mình phải hosting nó trên <code class="highlighter-rouge">AWS</code>. Vấn đề lúc này là khi đang viết code ở local thì mình cần kết nối với <code class="highlighter-rouge">MySQL</code> tại máy tính của mình, khi đưa lên AWS thì cần kết nối tới <code class="highlighter-rouge">MySQL</code> của <code class="highlighter-rouge">AWS</code>. Ngoài ra, chưa kể mình muốn cấu hình các biến cục bộ khác cho phù hợp với môi trường như <code class="highlighter-rouge">log</code>, <code class="highlighter-rouge">redis</code>, <code class="highlighter-rouge">secret</code>, v.v.. đặc biệt là việc một số phần trong code có thể thay đổi theo môi trường nữa.</p>
+</blockquote>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">constants</span><span class="pi">:</span>
+  <span class="na">service</span><span class="pi">:</span>
+    <span class="na">phase</span><span class="pi">:</span> <span class="s">ALPHA</span>
+    <span class="na">debug</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="na">spring</span><span class="pi">:</span>
+  <span class="na">redis</span><span class="pi">:</span>
+    <span class="na">clusterUri</span><span class="pi">:</span> <span class="s">redis://abdheyj3847A@10.127.155.18:7000</span>
+  <span class="na">datasource</span><span class="pi">:</span>
+    <span class="na">username</span><span class="pi">:</span> <span class="s">xxx</span>
+    <span class="na">password</span><span class="pi">:</span> <span class="s">none</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">jdbc:mysql://10.127.233.12:2030/news?useSSL=false&amp;characterEncoding=UTF-8</span>
+
+<span class="na">news</span><span class="pi">:</span>
+  <span class="na">api</span><span class="pi">:</span>
+    <span class="na">channel-id</span><span class="pi">:</span> <span class="s">1510354028</span>
+    <span class="na">channel-secret</span><span class="pi">:</span> <span class="s">e17c94a02293b33a32629407b32b40a5</span>
+    <span class="na">official-account-mid</span><span class="pi">:</span>
+    <span class="na">connection-timeout-secs</span><span class="pi">:</span> <span class="s">20</span>
+    <span class="s">.</span>
+    <span class="s">.</span>
+    <span class="s">..</span>
+</code></pre></div></div>
+
+<p>rất rất nhiều config phải không :((((</p>
+
+<p>Sớm nhận ra những khó khăn trong việc config khi xây dựng ứng dụng, nên <code class="highlighter-rouge">Spring</code> đã cho ra đời <code class="highlighter-rouge">Spring Profiles</code> để giải quyết các vấn đề này.</p>
+
+<h4 id="1-tạo-file-config">1. Tạo file config</h4>
+<p><code class="highlighter-rouge">Spring Profiles</code> có sẵn trong <code class="highlighter-rouge">Framework</code> rồi nên bạn không cần thêm bất kì thư viện nào khác.</p>
+
+<p>Để sử dụng, các bạn tạo file config tại thư mục <code class="highlighter-rouge">resources</code> trong project. Mặc định <code class="highlighter-rouge">Spring</code> sẽ nhận các file có tên như sau:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">application</span><span class="o">.</span><span class="na">properties</span>
+<span class="n">application</span><span class="o">.</span><span class="na">yml</span>
+<span class="n">application</span><span class="o">-{</span><span class="n">profile</span><span class="o">-</span><span class="n">name</span><span class="o">}.</span><span class="na">yml</span> <span class="c1">// .properties</span>
+</code></pre></div></div>
+
+<p>ví dụ mình có 2 môi trường là <code class="highlighter-rouge">local</code> và <code class="highlighter-rouge">aws</code>, thì mình sẽ tạo ra các file như thế này:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">application</span><span class="o">.</span><span class="na">yml</span>
+<span class="n">application</span><span class="o">-</span><span class="n">local</span><span class="o">.</span><span class="na">yml</span>
+<span class="n">application</span><span class="o">-</span><span class="n">aws</span><span class="o">.</span><span class="na">yml</span>
+<span class="n">application</span><span class="o">-</span><span class="n">common</span><span class="o">.</span><span class="na">yml</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">application</code> là file config chính khai báo các enviroment.</li>
+  <li><code class="highlighter-rouge">application-local</code> chỉ sử dụng khi chạy chương trình ở local</li>
+  <li><code class="highlighter-rouge">application-aws</code> chỉ sử dụng khi chạy ở AWS</li>
+  <li><code class="highlighter-rouge">application-common</code> là những config dùng chung, môi trường nào cũng cần.</li>
+</ul>
+
+<p>Bây giờ, mình sẽ khai báo trong từng file như sau:</p>
+
+<p><em>application.yml</em></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#application.yml</span>
+<span class="nn">---</span>
+<span class="s">spring.profiles</span><span class="pi">:</span> <span class="s">local</span>
+<span class="s">spring.profiles.include</span><span class="pi">:</span> <span class="s">common, local</span>
+<span class="nn">---</span>
+<span class="s">spring.profiles</span><span class="pi">:</span> <span class="s">aws</span>
+<span class="s">spring.profiles.include</span><span class="pi">:</span> <span class="s">common, aws</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p><em>application-aws.yml</em></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">spring</span><span class="pi">:</span>
+  <span class="na">datasource</span><span class="pi">:</span>
+    <span class="na">username</span><span class="pi">:</span> <span class="s">xxx</span>
+    <span class="na">password</span><span class="pi">:</span> <span class="s">xxx</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">jdbc:mysql://10.127.24.12:2030/news?useSSL=false&amp;characterEncoding=UTF-8</span>
+</code></pre></div></div>
+
+<p><em>application-local.yml</em></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">spring</span><span class="pi">:</span>
+  <span class="na">datasource</span><span class="pi">:</span>
+    <span class="na">username</span><span class="pi">:</span> <span class="s">root</span>
+    <span class="na">password</span><span class="pi">:</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">jdbc:mysql://localhost:3306/news?useSSL=false&amp;characterEncoding=UTF-8</span>
+
+<span class="na">logging</span><span class="pi">:</span>
+  <span class="na">level</span><span class="pi">:</span>
+    <span class="na">org</span><span class="pi">:</span>
+      <span class="na">hibernate</span><span class="pi">:</span>
+        <span class="na">SQL</span><span class="pi">:</span> <span class="s">debug</span>
+</code></pre></div></div>
+
+<p><em>application-common.yml</em></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">spring</span><span class="pi">:</span>
+  <span class="na">jpa</span><span class="pi">:</span>
+    <span class="na">properties</span><span class="pi">:</span>
+      <span class="na">hibernate</span><span class="pi">:</span>
+        <span class="na">jdbc</span><span class="pi">:</span>
+          <span class="na">batch_size</span><span class="pi">:</span> <span class="s">50</span>
+          <span class="na">batch_versioned_data</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">hibernate</span><span class="pi">:</span>
+      <span class="na">ddl-auto</span><span class="pi">:</span> <span class="s">none</span>
+</code></pre></div></div>
+
+<p>Tadaa, xong, mình giải thích chút. bạn để ý trong file <code class="highlighter-rouge">application.yml</code> mình có khai báo 2 môi trường là <code class="highlighter-rouge">local</code> và <code class="highlighter-rouge">aws</code>. Tại mỗi môi trường sẽ <code class="highlighter-rouge">include</code> (bao gồm) các file config như kia. Khi mình kích hoạt <code class="highlighter-rouge">aws</code> chẳng hạn, <code class="highlighter-rouge">Spring</code> sẽ load tất cả config có trong <code class="highlighter-rouge">application-common.yml</code> và <code class="highlighter-rouge">application-aws.yml</code>. Rất tiện phải không :3</p>
+
+<h4 id="2-kích-hoạt-config">2. Kích hoạt config</h4>
+
+<p>Để sử dụng một <code class="highlighter-rouge">Profiles</code> bạn có các cách sau:</p>
+
+<p><strong>#1: Sử dụng <code class="highlighter-rouge">spring.profiles.active</code> trong file <code class="highlighter-rouge">application.properties</code> hoặc <code class="highlighter-rouge">application.yml</code></strong></p>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">spring.profiles.active=aws</span>
+</code></pre></div></div>
+
+<p><strong>#2: Active trong code, trước khi chạy chương trình.</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ApplicationInitializer</span> 
+  <span class="kd">implements</span> <span class="n">WebApplicationInitializer</span> <span class="o">{</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStartup</span><span class="o">(</span><span class="n">ServletContext</span> <span class="n">servletContext</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="o">{</span>
+        <span class="n">servletContext</span><span class="o">.</span><span class="na">setInitParameter</span><span class="o">(</span>
+          <span class="s">"spring.profiles.active"</span><span class="o">,</span> <span class="s">"aws"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>hoặc</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Autowired</span>
+<span class="kd">private</span> <span class="n">ConfigurableEnvironment</span> <span class="n">env</span><span class="o">;</span>
+<span class="o">...</span>
+<span class="n">env</span><span class="o">.</span><span class="na">setActiveProfiles</span><span class="o">(</span><span class="s">"aws"</span><span class="o">);</span>
+</code></pre></div></div>
+<p>hoặc</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SpringApplication</span> <span class="n">application</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SpringApplication</span><span class="o">(</span><span class="n">SpringBootProfilesApplication</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">ConfigurableEnvironment</span> <span class="n">environment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StandardEnvironment</span><span class="o">();</span>
+<span class="n">environment</span><span class="o">.</span><span class="na">setActiveProfiles</span><span class="o">(</span><span class="s">"aws"</span><span class="o">);</span>
+<span class="n">application</span><span class="o">.</span><span class="na">setEnvironment</span><span class="o">(</span><span class="n">environment</span><span class="o">);</span>
+<span class="n">application</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+</code></pre></div></div>
+<p>Mình không khuyến khích cả 3 cách này ==!</p>
+
+<p><strong>#3: Sử dụng JVM System Parameter (nên dùng)</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="n">Dspring</span><span class="o">.</span><span class="na">profiles</span><span class="o">.</span><span class="na">active</span><span class="o">=</span><span class="n">aws</span>
+</code></pre></div></div>
+<p><strong>#4: Environment Variable (Unix) (nên dùng)</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">SPRING_PROFILES_ACTIVE</span><span class="o">=</span>aws
+</code></pre></div></div>
+
+<p>Nếu ai sử dụng <code class="highlighter-rouge">Intellij IDEA</code> thì có thể config ngay trong IDE như thế này, mỗi lần chạy nó tự active cho mình.
+<img src="/assets/images/loda1552901817707/2.jpg" alt="image-title-here" class="center-image" /></p>
+
+<h4 id="3-cách-sử-dụng-profile">3. Cách sử dụng @Profile</h4>
+
+<p>Khi đã có <code class="highlighter-rouge">Profile</code> rồi, ngoài các biến toàn cục được thay đổi theo môi trường, bạn cũng có thể toàn quyền quyết định xem trong <code class="highlighter-rouge">code</code> rằng <code class="highlighter-rouge">Bean</code> hay <code class="highlighter-rouge">class</code> nào sẽ được quyền chạy ở môi trường nào. Bằng cách sử dụng annotation <code class="highlighter-rouge">@Profile</code></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Bean này Spring chỉ khởi tạo và quản lý khi môi trường là `local`</span>
+<span class="nd">@Component</span>
+<span class="nd">@Profile</span><span class="o">(</span><span class="s">"local"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocalDatasourceConfig</span>
+</code></pre></div></div>
+<p>Ngoài ra bạn có thể sử dụng toàn tử logic ở đây, ví dụ:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Bean này Spring chỉ khởi tạo và quản lý khi môi trường là những môi trường không phải là `local`</span>
+<span class="nd">@Component</span>
+<span class="nd">@Profile</span><span class="o">(</span><span class="s">"!local"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocalDatasourceConfig</span>
+</code></pre></div></div>
+
+<p>Okiee lahhh, thế là mình đã giới thiệu xong với các bạn <code class="highlighter-rouge">Spring Profiles</code>, Đây là một tính năng cực kì cực kì hữu ích, hi vọng các bạn hiểu và nắm được kiến thức, áp dụng vào sản phẩm của chính mình. Chúc các bạn thành công!</p>
+
+<p>Đứng quên like và chia sẻ cho bạn bè cùng biết nhé, ahihi :3</p>
+                
+			</article>
+			
+			  <!-- Your like button code -->
+  <div class="fb-like" 
+    data-href="https://loda.me/Huong-dan-su-dung-Spring-Profiles/" 
+    data-layout="standard" 
+    data-action="like" 
+    data-show-faces="true">
   </div>
-  <textarea rows="8" class="form-control mb-3" name="message" placeholder="Message*" required=""></textarea>
-  <input class="btn btn-success" type="submit" value="Send" />
-</form>
 
-<!-- Comments -->
+ 
+            <!-- Mailchimp Subscribe Form -->
+            
+            
+            
+             <!-- Author Box -->
+                				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by loda <span><a target="_blank" href="https://www.facebook.com/loda.fanpage" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối... Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.					
+					</div>
+				</div>				
+				
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
 
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'loda-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
 </div>
+            
+            
+		</div>
+        
+        
+	</div>
 </div>
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar" class="display:block">
+	<div class="container">
+		<div class="row prevnextlinks small font-weight-bold">
+			
+			<div class="col-md-6 rightborder pl-0">
+				<a class="text-dark" href="/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/"> <img height="30px" class="mr-1" src="/assets/images/loda1552815848300/1.jpg">  「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate</a>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+					
     </main>
 
 

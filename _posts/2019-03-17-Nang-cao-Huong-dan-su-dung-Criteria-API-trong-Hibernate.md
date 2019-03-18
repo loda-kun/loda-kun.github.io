@@ -1,7 +1,7 @@
 ---
 id: loda1552815848300
 layout: post
-title: <Nâng cao/> Hướng dẫn sử dụng Criteria API trong Hibernate
+title: '「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate'
 author: loda
 categories: [ Java, Hibernate, JPA, Criteria ]
 image: assets/images/loda1552815848300/1.jpg

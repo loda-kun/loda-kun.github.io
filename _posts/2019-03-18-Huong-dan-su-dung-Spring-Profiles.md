@@ -4,11 +4,11 @@ layout: post
 title: '「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles'
 author: loda
 categories: [ spring-boot, spring, spring profiles, java ]
-image: assets/images/loda1552901817707/1.jpeg
+image: assets/images/loda1552901817707/1.jpg
 description: Hướng dẫn sử dụng Spring Profiles quản lý cấu hình ứng dụng trên các môi trường khác nhau
 ---
 
-`Spring Profiles` là một core feature trong `Spring Framework`, cho phép chúng ta cấu hình ứng dụng, active/deactive bean tuy theo môi trường.
+`Spring Profiles` là một core feature trong `Spring Framework`, cho phép chúng ta cấu hình ứng dụng, `active/deactive` `Bean` tùy theo môi trường.
 
 Một kịch bản thực tế:
 
@@ -53,7 +53,7 @@ application.yml
 application-{profile-name}.yml // .properties
 ```
 
-ví dụ mình có 2 môi trường, mình sẽ tạo ra các file như thế này:
+ví dụ mình có 2 môi trường là `local` và `aws`, thì mình sẽ tạo ra các file như thế này:
 
 ```java
 application.yml
@@ -62,10 +62,10 @@ application-aws.yml
 application-common.yml
 ```
 
-`application` là file config chính khai báo các enviroment.
-`application-local` chỉ sử dụng khi chạy chương trình ở local
-`application-aws` chỉ sử dụng khi chạy ở AWS
-`application-common` là những config dùng chung, môi trường nào cũng cần.
+* `application` là file config chính khai báo các enviroment.
+* `application-local` chỉ sử dụng khi chạy chương trình ở local
+* `application-aws` chỉ sử dụng khi chạy ở AWS
+* `application-common` là những config dùng chung, môi trường nào cũng cần.
 
 Bây giờ, mình sẽ khai báo trong từng file như sau:
 
@@ -174,21 +174,21 @@ export SPRING_PROFILES_ACTIVE=aws
 ```
 
 Nếu ai sử dụng `Intellij IDEA` thì có thể config ngay trong IDE như thế này, mỗi lần chạy nó tự active cho mình.
+![image-title-here](/assets/images/loda1552901817707/2.jpg){:class="center-image"}
 
+#### 3. Cách sử dụng @Profile
 
-#### 3. Sử dụng Profiles trong code
-
-Khi đã có `Profile` rồi, bây giờ ở trong `code`, bạn có thể toàn quyền quyết định xem `Bean` hay class nào sẽ được quyền chạy ở môi trường nào. Bằng cách sử dụng annotation `@Profile`
+Khi đã có `Profile` rồi, ngoài các biến toàn cục được thay đổi theo môi trường, bạn cũng có thể toàn quyền quyết định xem trong `code` rằng `Bean` hay `class` nào sẽ được quyền chạy ở môi trường nào. Bằng cách sử dụng annotation `@Profile`
 
 ```java
-// Bean này chỉ Spring khởi tạo và quản lý khi môi trường là `local`
+// Bean này Spring chỉ khởi tạo và quản lý khi môi trường là `local`
 @Component
 @Profile("local")
 public class LocalDatasourceConfig
 ```
 Ngoài ra bạn có thể sử dụng toàn tử logic ở đây, ví dụ:
 ```java
-// Bean này chỉ Spring khởi tạo và quản lý khi môi trường là những môi trường không phải là `local`
+// Bean này Spring chỉ khởi tạo và quản lý khi môi trường là những môi trường không phải là `local`
 @Component
 @Profile("!local")
 public class LocalDatasourceConfig

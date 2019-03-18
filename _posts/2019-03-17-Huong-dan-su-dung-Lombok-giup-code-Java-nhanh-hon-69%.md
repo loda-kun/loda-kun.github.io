@@ -1,7 +1,7 @@
 ---
 id: loda1552789752787
 layout: post
-title: Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%
+title: '「General」Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%'
 author: loda
 categories: [ Java, Lombok, Advanced ]
 image: assets/images/loda1552789752787/1.jpg

@@ -40,9 +40,12 @@ Các bạn cứ tưởng tượng bạn đang xem một bộ `Film` vậy, trên
 
 ![image-title-here](/assets/images/loda1553005203072/2.png){:class="center-image"}
 
-Vì chúng ta là `developer` nên chúng ta không chỉ muốn cài `môi trường` mà còn muốn code trên nó nữa. nên chúng ta sẽ cài gói `JDK` (`Java Development Kit`) luôn. Nó chứa các công cụ giúp lập trình `Java` ngoài ra trong quá trình cài, nó sẽ hỏi ta muốn cài môi trường luôn không, tiện lợi.
+Vì chúng ta là `Developer` nên chúng ta không chỉ muốn cài `môi trường` mà còn muốn code trên nó nữa. nên chúng ta sẽ cài gói `JDK` (`Java Development Kit`) luôn. Nó chứa các công cụ giúp lập trình `Java` ngoài ra trong quá trình cài, nó sẽ hỏi ta muốn cài môi trường luôn `JRE` (`Java Runtime Enviroment`, thằng này chứa cả thằng `JVM` ở trên), tiện lợi.
 
-Nếu các bạn xài `Windows` hoặc `MacOS` thì click [vào đây][link-jdk], nhớ chọn `Accept lincense agreement` trước khi download. Khi download xong, bạn mở file và làm theo hướng dẫn nhé. 
+Nếu các bạn xài `Windows` hoặc `MacOS` thì click vào đây để download:
+ [https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html][link-jdk], 
+ 
+ Nhớ chọn `Accept lincense agreement` trước khi download. Khi download xong, bạn mở file và làm theo hướng dẫn nhé. 
 
 Đây là trang "chính chủ" nên bạn không cần lo về `virus` hay gì cả, cứ chọn `next` và `accept` mọi gợi ý là tốt nhất, tránh phải làm thêm các thao tác phụ.
 
@@ -66,10 +69,91 @@ Download tại: [https://www.jetbrains.com/idea/download/](https://www.jetbrains
 
 Hiện `Intellij` có 2 phiền bản, `Ultimate` là mất phí nhưng bá đạo thôi rồi, còn `Community` là miễn phí (vẫn tốt nhé). Bình thường không có điều kiện thì các bạn xài `Community` được rồi. TUY NHIÊN...😗
 
-MÌNH CÓ KEY BẢN QUYỀN [Ở ĐÂY][link-key]. nên các bạn cứ down `Ultimate` về mà xài nhé...
+MÌNH CÓ KEY BẢN QUYỀN Ở ĐÂY [loda.me/jetbrains][link-key]. nên các bạn cứ down `Ultimate` về mà xài nhé... Nhớ làm theo hướng dẫn trong link.
 
 Cài đặt thì cũng giống với `JDK` là chọn `next` và `accept` mọi mục để hưởng dịch vụ tốt nhất.
 
-
 #### Hellooo world~
 
+Được roài, sau một loạt các bước cài đặt cần thiết, thì bạn bây giờ đã sẵn sàng để bắt đầu `Lập trình Java`. Mở `Intellij` lên nào, chọn `Create new project`
+
+Nhập tên cho `Project` của bạn, chọn thư mục lưu trữ cho nó, rồi nhấn `OK`.
+
+Bạn tạo xong chưa? xong rồi thì cùng nhìn vào cấu trúc của project nhé.
+Bạn sẽ thấy có 3 thư mục:
+* `.idea`: Thằng này là thư mục do `Intellij` tự tạo ra để chứa các file config của phần mềm này, bạn sẽ k cần quan tâm đến, để nó tự nhiên đê :D 
+
+* `src`: Đây là thư mục chính bạn sẽ làm việc, tất cả `code` bạn để trong này
+
+* `{project-name}.iml`: File này cũng do `Intellj` tạo ra và quản lý module, bạn không cần quan tâm nó.
+
+Okay,, hiểu kiến trúc 1 project `Java` cơ bản rồi,, bắt tay vào code luôn thoai. :3 
+
+Bạn vào thư mục `src` tạo 1 file cho mình tên là `Main.java` nhé.
+Trong code bạn sẽ viết như này, mình sẽ giải thích sau khi bạn chạy được chương trình.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hellooo World~~~, I'm loda");
+    }
+}
+```
+
+Bạn `click` chuột phải vào file trên màn hình, chọn `Run Main.main()` để chạy chương trình nhé.
+
+
+**_Note:_**
+
+> Nếu là **lần đầu**, Bạn sẽ phải kiểm tra setting một chút, cho chắc, để nó biết `Intellij` đã biết thư mục `JDK` mà bạn cài ở bước 2 chưa.
+
+> Bạn vào `File` > `Project Structure...` > `Project SDK`
+Nếu thấy như hình, nó nhận `1.8` là okie, k cần lo lắng gì nữa. 
+Còn nếu chưa, thì bạn chọn cho nó bằng tay nhé. Nếu chưa có, bạn chọn `New` và chỉ dẫn nó tới thư mục `JDK` bạn đã cài ở bước 2.
+
+Okie bạn đã thấy dòng chữ `Hellooo World~~~, I'm loda` in ra màn hình phải không. Thế là bạn đã chạy chương trình `Java` đầu tiên thành công rồi đấy hú hú :333
+
+##### Góc Giải thích. 
+
+Ví dụ này bạn sẽ dễ nhận thấy các điều cơ bản sau:
+
+* Cơ bản thì file code sẽ nằm trong thư mục `src`
+* File code sẽ có tên kết thúc bằng `.java`
+* Tên file là `A` thì trong file đó sẽ mặc định là `public class A`
+
+Thế cái `public class A` là cái gì? Cái này mình sẽ giải thich ở các bài sau bạn nhé. tạm thời bạn hãy cứ tạo file `A.java` và mặc định làm việc bên trong đoạn `public class A`. (cứ hiểu nó như là 1 thằng đánh dấu, rằng tao là `A`, không phải `B` cũng được kakaka).
+
+Còn chương trình chính của bạn chỉ có thể này thôi:
+```java
+public static void main(String[] args) {
+    System.out.println("Hellooo World~~~, I'm loda");
+}
+```
+
+* `public static void main(String[] args)`: (Gọi tắt là `psvm` nhé) Cái thằng này sẽ là nơi `Java` tìm tới đầu tiên, và đọc toàn bộ các đoạn code trong cái thằng tên là `psvm` này. Dù nó ở bất cứ đâu, nó sẽ được tìm tới.
+
+* 2 cái dấu `{` `}`: Đánh dấu đoạn bắt đầu và kết thúc của cái `public static void main(String[] args)` kia.
+
+Vậy là thằng `Java` sẽ đi lùng tìm, xem cái thằng `psvm` xem nó ở đâu. Rồi đọc hết tất cả những thứ nằm trong cái 2 dấu `{` `}` của thằng này.
+
+Vậy trong ví dụ của chúng ta, nó sẽ đọc cái gì? bạn thấy đấy, chi có 1 dòng duy nhất thôi :v
+
+```java
+System.out.println("Hellooo World~~~, I'm loda");
+```
+Nhìn dòng này chúng ta sẽ biết:
+* Các dòng code của `Java` đều kết thúc bằng dấu `;` (Ngoại trừ cái thằng `{` `}` nhé)
+
+* `System.out.println()`: là câu lệnh in ra màn hình.
+* `"Hellooo World~~~, I'm loda"`: là thứ sẽ được in ra màn hình, dấu ngoặc kép `"` cho `Java` biết đây là một đoạn text, chứu không phải một con số, một con chim, hay một con mèo gì cả.
+
+#### Kết
+
+Okieeeee lahhh, Thế là xong bài đầu tiên,, chúc mừng các bạn đã bước 1 chân vào thế giới `Java` đầy huyền bí :3 Có gì thắc mắc bạn cứ tự nhiên comment ở bên dưới nhé!
+
+Chớ quên like và share cho bạn bè,, ahihi!
+
+
+[java-wiki]: https://vi.wikipedia.org/wiki/Java_(ngôn_ngữ_lập_trình)
+[link-jdk]: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[link-key]: https://loda.me/jetbrains

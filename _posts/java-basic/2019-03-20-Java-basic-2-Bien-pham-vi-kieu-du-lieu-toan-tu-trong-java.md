@@ -35,6 +35,8 @@ Các bạn chạy chương trình này (click chuột phải vào file `Calculat
 
 Nhìn code thì rất dễ hiểu phải không, tuy nhiên chúng ta cùng lí giải chi tiết để hiểu hơn về `Biến` và `Kiểu dữ liệu` trong `Java`.
 
+Thứ nhất là cái `// khai bao so nguyen`, cái này gọi là `Comment`, tức các bạn viết gì sau 2 cái dấu `//` thì nó sẽ không ảnh hưởng tới `code` của chương trình, nó chỉ mang ý nghĩa chú thích thôi,
+
 ```java
 int a = 5;
 ```
@@ -63,7 +65,7 @@ Tiếp đến là kiểu dữ liệu cao cấp hơn gọi là `Object` mà đặ
 Mọi loại dữ liệu đều có một cái gọi là `Giá trị mặc định`, khi các bạn không cung cấp cho nó giá trị, nó sẽ tự có 1 giá trị mặc định.
 
 <div style="text-align: center;">
-    <table border="1" cellpadding="5" cellspacing="1" style="border-collapse:collapse">
+    <table align="center"  border="1" cellpadding="5" cellspacing="1" style="border-collapse:collapse">
         <tbody>
             <tr>
                 <th style="text-align:left; width:30%">Kiểu dữ liệu</th>
@@ -134,7 +136,15 @@ float b = 4.5f, c = 4f; // Khai báo 2 biến có kiểu dữ liệu float với
 double c = 4444.3;
 char t = 'c';
 String e = "Hello";
+
 ```
+#### Cách đặt tên
+
+Trong `Java`, tuy không bắt buộc, nhưng chúng ta luôn thống nhất với nhau cách đặt tên biến theo một nguyên tắc, để đảm bảo khi đọc `code` sẽ có tính nhất quán và chuẩn chỉnh.
+
+* Tên biến phải tuân theo `quy tắc lạc đà (Camel Case)`: đó là chữ cái đầu tiên của từ đầu tiên phải viết thường và chữ cái đầu tiên của các từ tiếp theo phải viết hoa, ví dụ: `listStudent`, `minScore`.
+
+Chi tiết các bạn xem [ở đây][link-camel] nhé, nói ra khá dài, nhưng nắm được cái ý ở trên của mình là cũng khá ổn r.
 
 #### Phạm vi sử dụng
 
@@ -164,7 +174,7 @@ a = 100 - 10;
 
 `Phạm vi` (`Scope`) là đây các bạn ạ, chính là 2 cái dấu `{}`, khi bạn khai báo một biến `a` trong 2 cái dấu `{` `}` thì bạn chỉ có thể sử dụng ở trong nó thôi, ra ngoài nó sẽ không hiểu `a` là thằng nào và từ đâu chui ra.
 
-`Biến` không thể sử dụng ngoài, nhưng nó có thể được sử dụng ở bên trong những `scope` mà nó chứa hoặc cùng cấp với nó.
+> `Biến` không thể sử dụng ngoài, nhưng nó có thể được sử dụng ở bên trong những `scope` mà nó chứa hoặc cùng cấp với nó.
 
 ```java
 public class Calculation{
@@ -253,7 +263,7 @@ public class Calculation{
 
 Tới đây là các bạn đã có thể sử dụng được `Biến` trong `Java` rồi đó, có thể sử dụng làm bài tập được rồi kakakakaka :D, còn phần dưới đây mình sẽ nói thêm về bản chất của `Biến` và giới hạn giá trị của nó.
 
-#### Bản chất của biến
+#### Bản chất của biến (Nói thêm)
 
 Khi các bạn khai báo một biến `int` trong chương trình của mình và sử dụng lung tung khắp mọi nơi, thì bạn có biết cái biến `int` ý ở đâu lòi ra không :))
 
@@ -276,3 +286,5 @@ hết rồi kaka 😄Ở các bài sau mình sẽ vừa đi vừa nói lại nh�
 Nhớ like và chia sẻ cho bạn bè nhé ahehe/
 
 [link-bai1]: http://loda.me/Java-basic-1-Gioi-thieu-Java-Cai-dat-moi-truong-va-Hellooo-world/
+
+[link-camel]: https://www.oracle.com/technetwork/java/codeconventions-135099.html

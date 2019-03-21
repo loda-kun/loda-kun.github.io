@@ -77,10 +77,15 @@ Cài đặt thì cũng giống với `JDK` là chọn `next` và `accept` mọi 
 
 Được roài, sau một loạt các bước cài đặt cần thiết, thì bạn bây giờ đã sẵn sàng để bắt đầu `Lập trình Java`. Mở `Intellij` lên nào, chọn `Create new project`
 
+![intellij](/assets/images/loda1553005203072/5.jpg){:class="center-image"}
+
 Nhập tên cho `Project` của bạn, chọn thư mục lưu trữ cho nó, rồi nhấn `OK`.
 
 Bạn tạo xong chưa? xong rồi thì cùng nhìn vào cấu trúc của project nhé.
 Bạn sẽ thấy có 3 thư mục:
+
+![intellij](/assets/images/loda1553005203072/6.jpg){:class="center-image"}
+
 * `.idea`: Thằng này là thư mục do `Intellij` tự tạo ra để chứa các file config của phần mềm này, bạn sẽ k cần quan tâm đến, để nó tự nhiên đê :D 
 
 * `src`: Đây là thư mục chính bạn sẽ làm việc, tất cả `code` bạn để trong này
@@ -144,7 +149,6 @@ System.out.println("Hellooo World~~~, I'm loda");
 ```
 Nhìn dòng này chúng ta sẽ biết:
 * Các dòng code của `Java` đều kết thúc bằng dấu `;` (Ngoại trừ cái thằng `{` `}` nhé)
-
 * `System.out.println()`: là câu lệnh in ra màn hình.
 * `"Hellooo World~~~, I'm loda"`: là thứ sẽ được in ra màn hình, dấu ngoặc kép `"` cho `Java` biết đây là một đoạn text, chứu không phải một con số, một con chim, hay một con mèo gì cả.
 

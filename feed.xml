@@ -5,12 +5,541 @@
     <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Mar 2019 14:51:30 +0000</pubDate>
-    <lastBuildDate>Mon, 18 Mar 2019 14:51:30 +0000</lastBuildDate>
+    <pubDate>Thu, 21 Mar 2019 14:09:22 +0000</pubDate>
+    <lastBuildDate>Thu, 21 Mar 2019 14:09:22 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>「Spring-boot #1」Hướng dẫn sử dụng Spring Profiles</title>
+        <title>「Java basic #2」Biến, phạm vi, kiểu dữ liệu, toán tử trong Java</title>
+        <description>&lt;p&gt;Hế luuuuu everyone, lại là mình &lt;code class=&quot;highlighter-rouge&quot;&gt;Loda&lt;/code&gt; đây, chào mừng các bạn quay trở lại với series &lt;strong&gt;Thành thạo Java Basic trong 2 tuần.&lt;/strong&gt;. Trong bài ngày hôm nay, chúng ta sẽ học về &lt;strong&gt;Biến&lt;/strong&gt;, &lt;strong&gt;Kiểu dữ liệu&lt;/strong&gt; và một số các &lt;strong&gt;Toán tử&lt;/strong&gt; trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; nhé các bạn. Bài này sẽ khá nhiều ví dụ và kiến thức nên chúng ta vào bài luôn hah.&lt;/p&gt;
+
+&lt;h4 id=&quot;biến--kiểu-dữ-liệu&quot;&gt;Biến &amp;amp; Kiểu dữ liệu&lt;/h4&gt;
+
+&lt;p&gt;Chúng ta sẽ chạy một ví dụ trước rồi đi vào chi tiết nhé. Các bạn tạo một project mới, đặt tên là &lt;code class=&quot;highlighter-rouge&quot;&gt;Bài 2&lt;/code&gt; hay gì cũng được, tuỳ bạn chọn nhé. Và tạo cho mình một file là &lt;code class=&quot;highlighter-rouge&quot;&gt;Calculation.java&lt;/code&gt; như hình.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553050622971/2.jpg&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sau đó các bạn viết code như này và chạy thử:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// khai bao so nguyen&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Các bạn chạy chương trình này (click chuột phải vào file &lt;code class=&quot;highlighter-rouge&quot;&gt;Calculation &amp;gt; Run Main()&lt;/code&gt;). sẽ thấy hiện kết quả là &lt;code class=&quot;highlighter-rouge&quot;&gt;c = 15&lt;/code&gt;;&lt;/p&gt;
+
+&lt;p&gt;Nhìn code thì rất dễ hiểu phải không, tuy nhiên chúng ta cùng lí giải chi tiết để hiểu hơn về &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;Kiểu dữ liệu&lt;/code&gt; trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Thứ nhất là cái &lt;code class=&quot;highlighter-rouge&quot;&gt;// khai bao so nguyen&lt;/code&gt;, cái này gọi là &lt;code class=&quot;highlighter-rouge&quot;&gt;Comment&lt;/code&gt;, tức các bạn viết gì sau 2 cái dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;//&lt;/code&gt; thì nó sẽ không ảnh hưởng tới &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; của chương trình, nó chỉ mang ý nghĩa chú thích thôi,&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nói về &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;Variable&lt;/code&gt;) các bạn có liên tưởng tới liên tưởng tới biến &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; trong đồ thị hàm số &lt;code class=&quot;highlighter-rouge&quot;&gt;ax + b = 0&lt;/code&gt; không 😂 Thì chính là nó đấy.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; sẽ giúp chúng ta lưu trữ và quản lý các giá trị trong chương trình.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; cũng là đại diện cho một đối tượng và đối tượng này phải được xác định là thuộc &lt;code class=&quot;highlighter-rouge&quot;&gt;Kiểu dữ liệu&lt;/code&gt; nào. Sẽ giống với phương trình &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; kia, nhưng đề bài phải ghi rõ &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; là số nguyên, số thực hay số phức để người làm bài người ta còn biết.&lt;/p&gt;
+
+&lt;p&gt;Có các kiểu dữ liệu &lt;code class=&quot;highlighter-rouge&quot;&gt;nguyên thuỷ&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;primitive&lt;/code&gt;) như sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;boolean&lt;/code&gt;: là kiểu logic, chỉ có 2 giá trị &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;char&lt;/code&gt;: kiểu ký tự, chỉ chứa đc được một ký tự, được định nghĩa trong dấu ngoặc đơn &lt;code class=&quot;highlighter-rouge&quot;&gt;'&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; : số nguyên (&lt;code class=&quot;highlighter-rouge&quot;&gt;1,2,3, ..&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;long&lt;/code&gt;: số nguyên, lớn hơn &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;. (sẽ giải thích ở dưới)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;float&lt;/code&gt;: số thực (&lt;code class=&quot;highlighter-rouge&quot;&gt;1.5, 2.5, ..&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;: số thực, lớn hơn &lt;code class=&quot;highlighter-rouge&quot;&gt;float&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ngoài ra còn 2 kiểu dữ liệu nhỏ hơn &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; là &lt;code class=&quot;highlighter-rouge&quot;&gt;byte&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;short&lt;/code&gt;. Thì mình sẽ nói sau hah. Còn trước mắt tập trung vào các nhóm chính kia đã.&lt;/p&gt;
+
+&lt;p&gt;Tiếp đến là kiểu dữ liệu cao cấp hơn gọi là &lt;code class=&quot;highlighter-rouge&quot;&gt;Object&lt;/code&gt; mà đặc trưng nhất là &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;: Một chuỗi các ký tự, được định nghĩa trong dấu ngoặc kép &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&quot;&lt;/code&gt;. vd &lt;code class=&quot;highlighter-rouge&quot;&gt;String a = &quot;Hellooo world~~~&quot;&lt;/code&gt; (Nhớ tới ví dụ ở &lt;a href=&quot;http://loda.me/Java-basic-1-Gioi-thieu-Java-Cai-dat-moi-truong-va-Hellooo-world/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Bài #1&lt;/code&gt;&lt;/a&gt; hem các bạn)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mọi loại dữ liệu đều có một cái gọi là &lt;code class=&quot;highlighter-rouge&quot;&gt;Giá trị mặc định&lt;/code&gt;, khi các bạn không cung cấp cho nó giá trị, nó sẽ tự có 1 giá trị mặc định.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+    &lt;table align=&quot;center&quot; border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot; style=&quot;border-collapse:collapse&quot;&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;th style=&quot;text-align:left; width:30%&quot;&gt;Kiểu dữ liệu&lt;/th&gt;
+                &lt;th style=&quot;text-align:left; width:30%&quot;&gt;Giá trị mặc định&lt;/th&gt;
+                &lt;th style=&quot;text-align:left&quot;&gt;Kích thước&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;boolean&lt;/td&gt;
+                &lt;td&gt;false&lt;/td&gt;
+                &lt;td&gt;1 bit&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;char&lt;/td&gt;
+                &lt;td&gt;'\u0000'&lt;/td&gt;
+                &lt;td&gt;2 byte&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;byte&lt;/td&gt;
+                &lt;td&gt;0&lt;/td&gt;
+                &lt;td&gt;1 byte&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;short&lt;/td&gt;
+                &lt;td&gt;0&lt;/td&gt;
+                &lt;td&gt;2 byte&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;int&lt;/td&gt;
+                &lt;td&gt;0&lt;/td&gt;
+                &lt;td&gt;4 byte&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;long&lt;/td&gt;
+                &lt;td&gt;0L&lt;/td&gt;
+                &lt;td&gt;8 byte&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;float&lt;/td&gt;
+                &lt;td&gt;0.0f&lt;/td&gt;
+                &lt;td&gt;4 byte&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;double&lt;/td&gt;
+                &lt;td&gt;0.0d&lt;/td&gt;
+                &lt;td&gt;8 byte&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;String&lt;/td&gt;
+                &lt;td&gt;null&lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ở đây bạn sẽ thấy có chữ &lt;code class=&quot;highlighter-rouge&quot;&gt;L&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; sau số &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;. Đó là những ký tự đánh dấu cho Java phân biệt là số &lt;code class=&quot;highlighter-rouge&quot;&gt;0L&lt;/code&gt; là số 0 nhưng dạng &lt;code class=&quot;highlighter-rouge&quot;&gt;long&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; là dạng &lt;code class=&quot;highlighter-rouge&quot;&gt;float&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; là &lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;cách-khai-báo&quot;&gt;Cách khai báo&lt;/h4&gt;
+
+&lt;p&gt;Để khai báo biến, bắt buộc trước đó bạn phải chỉ cho nó &lt;code class=&quot;highlighter-rouge&quot;&gt;kiểu dữ liệu&lt;/code&gt; mà nó sẽ nhận, ngoài ra có thể có giá trị hoặc không.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cách 1: &lt;code class=&quot;highlighter-rouge&quot;&gt;[kiểu_dữ_liệu][tên_biến];&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Cách 2: &lt;code class=&quot;highlighter-rouge&quot;&gt;[kiểu_dữ_liệu][tên_biến] = [giá_trị];&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Khai báo 3 biến có kiểu dữ liệu int&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;4.5f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Khai báo 2 biến có kiểu dữ liệu float với giá trị ban đầu. ở đây biến `c` sẽ được hiểu là c = 4.0&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;4444.3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;cách-đặt-tên&quot;&gt;Cách đặt tên&lt;/h4&gt;
+
+&lt;p&gt;Trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;, tuy không bắt buộc, nhưng chúng ta luôn thống nhất với nhau cách đặt tên biến theo một nguyên tắc, để đảm bảo khi đọc &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; sẽ có tính nhất quán và chuẩn chỉnh.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tên biến phải tuân theo &lt;code class=&quot;highlighter-rouge&quot;&gt;quy tắc lạc đà (Camel Case)&lt;/code&gt;: đó là chữ cái đầu tiên của từ đầu tiên phải viết thường và chữ cái đầu tiên của các từ tiếp theo phải viết hoa, ví dụ: &lt;code class=&quot;highlighter-rouge&quot;&gt;listStudent&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;minScore&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Chi tiết các bạn xem &lt;a href=&quot;https://www.oracle.com/technetwork/java/codeconventions-135099.html&quot;&gt;ở đây&lt;/a&gt; nhé, nói ra khá dài, nhưng nắm được cái ý ở trên của mình là cũng khá ổn r.&lt;/p&gt;
+
+&lt;h4 id=&quot;phạm-vi-sử-dụng&quot;&gt;Phạm vi sử dụng&lt;/h4&gt;
+
+&lt;p&gt;Một khi bạn đã khai báo biến, thì bạn có thể sử dụng nó trong những &lt;code class=&quot;highlighter-rouge&quot;&gt;Phạm vi&lt;/code&gt; mà nó khả dụng. ?? 😀?? Cùng nhìn ví dụ ở dưới nhé.&lt;/p&gt;
+
+&lt;p&gt;Ví dụ:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// khai bao so nguyen `a`&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Gán giá trị cho a, bạn sử dụng toán tử `=`&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Sử dụng biến a bình thường&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;124214&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+
+    &lt;span class=&quot;c1&quot;&gt;// lấy a và cộng thêm 1,, rồi gán ngược lại giá trị đó vào a :D&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Sử dụng biến a bình thường&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Gán lại giá trị cho a = 100 - 10;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Chương trình lỗi&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Phạm vi&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;Scope&lt;/code&gt;) là đây các bạn ạ, chính là 2 cái dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt;, khi bạn khai báo một biến &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; trong 2 cái dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt; thì bạn chỉ có thể sử dụng ở trong nó thôi, ra ngoài nó sẽ không hiểu &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; là thằng nào và từ đâu chui ra.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; không thể sử dụng ngoài, nhưng nó có thể được sử dụng ở bên trong những &lt;code class=&quot;highlighter-rouge&quot;&gt;scope&lt;/code&gt; mà nó chứa hoặc cùng cấp với nó.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Khai báo a ở ngoài main, cái `public static` là cần thiết nhé, còn chi tiết thì chúng ta sẽ học ở các bài sau.&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// thay đổi a, ở trong, vẫn okie.&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Biến a có thể sử dụng trong các `scope` con của nó&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Làm gì biến a ở đây cũng được, biến đổi nó.&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// gán giá trị biến a vào b;&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;toán-tử&quot;&gt;Toán tử&lt;/h4&gt;
+
+&lt;p&gt;Khi đã xác định các &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; trong chương trình, bạn có thể sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;toán tử&lt;/code&gt; để thay đổi các giá trị. Các &lt;code class=&quot;highlighter-rouge&quot;&gt;toán tử&lt;/code&gt; thì khá đơn giản, giống môn toán bình thường thôi. Với các kiểu &lt;code class=&quot;highlighter-rouge&quot;&gt;nguyên thuỷ (primitive)&lt;/code&gt; ta có:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// c = 0 + 5 cộng&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// d = 0 - 5 trừ&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// f = 0 x 5 nhân&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// g = 0 : 5; chia&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Còn với &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; thì bạn có thể sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; để ghép 2 chuỗi mà thôi. Còn các toàn tử còn lại không được sử dụng với &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;World&quot;&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// Mình đã nối 3 xâu là &quot;Hello&quot; + &quot; &quot; (Khoảng trắng) + &quot;World&quot; lại với nhau&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// String cộng với một số nguyên?&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Kết quả sẽ là: &quot;Hello 5&quot; :V&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// Bạn sẽ hiểu là khi cộng String với một số, số đó sẽ bị chuyển thành String và nối vào sau.&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ở trên có một ví dụ về việc cộng một &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; với &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;. Rất kì lạ phải không, 2 &lt;code class=&quot;highlighter-rouge&quot;&gt;kiểu dữ liệu&lt;/code&gt; khác nhau khi tính toán với nhau thì sẽ được &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; xử lý bằng cách &lt;code class=&quot;highlighter-rouge&quot;&gt;Ép kiểu&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;ép-kiểu-dữ-liệu&quot;&gt;Ép kiểu dữ liệu&lt;/h4&gt;
+
+&lt;p&gt;Nhìn vào ví dụ sau, bạn sẽ rõ.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.5f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// dùng chữ f để nó hiểu đây là 3,5 float chứ k phải 3,5 double&lt;/span&gt;
+
+      &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// c = 5.5&lt;/span&gt;
+
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// báo lỗi. Vì sao?&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// vì java đang hiểu 2 + 3.5 nó sẽ ép thành 5.5 là float. Bây giờ gán nó vào số nguyên thì sẽ như này int = float?&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;// Để gán được bạn cần sử dụng ép kiểu&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// d = 5&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// a + b = 5.5 =&amp;gt; ép thành (int) =&amp;gt; 5 (lấy phần nguyên thôi)&lt;/span&gt;
+
+      &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;character&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'5'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;character&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// number = 53. Why?&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;// Vì ép `char` thành `int` thì nó sẽ không chuyển chữ thành số, mà nó sẽ kiếm tra '5' là ký tự ASCII thứ bao nhiêu trong máy tính, và trả lại số thứ tự đó.&lt;/span&gt;
+
+      &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// =&amp;gt; 5.0&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tới đây là các bạn đã có thể sử dụng được &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; rồi đó, có thể sử dụng làm bài tập được rồi kakakakaka :D, còn phần dưới đây mình sẽ nói thêm về bản chất của &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; và giới hạn giá trị của nó.&lt;/p&gt;
+
+&lt;h4 id=&quot;bản-chất-của-biến-nói-thêm&quot;&gt;Bản chất của biến (Nói thêm)&lt;/h4&gt;
+
+&lt;p&gt;Khi các bạn khai báo một biến &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; trong chương trình của mình và sử dụng lung tung khắp mọi nơi, thì bạn có biết cái biến &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt; ý ở đâu lòi ra không :))&lt;/p&gt;
+
+&lt;p&gt;Về bản chất, &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; sẽ là một vùng nhớ trong thiết bị vật lý mà dễ nhất là để trong &lt;code class=&quot;highlighter-rouge&quot;&gt;ram&lt;/code&gt;. và khi bạn cho nó một giá trị, nó sẽ lưu trữ số đó vào &lt;code class=&quot;highlighter-rouge&quot;&gt;ram&lt;/code&gt;, và cần thì lấy lên.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553050622971/3.jpg&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Vậy để &lt;code class=&quot;highlighter-rouge&quot;&gt;ram&lt;/code&gt; biết bạn muốn lưu cái gì thì bạn phải khai báo cho nó. Ví dụ bạn bảo tôi cần một số nguyên &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;. Thì máy tính hiểu là mình cần lưu trữ một số nguyên bình thường, không quá lớn, nó sẽ cho bạn &lt;code class=&quot;highlighter-rouge&quot;&gt;4 byte&lt;/code&gt; trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Ram&lt;/code&gt; thích lưu gì thì lưu. nhưng &lt;code class=&quot;highlighter-rouge&quot;&gt;không được vượt quá 4 byte&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;4 byte = 32 bit&lt;/code&gt;, bỏ đi 1 bit đầu tiên để đánh dấu là số âm hay dương, thì còn &lt;code class=&quot;highlighter-rouge&quot;&gt;31 bit&lt;/code&gt; =&amp;gt; số lớn nhất mà biến int lưu trữ được là &lt;code class=&quot;highlighter-rouge&quot;&gt;2^31 - 1&lt;/code&gt; = &lt;code class=&quot;highlighter-rouge&quot;&gt;2147483647&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Từ đây, bạn sẽ hiểu vì sao có số &lt;code class=&quot;highlighter-rouge&quot;&gt;long&lt;/code&gt;, vì nhu cầu lưu số lớn hơn thì &lt;code class=&quot;highlighter-rouge&quot;&gt;long&lt;/code&gt; được cấp tận &lt;code class=&quot;highlighter-rouge&quot;&gt;8 byte&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Còn trường hợp đặc biệt như &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; thì tuỳ giá trị của nó có bao nhiêu ký tự, mà &lt;code class=&quot;highlighter-rouge&quot;&gt;Ram&lt;/code&gt; sẽ cấp tương ứng bấy nhiêu &lt;code class=&quot;highlighter-rouge&quot;&gt;byte&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;lời-kết&quot;&gt;Lời kết&lt;/h4&gt;
+
+&lt;p&gt;hết rồi kaka 😄Ở các bài sau mình sẽ vừa đi vừa nói lại những phần còn thiếu trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Biến&lt;/code&gt; này nên các bạn chớ lo nhé. Chúc các bạn học tập tốt.&lt;/p&gt;
+
+&lt;p&gt;Nhớ like và chia sẻ cho bạn bè nhé ahehe/&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Java-basic-2-Bien-pham-vi-kieu-du-lieu-toan-tu-trong-java/</link>
+        <guid isPermaLink="true">/Java-basic-2-Bien-pham-vi-kieu-du-lieu-toan-tu-trong-java/</guid>
+        
+        
+        <category>java</category>
+        
+        <category>java basic</category>
+        
+        <category>series 2 tuần</category>
+        
+        <category>kiểu dữ liệu java</category>
+        
+      </item>
+    
+      <item>
+        <title>「Java basic #1」Giới thiệu Java, Cài đặt môi trường và Hellooo world~</title>
+        <description>&lt;p&gt;Xin chào tất cả các bạn, chào mừng các bạn đến với bài đầu tiên trong khóa học &lt;strong&gt;Thành thạo Java Basic trong 2 tuần.&lt;/strong&gt;. Mình là &lt;code class=&quot;highlighter-rouge&quot;&gt;loda&lt;/code&gt; sẽ đồng hành cùng các bạn trên công đường làm chủ ngôn ngữ &lt;code class=&quot;highlighter-rouge&quot;&gt;jav&lt;/code&gt; này 🤗&lt;/p&gt;
+
+&lt;p&gt;Bài đầu tiên trong series này là giới thiệu cực kì &lt;strong&gt;ngắn gọn&lt;/strong&gt; với các bạn &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; là gì, đủ ý dễ hiểu, tập trung vào việc cài đặt môi trường, cài đặt công cụ lập trình.&lt;/p&gt;
+
+&lt;p&gt;Okayyy vào bài.&lt;/p&gt;
+
+&lt;h4 id=&quot;java&quot;&gt;Java&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/4.jpg&quot; alt=&quot;java-basic&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Bắt đầu từ một câu chuyện:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Tại một vương quốc nọ năm 19xx (TCN), có một anh lập trình viên, khi đang viết phần mềm cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows 9x&lt;/code&gt;, thì sếp yêu cầu anh viết thêm cho cả &lt;code class=&quot;highlighter-rouge&quot;&gt;Linux&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;OpenVMS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FreeBSD&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;IBM&lt;/code&gt;, v.v.. Chàng thanh niên không nói gì, anh chững lại đôi chút, lấy điếu thuốc rít một hơi, mắt anh nhìn xa xăm, đôi mắt anh lúc đó hồn nhiên tới lạ, tôi nghĩ nó là đôi mắt biết nói, nó nói: “f**k 🙂”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Đấy, đấy là câu chuyện của mình, còn lịch sử &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; các bạn đọc &lt;a href=&quot;https://vi.wikipedia.org/wiki/Java_(ngôn_ngữ_lập_trình)&quot;&gt;ở đây&lt;/a&gt; nhé 😆&lt;/p&gt;
+
+&lt;p&gt;Mình tóm tắt giúp bạn là &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; được ra đời với mục tiêu là &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;viết một lần, chạy mọi nơi&quot;&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;write once, run anywhere&quot;&lt;/code&gt;). Vì bản thân các &lt;code class=&quot;highlighter-rouge&quot;&gt;OS&lt;/code&gt; là khác nhau, các lập trình viên không muốn với mỗi một OS lại phải code lại từ đầu. Nên &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; ra đời. Năm 1995.&lt;/p&gt;
+
+&lt;p&gt;Lấy người anh &lt;code class=&quot;highlighter-rouge&quot;&gt;C/C++&lt;/code&gt; làm nền tảng học tập, &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; tiếp thu, cải thiện hơn và áp dụng mô hình hướng đối tượng chuẩn mực hơn. Từ đó trở thành ngôn ngữ mạnh mẽ nhất thời bấy giờ.&lt;/p&gt;
+
+&lt;p&gt;Đấy ngắn gọn thế thôi, để não bộ tiếp thu tiếp.&lt;/p&gt;
+
+&lt;h4 id=&quot;cài-đặt-môi-trường&quot;&gt;Cài đặt môi trường&lt;/h4&gt;
+
+&lt;p&gt;Môi trường là seo? hổng hiểu 😕&lt;/p&gt;
+
+&lt;p&gt;Các bạn cứ tưởng tượng bạn đang xem một bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Film&lt;/code&gt; vậy, trên thế giới có film &lt;code class=&quot;highlighter-rouge&quot;&gt;Mỹ&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Tàu&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Jav&lt;/code&gt;, v.v.. mỗi film một thứ tiếng, nà ní, nhưng sao bạn vẫn xem và hiểu? Vì nó có &lt;code class=&quot;highlighter-rouge&quot;&gt;Phụ đề&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; hoạt động như vậy, nó chỉ nói 1 ngôn ngữ duy nhất thôi, tuy nhiên nó có một thằng anh bá đạo, tên ông ý nôm na là &lt;code class=&quot;highlighter-rouge&quot;&gt;môi trường ảo&lt;/code&gt; hay tên chuẩn là &lt;code class=&quot;highlighter-rouge&quot;&gt;Java virtual machine (JVM)&lt;/code&gt;. Nhiệm vụ của &lt;code class=&quot;highlighter-rouge&quot;&gt;JVM&lt;/code&gt; là nó &lt;code class=&quot;highlighter-rouge&quot;&gt;phụ đề&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;thuyết minh&lt;/code&gt;) cho từng loại OS khác nhau rằng thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đang làm gì, nói gì, làm gì.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/2.png&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Vì chúng ta là &lt;code class=&quot;highlighter-rouge&quot;&gt;Developer&lt;/code&gt; nên chúng ta không chỉ muốn cài &lt;code class=&quot;highlighter-rouge&quot;&gt;môi trường&lt;/code&gt; mà còn muốn code trên nó nữa. nên chúng ta sẽ cài gói &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;Java Development Kit&lt;/code&gt;) luôn. Nó chứa các công cụ giúp lập trình &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; ngoài ra trong quá trình cài, nó sẽ hỏi ta muốn cài môi trường luôn &lt;code class=&quot;highlighter-rouge&quot;&gt;JRE&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;Java Runtime Enviroment&lt;/code&gt;, thằng này chứa cả thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;JVM&lt;/code&gt; ở trên), tiện lợi.&lt;/p&gt;
+
+&lt;p&gt;Nếu các bạn xài &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt; hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;MacOS&lt;/code&gt; thì click vào đây để download:
+ &lt;a href=&quot;https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&quot;&gt;https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&lt;/a&gt;,&lt;/p&gt;
+
+&lt;p&gt;Nhớ chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;Accept lincense agreement&lt;/code&gt; trước khi download. Khi download xong, bạn mở file và làm theo hướng dẫn nhé.&lt;/p&gt;
+
+&lt;p&gt;Đây là trang “chính chủ” nên bạn không cần lo về &lt;code class=&quot;highlighter-rouge&quot;&gt;virus&lt;/code&gt; hay gì cả, cứ chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;accept&lt;/code&gt; mọi gợi ý là tốt nhất, tránh phải làm thêm các thao tác phụ.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/3.jpg&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Còn &lt;code class=&quot;highlighter-rouge&quot;&gt;Unix&lt;/code&gt; thì các bạn nên sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; tự động setup cho dễ, nếu đã xài &lt;code class=&quot;highlighter-rouge&quot;&gt;Unix&lt;/code&gt; thì vụ này rành rồi hah, mình k hướng dẫn gõ lệnh đâu hê hê 😄:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository ppa:webupd8team/java
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;oracle-java8-installer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;cài-đặt-intellij-idea-và-kích-hoạt-bản-quyền&quot;&gt;Cài đặt Intellij IDEA và kích hoạt bản quyền.&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij IDEA&lt;/code&gt; chỉ làm một “công cụ” lập trình, giúp các bạn viết code dễ dàng hơn, giúp cuộc sống của bạn bớt lo lắng về những vấn đề khác mà chỉ cần tập trung vào viết code thôi.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/5.png&quot; alt=&quot;intellij&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Download tại: &lt;a href=&quot;https://www.jetbrains.com/idea/download/&quot;&gt;https://www.jetbrains.com/idea/download/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hiện &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; có 2 phiền bản, &lt;code class=&quot;highlighter-rouge&quot;&gt;Ultimate&lt;/code&gt; là mất phí nhưng bá đạo thôi rồi, còn &lt;code class=&quot;highlighter-rouge&quot;&gt;Community&lt;/code&gt; là miễn phí (vẫn tốt nhé). Bình thường không có điều kiện thì các bạn xài &lt;code class=&quot;highlighter-rouge&quot;&gt;Community&lt;/code&gt; được rồi. TUY NHIÊN…😗&lt;/p&gt;
+
+&lt;p&gt;MÌNH CÓ KEY BẢN QUYỀN Ở ĐÂY &lt;a href=&quot;https://loda.me/jetbrains&quot;&gt;loda.me/jetbrains&lt;/a&gt;. nên các bạn cứ down &lt;code class=&quot;highlighter-rouge&quot;&gt;Ultimate&lt;/code&gt; về mà xài nhé… Nhớ làm theo hướng dẫn trong link.&lt;/p&gt;
+
+&lt;p&gt;Cài đặt thì cũng giống với &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; là chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;accept&lt;/code&gt; mọi mục để hưởng dịch vụ tốt nhất.&lt;/p&gt;
+
+&lt;h4 id=&quot;hellooo-world&quot;&gt;Hellooo world~&lt;/h4&gt;
+
+&lt;p&gt;Được roài, sau một loạt các bước cài đặt cần thiết, thì bạn bây giờ đã sẵn sàng để bắt đầu &lt;code class=&quot;highlighter-rouge&quot;&gt;Lập trình Java&lt;/code&gt;. Mở &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; lên nào, chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;Create new project&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/5.jpg&quot; alt=&quot;intellij&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nhập tên cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Project&lt;/code&gt; của bạn, chọn thư mục lưu trữ cho nó, rồi nhấn &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Bạn tạo xong chưa? xong rồi thì cùng nhìn vào cấu trúc của project nhé.
+Bạn sẽ thấy có 3 thư mục:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/6.jpg&quot; alt=&quot;intellij&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.idea&lt;/code&gt;: Thằng này là thư mục do &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; tự tạo ra để chứa các file config của phần mềm này, bạn sẽ k cần quan tâm đến, để nó tự nhiên đê :D&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;: Đây là thư mục chính bạn sẽ làm việc, tất cả &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; bạn để trong này&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;{project-name}.iml&lt;/code&gt;: File này cũng do &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellj&lt;/code&gt; tạo ra và quản lý module, bạn không cần quan tâm nó.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okay,, hiểu kiến trúc 1 project &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; cơ bản rồi,, bắt tay vào code luôn thoai. :3&lt;/p&gt;
+
+&lt;p&gt;Bạn vào thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt; tạo 1 file cho mình tên là &lt;code class=&quot;highlighter-rouge&quot;&gt;Main.java&lt;/code&gt; nhé.
+Trong code bạn sẽ viết như này, mình sẽ giải thích sau khi bạn chạy được chương trình.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bạn &lt;code class=&quot;highlighter-rouge&quot;&gt;click&lt;/code&gt; chuột phải vào file trên màn hình, chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;Run Main.main()&lt;/code&gt; để chạy chương trình nhé.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Nếu là &lt;strong&gt;lần đầu&lt;/strong&gt;, Bạn sẽ phải kiểm tra setting một chút, cho chắc, để nó biết &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; đã biết thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; mà bạn cài ở bước 2 chưa.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/6.png&quot; alt=&quot;java co ban&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Bạn vào &lt;code class=&quot;highlighter-rouge&quot;&gt;File&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Project Structure...&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Project SDK&lt;/code&gt;
+Nếu thấy như hình, nó nhận &lt;code class=&quot;highlighter-rouge&quot;&gt;1.8&lt;/code&gt; là okie, k cần lo lắng gì nữa. Nếu chưa có, bạn chọn mũi tên xem nó có sẵn chưa, nếu chưa, chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;New&lt;/code&gt; và chỉ dẫn nó tới thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; bạn đã cài ở bước 2 (&lt;code class=&quot;highlighter-rouge&quot;&gt;C:/Program File/Java/jdk 1.8&lt;/code&gt; cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt; hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home&lt;/code&gt; cho &lt;code class=&quot;highlighter-rouge&quot;&gt;MacOs&lt;/code&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Okie bạn đã thấy dòng chữ &lt;code class=&quot;highlighter-rouge&quot;&gt;Hellooo World~~~, I'm loda&lt;/code&gt; in ra màn hình phải không. Thế là bạn đã chạy chương trình &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đầu tiên thành công rồi đấy hú hú :333&lt;/p&gt;
+
+&lt;h5 id=&quot;góc-giải-thích&quot;&gt;Góc Giải thích.&lt;/h5&gt;
+
+&lt;p&gt;Ví dụ này bạn sẽ dễ nhận thấy các điều cơ bản sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cơ bản thì file code sẽ nằm trong thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;File code sẽ có tên kết thúc bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;.java&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Tên file là &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; thì trong file đó sẽ mặc định là &lt;code class=&quot;highlighter-rouge&quot;&gt;public class A&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thế cái &lt;code class=&quot;highlighter-rouge&quot;&gt;public class A&lt;/code&gt; là cái gì? Cái này mình sẽ giải thich ở các bài sau bạn nhé. tạm thời bạn hãy cứ tạo file &lt;code class=&quot;highlighter-rouge&quot;&gt;A.java&lt;/code&gt; và mặc định làm việc bên trong đoạn &lt;code class=&quot;highlighter-rouge&quot;&gt;public class A&lt;/code&gt;. (cứ hiểu nó như là 1 thằng đánh dấu, rằng tao là &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt;, không phải &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt; cũng được kakaka).&lt;/p&gt;
+
+&lt;p&gt;Còn chương trình chính của bạn chỉ có thể này thôi:&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;public static void main(String[] args)&lt;/code&gt;: (Gọi tắt là &lt;code class=&quot;highlighter-rouge&quot;&gt;psvm&lt;/code&gt; nhé) Cái thằng này sẽ là nơi &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; tìm tới đầu tiên, và đọc toàn bộ các đoạn code trong cái thằng tên là &lt;code class=&quot;highlighter-rouge&quot;&gt;psvm&lt;/code&gt; này. Dù nó ở bất cứ đâu, nó sẽ được tìm tới.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;2 cái dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;: Đánh dấu đoạn bắt đầu và kết thúc của cái &lt;code class=&quot;highlighter-rouge&quot;&gt;public static void main(String[] args)&lt;/code&gt; kia.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vậy là thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; sẽ đi lùng tìm, xem cái thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;psvm&lt;/code&gt; xem nó ở đâu. Rồi đọc hết tất cả những thứ nằm trong cái 2 dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt; của thằng này.&lt;/p&gt;
+
+&lt;p&gt;Vậy trong ví dụ của chúng ta, nó sẽ đọc cái gì? bạn thấy đấy, chi có 1 dòng duy nhất thôi :v&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Nhìn dòng này chúng ta sẽ biết:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Các dòng code của &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đều kết thúc bằng dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt; (Ngoại trừ cái thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt; nhé)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;System.out.println()&lt;/code&gt;: là câu lệnh in ra màn hình.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/code&gt;: là thứ sẽ được in ra màn hình, dấu ngoặc kép &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; biết đây là một đoạn text, chứu không phải một con số, một con chim, hay một con mèo gì cả.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;kết&quot;&gt;Kết&lt;/h4&gt;
+
+&lt;p&gt;Okieeeee lahhh, Thế là xong bài đầu tiên,, chúc mừng các bạn đã bước 1 chân vào thế giới &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đầy huyền bí :3 Có gì thắc mắc bạn cứ tự nhiên comment ở bên dưới nhé!&lt;/p&gt;
+
+&lt;p&gt;Chớ quên like và share cho bạn bè,, ahihi!&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Java-basic-1-Gioi-thieu-Java-Cai-dat-moi-truong-va-Hellooo-world/</link>
+        <guid isPermaLink="true">/Java-basic-1-Gioi-thieu-Java-Cai-dat-moi-truong-va-Hellooo-world/</guid>
+        
+        
+        <category>java</category>
+        
+        <category>java basic</category>
+        
+        <category>series 2 tuần</category>
+        
+      </item>
+    
+      <item>
+        <title>「Java basic #0」Giới thiệu Series &quot;Java căn bản trong 2 tuần&quot;.</title>
+        <description>&lt;p&gt;Xin chào tất cả các bạn, mình là &lt;code class=&quot;highlighter-rouge&quot;&gt;loda&lt;/code&gt;. Hôm nay mình sẽ giới thiệu tới các bạn khóa học &lt;code class=&quot;highlighter-rouge&quot;&gt;Java căn bản trong 2 tuần&lt;/code&gt;. Mục tiêu là giúp các bạn, dù xuất phát điểm như nào cũng có thể nắm được ngôn ngữ này trong 2 tuần 😗 (rìa lý men)&lt;/p&gt;
+
+&lt;p&gt;Mặc dù mục đích ban đầu &lt;code class=&quot;highlighter-rouge&quot;&gt;blog&lt;/code&gt; của mình hướng tới là chia sẻ các kiến thức nâng cao về &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;, v.v.. Vì bản thân mình nghĩ các kiến thức cơ bản thì có quá nhiều nguồn để học rồi 😳 ấy vậy mà không như thế các bạn ạ 😳 . Chính vì nhiều nguồn quá rồi, nó lại khiến các bạn bối rối giữa việc chọn nguồn tài liệu và giáo trình, dẫn tới học chắp và, không hiệu quả, và thường mất thời gian mới hiểu được bản chất ngôn ngữ này, vì theo mình khảo sát thì các bài viết không đầu tư đủ nội dung, thường là “mì ăn liền”. Thứ 2, cũng là mục đích chính, có bạn muốn mình giúp đỡ nên mình quyết định viết series này. :v ha ha .. ha&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Series: &lt;strong&gt;Thành thạo Java Basic trong 2 tuần.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Số bài: 14&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mục tiêu đạt được sau khóa học:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Hiểu và sử dụng được ngôn ngữ &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Nắm bắt được các khái niệm cơ bản về &lt;code class=&quot;highlighter-rouge&quot;&gt;OOP&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Biết các &lt;code class=&quot;highlighter-rouge&quot;&gt;lib&lt;/code&gt; phổ biến của &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; giải quyết bài toán thực tế.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Nội dung bài học sẽ được chia thành 14 ngày. Nghĩa là chỉ có 14 bài học, ít gấp 3-4 lần các khóa học trên mạng thông thường. Lí do 🤔 ?&lt;/p&gt;
+
+&lt;p&gt;Mình không biết các bạn lực học ra sao, và xuất phát điểm như nào, nhưng mình nghĩ việc chia quá nhỏ bài học ra đôi khi lại phản tác dụng, nó cứ lắt nhắt mà không cô đọng được mỗi lần học. Mình nghĩ nên tập trung kiến thức liên quan thành một và học 1 mạch, nó sẽ có cái flow, cái đà học, thì mới vào được 😗 Chứ cứ mỗi bài các bạn chỉ mất 5 - 10’ lướt qua, thì các bạn sẽ nghĩ là “à, xong 1 bài, đơn rản, thưởng mình 10’ facebook thư giãn”. Tới ngày hôm sau bạn sẽ lại phải tìm lại cái bài ý để đọc :v &lt;code class=&quot;highlighter-rouge&quot;&gt;mất thời gian x 2&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ghi nhớ x 0&lt;/code&gt;. Không phải ngẫu nhiên là 1 tiết học 45’ đâu các bạn ạ 😂 bộ giáo dục hơi bị hợp lý nun.&lt;/p&gt;
+
+&lt;p&gt;Giới thiệu sơ qua vậy ha, yên tâm là mình sẽ cố gắng viết cô đọng, nhưng vẫn truyền tải đủ ý và giúp mọi hiểu bản chất ha :3&lt;/p&gt;
+
+&lt;p&gt;Giờ thì đi vào bài học nhé các bạn:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Giới thiệu Java, Cài đặt môi trường và &lt;code class=&quot;highlighter-rouge&quot;&gt;Hellooo world~&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;..&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Java-basic-0-Gioi-thieu-Series-Java-can-ban-thanh-thao-java-trong-2-tuan</link>
+        <guid isPermaLink="true">/Java-basic-0-Gioi-thieu-Series-Java-can-ban-thanh-thao-java-trong-2-tuan</guid>
+        
+        
+        <category>java</category>
+        
+        <category>java basic</category>
+        
+        <category>series 2 tuần</category>
+        
+      </item>
+    
+      <item>
+        <title>「Spring-boot」Hướng dẫn sử dụng Spring Profiles</title>
         <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Profiles&lt;/code&gt; là một core feature trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Framework&lt;/code&gt;, cho phép chúng ta cấu hình ứng dụng, &lt;code class=&quot;highlighter-rouge&quot;&gt;active/deactive&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; tùy theo môi trường.&lt;/p&gt;
 
 &lt;p&gt;Một kịch bản thực tế:&lt;/p&gt;
@@ -895,200 +1424,6 @@ public class Champion {
         <guid isPermaLink="true">/cac-open-source-ai-va-deep-learning-an-tuong-nhat-nam-2018-phan-2/</guid>
         
         <category>featured</category>
-        
-        
-        <category>Machine Learning</category>
-        
-        <category>deep learning</category>
-        
-        <category>neural network</category>
-        
-      </item>
-    
-      <item>
-        <title>Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 1)</title>
-        <description>&lt;p&gt;Trong năm vừa qua, &lt;code class=&quot;highlighter-rouge&quot;&gt;Mybridge AI&lt;/code&gt; đã thống kê và so sánh trên 8,800 open source về Machine Learning để chọn ra các projects xuất sắc nhất (0.3%)&lt;/p&gt;
-
-&lt;p&gt;Đây là một danh sách phải đánh giá là có tính cạnh tranh cực cao, và được cân nhắc kỹ lưỡng bởi các chuyên gia. Nó bao gồm các thư viện, datasets và apps được ra mắt trong năm vừa qua.&lt;/p&gt;
-
-&lt;p&gt;Thước đo của các project được đánh giá qua chỉ số phổ biến trong cộng đồng, mức độ tương tác, lần truy cập gần đây và ý tưởng chất, &lt;strong&gt;mức Star trung bình của các project trên Github là 3,558.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;những-con-số-ấn-tượng&quot;&gt;NHỮNG CON SỐ ẤN TƯỢNG&lt;/h4&gt;
-
-&lt;p&gt;Open source là một nguồn kiến thức dồi dào cho các kĩ sư. Bạn có thể học cách code và build những sản phẩm tuyệt vời trên nền tảng của nó. Hãy dành thời gian xem qua và chơi với các dự án Machine learning tuyệt vời này nhé.&lt;/p&gt;
-
-&lt;p&gt;Hãy xem 1 năm qua chúng ta bỏ lỡ những gì nào!&lt;/p&gt;
-
-&lt;h4 id=&quot;1-fast-text&quot;&gt;#1 Fast text&lt;/h4&gt;
-
-&lt;p&gt;Thư viện cho text representation và classification. [11786 stars - Github] bởi Facebook Research&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/ab6d0856fcc80dda7a2a8e13f9b96191.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;2-deep-photo-styletransfer&quot;&gt;#2 Deep-photo-styletransfer&lt;/h4&gt;
-
-&lt;p&gt;Code và data của paper “Deep Photo Style Transfer” [9747 stars - Github]. Bởi Fujun Luan, Ph.D. thuộc Cornell University&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/0ff471f814a9ccd608d1f86b6754711b.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Paper này ra đời đã tạo một làn sóng trong giới khoa học, khi cho phép biến 1 bức ảnh bình thường trở thành tuyệt đẹp nhờ copy style của 1 bức ảnh khác.&lt;/p&gt;
-
-&lt;h4 id=&quot;3&quot;&gt;#3&lt;/h4&gt;
-
-&lt;p&gt;API nhận diện khuôn mặt đơn giản nhất thế giới, chạy bởi Python hoặc trực tiếp trên command line. [8672 stars - Github]. Bởi Adam Geitgey&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/ca25e1904ae86861b709c7ffdb220d1c.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;4-magenta&quot;&gt;#4 Magenta&lt;/h4&gt;
-
-&lt;p&gt;Sáng tác nhạc và ảnh nghệ thuật tự động dựa trên Trí thông minh nhân tạo. [8113 stars - Github].&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/d9f41f72607f1b910c21fb147d1174a8.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;5-sonnet&quot;&gt;#5 Sonnet&lt;/h4&gt;
-
-&lt;p&gt;Thư viện mã nguồn mở xây dựng trên nền tensorflow, phục vụ xây dựng các mạng nơ-ron network một cách đơn giản hơn. [5731 stars - Github]. Bởi Malcolm Reynolds thuộc Deepmind (Google)&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/c4e023e3fb689ecb73f530b3bc754779.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;6-deeplearnjs&quot;&gt;#6 deeplearn.js&lt;/h4&gt;
-
-&lt;p&gt;Thư viện machine learning và deep learning trên nền tảng web. [5462 stars - Github]. Bởi Nikhil Thorat thuộc Google Brain&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/8f506087e98f4cfd444f0b06772cd450.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;7-fast-style-transfer&quot;&gt;#7 Fast Style Transfer&lt;/h4&gt;
-
-&lt;p&gt;Xây đựng trên nền tảng tensorflow [4843 stars - Github]. Bởi Logan Engstrom tại MIT.&lt;/p&gt;
-
-&lt;p&gt;Cho phéo sinh ra một bức ảnh là kết hợp style từ 2 bức ảnh đầu vào.&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/ea60d54ef571f02404a55b05c8b4ecfb.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;8-pysc2&quot;&gt;#8 Pysc2&lt;/h4&gt;
-
-&lt;p&gt;Pysc2: StarCraft II Learning Enviroment [3683 stars - Github]. Bởi Timo Ewalds thuộc DeepMind&lt;/p&gt;
-
-&lt;p&gt;Một thư viện môi trường để ở đó trí tuệ nhân tạo chơi game StarCraft II. Và mục tiêu thắng con người.&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/27f5b5b2441f37f81b2df3c8394cfd0f.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;9-airsim&quot;&gt;#9 AirSim&lt;/h4&gt;
-
-&lt;p&gt;Open source mô phỏng thế giới thực dựa trên Unreal Engine dành cho xe tự lái của Microsoft AI &amp;amp; Research [3861 stars - Github]. Bởi Shital Shah&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/cce68e8e75178d828a2e0ce5bd45617c.png?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;10-facets&quot;&gt;#10 Facets&lt;/h4&gt;
-
-&lt;p&gt;Công cụ Visualizations dành cho dữ liệu học máy [3371 stars - Github] thuộc Google Brain&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/06/13/e910773ed6e96a5422f3be159213fdd9.jpg?w=600&quot; alt=&quot;machine learning, deep learning, neurol network, dữ liệu học máy, deep learning&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Phần 2:
-&lt;a href=&quot;https://loda.me/cac-open-source-ai-va-deep-learning-an-tuong-nhat-nam-2018-phan-2/&quot;&gt;Các Open Source AI và Deep Learning ấn tượng nhất năm 2018 (Phần 2)&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 07 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/cac-open-source-ai-va-deep-learning-an-tuong-nhat-nam-2018-phan-1/</link>
-        <guid isPermaLink="true">/cac-open-source-ai-va-deep-learning-an-tuong-nhat-nam-2018-phan-1/</guid>
-        
-        
-        <category>Machine Learning</category>
-        
-        <category>deep learning</category>
-        
-        <category>neural network</category>
-        
-      </item>
-    
-      <item>
-        <title>Top những ứng dụng trí tuệ nhân tạo sẽ thống trị thế giới</title>
-        <description>&lt;p&gt;Trong những năm vừa qua, sự xuất hiện của Deep Learning đã giống như một bàn đạp giúp cho ngành công nghệ &lt;code class=&quot;highlighter-rouge&quot;&gt;Trí tuệ nhân tạo (AI)&lt;/code&gt; đạt được rất nhiều thành tựu nổi bật.&lt;/p&gt;
-
-&lt;p&gt;Nổi lên như một bằng chứng của Cuộc cách mạng Công nghiệp 4.0, AI nói chung và Deep Learning nói riêng đã được ứng dụng thành công trong thực tiễn, mang lại hiệu quả vượt trội so với các phương pháp học máy truyền thống. Có thể khẳng định, Deep Learning chính là một công cụ tuyệt vời trong việc tạo ra các ứng dụng AI.&lt;/p&gt;
-
-&lt;p&gt;Dưới đây là danh sách Top các ứng dụng Deep Learning/AI được dự đoán sẽ góp phần thay đổi thế giới trong tương lai gần:&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/05/05/600eec890d081916dbd0bb73a285a215.jpg&quot; alt=&quot;Machine learning, learning to learn, transfer learning&quot; /&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 07 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/Nhung-ung-dung-tri-tue-nhan-tao-ai-se-thong-tri-the-gioi/</link>
-        <guid isPermaLink="true">/Nhung-ung-dung-tri-tue-nhan-tao-ai-se-thong-tri-the-gioi/</guid>
-        
-        
-        <category>Machine Learning</category>
-        
-        <category>deep learning</category>
-        
-        <category>neural network</category>
-        
-      </item>
-    
-      <item>
-        <title>Bạn đã biết về 'Learning to Learn' - Lĩnh vực rất mới của Trí tuệ nhân tạo?</title>
-        <description>&lt;p&gt;Trong những năm qua, lĩnh vực &lt;code class=&quot;highlighter-rouge&quot;&gt;Trí tuệ Nhân tạo&lt;/code&gt; nói chung và &lt;code class=&quot;highlighter-rouge&quot;&gt;Machine Learning&lt;/code&gt; nói riêng đã đạt được rất nhiều thành công nổi bật, đặc biệt là khi có sự xuất hiện của &lt;em&gt;Deep Learning&lt;/em&gt;. Tuy vậy, vẫn tồn tại một vấn đề rất lớn mà các nhà nghiên cứu trong lĩnh vực Trí tuệ Nhân tạo phải đối mặt, đó là các thuật toán Machine Learning đòi hỏi một lượng dữ liệu dán nhãn cực lớn, Deep Learning còn đòi hỏi một lượng dữ liệu lớn hơn nhiều lần. Dữ liệu dán nhãn không luôn luôn có sẵn đối với mọi tác vụ, và chi phí để có thể thu thập một lượng dữ liệu dán nhãn đủ để có thể training các thuật toán một cách tốt nhất là rất đắt đỏ.&lt;/p&gt;
-
-&lt;p&gt;Vì thế mà đã có nhiều nghiên cứu được thực hiện và một số phương pháp được đề xuất để phần nào đó giải quyết vấn đề nan giải này. Những phương pháp này thường được gọi là “&lt;code class=&quot;highlighter-rouge&quot;&gt;Learning to Learn&lt;/code&gt;”:&lt;/p&gt;
-
-&lt;h4 id=&quot;transfer-learning&quot;&gt;Transfer Learning&lt;/h4&gt;
-
-&lt;p&gt;Trước tiên, hãy nói về &lt;code class=&quot;highlighter-rouge&quot;&gt;Transfer Learning&lt;/code&gt;, một khái niệm dường như phổ biến, được nhiều người biết đến hơn. Trong hội thảo &lt;code class=&quot;highlighter-rouge&quot;&gt;NIPS 2016&lt;/code&gt;, &lt;em&gt;Andrew Ng&lt;/em&gt; đã nhận định rằng Transfer Learning, sau Supervise Learning, sẽ là động lực chính để định hướng cho sự phát triển của Machine Learning trong tương lai.&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;https://cdn.ereka.vn/2018/04/09/c2958b20690f5b747b1fab63d9a488df.png&quot; alt=&quot;Machine learning, learning to learn, transfer learning&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Khái niệm Transfer Learning được nhắc đến lần đầu tiên tại workshop có tên là “Learning to learn”, bàn về những phương pháp Machine Learning cho phép lưu giữ và tái sử dụng những thông tin thuật toán đã học được, trong hội thảo NIPS-95. Kể từ đó, Transfer Learning thu hút ngày càng nhiều sự chú ý. Ý tưởng chung của Transfer Learning là chia sẻ các kiến thức mà hệ thống AI đã nhận được từ quá trình training của tác vụ/domain gốc (source) sang cho một tác vụ /domain mục tiêu (target).&lt;/p&gt;
-
-&lt;h4 id=&quot;multitask-learning&quot;&gt;Multitask Learning&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Multitask Learning&lt;/code&gt; được phân chia như là một nhóm nhỏ trong Transfer Learning. Tuy vậy, không phải nhà khoa học nào cũng đồng ý với sự phân biệt này, một số coi Multitask Learning và Transfer Learning là những khái niệm tương đồng.&lt;/p&gt;
-
-&lt;p&gt;Sự khác biệt lớn nhất ở đây là trong Transfer Learning, có sự phân biệt giữa tác vụ/domain gốc và tác vụ/domain mục tiêu. Mà trong đó, tác vụ/domain mục tiêu có vai trò quan trọng hơn. Trong Multitask Learning, các tác vụ/domain có vai trò bình đẳng hơn.&lt;/p&gt;
-
-&lt;h4 id=&quot;meta-learning&quot;&gt;Meta Learning&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Meta Learning&lt;/code&gt; là một thuật ngữ xuất phát từ lĩnh vực Tâm lý Xã hội với định nghĩa gốc là &lt;em&gt;“the process by which learners become aware of and increasingly in control of habits of perception, inquiry, learning, and growth that they have internalized”.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Nói một cách ngắn gọn, Meta Learning được dùng để chỉ việc con người nhận thức và làm chủ được quá trình tiếp thu kiến thức của mình.&lt;/p&gt;
-
-&lt;p&gt;=&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Learning to Learn&lt;/code&gt; vẫn còn là một lĩnh vực rất mới trong Trí tuệ Nhân tạo. 03 phương pháp tiếp cận được nêu trên cũng chỉ là những đại diện nổi bật nhất của Learning to Learn.&lt;/p&gt;
-
-&lt;p&gt;Thông tin ở bài viết trên đây được tham khảo từ nguồn &lt;code class=&quot;highlighter-rouge&quot;&gt;Tạp chí AI&lt;/code&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 07 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/Ban-da-biet-ve-Learning-to-Learn-Linh-vuc-rat-moi-cua-Tri-tue-nhan-tao/</link>
-        <guid isPermaLink="true">/Ban-da-biet-ve-Learning-to-Learn-Linh-vuc-rat-moi-cua-Tri-tue-nhan-tao/</guid>
         
         
         <category>Machine Learning</category>

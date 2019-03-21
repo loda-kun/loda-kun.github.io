@@ -47,7 +47,7 @@ public class PostMaker implements Serializable {
         sb.append("---").append(NEW_LINE)
                 .append("id: ").append(id).append(NEW_LINE)
                 .append("layout: post").append(NEW_LINE)
-                .append("title: ").append(title).append(NEW_LINE)
+                .append("title: ").append("'").append(title).append("''").append(NEW_LINE)
                 .append("author: ").append(author).append(NEW_LINE)
                 .append("categories: ").append(categoriesToString()).append(NEW_LINE)
                 .append("image: ").append(image).append(NEW_LINE)

@@ -16,7 +16,7 @@ Okayyy vào bài.
 
 #### Java
 
-![image-title-here](/assets/images/loda1553005203072/4.jpg){:class="center-image"}
+![java-basic](/assets/images/loda1553005203072/4.jpg){:class="center-image"}
 
 Bắt đầu từ một câu chuyện: 
 
@@ -26,7 +26,7 @@ Bắt đầu từ một câu chuyện:
 
  Mình tóm tắt giúp bạn là `Java` được ra đời với mục tiêu là `"viết một lần, chạy mọi nơi"` (`"write once, run anywhere"`). Vì bản thân các `OS` là khác nhau, các lập trình viên không muốn với mỗi một OS lại phải code lại từ đầu. Nên `Java` ra đời. Năm 1995. 
  
- Lấy người anh `C/C++` làm nền tảng học tập, `Java` tiếp thu, cải thiện hơn và áp dụng mô hình hướng đối tượng chuẩn mực và mạnh mẽ nhất thời bấy giờ.
+ Lấy người anh `C/C++` làm nền tảng học tập, `Java` tiếp thu, cải thiện hơn và áp dụng mô hình hướng đối tượng chuẩn mực hơn. Từ đó trở thành ngôn ngữ mạnh mẽ nhất thời bấy giờ.
 
 Đấy ngắn gọn thế thôi, để não bộ tiếp thu tiếp.
 
@@ -63,7 +63,7 @@ sudo apt-get install oracle-java8-installer
 
 `Intellij IDEA` chỉ làm một "công cụ" lập trình, giúp các bạn viết code dễ dàng hơn, giúp cuộc sống của bạn bớt lo lắng về những vấn đề khác mà chỉ cần tập trung vào viết code thôi.
 
-![image-title-here](/assets/images/loda1553005203072/5.png){:class="center-image"}
+![intellij](/assets/images/loda1553005203072/5.png){:class="center-image"}
 
 Download tại: [https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/)
 
@@ -107,9 +107,10 @@ Bạn `click` chuột phải vào file trên màn hình, chọn `Run Main.main()
 
 > Nếu là **lần đầu**, Bạn sẽ phải kiểm tra setting một chút, cho chắc, để nó biết `Intellij` đã biết thư mục `JDK` mà bạn cài ở bước 2 chưa.
 
+![java co ban](/assets/images/loda1553005203072/6.png){:class="center-image"}
+
 > Bạn vào `File` > `Project Structure...` > `Project SDK`
-Nếu thấy như hình, nó nhận `1.8` là okie, k cần lo lắng gì nữa. 
-Còn nếu chưa, thì bạn chọn cho nó bằng tay nhé. Nếu chưa có, bạn chọn `New` và chỉ dẫn nó tới thư mục `JDK` bạn đã cài ở bước 2.
+Nếu thấy như hình, nó nhận `1.8` là okie, k cần lo lắng gì nữa. Nếu chưa có, bạn chọn mũi tên xem nó có sẵn chưa, nếu chưa, chọn `New` và chỉ dẫn nó tới thư mục `JDK` bạn đã cài ở bước 2 (`C:/Program File/Java/jdk 1.8` cho `Windows` hoặc `/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home` cho `MacOs`).
 
 Okie bạn đã thấy dòng chữ `Hellooo World~~~, I'm loda` in ra màn hình phải không. Thế là bạn đã chạy chương trình `Java` đầu tiên thành công rồi đấy hú hú :333
 

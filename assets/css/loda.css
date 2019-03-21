@@ -102,3 +102,31 @@ h1, h2, h3, h4, h5, h6{
    text-align:center;
    border-radius:50%;
 }
+
+/*
+    custom submenu
+*/
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover .sub-menu {
+    opacity: 1;
+    display: block;
+}
+
+.nav-item .sub-menu{
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    background: #fff;
+    border-radius: 4px;
+    min-width: 100px;
+    top: 100%;
+    left: 0;
+    transition: 1s;
+    opacity: 0;
+    display: none;
+    box-shadow: 0 0 4px 0px rgba(0,0,0,0.175);
+}

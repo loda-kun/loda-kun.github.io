@@ -41,7 +41,7 @@ Nếu các bạn chạy ví dụ ở trên thì sẽ thấy kết quả trên m�
 
 Thì các cần biết như sau, câu lệnh `if` là một câu lệnh điều kiện, và nhận vào là một điều kiện `true` hoặc `false`. Có cú pháp như sau:
 
-```css
+```java
 if ([điều kiện]){
     // Thực hiện đoạn code nếu [điều kiện] là `true`. Nếu `false` bỏ qa đi xuống dưới.
 }

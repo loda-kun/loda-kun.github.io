@@ -69,7 +69,7 @@ public class PostMaker implements Serializable {
 
     public String getFileName() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(new Date()) + "-" + PostHelper.removeAccents(title) + ".md";
+        return sdf.format(new Date()) + "-" + PostHelper.removeAccents(title).replaceAll(",","") + ".md";
     }
 
     public String categoriesToString() {

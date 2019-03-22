@@ -35,7 +35,9 @@ Các bạn chạy chương trình này (click chuột phải vào file `Calculat
 
 Nhìn code thì rất dễ hiểu phải không, tuy nhiên chúng ta cùng lí giải chi tiết để hiểu hơn về `Biến` và `Kiểu dữ liệu` trong `Java`.
 
-Thứ nhất là cái `// khai bao so nguyen`, cái này gọi là `Comment`, tức các bạn viết gì sau 2 cái dấu `//` thì nó sẽ không ảnh hưởng tới `code` của chương trình, nó chỉ mang ý nghĩa chú thích thôi,
+Thứ nhất là cái `// khai bao so nguyen`, cái này gọi là `Comment`, tức các bạn viết gì sau 2 cái dấu `//` thì nó sẽ không ảnh hưởng tới `code` của chương trình, nó chỉ mang ý nghĩa chú thích thôi.
+
+Thứ hai là cái này:
 
 ```java
 int a = 5;

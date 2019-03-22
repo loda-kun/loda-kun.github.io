@@ -348,9 +348,9 @@ Bạn định nghĩa `tham số đầu vào` là `x` và `y` thì nó chỉ hi�
 
 Sau đây chúng ta sẽ ứng dụng những kiến thức đã học để làm một chương trình đơn giản:
 
-"Cho 3 `số nguyên a, b, c` tượng trưng cho 3 cạnh `AB, AC, BC` của tam giác `ABC`. Kiểm tra `ABC` có phải tam giác không? nếu có, là tam giác gì?
+Cho 3 `số nguyên a, b, c` tượng trưng cho 3 cạnh `AB, AC, BC` của tam giác `ABC`. Kiểm tra `ABC` có phải tam giác không? nếu có, là tam giác gì?
 
-**Nhắc lại**: Chúng ta chưa học nhập xuất dữ lịệu trong `Java` nên chúng ta sẽ gán giá trị ngay trong `code` và chạy test.
+**Nhắc lại**: Chúng ta chưa học **nhập xuất dữ lịệu** trong `Java` nên chúng ta sẽ gán giá trị ngay trong `code` và chạy test.
 
 
 ```java
@@ -390,7 +390,7 @@ public class Calculation {
 
     public static boolean laTamgiacVuong(int a, int b, int c){
         if ((a*a + b*b) == c*c || (a*a + c*c) == b*b || (b*b + c*c) == a*a) {
-            // Là tam giác vuông nếu có 1 trong các đièu kiện thoả mãn pytagon.
+            // Là tam giác vuông nếu có 1 trong các đièu kiện thoả mãn pythagore.
             return true;
         } else {
             return false;

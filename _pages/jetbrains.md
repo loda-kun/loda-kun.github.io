@@ -24,12 +24,6 @@ comments: true
                 chia sẻ cho cộng đồng, chứ không khuyến khích việc sử dụng miễn phí.
             </p>
             <p>
-                <a href="https://loda.me">
-                    loda.me
-                </a> sẽ không chịu trách nhiệm cho các cá nhân sử dụng Key được
-                cung cấp cho các mục đích gây thiệt hại cho nhà sản xuất.
-            </p>
-            <p>
                 Nếu có điều kiện, hãy mua sản phẩm chính hãng:
                 <a href="https://www.jetbrains.com/idea/buy/">
                     https://www.jetbrains.com/idea/buy/

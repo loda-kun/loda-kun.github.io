@@ -46,7 +46,10 @@ comments: true
             <h5>1. Sửa hosts</h5>
             <p>Mở file hosts
             </p>
-            <p>Windows:</p>
+            <h6>Windows:</h6>
+
+            Bạn nên sử dụng <code class="highlighter-rouge">Notepad++</code> để edit. Nếu không, hãy copy file hosts ra một nơi khác, chỉnh sửa, rồi copy đè lại hosts cũ
+
             <table class="rouge-table">
                 <tbody>
                     <tr>
@@ -59,9 +62,11 @@ comments: true
                     </tr>
                 </tbody>
             </table>
-            <p>
+            <h6>
                 Linux/Mac:
-            </p>
+
+            </h6>
+            Sử dụng quyền <code class="highlighter-rouge">sudo</code> để edit bạn nhé.
             <table class="rouge-table">
                 <tbody>
                     <tr>

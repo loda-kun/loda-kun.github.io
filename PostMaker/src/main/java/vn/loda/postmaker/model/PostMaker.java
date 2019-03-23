@@ -47,7 +47,7 @@ public class PostMaker implements Serializable {
         sb.append("---").append(NEW_LINE)
                 .append("id: ").append(id).append(NEW_LINE)
                 .append("layout: post").append(NEW_LINE)
-                .append("title: ").append(title).append(NEW_LINE)
+                .append("title: ").append("'").append(title).append("''").append(NEW_LINE)
                 .append("author: ").append(author).append(NEW_LINE)
                 .append("categories: ").append(categoriesToString()).append(NEW_LINE)
                 .append("image: ").append(image).append(NEW_LINE)
@@ -69,7 +69,7 @@ public class PostMaker implements Serializable {
 
     public String getFileName() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(new Date()) + "-" + PostHelper.removeAccents(title) + ".md";
+        return sdf.format(new Date()) + "-" + PostHelper.removeAccents(title).replaceAll(",","") + ".md";
     }
 
     public String categoriesToString() {

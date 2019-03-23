@@ -54,7 +54,7 @@ public class Gui extends javax.swing.JFrame {
         clearAll();
         maker = new PostMaker();
         tvAuthor.setText("loda");
-        tvImage.setText("https://i.imgur.com/mH7C9KZ.jpg");
+        tvImage.setText("https://i.imgur.com/ulTNcwY.jpg");
         tv_Post.setText("./_posts/");
         tv_Images.setText("./assets/images/");
         lbCurrentInstance.setText("Current Instance: " + maker.id());

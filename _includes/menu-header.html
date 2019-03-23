@@ -81,13 +81,62 @@
       <a class="btn btn-outline-success" href="{{ site.baseurl }}/jetbrains">JetBrains Key</a>
     </li>
 
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" href="#">Demo</a>
       <ul class="sub-menu">
         <li class="nav-item">
-          <a class="nav-link" href="#">Demo 1</a>
-          <a class="nav-link" href="#">Demo 2</a>
+          <a class="nav-link nav-link__item" href="#">Demo 1</a>
+          <div class="sub-menu">
+            <ul class="sub-menu">
+              <li class="nav-item">
+                <a class="nav-link nav-link__item" href="#">Demo 1</a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
-    </li>
+    </li> -->
+
+    <div class="dropdown menu">
+      <a class="nav-link dropdown-toggle" 
+         id="#navLink" 
+         data-toggle="dropdown" 
+         aria-haspopup="true" 
+         aria-expanded="false">
+        Menu
+      </a>
+      <ul class="sub-menu__item dropdown-menu" aria-labelledby="navLink">
+        <li class="nav-item">
+            <a class="nav-link dropdown-item" href="#">Action</a>
+            <ul class="sub-menu" aria-labelledby="navLink">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Action 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Action 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Action 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-item" href="#">Action</a>
+            <ul class="sub-menu" aria-labelledby="navLink">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Action 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Action 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Action 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-item" href="#">Action</a>
+        </li>
+      </div>
+    </div>
 

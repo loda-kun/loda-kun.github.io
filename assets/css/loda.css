@@ -71,6 +71,17 @@ code{
     color: #f05f70;
 }
 
+/* Color code block */
+
+.highlight .nd{
+    color: #008080;
+}
+.highlight .n{
+    color: #008080;
+}
+.highlight .kn{
+    color: #7832e2;
+}
 
 /* title post or heading in _posts*/
 h1, h2, h3, h4, h5, h6{

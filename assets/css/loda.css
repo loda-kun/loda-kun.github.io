@@ -71,6 +71,17 @@ code{
     color: #f05f70;
 }
 
+/* Color code block */
+
+.highlight .nd{
+    color: #008080;
+}
+.highlight .n{
+    color: #008080;
+}
+.highlight .kn{
+    color: #7832e2;
+}
 
 /* title post or heading in _posts*/
 h1, h2, h3, h4, h5, h6{
@@ -101,4 +112,63 @@ h1, h2, h3, h4, h5, h6{
     line-height:30px;
    text-align:center;
    border-radius:50%;
+}
+
+/*
+    custom submenu
+*/
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item .sub-menu__item{
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    background: #fff;
+    /* border-radius: 4px; */
+    min-width: 150px;
+    top: 100%;
+    left: 0;
+    transition: 1s;
+    opacity: 0;
+    display: none;
+    box-shadow: 0 0 4px 0px rgba(0,0,0,0.175);
+}
+
+.nav-item:hover .sub-menu {
+    display: none;
+}
+
+.sub-menu {
+    position: absolute;
+    top: 0px;
+    background: #fff;
+    left: 100%;
+    padding: 0;
+    list-style: none;
+    transition: 1s;
+    margin: 0 0 0 1px;
+    min-width: 150px;
+    box-shadow: 2px 2px 4px -3px rgba(0,0,0,0.3);
+    display: none;
+}
+
+.sub-menu__item .nav-item:hover .sub-menu {
+    display: block;
+}
+
+.sub-menu__item.dropdown-menu:before {
+    border-left: none!important;
+}
+.sub-menu__item {
+    padding: 0;
+    list-style: none;
+    min-width: 150px;
+    border-radius: 0px;
+}
+
+.nav-link.dropdown-toggle::after {
+    content: unset;
 }

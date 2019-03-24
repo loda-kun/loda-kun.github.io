@@ -5,9 +5,583 @@
     <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 23 Mar 2019 05:16:31 +0000</pubDate>
-    <lastBuildDate>Sat, 23 Mar 2019 05:16:31 +0000</lastBuildDate>
+    <pubDate>Sun, 24 Mar 2019 14:43:26 +0000</pubDate>
+    <lastBuildDate>Sun, 24 Mar 2019 14:43:26 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>「Spring」Hướng dẫn lập trình Spring căn bản cho người mới</title>
+        <description>&lt;p&gt;Xin chào tất cả các bạn, trước khi đi vào chi tiết bài hôm nay, các bạn cần đọc cho mình các khái niệm sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://loda.me/Giai-thich-Dependency-Injection-(DI)-va-Inversion-of-Control-(IOC)/&quot;&gt;Khái niệm Dependency Injection và Inversion Of Control&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nếu chưa biết các khái niệm này thì bạn nên đọc chúng tại link mình trích dẫn, sau đó quay lại học tiếp phần này, như vậy sẽ hiểu rõ hơn.&lt;/p&gt;
+
+&lt;h4 id=&quot;ioc-container-trong-spring&quot;&gt;IoC Container trong Spring&lt;/h4&gt;
+
+&lt;p&gt;Nếu các bạn đã đọc bài viết &lt;code class=&quot;highlighter-rouge&quot;&gt;Inversion of Control&lt;/code&gt; ở trên, sẽ thấy là &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; sẽ đảm nhiệm thay chúng ta việc &lt;code class=&quot;highlighter-rouge&quot;&gt;khởi tạo&lt;/code&gt; object, &lt;code class=&quot;highlighter-rouge&quot;&gt;quản lý&lt;/code&gt; nó hộ chúng ta. Khi các object cần các &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; gì nó sẽ &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; luôn trong thời điểm khởi tạo.&lt;/p&gt;
+
+&lt;p&gt;Đối tượng chịu trách nhiệm tạo và quản lý đó tên là &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553413406068/2.jpg&quot; alt=&quot;IoC Container&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Đến đây nhiều bạn sẽ thắc mắc. Thế làm sao nó biết được &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt; lấy đâu ra, &lt;code class=&quot;highlighter-rouge&quot;&gt;Accessories&lt;/code&gt; đâu ra, v.v..&lt;/p&gt;
+
+&lt;p&gt;Đúng, nó sẽ không biết lấy những cái ý ở đâu ra, nếu chúng ta không nói trước với &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt;. Vậy nói với nó bằng cách nào?&lt;/p&gt;
+
+&lt;p&gt;Để biết nó làm như thế nào thì mình sẽ vừa &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; vừa giải thích cho bạn.&lt;/p&gt;
+
+&lt;h4 id=&quot;tạo-spring-project-với-maven&quot;&gt;Tạo Spring Project với Maven&lt;/h4&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;project&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;modelVersion&amp;gt;&lt;/span&gt;4.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/modelVersion&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;vn.loda.springboot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;dependency-injection&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0-SNAPSHOT&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;parent&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter-parent&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.0.5.RELEASE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/parent&amp;gt;&lt;/span&gt;
+  
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;maven.compiler.target&amp;gt;&lt;/span&gt;1.8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/maven.compiler.target&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;maven.compiler.source&amp;gt;&lt;/span&gt;1.8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/maven.compiler.source&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Các bạn tạo Project như bình thường và copy đoạn xml trên vào file &lt;code class=&quot;highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt; của bạn. Thế là chúng ta đã có một &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring project&lt;/code&gt;. Chúng ta sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;dependencies&lt;/code&gt; của &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring boot&lt;/code&gt; còn về bản chất thì không khác nhau.&lt;/p&gt;
+
+&lt;h4 id=&quot;component&quot;&gt;@Component&lt;/h4&gt;
+
+&lt;p&gt;Tạo ra các &lt;code class=&quot;highlighter-rouge&quot;&gt;Interface&lt;/code&gt; cần thiết:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Có cô gái nào mà không cần phụ kiện trên người cơ chứ :3 bông tai, vòng tay, v.v..&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Accessories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Có tý bồng bềnh phồng phềnh trên tóc ms xinh đc.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HairStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Cuối cùng là Outfit&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Implement&lt;/code&gt; tất cả các &lt;code class=&quot;highlighter-rouge&quot;&gt;Interface&lt;/code&gt; này:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.stereotype.Component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Một bộ Bikini, bạn có thể tạo thêm nhiều bộ quần áo khác, chỉ cần implement Outfit là được&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bikini&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Đã mặc Bikini&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Phụ kiện Gucci nhờ :3&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GucciAccessories&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Accessories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Class chỉ mang tính minh họa, không có gì cả&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Tóc hàn quốc cho xinh&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;KoreanHairStyle&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HairStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Class chỉ mang tính minh họa, không có gì cả&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ở đây các bạn sẽ thấy cái lạ mắt nhất chính là cái &lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt;. Nó là một &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt; được &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; cung cấp.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.stereotype.Component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt;: Sẽ báo cho &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; biết là bọn tao ở đây này, comehere. Vậy là &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; biết được có một thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; thuộc &lt;code class=&quot;highlighter-rouge&quot;&gt;interface Outfit&lt;/code&gt; đang tồn tại nên sẽ &lt;strong&gt;Tạo ra&lt;/strong&gt; đối tượng &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; rồi lưu nó vào trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Container&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553413406068/3.jpg&quot; alt=&quot;IoC Container&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lúc này, &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; đã và đang quản lý 3 đối tượng là &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;GucciAccessories&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;KoreanHair&lt;/code&gt; Và những đối tượng này được gọi với thuật ngữ là &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; ám chỉ đối tượng được &lt;code class=&quot;highlighter-rouge&quot;&gt;Container&lt;/code&gt; quản lý&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;autowired&quot;&gt;@Autowired&lt;/h4&gt;
+
+&lt;p&gt;Tạo ra &lt;code class=&quot;highlighter-rouge&quot;&gt;class Girl&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.beans.factory.annotation.Autowired&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.context.annotation.Scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.stereotype.Component&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prototype&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Accessories&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accessories&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HairStyle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hairStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Accessories&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accessories&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HairStyle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hairStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;accessories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accessories&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hairStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hairStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Girl{&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;outfit=&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;, accessories=&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accessories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;, hairStyle=&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hairStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+        &lt;span class=&quot;sc&quot;&gt;'}'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Các bạn thấy &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; cũng có &lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt;, vậy chúng ta hiểu  nó cũng là 1 &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt;, và &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; sẽ tới tìm và tạo ra nó. cái này giải thích ở trên rồi.&lt;/p&gt;
+
+&lt;p&gt;Cái cần nói ở đây là cái thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;@Autowired&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Autowired&lt;/code&gt;: Là &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt; được chú thích trên một thuộc tính (&lt;code class=&quot;highlighter-rouge&quot;&gt;field&lt;/code&gt;) hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;function&lt;/code&gt; để nói với &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; là hãy tự &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; những thuộc tính này vào hộ tao.&lt;/p&gt;
+
+&lt;p&gt;Lúc này hành vi của thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; sẽ như sau:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Nhận thấy &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; cũng có &lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt; nên nó phải tạo 1 &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean Girl&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Thấy &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; có các thuộc tính còn thiếu, được đánh dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;@Autowired&lt;/code&gt;. Tìm trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Container&lt;/code&gt; các giá trị phù hợp và &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; vào các thuộc tính có &lt;code class=&quot;highlighter-rouge&quot;&gt;@Autowired&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tạo ra một &lt;code class=&quot;highlighter-rouge&quot;&gt;new Girl&lt;/code&gt; từ những gì đã &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt;. Cất nó vào &lt;code class=&quot;highlighter-rouge&quot;&gt;Container&lt;/code&gt; để quản lý luôn.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553413406068/4.jpg&quot; alt=&quot;IoC Container&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;chạy-chương-trình&quot;&gt;Chạy chương trình&lt;/h4&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.beans.factory.annotation.Autowired&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.CommandLineRunner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.autoconfigure.SpringBootApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.context.ApplicationContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CommandLineRunner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApplicationContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;girl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@SpringBootApplication&lt;/code&gt;: Chỉ cần sử dụng một lần trên class chính. Để nói rằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Project&lt;/code&gt; của chúng ta là &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Project&lt;/code&gt;, nó sẽ &lt;code class=&quot;highlighter-rouge&quot;&gt;Config&lt;/code&gt; tự động giúp bạn.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Bạn phải wrapper hàm Class có annotation  @SpringBootApplication bằng SpringApplication.run() thì mới được Spring hỗ trợ. Còn không thì cái @SpringBootApplication cũng như vứt đi à&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Boot&lt;/code&gt; đơn giản chỉ là một mở rộng của &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Framework&lt;/code&gt;. kế thừa các tinh hoa và giảm thiểu hết các đoạn code thừa hoặc dài dòng đi.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vì cái hàm ` main(String[] args)&lt;code class=&quot;highlighter-rouge&quot;&gt; của bạn đã bị wrapper bằng &lt;/code&gt;Spring&lt;code class=&quot;highlighter-rouge&quot;&gt;. Nên bạn muốn chạy cái gì thì phải &lt;/code&gt;immplement&lt;code class=&quot;highlighter-rouge&quot;&gt; cái &lt;/code&gt;CommandLineRunner&lt;code class=&quot;highlighter-rouge&quot;&gt; và code mọi thứ trong cái hàm &lt;/code&gt; run(String… args) ` mà &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; cung cấp thì nó mới chạy.&lt;/p&gt;
+
+&lt;p&gt;Tới đây, chúng ta sẽ thấy &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplicationContext&lt;/code&gt;. Cái này chính là &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; đấy các bạn.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Bảo Spring tự inject chính cái Container của nó cho mình nghịch chút&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApplicationContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Cái này có thể hiểu chính là Container đấy các bạn, nó chứa mọi Bean trong này.&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;girl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Lấy Girl đã được tạo ra xem.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;girl2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;girl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;girl2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Kết quả ra False&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Chứng tỏ mỗi lần lấy ra chúng ta tạo ra 1 Cô gái khác nhau&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Kết quả ra True&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Chứng tỏ Outfit là singleton.&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Khi chạy chương trình, bạn sẽ thấy là với class &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; thì mỗi lần lấy ra, nó là một &lt;code class=&quot;highlighter-rouge&quot;&gt;instance&lt;/code&gt; hoàn toàn mới, nhưng &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt; thì bạn có lấy ra bao nhiều lần, nó vẫn chỉ là 1 &lt;code class=&quot;highlighter-rouge&quot;&gt;instance&lt;/code&gt; duy nhất (&lt;code class=&quot;highlighter-rouge&quot;&gt;singleton&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Lý giải hiện tượng này, chúng ta quay lại ngược trở lại đoạn code &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt;, và sẽ nhận ra, chúng nó khác nhau duy nhất ở điểm chí mạng này:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prototype&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Bạn xóa &lt;code class=&quot;highlighter-rouge&quot;&gt;@Scope(&quot;prototype&quot;)&lt;/code&gt; đi và chạy lại thử xem 😅&lt;/p&gt;
+
+&lt;p&gt;Đến đây bạn có thể hiểu, nếu như không nói gì. toàn bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; trong &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; đều là &lt;code class=&quot;highlighter-rouge&quot;&gt;Singleton&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Còn nếu muốn &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; được khởi tạo theo ý mình, bạn phải cung cấp thêm &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotaion&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;@Scope&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Scope(&quot;prototype&quot;)&lt;/code&gt;: tương đương với việc tạo &lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt; Object&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Scope(&quot;singleton&quot;)&lt;/code&gt;: Không nói gì, thì &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; sẽ mặc định là scope này. &lt;code class=&quot;highlighter-rouge&quot;&gt;Singleton&lt;/code&gt;, đôi tượng chỉ được tạo ra duy nhất một lần.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ngoài ra còn có các kiểu &lt;code class=&quot;highlighter-rouge&quot;&gt;scope&lt;/code&gt; bổ sung cho project dạng &lt;code class=&quot;highlighter-rouge&quot;&gt;Web Application&lt;/code&gt;. Chúng ta chưa cần đề cập nó ở đây.&lt;/p&gt;
+
+&lt;h4 id=&quot;configuration-và-bean&quot;&gt;@Configuration và @Bean&lt;/h4&gt;
+
+&lt;p&gt;Bây giờ khi chạy chương trình tạo ra &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; ở trên, thì có một vấn đề là &lt;code class=&quot;highlighter-rouge&quot;&gt;Cô gái&lt;/code&gt; nào cũng sẽ tự &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; cái bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; vào người. Trong khi thực tế, mọi cô gái được tạo ra, đáng ra phải &lt;code class=&quot;highlighter-rouge&quot;&gt;Naked&lt;/code&gt; mới đúng 😗&lt;/p&gt;
+
+&lt;p&gt;Mình quyết định sẽ &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; cho chương trình này một chút, để mọi &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; khi được tạo ra sẽ &lt;code class=&quot;highlighter-rouge&quot;&gt;Naked&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.context.annotation.Bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.context.annotation.Configuration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Đánh dấu một Class là Config, class này sẽ được ưu tiên tìm kiếm&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GirlConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Gắn đối tượng Outfit trả về trong hàm này là 1 bean. IoC Container sẽ quản lý nó giống @Component luôn&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;defaultOutfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Naked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// function này trả về một đối tượng Naked()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Naked&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ngượng quá điii!!!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Mình giải thích:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Configuration&lt;/code&gt;: Là một &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt; đặc biệt của &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;. Khi một class được đánh dấu là &lt;code class=&quot;highlighter-rouge&quot;&gt;@Configuration&lt;/code&gt; thì &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; hiểu class này là nơi chúng ta &lt;strong&gt;&lt;em&gt;cấu hình&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;cài đặt&lt;/em&gt;&lt;/strong&gt; và &lt;strong&gt;&lt;em&gt;tạo ra&lt;/em&gt;&lt;/strong&gt; những &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; cần thiết cho chương trình, nên nó sẽ chạy vào &lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt; này trước tiên.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Bean&lt;/code&gt;: Chỉ được gắn trên &lt;code class=&quot;highlighter-rouge&quot;&gt;function&lt;/code&gt; và nó sẽ đánh dấu đối tượng trả về trong &lt;code class=&quot;highlighter-rouge&quot;&gt;function&lt;/code&gt; là &lt;code class=&quot;highlighter-rouge&quot;&gt;bean&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; sẽ phải quản lý nó. Tương tự &lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt;. tuy nhiên &lt;code class=&quot;highlighter-rouge&quot;&gt;@Bean&lt;/code&gt; chỉ gắn trên &lt;code class=&quot;highlighter-rouge&quot;&gt;function&lt;/code&gt; mà thôi.&lt;/p&gt;
+
+&lt;p&gt;Về hành vi, &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt; sẽ tìm kiếm, lục lọi tìm ra toàn bộ các &lt;code class=&quot;highlighter-rouge&quot;&gt;@Configuration&lt;/code&gt; trong project và gọi hết các &lt;code class=&quot;highlighter-rouge&quot;&gt;Function&lt;/code&gt; có chứa &lt;code class=&quot;highlighter-rouge&quot;&gt;@Bean&lt;/code&gt; trong đó. Lấy ra các &lt;code class=&quot;highlighter-rouge&quot;&gt;bean&lt;/code&gt; mà hàm trả về và quản lý nó.&lt;/p&gt;
+
+&lt;p&gt;Có thể coi đây là một cách khởi tạo ra &lt;code class=&quot;highlighter-rouge&quot;&gt;bean&lt;/code&gt; cho các &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; theo cách mình muốn, tùy thuộc cách chúng ta gán cho đối tượng trong &lt;code class=&quot;highlighter-rouge&quot;&gt;function&lt;/code&gt; như nào mà &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; cho cái &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; đó sẽ như vậy.&lt;/p&gt;
+
+&lt;p&gt;Tuy nhiên, khi chạy chương trình trên, bạn sẽ có lỗi:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Consider&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;marking&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beans&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Primary&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;updating&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;consumer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multiple&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beans&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Qualifier&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identify&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;consumed&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bạn biết vì sao chưa? Vì lúc này, chúng ta có tới 2 thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt; trong &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC Container&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Có component, nên IoC tạo ra 1 Outfit trong Container&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bikini&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Đã mặc Bikini&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Vì là Configuration, nên IoC sẽ chạy class này và tạo ra toàn bộ các @Bean trong nó.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GirlConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Có @Bean =&amp;gt; tạo ra 1 Outfit là Naked trong Container.&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;defaultOutfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Naked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; 
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Lúc này IoC Container không biết nên inject thằng outfit nào vào đây.&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Có 2 hướng giải quyết:&lt;/p&gt;
+
+&lt;h4 id=&quot;1-primary&quot;&gt;1. @Primary&lt;/h4&gt;
+
+&lt;p&gt;Đánh dấu cái &lt;code class=&quot;highlighter-rouge&quot;&gt;Naked&lt;/code&gt; là ưu tiên. Như vậy khi có nhiều &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; dạng &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt;, nó sẽ luôn ưu tiên &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;Naked&lt;/code&gt; trước. Đúng ý chúng ta. Khởi tạo ra &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; là phải &lt;code class=&quot;highlighter-rouge&quot;&gt;Naked&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Primary&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;defaultOutfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Naked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-qualifier&quot;&gt;2. Qualifier&lt;/h4&gt;
+
+&lt;p&gt;Khi bạn có nhiều &lt;code class=&quot;highlighter-rouge&quot;&gt;Bean&lt;/code&gt; chung kiểu, gây bối rối cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; thì bạn phải đặt tên cho nó và chỉ định xem cái nào sẽ ở đâu&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;naked&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;defaultOutfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Naked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prototype&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Qualifier&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;naked&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Accessories&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accessories&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HairStyle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hairStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Nhớ bỏ cái dòng lệnh này đi &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Outfit outfit = context.getBean(Outfit.class);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// System.out.println(outfit);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Outfit outfit2 = context.getBean(Outfit.class);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// System.out.println(outfit == outfit2);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Thay bằng &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// context.getBean(&quot;naked&quot;, Outfit.class)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// hoặc context.getBean(&quot;bikini&quot;, Outfit.class)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;lời-kết&quot;&gt;Lời kết&lt;/h4&gt;
+
+&lt;p&gt;Tới đây, mình đã giới thiệu xong với các bạn cách &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Framework&lt;/code&gt; hoạt động và sử dụng nó trong &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nắm được lý thuyết này cũng như các &lt;code class=&quot;highlighter-rouge&quot;&gt;Annotation&lt;/code&gt; ở trên là bạn đã có thể &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; xoành xoạch cái &lt;code class=&quot;highlighter-rouge&quot;&gt;Framework&lt;/code&gt; này rồi.&lt;/p&gt;
+
+&lt;p&gt;Nhớ đón đọc các bài sau về hướng dẫn lập trình &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring boot&lt;/code&gt; nhé.&lt;/p&gt;
+
+&lt;p&gt;Chúc các bạn học tập tốt và nhớ chia sẻ cho bạn bè học cùng ahehe :v&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Huong-dan-lap-trinh-Spring-can-ban-va-@Autowired-cho-nguoi-moi/</link>
+        <guid isPermaLink="true">/Huong-dan-lap-trinh-Spring-can-ban-va-@Autowired-cho-nguoi-moi/</guid>
+        
+        
+        <category>spring</category>
+        
+        <category>spring căn bản</category>
+        
+        <category>spring boot</category>
+        
+      </item>
+    
+      <item>
+        <title>「Spring」Giải thích Dependency Injection (DI) và Inversion of Control (IOC) bằng Ngọc Trinh</title>
+        <description>&lt;p&gt;Heyzau, chào tất cả các bạn, hôm nay mình sẽ chia sẻ về 2 khái niệm gây nhức nhối và thương nhớ cho rất nhiều developer, Để làm việc được với &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; và hệ sinh thái quanh nó, thì việc đầu tiên, tiên quyết, duy nhất bạn cần làm đó là thấu hiểu định nghĩa của 2 cái này.&lt;/p&gt;
+
+&lt;p&gt;Vậy chúng nó là cái gì, chúng ta sẽ đi vào chi tiết nhé.&lt;/p&gt;
+
+&lt;h4 id=&quot;dependency-injection-di&quot;&gt;Dependency Injection (DI)&lt;/h4&gt;
+
+&lt;p&gt;Trong tài liệu có nói thế này:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Dependency Injection is a design pattern, …&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Thế thì bạn có thể hiểu &lt;strong&gt;nôm na&lt;/strong&gt; nó là một phương pháp lập trình, là một thiết kế để bạn có được hiệu quả cao hơn khi &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;. Trước khi phương pháp này ra đời, bạn vẫn &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; bình thường, nhưng bây giờ có rồi, đi theo nó sẽ giúp ích nhiều hơn cho việc lập trình của bạn.&lt;/p&gt;
+
+&lt;p&gt;Vậy cuối cùng &lt;code class=&quot;highlighter-rouge&quot;&gt;Dependency Injection&lt;/code&gt; nó bảo chúng ta làm gì? 🙃 (nôm na nhiều mà quên mịa vấn đề chính)&lt;/p&gt;
+
+&lt;p&gt;Mình sẽ giải thích cho các bạn qua một ví dụ như lày:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bikini&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// mỗi cô gái sẽ có một bộ bikini khi ra ngoài&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bikini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Khi bạn tạo ra 1 cô gái, bạn cho cô ta mặc Bikini chẳng hạn&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Trước hết, qua đoạn code này, bạn sẽ thấy là khi bạn tạo ra một &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt;, bạn sẽ tạo ra thêm 1 bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; đi kèm với cô gái đó. Lúc này, &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; tồn tại mang ý nghĩa là &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; (phụ thuộc) của &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Khi khởi tạo thuộc tính như này, bạn vô tình tạo ra một điểm thắt nút trong chương trình của mình, giả sử, &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; muốn mặc một bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Váy + Áo thun hở rốn&lt;/code&gt; hay &lt;code class=&quot;highlighter-rouge&quot;&gt;không mặc gì&lt;/code&gt; thì sao? Bạn sẽ phải thay &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; thành &lt;code class=&quot;highlighter-rouge&quot;&gt;SkirtWithTshirt&lt;/code&gt;(&lt;code class=&quot;highlighter-rouge&quot;&gt;Váy với áo T-shirt&lt;/code&gt;) hay &lt;code class=&quot;highlighter-rouge&quot;&gt;Naked&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;Trần như nhộng&lt;/code&gt;) ư?&lt;/p&gt;
+
+&lt;p&gt;Hay nguy hiểm hơn, bộ đồ &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; bị hỏng? (code lớp &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; không hoạt động?) nó sẽ ảnh hưởng trực tiếp tới &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vấn đề là ở đó, nguyên tắc là:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Các &lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt; không nên phụ thuộc vào các &lt;code class=&quot;highlighter-rouge&quot;&gt;kế thừa cấp thấp&lt;/code&gt;, mà nên phụ thuộc vào &lt;code class=&quot;highlighter-rouge&quot;&gt;Abstraction&lt;/code&gt; (lớp trừu tượng).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nghe hơi khó hiểu. Bây giờ mình thay đoạn code như này:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Một interface cho việc ăn mặc&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Một object cấp thấp, implement của Outfits&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bikini&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Đã mặc Bikini&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Bây giờ Girl chỉ phụ thuộc vào Outfit. nếu muốn thay đổi đồ của cô gái, chúng ta chỉ cần cho Outfit một thể hiện mới.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bikini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tới đây, chúng ta mới chỉ &lt;code class=&quot;highlighter-rouge&quot;&gt;Abtract&lt;/code&gt; hóa thuộc tính của &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; mà thôi, còn thực tế, &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; vẫn đang bị gắn với một bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; duy nhất. Vậy muốn thay đồ cho cô gái, bạn phải làm như nào.&lt;/p&gt;
+
+&lt;p&gt;Phải sửa &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; thêm chút nữa:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outfit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anything&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;outfit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anything&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Tạo ra một cô gái, với một món đồ tùy biến&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// Không bị phụ thuộc quá nhiều vào thời điểm khởi tạo, hay code.&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bikini&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bikini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Tạo ra đối tượng Bikini ở ngoài đối tượng&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ngocTrinh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bikini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Mặc nó vào cho cô gái khi tạo ra cô ấy.&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Với đoạn code ở trên, chúng ta đã &lt;code class=&quot;highlighter-rouge&quot;&gt;gần như&lt;/code&gt; tách được &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt; ra hoàn toàn khỏi &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt;. điều này làm giảm sự phụ thuộc giữa &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;Bikini&lt;/code&gt;. Mà tăng tính tùy biến, linh hoạt cho &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Bây giờ &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; sẽ hoạt động với &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt; mà thôi. Và &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt; ở đâu ra? Chúng ta &lt;strong&gt;tạo ra&lt;/strong&gt; và &lt;strong&gt;đưa nó vào&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;(Inject)&lt;/code&gt; cô gái &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553326013583/3.jpg&quot; alt=&quot;ngoc-trinh&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Khái niệm &lt;code class=&quot;highlighter-rouge&quot;&gt;Dependency Injection&lt;/code&gt; từ đây mà ra~&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Dependency Injection là việc các &lt;code class=&quot;highlighter-rouge&quot;&gt;Object&lt;/code&gt; nên phụ thuộc vào các &lt;code class=&quot;highlighter-rouge&quot;&gt;Abstract Class&lt;/code&gt; và thể hiện chi tiết của nó sẽ được &lt;code class=&quot;highlighter-rouge&quot;&gt;Inject&lt;/code&gt; vào đối tượng lúc runtime.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bây giờ muốn &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; mặc gì khác, bạn chỉ cần tạo một &lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt; kế thừa &lt;code class=&quot;highlighter-rouge&quot;&gt;Outfit&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;Inject&lt;/code&gt; (dịch là &lt;code class=&quot;highlighter-rouge&quot;&gt;Tiêm vào&lt;/code&gt; cũng được) nó vào &lt;code class=&quot;highlighter-rouge&quot;&gt;Girl&lt;/code&gt; là xong!&lt;/p&gt;
+
+&lt;p&gt;Các cách để &lt;code class=&quot;highlighter-rouge&quot;&gt;Inject&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; vào một đối tượng có thể kể đến như sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Constructor Injection&lt;/code&gt;: Cái này chính là ví dụ của mình, &lt;code class=&quot;highlighter-rouge&quot;&gt;tiêm&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; ngay vào &lt;code class=&quot;highlighter-rouge&quot;&gt;Contructor&lt;/code&gt; cho tiện.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Setter Injection&lt;/code&gt;: Ồ, sao không chứ 😗 chúng ta học về &lt;code class=&quot;highlighter-rouge&quot;&gt;Setter&lt;/code&gt; từ những bài học vỡ lòng rồi, quá hợp lý. Xài  &lt;code class=&quot;highlighter-rouge&quot;&gt;girl.setOutfit(new Naked())&lt;/code&gt; 😈&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Interface Injection&lt;/code&gt;: Mỗi &lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt; muốn &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; cái gì, thì phải &lt;code class=&quot;highlighter-rouge&quot;&gt;implement&lt;/code&gt; một &lt;code class=&quot;highlighter-rouge&quot;&gt;Interface&lt;/code&gt; có chứa một hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;inject(xx)&lt;/code&gt; (Gần như thay thế cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Setter&lt;/code&gt; ý bạn). Rồi bạn muốn &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; gì đó thì gọi cái hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;inject(xx)&lt;/code&gt; ra. Cách này hơi dài và khó cho người mới.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;inversion-of-control&quot;&gt;Inversion of Control&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dependency Injection&lt;/code&gt; giúp chúng ta dễ dàng mở rộng &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; và giảm sự phụ thuộc giữa các &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; với nhau. Tuy nhiên, lúc này, khi &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; bạn sẽ phải kiêm thêm nhiệm vụ  &lt;code class=&quot;highlighter-rouge&quot;&gt;Inject dependency (tiêm sự phụ thuộc)&lt;/code&gt;. Thử tưởng tượng một &lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt; có hàng chục &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; thì bạn sẽ phải tự tay &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; từng ý cái. Việc này lại dẫn tới khó khăn trong việc &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;, quản lý &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Outfit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bikini&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bikini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Accessories&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gucci&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GucciAccessories&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;HairStyle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hair&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KoreanHairStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ngocTrinh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bikini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gucci&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hair&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Giá như lúc này có thằng làm hộ được chúng ta việc này thì tốt biết mấy.&lt;/p&gt;
+
+&lt;p&gt;Bây giờ giả sử, chúng ta định nghĩa trước toàn bộ các &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; có trong &lt;code class=&quot;highlighter-rouge&quot;&gt;project&lt;/code&gt;, mô tả nó và tống nó vào 1 cái &lt;code class=&quot;highlighter-rouge&quot;&gt;kho &lt;/code&gt; và giao cho một thằng tên là &lt;code class=&quot;highlighter-rouge&quot;&gt;framework&lt;/code&gt; quản lý. Bất kỳ các &lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt; nào khi khởi tạo, nó cần &lt;code class=&quot;highlighter-rouge&quot;&gt;dependency&lt;/code&gt; gì, thì cái &lt;code class=&quot;highlighter-rouge&quot;&gt;framework&lt;/code&gt; này sẽ tự tìm trong &lt;code class=&quot;highlighter-rouge&quot;&gt;kho&lt;/code&gt; rồi &lt;code class=&quot;highlighter-rouge&quot;&gt;inject&lt;/code&gt; vào đối tượng thay chúng ta. sẽ tiện hơn phải không?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553326013583/2.jpg&quot; alt=&quot;dependency injection&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That it, chính nó, đó cũng chính là nguyên lý chính của  &lt;code class=&quot;highlighter-rouge&quot;&gt;Inversion of Control (IOC)&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;Đảo chiều sự điều khiển&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Nguyên văn Wiki:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Inversion of Control is a programming principle. flow of control within the application is not controlled by the application itself, but rather by the underlying framework.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Khi đó, code chúng ta sẽ chỉ cần như này, để lấy ra 1 đối tượng:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;girl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Girl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Đối với &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; thì có một số &lt;code class=&quot;highlighter-rouge&quot;&gt;Framework&lt;/code&gt; hỗ trợ chúng ta &lt;code class=&quot;highlighter-rouge&quot;&gt;Inversion of Control (IOC)&lt;/code&gt;, trong đó nổi bật có:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring framework&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Google Guice&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring framework&lt;/code&gt; là một framework từ những ngày đầu, ra đời để hiện thực ý tưởng &lt;code class=&quot;highlighter-rouge&quot;&gt;Inversion of Control (IOC)&lt;/code&gt;, tuy nhiên, theo thời gian, &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; lớn mạnh và trở thành một &lt;code class=&quot;highlighter-rouge&quot;&gt;hệ sinh thái&lt;/code&gt; rộng lớn phục vụ rất nhiều chức năng trên nền tàng &lt;code class=&quot;highlighter-rouge&quot;&gt;IoC&lt;/code&gt; này.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Google Guice&lt;/code&gt; ra đời sau và tập trung vào nhiệm vụ &lt;code class=&quot;highlighter-rouge&quot;&gt;DI&lt;/code&gt; thôi.&lt;/p&gt;
+
+&lt;p&gt;Mình sẽ hướng dẫn các bạn sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Framework&lt;/code&gt; tại đây nhé:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-lap-trinh-Spring-can-ban-va-@Autowired-cho-nguoi-moi/&quot;&gt;Hướng dẫn lập trình Spring cho người mới bắt đầu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Chỉ cần xem ví dụ trong &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; thì bạn sẽ hiểu vấn đề hơn rất nhiều.&lt;/p&gt;
+
+&lt;h4 id=&quot;lời-kết&quot;&gt;Lời kết&lt;/h4&gt;
+
+&lt;p&gt;Tới đây, mình đã chia sẻ với các bạn các khái niệm về &lt;code class=&quot;highlighter-rouge&quot;&gt;Dependency Injection&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;Inversion of Control&lt;/code&gt;. Bạn có thể biết được cách nó hình thành và vấn đề nó muốn giải quyết. Hi vọng các bạn sẽ có được góc nhìn gần gửi, thực tiễn và dễ hiểu.&lt;/p&gt;
+
+&lt;p&gt;Còn nếu vẫn còn khúc mắc, thì hãy xem thêm chi tiết tại bài hướng dẫn sử dụng &lt;a href=&quot;https://loda.me/Huong-dan-lap-trinh-Spring-can-ban-va-@Autowired-cho-nguoi-moi/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;&lt;/a&gt; nhé.&lt;/p&gt;
+
+&lt;p&gt;Chúc các bạn học tốt và nhớ chia sẻ cho bạn học cùng.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Giai-thich-Dependency-Injection-(DI)-va-Inversion-of-Control-(IOC)/</link>
+        <guid isPermaLink="true">/Giai-thich-Dependency-Injection-(DI)-va-Inversion-of-Control-(IOC)/</guid>
+        
+        
+        <category>Spring</category>
+        
+        <category>Spring-boot</category>
+        
+        <category>Dependency Injection. Inversion of Control</category>
+        
+      </item>
     
       <item>
         <title>「Spring-boot」Hướng dẫn sử dụng Spring Profiles</title>
@@ -1731,158 +2305,6 @@ Nếu thấy như hình, nó nhận &lt;code class=&quot;highlighter-rouge&quot;
         <category>java basic</category>
         
         <category>series 2 tuần</category>
-        
-      </item>
-    
-      <item>
-        <title>「Java basic #0」Giới thiệu Series Java căn bản.</title>
-        <description>&lt;p&gt;Xin chào tất cả các bạn, mình là &lt;code class=&quot;highlighter-rouge&quot;&gt;loda&lt;/code&gt;. Hôm nay mình sẽ giới thiệu tới các bạn khóa học &lt;code class=&quot;highlighter-rouge&quot;&gt;Java căn bản trong 2 tuần&lt;/code&gt;. Mục tiêu là giúp các bạn, dù xuất phát điểm như nào cũng có thể nắm được ngôn ngữ này trong 2 tuần 😗 (rìa lý men)&lt;/p&gt;
-
-&lt;p&gt;Mặc dù mục đích ban đầu &lt;code class=&quot;highlighter-rouge&quot;&gt;blog&lt;/code&gt; của mình hướng tới là chia sẻ các kiến thức nâng cao về &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;, v.v.. Vì bản thân mình nghĩ các kiến thức cơ bản thì có quá nhiều nguồn để học rồi 😳 ấy vậy mà không như thế các bạn ạ 😳 . Chính vì nhiều nguồn quá rồi, nó lại khiến các bạn bối rối giữa việc chọn nguồn tài liệu và giáo trình, dẫn tới học chắp và, không hiệu quả, và thường mất thời gian mới hiểu được bản chất ngôn ngữ này, vì theo mình khảo sát thì các bài viết không đầu tư đủ nội dung, thường là “mì ăn liền”. Thứ 2, cũng là mục đích chính, có bạn muốn mình giúp đỡ nên mình quyết định viết series này. :v ha ha .. ha&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Series: &lt;strong&gt;Java Basic&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Số bài: 14 ~ 18&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Mục tiêu đạt được sau khóa học:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Hiểu và sử dụng được ngôn ngữ &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Nắm bắt được các khái niệm cơ bản về &lt;code class=&quot;highlighter-rouge&quot;&gt;OOP&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Biết các &lt;code class=&quot;highlighter-rouge&quot;&gt;lib&lt;/code&gt; phổ biến của &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; giải quyết bài toán thực tế.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Nội dung bài học mình sẽ cố gắng cô đọng trong số lượng ít bài học nhất có thể 🤔 zì sao ?&lt;/p&gt;
-
-&lt;p&gt;Mình không biết các bạn lực học ra sao, và xuất phát điểm như nào, nhưng mình nghĩ việc chia quá nhỏ bài học ra đôi khi lại phản tác dụng, nó cứ lắt nhắt mà không cô đọng được mỗi lần học. Mình nghĩ nên tập trung kiến thức liên quan thành một và học 1 mạch, nó sẽ có cái flow, cái đà học, thì mới vào được 😗 Chứ cứ mỗi bài các bạn chỉ mất 5 - 10’ lướt qua, thì các bạn sẽ nghĩ là “à, xong 1 bài, đơn rản, thưởng mình 10’ facebook thư giãn”. Tới ngày hôm sau bạn sẽ lại phải tìm lại cái bài ý để đọc :v &lt;code class=&quot;highlighter-rouge&quot;&gt;mất thời gian x 2&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ghi nhớ x 0&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Giới thiệu sơ qua vậy ha, yên tâm là mình sẽ cố gắng viết cô đọng, nhưng vẫn truyền tải đủ ý và giúp mọi hiểu bản chất ha :3&lt;/p&gt;
-
-&lt;p&gt;Giờ thì đi vào bài học nhé các bạn:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://loda.me/Java-basic-1-Gioi-thieu-Java-Cai-dat-moi-truong-va-Hellooo-world/&quot;&gt;「Java basic #1」Giới thiệu Java, Cài đặt môi trường và Hellooo world~&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://loda.me/Java-basic-2-Bien-pham-vi-kieu-du-lieu-toan-tu-trong-java/&quot;&gt;「Java basic #2」Biến, phạm vi, kiểu dữ liệu, toán tử trong Java&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://loda.me/Java-basic-3-Ham-va-cau-lenh-dieu-kien/&quot;&gt;「Java basic #3」Hàm và câu lệnh điều kiện&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://loda.me/Java-basic-4-Nhap-xuat-du-lieu/&quot;&gt;「Java basic #4」Nhập xuất dữ liệu trong Java&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Ongoging..&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/Java-basic-0-Gioi-thieu-Series-Java-can-ban-thanh-thao-java-trong-2-tuan</link>
-        <guid isPermaLink="true">/Java-basic-0-Gioi-thieu-Series-Java-can-ban-thanh-thao-java-trong-2-tuan</guid>
-        
-        
-        <category>java</category>
-        
-        <category>java basic</category>
-        
-        <category>series 2 tuần</category>
-        
-      </item>
-    
-      <item>
-        <title>「Hibernate #1」Hướng dẫn sử dụng Criteria API trong Hibernate</title>
-        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;JPA Criteria API&lt;/code&gt; cho phép ta tạo ra các câu truy vấn bằng Java Object thay vì việc khai báo trực tiếp trong &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; (JPQL) như thế này:&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Tương đương với câu lệnh trên nhưng xây dựng bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; thì sẽ như này:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CriteriaBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCriteriaBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;CriteriaQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Nhìn có vẻ dài dòng và khó hiểu phải không &amp;gt;”&amp;lt; Yea, thì đúng là như thế đấy ==!&lt;/p&gt;
-
-&lt;p&gt;Nếu nó dài dòng như vậy, tại sao người ta lại tạo ra và sử dụng nó thay cho câu lệnh &lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt; bình thường? Các bạn đọc phần tiếp theo sẽ rõ nha.&lt;/p&gt;
-
-&lt;h4 id=&quot;jpql-vs-criteria-api&quot;&gt;JPQL vs Criteria API&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt; có thể làm đầy đủ chức năng chúng ta cần chỉ với 1 câu lệnh, tuy nhiên, chính vì điều đó, chúng ta thường khó tùy biến hay sử dụng lại nó, thậm chí khó kiểm soát lỗi của nó hơn. Với một câu lệnh phức tạp, chúng ta không biết được nó có lỗi hay không cho tới khi chạy chương trình hay debug (Mà chương trình đã chạy được rồi thì vẫn có lỗi tiềm ẩn :v chời đậu).&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; thì ngược lại, nó cho phép chúng ta xây dựng câu lệnh một cách &lt;code class=&quot;highlighter-rouge&quot;&gt;Dynamic&lt;/code&gt;, rất linh động, và không bị &lt;code class=&quot;highlighter-rouge&quot;&gt;hardcode&lt;/code&gt; trong một &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; và có thể &lt;code class=&quot;highlighter-rouge&quot;&gt;tái sử dụng&lt;/code&gt; lại được. Đặc biệt, vì là Java Object, nên chúng ta sẽ biết một câu lệnh bị lỗi, không đúng quy tắc ngay khi biên dịch chương trình rồi.&lt;/p&gt;
-
-&lt;p&gt;Túm váy lại, với một lệnh đơn giản như ví dụ đầu bài, thì các bạn nên xài &lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt;, còn với những câu lệnh phức hợp, thay đổi theo &lt;code class=&quot;highlighter-rouge&quot;&gt;context&lt;/code&gt; của chương trình thì nên sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;how-to-use&quot;&gt;How to use.&lt;/h4&gt;
-
-&lt;p&gt;Quay trở lại với ví dụ ban đầu nhé:&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CriteriaBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCriteriaBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;CriteriaQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Chúng ta cùng tìm hiểu từng dòng lệnh:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaBuilder&lt;/code&gt;: Để xây dựng một câu query, các bạn sẽ cần tới &lt;code class=&quot;highlighter-rouge&quot;&gt;interface&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaBuilder&lt;/code&gt;, mục đích của nó là giúp tạo ra đối tượng chứa câu lệnh truy vấn &lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaQuery&lt;/code&gt; và cung cấp cơ số các phép biến đổi, phép logic, điều kiện cho câu lệnh (and, or, not, avg, greater than,v.v…)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaQuery&lt;/code&gt;: Đối tượng chính của chúng ta đây, nó được tạo ra bởi &lt;code class=&quot;highlighter-rouge&quot;&gt;builder.createQuery(Office.class)&lt;/code&gt;. Mục đích là khai báo đối tượng bạn muốn lấy ra sau khi thực hiện query. Nó tương đương với đoạn ngoặc đơn ở dưới đây:
-    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`o`&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Root&lt;/code&gt;: root là khai báo đối tượng bạn sẽ sử dụng trong query, tương đương với đối tượng sau mệnh đề &lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;
-    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`Office o`&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Cuối cùng, để hoàn thiện câu lệnh &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; chỉ đơn giản là lấy đối tượng &lt;code class=&quot;highlighter-rouge&quot;&gt;CriteriaQuery&lt;/code&gt; đã khai báo là sử dụng function &lt;code class=&quot;highlighter-rouge&quot;&gt;select&lt;/code&gt;. Đối tượng truyền vào chính là cái &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; (hay cái đối tượng của &lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;) kia.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Trông vậy chứ cũng dễ dễ rồi đấy nhỉ :)))&lt;/p&gt;
-
-&lt;p&gt;Okie, có điều này không biết đã bạn nào để ý chưa 😅 chúng ta mới tạo ra câu lệnh, chứ chưa hề gọi nó xuống &lt;code class=&quot;highlighter-rouge&quot;&gt;Database&lt;/code&gt; 😅&lt;/p&gt;
-
-&lt;p&gt;Để sử dụng câu lệnh đã tạo, các bạn làm giống với &lt;code class=&quot;highlighter-rouge&quot;&gt;JPQL&lt;/code&gt; đó là sử dụng đối tượng &lt;code class=&quot;highlighter-rouge&quot;&gt;EntityManager&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;TypedQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getResultList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Oh right, thế là implement xong ví dụ đơn giản đâu tiên, không cóa gì khó khăn 🤔 (chém). Bây giờ thử advanced lên tý nhỉ:&lt;/p&gt;
-
-&lt;p&gt;Bây giờ mình muốn lấy tất cả &lt;code class=&quot;highlighter-rouge&quot;&gt;Office&lt;/code&gt; ở thành phố &lt;code class=&quot;highlighter-rouge&quot;&gt;hanoi&lt;/code&gt; thì sẽ làm như nào?&lt;/p&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Office&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;city&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hanoi'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Lúc này query của chúng ta sẽ như thế này:&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;city&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;hanoi&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Các bạn để ý đoạn này nhé. Mình sử &lt;code class=&quot;highlighter-rouge&quot;&gt;builder&lt;/code&gt; để lấy hàm &lt;code class=&quot;highlighter-rouge&quot;&gt;equal&lt;/code&gt; (phép toán logic, như mình đề cập ở trên, chuẩn chưa nào). Tiếp tới là cái &lt;code class=&quot;highlighter-rouge&quot;&gt;root.get(&quot;city&quot;)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; chính là đối tượng chúng ta đã khai báo, bây giờ chúng ta sẽ lấy trường &lt;code class=&quot;highlighter-rouge&quot;&gt;city&lt;/code&gt; của nó và kiểm tra nó với &lt;code class=&quot;highlighter-rouge&quot;&gt;hanoi&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Có thể nói &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; đã hiện thực hóa rất thành công câu lệnh JPQL (hay HQL) thành những api java cực kì dễ dọc, dễ hiểu và dễ sử dụng. Khi đã hiểu được câu lệnh gốc, bạn có thể dễ dàng chuyển nó thành &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria&lt;/code&gt; và ngược lại.&lt;/p&gt;
-
-&lt;p&gt;Trong bài viết tới ở chương &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt;, mình sẽ hướng dẫn các bạn sử dụng tới &lt;code class=&quot;highlighter-rouge&quot;&gt;Specifications&lt;/code&gt; kết hợp &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; để tạo ra một vụ nổ khi giao tiếp với db bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; (vãi cả chém 😂)&lt;/p&gt;
-
-&lt;p&gt;Chúc các bạn sử dụng thành công &lt;code class=&quot;highlighter-rouge&quot;&gt;Criteria API&lt;/code&gt; và đừng quên like or chia sẻ bài viết cho bạn bè hihi, cảm ơn các bạn đã theo dõi!&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 17 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/</link>
-        <guid isPermaLink="true">/Nang-cao-Huong-dan-su-dung-Criteria-API-trong-Hibernate/</guid>
-        
-        
-        <category>Java</category>
-        
-        <category>Hibernate</category>
-        
-        <category>JPA</category>
-        
-        <category>Criteria</category>
         
       </item>
     

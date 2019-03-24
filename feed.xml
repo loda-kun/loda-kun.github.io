@@ -5,8 +5,8 @@
     <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 24 Mar 2019 14:43:26 +0000</pubDate>
-    <lastBuildDate>Sun, 24 Mar 2019 14:43:26 +0000</lastBuildDate>
+    <pubDate>Sun, 24 Mar 2019 14:45:31 +0000</pubDate>
+    <lastBuildDate>Sun, 24 Mar 2019 14:45:31 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -577,7 +577,7 @@
         
         <category>Spring</category>
         
-        <category>Spring-boot</category>
+        <category>SPRING BOOT</category>
         
         <category>Dependency Injection. Inversion of Control</category>
         
@@ -769,7 +769,7 @@
         <guid isPermaLink="true">/Huong-dan-su-dung-Spring-Profiles/</guid>
         
         
-        <category>spring-boot</category>
+        <category>SPRING BOOT</category>
         
         <category>spring</category>
         

@@ -3,7 +3,7 @@ id: loda1553326013583
 layout: post
 title: '「Spring」Giải thích Dependency Injection (DI) và Inversion of Control (IOC) bằng Ngọc Trinh'
 author: loda
-categories: [ Spring, Spring-boot, Dependency Injection. Inversion of Control ]
+categories: [ Spring, SPRING BOOT, Dependency Injection. Inversion of Control ]
 image: assets/images/loda1553326013583/1.jpg
 description: Giải thích một cách dễ hiểu nhất, ví dụ trực quan về 2 khái niệm Dependency Injection (DI) và  Inversion of Control (IOC)
 ---

@@ -3,7 +3,7 @@ id: loda1552901817707
 layout: post
 title: '「Spring-boot」Hướng dẫn sử dụng Spring Profiles'
 author: loda
-categories: [ spring-boot, spring, spring profiles, java ]
+categories: [ SPRING BOOT, spring, spring profiles, java ]
 image: assets/images/loda1552901817707/1.jpg
 description: Hướng dẫn sử dụng Spring Profiles quản lý cấu hình ứng dụng trên các môi trường khác nhau
 ---

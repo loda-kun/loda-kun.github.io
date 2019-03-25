@@ -5,8 +5,8 @@
     <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Mar 2019 13:10:53 +0000</pubDate>
-    <lastBuildDate>Mon, 25 Mar 2019 13:10:53 +0000</lastBuildDate>
+    <pubDate>Mon, 25 Mar 2019 14:23:35 +0000</pubDate>
+    <lastBuildDate>Mon, 25 Mar 2019 14:23:35 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -398,7 +398,7 @@
       </item>
     
       <item>
-        <title>「Spring」Giải thích Dependency Injection (DI) và Inversion of Control (IOC) bằng Ngọc Trinh</title>
+        <title>「Spring」Giải thích Dependency Injection (DI) và IoC bằng Ngọc Trinh</title>
         <description>&lt;p&gt;Heyzau, chào tất cả các bạn, hôm nay mình sẽ chia sẻ về 2 khái niệm gây nhức nhối và thương nhớ cho rất nhiều developer, Để làm việc được với &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring&lt;/code&gt; và hệ sinh thái quanh nó, thì việc đầu tiên, tiên quyết, duy nhất bạn cần làm đó là thấu hiểu định nghĩa của 2 cái này.&lt;/p&gt;
 
 &lt;p&gt;Vậy chúng nó là cái gì, chúng ta sẽ đi vào chi tiết nhé.&lt;/p&gt;

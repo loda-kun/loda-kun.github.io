@@ -203,5 +203,5 @@ Cảm ơn các bạn đã đọc hết bài viết, theo dõi [`loda`][loda-fanp
 Và đừng quên chia sẻ cho bạn bè kaka :v 
 
 [link-maven]: https://loda.me
-[loda-fanpage]: www.facebook.com/loda.fanpage/
+[loda-fanpage]: www.facebook.com/loda.mee/
 [lombok]: https://projectlombok.org/

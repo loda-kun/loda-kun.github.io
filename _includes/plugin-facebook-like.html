@@ -1,7 +1,16 @@
-  <!-- Your like button code -->
-  <div class="fb-like" 
-    data-href="{{site.hostname}}{{ page.url }}" 
-    data-layout="standard" 
-    data-action="like" 
-    data-show-faces="true">
-  </div>
+<!-- Your like button code -->
+<div
+  class="fb-like"
+  data-href="{{ site.hostname }}{{ page.url }}"
+  data-layout="standard"
+  data-action="like"
+  data-show-faces="true"
+></div><br>
+<div class="fb-share-button" 
+data-href="{{ site.hostname }}{{ page.url }}" 
+data-layout="button"
+  data-size="small">
+  <a target="_blank"
+    href="https://www.facebook.com/sharer/sharer.php?u={{ site.hostname }}{{ page.url }}&amp;src=sdkpreparse"
+    class="fb-xfbml-parse-ignore">Chia sẻ</a>
+</div>

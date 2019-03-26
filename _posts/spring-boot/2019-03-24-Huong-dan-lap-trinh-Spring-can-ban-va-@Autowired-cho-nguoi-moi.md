@@ -5,7 +5,8 @@ title: '「Spring」Hướng dẫn lập trình Spring căn bản cho n
 author: loda
 categories: [ spring, spring căn bản, spring boot ]
 image: assets/images/loda1553413406068/1.jpg
-description: Hướng dẫn lập trình Spring căn bản, cách sử dụng @Autowired, @Component, @Service
+description: Hướng dẫn lập trình Spring căn bản, cách sử dụng @Autowired, @Component, @Configuration, @Bean
+tag: [featured]
 ---
 
 Xin chào tất cả các bạn, trước khi đi vào chi tiết bài hôm nay, các bạn cần đọc cho mình các khái niệm sau:

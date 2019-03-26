@@ -6,6 +6,7 @@ author: loda
 categories: [ Spring, SPRING BOOT, Dependency Injection. Inversion of Control ]
 image: assets/images/loda1553326013583/1.jpg
 description: Giải thích một cách dễ hiểu nhất, ví dụ trực quan về 2 khái niệm Dependency Injection (DI) và  Inversion of Control (IOC)
+tag: [featured]
 ---
 
 Heyzau, chào tất cả các bạn, hôm nay mình sẽ chia sẻ về 2 khái niệm gây nhức nhối và thương nhớ cho rất nhiều developer, Để làm việc được với `Spring` và hệ sinh thái quanh nó, thì việc đầu tiên, tiên quyết, duy nhất bạn cần làm đó là thấu hiểu định nghĩa của 2 cái này.

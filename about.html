@@ -93,6 +93,8 @@
 <!-- Facebook -->
 <!-- FACEBOOK PLUGIN -->
 
+
+
 <div id="fb-root"></div>
 <script
   async
@@ -100,8 +102,6 @@
   crossorigin="anonymous"
   src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2157004821059773&autoLogAppEvents=1"
 ></script>
-
-
         
 
     <!-- Navbar -->
@@ -593,7 +593,7 @@ function lunr_search(term) {
         <!--  Don't edit anything here. Set your disqus id in _config.yml -->
 
 <div id="comments" class="mt-5">
-    <div id="disqus_thread">
+    <!-- <div id="disqus_thread">
     </div>
     <script type="text/javascript">
         var disqus_shortname = 'loda-me'; 
@@ -606,7 +606,13 @@ function lunr_search(term) {
     </script>
     <noscript>
     Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
+    </noscript> -->
+    <div 
+        class="fb-comments" 
+        data-width="100%"
+        data-href="https://loda.me/about" 
+        data-numposts="5">
+    </div>
 </div>
         
     </div>

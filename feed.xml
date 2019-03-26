@@ -2,12 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>Chia sẻ, hướng dẫn lập trình Java miễn phí và chất lượng nhất.</description>
+    <description>Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Mar 2019 14:23:35 +0000</pubDate>
-    <lastBuildDate>Mon, 25 Mar 2019 14:23:35 +0000</lastBuildDate>
+    <pubDate>Tue, 26 Mar 2019 03:34:55 +0000</pubDate>
+    <lastBuildDate>Tue, 26 Mar 2019 03:34:55 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>「Java」Vì sao nên sử dụng StringBuffer</title>
+        <description>&lt;p&gt;hẳn những ai biết tới &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; thì không còn xa lạ gì với việc ghép các &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; với nhau.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;!!!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Đây là một kiến thức cực kì cực kì cơ bản. Tuy nhiên, nếu chúng ta tăng số lượng phép &lt;code class=&quot;highlighter-rouge&quot;&gt;nối xâu&lt;/code&gt; này lên thì sẽ có hệ quả gì.&lt;/p&gt;
+
+&lt;p&gt;Cùng xem ví dụ này nhé:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nanoTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nanoTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Total time: &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Kết quả:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Total time: 17495917 ns&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// = 17.4 ms (Milliseconds)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bây giờ, vẫn là chương trình tương tự, mình sử sụng &lt;code class=&quot;highlighter-rouge&quot;&gt;String Buffer&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nanoTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;StringBuffer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringBuffer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nanoTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Total time: &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Kết quả:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Total time: 461198 ns&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// = 0.46 ms&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;String Buffer&lt;/code&gt; nhanh hơn gấp &lt;strong&gt;38 lần&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hiệu năng được chạy trên Mac Pro 2017, tại máy bạn có thể sẽ khác, nhưng chắc chắn rằng &lt;code class=&quot;highlighter-rouge&quot;&gt;StringBuffer&lt;/code&gt; luôn nhanh hơn!&lt;/p&gt;
+
+&lt;h4 id=&quot;góc-giải-thích&quot;&gt;Góc giải thích&lt;/h4&gt;
+
+&lt;p&gt;Có một điều ít bạn học lập trình &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; để ý, đó là &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; là &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable&lt;/code&gt;. Tức nội dung trong &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; là không được quyền thay đổi.&lt;/p&gt;
+
+&lt;p&gt;Nhiều bạn lầm tưởng rằng việc nối xâu là bạn thay đổi nội dung của &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;, nhưng thực chất bạn đang tạo ra một đối tượng hoàn toàn mới:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Complier sẽ tạo ra một đối tượng mới là &quot;AB&quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Và gán vào `s`&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Bản chất `s` bây giờ là một đối tượng mới chứ bạn không hề thay đổi nội dung ban đầu của `s`.&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Đây là những gì ở dưới Compiler sẽ làm:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;StringBuffer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StringBuffer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Compiler Vẫn phải xài tới StringBuffer&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vì vậy khi nối xâu trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;, việc bạn thực hiện nó liên tục, sẽ tương đương với việc khởi tạo liên tục và nối 2 xâu lại rồi trả về đối tượng &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; mới dẫn tới chi phí lớn.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;StringBuffer&lt;/code&gt; cho phép chúng ta thao tác trên một đối tượng duy nhất và thay đổi được nội dung trong nó. Nếu ban đầu nội dung là &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;A&quot;&lt;/code&gt;, bạn muốn nối thêm &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;B&quot;&lt;/code&gt; vào. Thì nó chỉ cần gắn chuỗi &lt;code class=&quot;highlighter-rouge&quot;&gt;bytes&lt;/code&gt; của &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;B&quot;&lt;/code&gt; vào liền kề ngay sau &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;A&quot;&lt;/code&gt; là xong. (Vì nó có thể thay đổi, khác với &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; là &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Tới đây bạn đã hiểu rõ vài trò của &lt;code class=&quot;highlighter-rouge&quot;&gt;StringBuffer&lt;/code&gt; trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt;, vì thế hãy tận dụng nó một cách tối ưu, thay vì việc cộng các &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt; như thông thường.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+        <link>/Vi-sao-nen-su-dung-StringBuffer/</link>
+        <guid isPermaLink="true">/Vi-sao-nen-su-dung-StringBuffer/</guid>
+        
+        
+        <category>java</category>
+        
+      </item>
     
       <item>
         <title>「Spring」Hướng dẫn lập trình Spring căn bản cho người mới</title>
@@ -388,6 +469,8 @@
         <link>/Huong-dan-lap-trinh-Spring-can-ban-va-@Autowired-cho-nguoi-moi/</link>
         <guid isPermaLink="true">/Huong-dan-lap-trinh-Spring-can-ban-va-@Autowired-cho-nguoi-moi/</guid>
         
+        <category>featured</category>
+        
         
         <category>spring</category>
         
@@ -573,6 +656,8 @@
         <pubDate>Sat, 23 Mar 2019 00:00:00 +0000</pubDate>
         <link>/Giai-thich-Dependency-Injection-(DI)-va-Inversion-of-Control-(IOC)/</link>
         <guid isPermaLink="true">/Giai-thich-Dependency-Injection-(DI)-va-Inversion-of-Control-(IOC)/</guid>
+        
+        <category>featured</category>
         
         
         <category>Spring</category>
@@ -2123,188 +2208,6 @@ public class Champion {
         <category>series 2 tuần</category>
         
         <category>kiểu dữ liệu java</category>
-        
-      </item>
-    
-      <item>
-        <title>「Java basic #1」Giới thiệu Java, Cài đặt môi trường và Hellooo world~</title>
-        <description>&lt;p&gt;Xin chào tất cả các bạn, chào mừng các bạn đến với bài đầu tiên trong khóa học &lt;strong&gt;Thành thạo Java Basic trong 2 tuần.&lt;/strong&gt;. Mình là &lt;code class=&quot;highlighter-rouge&quot;&gt;loda&lt;/code&gt; sẽ đồng hành cùng các bạn trên công đường làm chủ ngôn ngữ &lt;code class=&quot;highlighter-rouge&quot;&gt;jav&lt;/code&gt; này 🤗&lt;/p&gt;
-
-&lt;p&gt;Bài đầu tiên trong series này là giới thiệu cực kì &lt;strong&gt;ngắn gọn&lt;/strong&gt; với các bạn &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; là gì, đủ ý dễ hiểu, tập trung vào việc cài đặt môi trường, cài đặt công cụ lập trình.&lt;/p&gt;
-
-&lt;p&gt;Okayyy vào bài.&lt;/p&gt;
-
-&lt;h4 id=&quot;java&quot;&gt;Java&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/4.jpg&quot; alt=&quot;java-basic&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Bắt đầu từ một câu chuyện:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Tại một vương quốc nọ năm 19xx (TCN), có một anh lập trình viên, khi đang viết phần mềm cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows 9x&lt;/code&gt;, thì sếp yêu cầu anh viết thêm cho cả &lt;code class=&quot;highlighter-rouge&quot;&gt;Linux&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;OpenVMS&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FreeBSD&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;IBM&lt;/code&gt;, v.v.. Chàng thanh niên không nói gì, anh chững lại đôi chút, lấy điếu thuốc rít một hơi, mắt anh nhìn xa xăm, đôi mắt anh lúc đó hồn nhiên tới lạ, tôi nghĩ nó là đôi mắt biết nói, nó nói: “f**k 🙂”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Đấy, đấy là câu chuyện của mình, còn lịch sử &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; các bạn đọc &lt;a href=&quot;https://vi.wikipedia.org/wiki/Java_(ngôn_ngữ_lập_trình)&quot;&gt;ở đây&lt;/a&gt; nhé 😆&lt;/p&gt;
-
-&lt;p&gt;Mình tóm tắt giúp bạn là &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; được ra đời với mục tiêu là &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;viết một lần, chạy mọi nơi&quot;&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;write once, run anywhere&quot;&lt;/code&gt;). Vì bản thân các &lt;code class=&quot;highlighter-rouge&quot;&gt;OS&lt;/code&gt; là khác nhau, các lập trình viên không muốn với mỗi một OS lại phải code lại từ đầu. Nên &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; ra đời. Năm 1995.&lt;/p&gt;
-
-&lt;p&gt;Lấy người anh &lt;code class=&quot;highlighter-rouge&quot;&gt;C/C++&lt;/code&gt; làm nền tảng học tập, &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; tiếp thu, cải thiện hơn và áp dụng mô hình hướng đối tượng chuẩn mực hơn. Từ đó trở thành ngôn ngữ mạnh mẽ nhất thời bấy giờ.&lt;/p&gt;
-
-&lt;p&gt;Đấy ngắn gọn thế thôi, để não bộ tiếp thu tiếp.&lt;/p&gt;
-
-&lt;h4 id=&quot;cài-đặt-môi-trường&quot;&gt;Cài đặt môi trường&lt;/h4&gt;
-
-&lt;p&gt;Môi trường là seo? hổng hiểu 😕&lt;/p&gt;
-
-&lt;p&gt;Các bạn cứ tưởng tượng bạn đang xem một bộ &lt;code class=&quot;highlighter-rouge&quot;&gt;Film&lt;/code&gt; vậy, trên thế giới có film &lt;code class=&quot;highlighter-rouge&quot;&gt;Mỹ&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Tàu&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Jav&lt;/code&gt;, v.v.. mỗi film một thứ tiếng, nà ní, nhưng sao bạn vẫn xem và hiểu? Vì nó có &lt;code class=&quot;highlighter-rouge&quot;&gt;Phụ đề&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; hoạt động như vậy, nó chỉ nói 1 ngôn ngữ duy nhất thôi, tuy nhiên nó có một thằng anh bá đạo, tên ông ý nôm na là &lt;code class=&quot;highlighter-rouge&quot;&gt;môi trường ảo&lt;/code&gt; hay tên chuẩn là &lt;code class=&quot;highlighter-rouge&quot;&gt;Java virtual machine (JVM)&lt;/code&gt;. Nhiệm vụ của &lt;code class=&quot;highlighter-rouge&quot;&gt;JVM&lt;/code&gt; là nó &lt;code class=&quot;highlighter-rouge&quot;&gt;phụ đề&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;thuyết minh&lt;/code&gt;) cho từng loại OS khác nhau rằng thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đang làm gì, nói gì, làm gì.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/2.png&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Vì chúng ta là &lt;code class=&quot;highlighter-rouge&quot;&gt;Developer&lt;/code&gt; nên chúng ta không chỉ muốn cài &lt;code class=&quot;highlighter-rouge&quot;&gt;môi trường&lt;/code&gt; mà còn muốn code trên nó nữa. nên chúng ta sẽ cài gói &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;Java Development Kit&lt;/code&gt;) luôn. Nó chứa các công cụ giúp lập trình &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; ngoài ra trong quá trình cài, nó sẽ hỏi ta muốn cài môi trường luôn &lt;code class=&quot;highlighter-rouge&quot;&gt;JRE&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;Java Runtime Enviroment&lt;/code&gt;, thằng này chứa cả thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;JVM&lt;/code&gt; ở trên), tiện lợi.&lt;/p&gt;
-
-&lt;p&gt;Nếu các bạn xài &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt; hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;MacOS&lt;/code&gt; thì click vào đây để download:
- &lt;a href=&quot;https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&quot;&gt;https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&lt;/a&gt;,&lt;/p&gt;
-
-&lt;p&gt;Nhớ chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;Accept lincense agreement&lt;/code&gt; trước khi download. Khi download xong, bạn mở file và làm theo hướng dẫn nhé.&lt;/p&gt;
-
-&lt;p&gt;Đây là trang “chính chủ” nên bạn không cần lo về &lt;code class=&quot;highlighter-rouge&quot;&gt;virus&lt;/code&gt; hay gì cả, cứ chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;accept&lt;/code&gt; mọi gợi ý là tốt nhất, tránh phải làm thêm các thao tác phụ.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/3.jpg&quot; alt=&quot;image-title-here&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Còn &lt;code class=&quot;highlighter-rouge&quot;&gt;Unix&lt;/code&gt; thì các bạn nên sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; tự động setup cho dễ, nếu đã xài &lt;code class=&quot;highlighter-rouge&quot;&gt;Unix&lt;/code&gt; thì vụ này rành rồi hah, mình k hướng dẫn gõ lệnh đâu hê hê 😄:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository ppa:webupd8team/java
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;oracle-java8-installer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;cài-đặt-intellij-idea-và-kích-hoạt-bản-quyền&quot;&gt;Cài đặt Intellij IDEA và kích hoạt bản quyền.&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij IDEA&lt;/code&gt; chỉ làm một “công cụ” lập trình, giúp các bạn viết code dễ dàng hơn, giúp cuộc sống của bạn bớt lo lắng về những vấn đề khác mà chỉ cần tập trung vào viết code thôi.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/5.png&quot; alt=&quot;intellij&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Download tại: &lt;a href=&quot;https://www.jetbrains.com/idea/download/&quot;&gt;https://www.jetbrains.com/idea/download/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Hiện &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; có 2 phiền bản, &lt;code class=&quot;highlighter-rouge&quot;&gt;Ultimate&lt;/code&gt; là mất phí nhưng bá đạo thôi rồi, còn &lt;code class=&quot;highlighter-rouge&quot;&gt;Community&lt;/code&gt; là miễn phí (vẫn tốt nhé). Bình thường không có điều kiện thì các bạn xài &lt;code class=&quot;highlighter-rouge&quot;&gt;Community&lt;/code&gt; được rồi. TUY NHIÊN…😗&lt;/p&gt;
-
-&lt;p&gt;MÌNH CÓ KEY BẢN QUYỀN Ở ĐÂY &lt;a href=&quot;https://loda.me/jetbrains&quot;&gt;loda.me/jetbrains&lt;/a&gt;. nên các bạn cứ down &lt;code class=&quot;highlighter-rouge&quot;&gt;Ultimate&lt;/code&gt; về mà xài nhé… Nhớ làm theo hướng dẫn trong link.&lt;/p&gt;
-
-&lt;p&gt;Cài đặt thì cũng giống với &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; là chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;accept&lt;/code&gt; mọi mục để hưởng dịch vụ tốt nhất.&lt;/p&gt;
-
-&lt;h4 id=&quot;hellooo-world&quot;&gt;Hellooo world~&lt;/h4&gt;
-
-&lt;p&gt;Được roài, sau một loạt các bước cài đặt cần thiết, thì bạn bây giờ đã sẵn sàng để bắt đầu &lt;code class=&quot;highlighter-rouge&quot;&gt;Lập trình Java&lt;/code&gt;. Mở &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; lên nào, chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;Create new project&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/5.jpg&quot; alt=&quot;intellij&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Nhập tên cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Project&lt;/code&gt; của bạn, chọn thư mục lưu trữ cho nó, rồi nhấn &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Bạn tạo xong chưa? xong rồi thì cùng nhìn vào cấu trúc của project nhé.
-Bạn sẽ thấy có 3 thư mục:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/6.jpg&quot; alt=&quot;intellij&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.idea&lt;/code&gt;: Thằng này là thư mục do &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; tự tạo ra để chứa các file config của phần mềm này, bạn sẽ k cần quan tâm đến, để nó tự nhiên đê :D&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;: Đây là thư mục chính bạn sẽ làm việc, tất cả &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; bạn để trong này&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;{project-name}.iml&lt;/code&gt;: File này cũng do &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellj&lt;/code&gt; tạo ra và quản lý module, bạn không cần quan tâm nó.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Okay,, hiểu kiến trúc 1 project &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; cơ bản rồi,, bắt tay vào code luôn thoai. :3&lt;/p&gt;
-
-&lt;p&gt;Bạn vào thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt; tạo 1 file cho mình tên là &lt;code class=&quot;highlighter-rouge&quot;&gt;Main.java&lt;/code&gt; nhé.
-Trong code bạn sẽ viết như này, mình sẽ giải thích sau khi bạn chạy được chương trình.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Bạn &lt;code class=&quot;highlighter-rouge&quot;&gt;click&lt;/code&gt; chuột phải vào file trên màn hình, chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;Run Main.main()&lt;/code&gt; để chạy chương trình nhé.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Nếu là &lt;strong&gt;lần đầu&lt;/strong&gt;, Bạn sẽ phải kiểm tra setting một chút, cho chắc, để nó biết &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij&lt;/code&gt; đã biết thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; mà bạn cài ở bước 2 chưa.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553005203072/6.png&quot; alt=&quot;java co ban&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Bạn vào &lt;code class=&quot;highlighter-rouge&quot;&gt;File&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Project Structure...&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Project SDK&lt;/code&gt;
-Nếu thấy như hình, nó nhận &lt;code class=&quot;highlighter-rouge&quot;&gt;1.8&lt;/code&gt; là okie, k cần lo lắng gì nữa. Nếu chưa có, bạn chọn mũi tên xem nó có sẵn chưa, nếu chưa, chọn &lt;code class=&quot;highlighter-rouge&quot;&gt;New&lt;/code&gt; và chỉ dẫn nó tới thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;JDK&lt;/code&gt; bạn đã cài ở bước 2 (&lt;code class=&quot;highlighter-rouge&quot;&gt;C:/Program File/Java/jdk 1.8&lt;/code&gt; cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows&lt;/code&gt; hoặc &lt;code class=&quot;highlighter-rouge&quot;&gt;/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home&lt;/code&gt; cho &lt;code class=&quot;highlighter-rouge&quot;&gt;MacOs&lt;/code&gt;).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Okie bạn đã thấy dòng chữ &lt;code class=&quot;highlighter-rouge&quot;&gt;Hellooo World~~~, I'm loda&lt;/code&gt; in ra màn hình phải không. Thế là bạn đã chạy chương trình &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đầu tiên thành công rồi đấy hú hú :333&lt;/p&gt;
-
-&lt;h5 id=&quot;góc-giải-thích&quot;&gt;Góc Giải thích.&lt;/h5&gt;
-
-&lt;p&gt;Ví dụ này bạn sẽ dễ nhận thấy các điều cơ bản sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cơ bản thì file code sẽ nằm trong thư mục &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;File code sẽ có tên kết thúc bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;.java&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Tên file là &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; thì trong file đó sẽ mặc định là &lt;code class=&quot;highlighter-rouge&quot;&gt;public class A&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Thế cái &lt;code class=&quot;highlighter-rouge&quot;&gt;public class A&lt;/code&gt; là cái gì? Cái này mình sẽ giải thich ở các bài sau bạn nhé. tạm thời bạn hãy cứ tạo file &lt;code class=&quot;highlighter-rouge&quot;&gt;A.java&lt;/code&gt; và mặc định làm việc bên trong đoạn &lt;code class=&quot;highlighter-rouge&quot;&gt;public class A&lt;/code&gt;. (cứ hiểu nó như là 1 thằng đánh dấu, rằng tao là &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt;, không phải &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt; cũng được kakaka).&lt;/p&gt;
-
-&lt;p&gt;Còn chương trình chính của bạn chỉ có thể này thôi:&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;public static void main(String[] args)&lt;/code&gt;: (Gọi tắt là &lt;code class=&quot;highlighter-rouge&quot;&gt;psvm&lt;/code&gt; nhé) Cái thằng này sẽ là nơi &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; tìm tới đầu tiên, và đọc toàn bộ các đoạn code trong cái thằng tên là &lt;code class=&quot;highlighter-rouge&quot;&gt;psvm&lt;/code&gt; này. Dù nó ở bất cứ đâu, nó sẽ được tìm tới.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;2 cái dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;: Đánh dấu đoạn bắt đầu và kết thúc của cái &lt;code class=&quot;highlighter-rouge&quot;&gt;public static void main(String[] args)&lt;/code&gt; kia.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Vậy là thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; sẽ đi lùng tìm, xem cái thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;psvm&lt;/code&gt; xem nó ở đâu. Rồi đọc hết tất cả những thứ nằm trong cái 2 dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt; của thằng này.&lt;/p&gt;
-
-&lt;p&gt;Vậy trong ví dụ của chúng ta, nó sẽ đọc cái gì? bạn thấy đấy, chi có 1 dòng duy nhất thôi :v&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Nhìn dòng này chúng ta sẽ biết:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Các dòng code của &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đều kết thúc bằng dấu &lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt; (Ngoại trừ cái thằng &lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt; nhé)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;System.out.println()&lt;/code&gt;: là câu lệnh in ra màn hình.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;Hellooo World~~~, I'm loda&quot;&lt;/code&gt;: là thứ sẽ được in ra màn hình, dấu ngoặc kép &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; cho &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; biết đây là một đoạn text, chứu không phải một con số, một con chim, hay một con mèo gì cả.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;kết&quot;&gt;Kết&lt;/h4&gt;
-
-&lt;p&gt;Okieeeee lahhh, Thế là xong bài đầu tiên,, chúc mừng các bạn đã bước 1 chân vào thế giới &lt;code class=&quot;highlighter-rouge&quot;&gt;Java&lt;/code&gt; đầy huyền bí :3 Có gì thắc mắc bạn cứ tự nhiên comment ở bên dưới nhé!&lt;/p&gt;
-
-&lt;p&gt;Chớ quên like và share cho bạn bè,, ahihi!&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
-        <link>/Java-basic-1-Gioi-thieu-Java-Cai-dat-moi-truong-va-Hellooo-world/</link>
-        <guid isPermaLink="true">/Java-basic-1-Gioi-thieu-Java-Cai-dat-moi-truong-va-Hellooo-world/</guid>
-        
-        
-        <category>java</category>
-        
-        <category>java basic</category>
-        
-        <category>series 2 tuần</category>
         
       </item>
     

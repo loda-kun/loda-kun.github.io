@@ -1,5 +1,7 @@
 language: ruby
 cache: bundler
+notifications:
+  slack: meosgroup:ZMDMmydMji3CF3ufJhVFJ0QL
 before_install:
   - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
   - gem install bundler -v '1.16.4'

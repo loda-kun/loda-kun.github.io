@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://loda.me/sitemap.xml

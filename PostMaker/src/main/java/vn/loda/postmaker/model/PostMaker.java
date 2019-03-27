@@ -62,14 +62,14 @@ public class PostMaker implements Serializable {
 //        categories: [ Virtual Assistant, Machine Learning, AI ]
 //        image: assets/images/loda1551586738/1.jpg
 //        description: "Trợ lý ảo (Virtual Assistant) - một cụm từ “hot” được nhắc tới rất nhiều trong khoảng 3 năm trở lại đây. Nó đang tạo ra một cuộc đua ngầm trong thế giới công nghệ."
-//        featured: true
-//        hidden: true
-//        rating: 4.5
+//        tag: [featured]
     }
 
     public String getFileName() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(new Date()) + "-" + PostHelper.removeAccents(title).replaceAll(",","") + ".md";
+        String filename = PostHelper.removeAccents(title).replaceAll(",","");
+        int index = filename.indexOf("」");
+        return sdf.format(new Date()) + "-" + filename.substring(index == -1 ? 0 : index + 1) + ".md";
     }
 
     public String categoriesToString() {

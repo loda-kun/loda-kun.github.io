@@ -43,7 +43,7 @@ public static String process(String input){
 HEY LODA!!!
 ```
 
-Hẳn đây là ví dụ dễ nhất thế giới :))) 
+Dễ quá phải hem bạn :)))
 
 Tuy nhiên bạn sẽ thấy cách làm này không `flexible`, vì các bạn chỉ có thể xử lý cho chữ thành `UPPER CASE`. Muốn làm gì đó khác, như `toLowerCase` chẳng hạn, mình sẽ phải viết một `function` mới.
 
@@ -196,6 +196,33 @@ public interface StringProcessor{
 }
 ```
 
+
+#### Method reference
+
+Phần này chỉ để bổ sung, không có nó, bạn vẫn có thể sử dụng `Lambda Expressions` bình thường. Nhưng với `Method reference`, code của bạn sẽ còn sạch sẽ hơn nữa.
+
+Ví dụ:
+
+```java
+System.out.println(getStr("Hello Loda!", input -> input.toUpperCase()));
+// Tương đương với việc viết như này:
+
+System.out.println(getStr("Hello Loda!", String::toUpperCase));
+
+```
+`Method reference` là cách viết ngắn gọn, sẽ bỏ qua luôn cả phần `parameter` vì bản thân tên hàm đã biết nó sẽ nhận vào gì và trả ra cái gì rồi. Việc còn lại để `Compiler` lo thôi kakaka.
+
+Có các cách để gọi `Method reference` như sau:
+
+`[Tên Class]::[Tên method]`: Giống với ví dụ ở trên `String::toUpperCase`.
+
+`[Tên Class]::new`: Tạo ra một đối tượng mới, từ tham số được truyền vào
+
+```java
+System.out.println(getStr("Hello Loda!", input -> new String(input));
+// Tương đương với việc viết như này:
+System.out.println(getStr("Hello Loda!", String::new));
+```
 
 #### Lời kết
 

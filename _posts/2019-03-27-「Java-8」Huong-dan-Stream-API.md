@@ -184,7 +184,9 @@ LODA
 
 Bạn sẽ thấy rằng chương trình chỉ xử lý dữ liệu vừa đủ thoả mãn điều kiện `limit(3)` mà thôi, còn lại nó sẽ bỏ qua để tối ưu hoá performance.
 
-Chứng tỏ `Stream` là `Lazy evaluation`. Hiểu đơn giản là nó sẽ không xử lý dữ liệu trực tiếp qua từng bước, mà chờ bạn khai báo xong tất cả các thao tác như `map`, `filter`,v.v.. rồi thực hiện toàn bộ trong một vòng lặp duy nhất.
+Chứng tỏ `Stream` là `Lazy evaluation`. Hiểu đơn giản là nó sẽ không xử lý dữ liệu trực tiếp qua từng bước, mà chờ bạn khai báo xong tất cả các thao tác `operation` như `map`, `filter`,v.v.. cho tới khi gặp lệnh `.collect()` thì nó thực hiện toàn bộ trong một vòng lặp duy nhất.
+
+Hàm `.collect()` và một số hàm như `min()`, `max()`, `count()` được gọi là `terminal operation`. Khi gọi những function có dạng `terminal` thì `Stream` mới chính thức hoạt động.
 
 Một lưu ý khi sử dụng là **Stream không được tái sử dụng**.
 Ví dụ:

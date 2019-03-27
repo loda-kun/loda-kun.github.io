@@ -5,7 +5,7 @@ title: '「Java 8」Functional Interfaces & Lambda Expressions cực dễ hi
 author: loda
 categories: [ java, java 8 ]
 image: assets/images/loda1553649037877/1.jpg
-description: Giải thích ý nghĩa là lí do hình thành Functional Interfaces, hướng dẫn sử dụng Lambda Expressions
+description: Giải thích Functional interface trong Java 8 và kỹ thuật lập trình hướng hàm sử dụng Lambda Expressions
 ---
 
 Khái niệm `Functional Interfaces` được `Java` đưa ra cùng với phiên bản `Java 8`. về cơ bản, có thể hiểu:
@@ -142,7 +142,7 @@ Nếu `code` bạn chỉ cần 1 thao tác, thì không cần `return` giống v
 ```java
 parameter -> {
     expression body
-    [return] (không trả về nếu là void)
+    [return] // (không trả về nếu là void)
 }
 ```
 
@@ -155,13 +155,13 @@ System.out.println(getStr("Hello Loda!", input -> {
 }));
 ```
 
-#### `Functional Interface`
+#### Functional Interface
 
-Tới đây, bạn đã hiểu ý nghĩa của việc cho ra đời khái niệm `Functional Interface`, nó là một quy định chung phải có để có thể viết code dưới dạng Lambda.
+Tới đây, bạn đã hiểu ý nghĩa của việc cho ra đời khái niệm `Functional Interface`, nó là một quy định chung phải có để có thể viết code dưới dạng biểu thức `Lambda`.
 
 Một số điều cần lưu ý với `Functional Interface` như sau:
 
-##### `@FunctionalInterface`
+##### @FunctionalInterface
 
 `Annotation` này chỉ để bổ sung, nó đánh dấu một `interface` là `Functional Interface`. Lúc này bạn khai báo 2 `abtract function` bên trong `interface` thì sẽ báo lỗi.
 
@@ -173,7 +173,7 @@ public interface StringProcessor{
 }
 ```
 
-#### `default function` & `static funtion`
+#### default function & static funtion
 
 `Java 8` cải tiến cho phép `interface` được khai báo `code` bên trong nó, với điều kiện `code` phải nằm trong `default` hoặc `static`.
 
@@ -184,6 +184,7 @@ public interface StringProcessor{
 @FunctionalInterface // Gắn cái này lên interface, nó đánh dấu interface chỉ được phép có 1 funtion thôi
 public interface StringProcessor{
     public String process(String input);
+
     // Mọi class implement StringProcessor đều có thể gọi hàm này để sử dụng luôn
     public default void printf(Object t){
         System.out.println(t);

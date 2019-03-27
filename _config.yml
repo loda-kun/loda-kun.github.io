@@ -15,6 +15,8 @@ google_adsense: 'ca-pub-1825244585932187'
 include: ["_pages"]
 permalink: /:title/
 
+# Using for sitemap
+url: "https://loda.me"
 # Plugins
 plugins: 
   - jekyll-feed

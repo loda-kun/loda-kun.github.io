@@ -30,11 +30,10 @@
   });
 </script>
 
-<!-- Facebook -->
-<!-- FACEBOOK PLUGIN -->
-
 {% endif %}
 
+<!-- Facebook -->
+<!-- FACEBOOK PLUGIN -->
 <div id="fb-root"></div>
 <script
   async
@@ -42,3 +41,24 @@
   crossorigin="anonymous"
   src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2157004821059773&autoLogAppEvents=1"
 ></script>
+
+<!-- GOOGLE STRUCTURE DATA. FOR SEO
+<script type="application/ld+json">
+  {
+    {% assign min = 85 %}
+    {% assign max = 100 %}
+    {% assign diff = max | minus: min %}
+    {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+
+    "@context": "https://schema.org/",
+    "@type": "Book",
+    "name": "{{page.title}}",
+    "description": "{{page.description}}",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{randomNumber}}",
+      "bestRating": "100",
+      "ratingCount": "2"
+    }
+  }
+</script> -->

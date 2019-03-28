@@ -1,7 +1,45 @@
 ---
 layout: default
 ---
+
+{% assign min = 85 %}
+{% assign max = 100 %}
+{% assign diff = max | minus: min %}
+{% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+
+
 {% assign author = site.authors[page.author] %}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "NewsArticle",
+	"mainEntityOfPage": {
+	"@type": "WebPage",
+	"@id": "{{site.baseurl}}{{page.url}}"
+	},
+	"headline": "{{page.title}}",
+	"image": [
+	"{% if page.image contains "://" %}{{ page.image }}{% else %}{{site.baseurl}}/{{ page.image }}{% endif %}",
+	],
+	"datePublished": "{{ site.time }}",
+	"dateModified": "{{ site.time }}",
+	"author": {
+	"@type": "Person",
+	"name": "{{ author.name }}"
+	},
+	"publisher": {
+	"@type": "Organization",
+	"name": "loda.me",
+	},
+	"description": "{{page.description}}",
+	"aggregateRating": {
+	"@type": "AggregateRating",
+	"ratingValue": "{{randomNumber}}",
+	"bestRating": "100",
+	"ratingCount": "2"
+	}
+}
+</script>
 <div class="container">
 <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
 		<div class="h-100 tofront">

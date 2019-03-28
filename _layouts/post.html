@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign min = 85 %}
+{% assign min = 90 %}
 {% assign max = 100 %}
 {% assign diff = max | minus: min %}
 {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
@@ -15,11 +15,11 @@ layout: default
 	"@type": "NewsArticle",
 	"mainEntityOfPage": {
 	"@type": "WebPage",
-	"@id": "{{site.baseurl}}{{page.url}}"
+	"@id": "{{site.hostname}}{{page.url}}"
 	},
 	"headline": "{{page.title}}",
 	"image": [
-	"{% if page.image contains "://" %}{{ page.image }}{% else %}{{site.baseurl}}/{{ page.image }}{% endif %}",
+	"{% if page.image contains "://" %}{{ page.image }}{% else %}{{site.hostname}}/{{ page.image }}{% endif %}",
 	],
 	"datePublished": "{{ site.time }}",
 	"dateModified": "{{ site.time }}",

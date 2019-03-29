@@ -24,19 +24,23 @@ layout: default
 	"datePublished": "{{ site.time }}",
 	"dateModified": "{{ site.time }}",
 	"author": {
-	"@type": "Person",
-	"name": "{{ author.name }}"
+		"@type": "Person",
+		"name": "{{ author.name }}"
 	},
 	"publisher": {
-	"@type": "Organization",
-	"name": "loda.me"
+		"@type": "Organization",
+		"name": "loda.me",
+		"logo":{
+			"@type":"ImageObject",
+			"url":"https://loda.me/assets/images/logo.png"
+		}
 	},
 	"description": "{{page.description}}",
 	"aggregateRating": {
-	"@type": "AggregateRating",
-	"ratingValue": "{{randomNumber}}",
-	"bestRating": "100",
-	"ratingCount": "2"
+		"@type": "AggregateRating",
+		"ratingValue": "{{randomNumber}}",
+		"bestRating": "100",
+		"ratingCount": "2"
 	}
 }
 </script>

@@ -96,7 +96,7 @@ comments: true
                     </tr>
                 </tbody>
             </table>
-            <p>Lưu ý, nếu bạn sử dụng Linux hay Mac: `source  /etc/hosts` để thay đổi có hiệu lực</p>
+            <p>Lưu ý, nếu bạn sử dụng Linux hay Mac: <code class="highlighter-rouge">source /etc/hosts</code> để thay đổi có hiệu lực</p>
             <h5>2. Nhập key</h5>
             <p>Mở sản phẩm của JetBrains bạn đang sử dụng</p>
             <p><code class="highlighter-rouge">Help</code> > <code class="highlighter-rouge">Register...</code></p>

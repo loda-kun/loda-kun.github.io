@@ -75,20 +75,27 @@ Tại `build.gradle` ở thư mục gốc. (`multiple-module-gradle/build.gradle
 // Tại build.gradle gốc, chúng ta config để các thằng module con có thể có chung cấu hình, kế thừa plugin và dependencies của thằng cha này luôn.
 
 // Như vậy thì lúc sau các module không cần config gì nữa.
-
 allprojects {
 	group 'me.loda.springboot'
 	version '1.0-SNAPSHOT'
 
-	apply plugin: 'eclipse'
+	apply plugin: 'java'
 	apply plugin: 'idea'
+
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
 }
 
 buildscript {
 	ext {
-		springBootVersion = '2.0.5.RELEASE'
+		springBootVersion = '2.1.3.RELEASE'
 		springManagementVersion = '1.0.7.RELEASE'
-		lombokVersion = '1.18.6'
+		lombokVersion = '1.18.4'
+
+		guavaVersion = '27.1-jre'
+		commonLang3Version = '3.8.1'
 	}
 	repositories {
 		mavenCentral()
@@ -98,35 +105,60 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath("io.spring.gradle:dependency-management-plugin:${springManagementVersion}")
 	}
-
 }
-subprojects {
 
-	apply plugin: 'java'
-	apply plugin: 'eclipse'
+subprojects {
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'org.springframework.boot'
 
 	sourceCompatibility = 1.8
 	targetCompatibility = 1.8
 
-	repositories {
-		mavenLocal()
-		mavenCentral()
+	def defaultEncoding = 'UTF-8'
+	tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
+
+	javadoc {
+		options.encoding = defaultEncoding
+		options.addBooleanOption('Xdoclint:none', true)
+	}
+
+	compileJava.dependsOn(processResources)
+
+	springBoot {
+		buildInfo()
 	}
 
 	dependencies{
+		annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+		annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+		compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+		compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
 		// SPRING DEPENDENCIES
 		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		implementation 'com.h2database.h2'
+		runtimeOnly 'mysql:mysql-connector-java'
 
 		// Utilities
-		compileOnly "org.projectlombok:lombok:${lombokVersion}"
-		annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+		compile group: 'com.google.guava', name: 'guava', version: "${guavaVersion}"
+		compile group: 'org.apache.commons', name: 'commons-lang3', version: "${commonLang3Version}"
+
 
 		// TEST
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	}
+
+}
+
+project(':service') {
+	dependencies {
+		implementation project(':common')
+		compile('org.springframework.boot:spring-boot-starter-web')
+		compile('org.springframework.boot:spring-boot-devtools')
+	}
+}
+
+project(':common'){
+
 }
 
 ```
@@ -134,24 +166,16 @@ subprojects {
 Tại `build.gradle` ở module `service`. (`multiple-module-gradle/service/build.gradle`):
 
 ```gradle
-// Thằng service này là thằng chạy chính, nên chúng ta cho thêm cái dependency web vào. Ngoài ra nó còn sử dụng các class ở module common nữa
-dependencies {
-    compile project (':common')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-devtools')
-}
-
-// Cả file chỉ có bấy nhiêu dòng :))
+// thằng này bỏ trống các bạn ạ, sau có cần gì thì bổ sung thêm
 ```
 
 
 Tại `build.gradle` ở module `common`. (`multiple-module-gradle/common/build.gradle`):
 
 ```gradle
-// Bỏ trống,
-// nếu cần gì bổ sung sau
-
-// Hiện tại nó kế thừa từ `build.gradle` gốc là đủ dependencies để dùng rồi
+bootJar.enabled=false
+jar.enabled=true
+// thằng common này mình disable cái bootJar đi
 ```
 
 

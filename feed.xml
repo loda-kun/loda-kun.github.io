@@ -5,9 +5,279 @@
     <description>Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất.</description>
     <link>https://loda.me/</link>
     <atom:link href="https://loda.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 29 Mar 2019 16:09:06 +0000</pubDate>
-    <lastBuildDate>Fri, 29 Mar 2019 16:09:06 +0000</lastBuildDate>
+    <pubDate>Sat, 30 Mar 2019 06:43:35 +0000</pubDate>
+    <lastBuildDate>Sat, 30 Mar 2019 06:43:35 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle</title>
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; là một open-source có nhiệm vụ tự động hóa quá trình đóng gói một dự án với ưu điểm chính khả năng tùy biến cao và cho hiệu năng tốt.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; ra đời sau và cải thiện các phần còn yếu của &lt;code class=&quot;highlighter-rouge&quot;&gt;Maven&lt;/code&gt; như cú pháp khai báo rườm rà, khó quản lý, tốc độ build và test còn chưa được tối ưu.&lt;/p&gt;
+
+&lt;p&gt;Để tận dụng những lợi thế này, hôm nay chúng ta sẽ tạo ra một project &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring boot&lt;/code&gt; với nhiều &lt;code class=&quot;highlighter-rouge&quot;&gt;module&lt;/code&gt; với &lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; thay vì là &lt;code class=&quot;highlighter-rouge&quot;&gt;Maven&lt;/code&gt; như truyền thống.&lt;/p&gt;
+
+&lt;h4 id=&quot;spring-initializr&quot;&gt;Spring Initializr&lt;/h4&gt;
+
+&lt;p&gt;Để tạo ra một project Spring, việc tạo bằng tay là hơi vất vả, vì thế chúng ta sẽ dùng &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring Initializr&lt;/code&gt; do Spring cung cấp.&lt;/p&gt;
+
+&lt;p&gt;Bạn truy cập vào: &lt;a href=&quot;https://start.spring.io&quot;&gt;https://start.spring.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Và đặt tên cho project và chọn build bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; như hình:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/2.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tiếp đến, chọn các &lt;code class=&quot;highlighter-rouge&quot;&gt;dependencies&lt;/code&gt; đi kèm, và &lt;code class=&quot;highlighter-rouge&quot;&gt;Generate Project&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/3.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tải project về, và mở bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Intellij IDEA&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/4.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Lần đầu nó sẽ phải download &lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle Wrapper&lt;/code&gt; nên hơi lâu chút, bạn ráng chờ hah. Sau khi nó sync xong thì sẽ được một project như này.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/5.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Okay, thế là xong phần khởi tạo 1 project rồi!&lt;/p&gt;
+
+&lt;h4 id=&quot;tạo-module&quot;&gt;Tạo module&lt;/h4&gt;
+
+&lt;p&gt;Để phục vụ cho các mục đích khác nhau, mình sẽ chia project này thành 2 module là:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;common&lt;/code&gt;: Mục đích là để chứa &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt; dùng chung và &lt;code class=&quot;highlighter-rouge&quot;&gt;repository&lt;/code&gt; của nó&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt;: Xử lý mọi thử ở đây&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;bạn tạo module bằng cách: &lt;code class=&quot;highlighter-rouge&quot;&gt;Chuột phải&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;New&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;New Module&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/6.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sau đó chọn, module là &lt;code class=&quot;highlighter-rouge&quot;&gt;gradle&lt;/code&gt; &amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;java&lt;/code&gt; và nhập tên module:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/7.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Như vậy là chúng ta có 2 cái module nho nhỏ như này:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/8.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;config-buildgradle&quot;&gt;Config Build.gradle&lt;/h4&gt;
+
+&lt;p&gt;Bây giờ chúng ta sẽ config lại &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; của từng module.&lt;/p&gt;
+
+&lt;p&gt;Các file &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; đều có sẵn thông tin trong đó, nhưng bạn xóa hết đi và thêm lại như mình hướng dẫn ở dưới&lt;/p&gt;
+
+&lt;p&gt;Tại &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; ở thư mục gốc. (&lt;code class=&quot;highlighter-rouge&quot;&gt;multiple-module-gradle/build.gradle&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Tại build.gradle gốc, chúng ta config để các thằng module con có thể có chung cấu hình, kế thừa plugin và dependencies của thằng cha này luôn.&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Như vậy thì lúc sau các module không cần config gì nữa.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;allprojects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'me.loda.springboot'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.0-SNAPSHOT'&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'eclipse'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'idea'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;buildscript&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;springBootVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2.0.5.RELEASE'&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;springManagementVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.0.7.RELEASE'&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;lombokVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.18.6'&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;repositories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;mavenCentral&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;jcenter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;classpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;classpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;io.spring.gradle:dependency-management-plugin:${springManagementVersion}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;subprojects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'java'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'eclipse'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'io.spring.dependency-management'&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot'&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;sourceCompatibility&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;targetCompatibility&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;repositories&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;mavenLocal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;mavenCentral&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// SPRING DEPENDENCIES&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-data-jpa'&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.h2database.h2'&lt;/span&gt;
+
+		&lt;span class=&quot;c1&quot;&gt;// Utilities&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;compileOnly&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;org.projectlombok:lombok:${lombokVersion}&quot;&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;annotationProcessor&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;org.projectlombok:lombok:${lombokVersion}&quot;&lt;/span&gt;
+
+		&lt;span class=&quot;c1&quot;&gt;// TEST&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;testImplementation&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-test'&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tại &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; ở module &lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt;. (&lt;code class=&quot;highlighter-rouge&quot;&gt;multiple-module-gradle/service/build.gradle&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Thằng service này là thằng chạy chính, nên chúng ta cho thêm cái dependency web vào. Ngoài ra nó còn sử dụng các class ở module common nữa&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;project&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;':common'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-web'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-devtools'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Cả file chỉ có bấy nhiêu dòng :))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tại &lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt; ở module &lt;code class=&quot;highlighter-rouge&quot;&gt;common&lt;/code&gt;. (&lt;code class=&quot;highlighter-rouge&quot;&gt;multiple-module-gradle/common/build.gradle&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Bỏ trống,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// nếu cần gì bổ sung sau&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Hiện tại nó kế thừa từ `build.gradle` gốc là đủ dependencies để dùng rồi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;viết-chương-trình-demo&quot;&gt;Viết chương trình demo&lt;/h4&gt;
+
+&lt;p&gt;Chúng ta sẽ tạo ra một project đơn giản:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;common&lt;/code&gt;: Chưa thông tin model &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt;: Tạo ra &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; và dùng tầng &lt;code class=&quot;highlighter-rouge&quot;&gt;common&lt;/code&gt; để lưu nó&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;common&quot;&gt;Common&lt;/h4&gt;
+
+&lt;p&gt;Cấu trúc module &lt;code class=&quot;highlighter-rouge&quot;&gt;common&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/9.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// User.java&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.Serializable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.Entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.GeneratedValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.Id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.Data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.RequiredArgsConstructor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Data&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@RequiredArgsConstructor&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Serializable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// UserRepository&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.data.jpa.repository.JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Chúng ta chỉ làm demo để chứng minh là các &lt;code class=&quot;highlighter-rouge&quot;&gt;module&lt;/code&gt; đã hoạt động thôi :))))&lt;/p&gt;
+
+&lt;p&gt;Ở đây mình sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;H2 Database&lt;/code&gt;, là một dạng database lưu trữ trên bộ nhớ, được autoconfig trong &lt;code class=&quot;highlighter-rouge&quot;&gt;Springboot&lt;/code&gt; rồi, nên các bạn chỉ cần tạo lớp &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; như kia, rồi chạy chương trình là nó tự tạo &lt;code class=&quot;highlighter-rouge&quot;&gt;table&lt;/code&gt; tương ứng&lt;/p&gt;
+
+&lt;p&gt;Còn Các &lt;code class=&quot;highlighter-rouge&quot;&gt;annotation&lt;/code&gt; ngoại lai kia chính là của &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt;. Để hiểu nó có ý nghĩa gì và sức mạnh của &lt;code class=&quot;highlighter-rouge&quot;&gt;Lombok&lt;/code&gt; bạn xem bài viết sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/&quot;&gt;Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;service&quot;&gt;Service&lt;/h4&gt;
+
+&lt;p&gt;Bên module &lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt; chúng ta sẽ lấy tầng &lt;code class=&quot;highlighter-rouge&quot;&gt;common&lt;/code&gt; ra xài:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/loda1553919997213/10.jpg&quot; alt=&quot;spring-gradle&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Application.java&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.transaction.Transactional&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.CommandLineRunner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.autoconfigure.SpringBootApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.RequiredArgsConstructor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@RequiredArgsConstructor&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Application&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CommandLineRunner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Không cần @Autowired, vì chúng ta có @RequiredArgsConstructor rồi&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserRepository&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Transactional&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;loda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Chạy chương trình:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Output&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// User(id=1, name=loda)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// user được insert vào database là có id = 1.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// project chạy thành công!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;lời-kết&quot;&gt;Lời kết&lt;/h4&gt;
+
+&lt;p&gt;Vậy là chúng ta đã tạo ra một project với nhiều module bằng &lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;Spring boot&lt;/code&gt;. Có thể thấy &lt;code class=&quot;highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; cho phép chúng ta khai báo khá dễ đọc, và gọn gàng. Ngoài ra bản thân nó còn được cộng đồng open-source cung cấp nhiều &lt;code class=&quot;highlighter-rouge&quot;&gt;plugin&lt;/code&gt; nên gần như chúng ta không cần làm gì nhiều, chỉ cần apply plugin là xong!&lt;/p&gt;
+
+&lt;p&gt;Chi tiết project mình để tại &lt;a href=&quot;https://github.com/loda-kun/multiple-module-gradle&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Chúc các bạn thành công! chớ quên like or share ủng hộ mềnh nha ahoho!:3&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
+        <link>https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/</link>
+        <guid isPermaLink="true">https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/</guid>
+        
+        
+        <category>Java</category>
+        
+        <category>Spring boot</category>
+        
+        <category>gradle</category>
+        
+      </item>
     
       <item>
         <title>「Java 8」Hướng dẫn Stream API</title>
@@ -1769,102 +2039,6 @@ Ví dụ:&lt;/p&gt;
         <category>ruby</category>
         
         <category>thanosjs</category>
-        
-      </item>
-    
-      <item>
-        <title>Mình đã làm xe tự lái như thế nào?</title>
-        <description>&lt;h2 id=&quot;đôi-nét-về-xe-tự-hành&quot;&gt;Đôi nét về Xe tự hành&lt;/h2&gt;
-
-&lt;p&gt;Chắc hẳn những cụm từ như &lt;code class=&quot;highlighter-rouge&quot;&gt;“Xe tự hành”&lt;/code&gt; (hay &lt;code class=&quot;highlighter-rouge&quot;&gt;“Xe tự lái”&lt;/code&gt;) đã không còn xa lạ đối với những người quan tâm tới công nghệ trong suốt thời gian qua. Đã có rất nhiều tập đoàn, công ty lớn tham gia vào vào cuộc đua nghiên cứu xe tự hành này, tiêu biểu có thể kể tới như &lt;code class=&quot;highlighter-rouge&quot;&gt;Uber&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Apple&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Ford&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Honda&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;BWM&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Liên minh Renault&lt;/code&gt; – &lt;code class=&quot;highlighter-rouge&quot;&gt;Nissan&lt;/code&gt; – &lt;code class=&quot;highlighter-rouge&quot;&gt;Mitsubishi&lt;/code&gt;,.. Theo số liệu báo cáo từ KPMG thì tổng số tiền đầu tư vào lĩnh vực này trong 05 năm vừa qua đã đạt tới con số hơn 50 tỷ USD (ờ hớ ờ hớ)&lt;/p&gt;
-
-&lt;p&gt;Cho những bạn chưa biết, thì “xe tự hành” có thể hiểu là ôtô có khả năng hoạt động mà không cần đến sự điều khiển hay can thiệp của con người.&lt;/p&gt;
-
-&lt;p&gt;Nếu xe tự hành được nghiên cứu và áp dụng thành công thì những lợi ích mà nó đem lại sẽ có tác động rất tích cực đến chất lượng đời sống của con người như: giảm tỷ lệ tai nạn giao thông do bất cẩn của người lái, giảm thiểu chi phí sửa chữa ô tô; hỗ trợ người tàn tật, người già di chuyển dễ dàng, chủ động hơn.&lt;/p&gt;
-
-&lt;h2 id=&quot;hành-trình-đáng-nhớ-với-cuộc-đua-số&quot;&gt;Hành trình đáng nhớ với “Cuộc đua số”&lt;/h2&gt;
-
-&lt;p&gt;Đây là chân dung chiếc xe tự hành mini của chúng mình. Xe được xây dựng trên tỉ lệ 1:20 so với xe thật, có kích thước chiều dài khoảng 40cm và chiều cao 30cm.&lt;/p&gt;
-
-&lt;p&gt;Em xe này có tốc độ chạy tối đa 25 km/h, có thể leo trèo bãi đất, bãi cát, leo dốc 45 độ, lội nước sâu tầm 10 cm, lội tuyết, sình lầy (cũng khá ngầu phải không :P)&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551603987/2.jpg&quot; alt=&quot;Xe tự lái&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Chi tiết hơn thì chiếc xe gồm có:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Động cơ điều khiển bánh&lt;/li&gt;
-  &lt;li&gt;Vi mạch Jetson TX1&lt;/li&gt;
-  &lt;li&gt;Camera&lt;/li&gt;
-  &lt;li&gt;Cảm biến vật cản&lt;/li&gt;
-  &lt;li&gt;Màn hình led và các phím chức năng&lt;/li&gt;
-  &lt;li&gt;Dây nối tín hiệu cho mạch và dây nguồn cho động cơ/mạch&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Sau đây, mình sẽ chia sẻ qua một chút về quá trình team mình lập trình chiếc xe này và đi vào từng bài toán mà bọn mình cần giải quyết. Thật đáng tiếc là cuộc thi đã trôi qua được 1 năm, và source code mình đã gửi lại cho ban tổ chức, cũng như không còn lưu giữ gì về nó :’( mình sẽ chia sẻ hướng giải quyết vấn đề. còn source code sẽ tự bổ sung lại dần dần sau này.&lt;/p&gt;
-
-&lt;h3 id=&quot;xác-định-2-biên-đường&quot;&gt;Xác định 2 biên đường&lt;/h3&gt;
-
-&lt;p&gt;Để xe có thể đi đúng thì cần xác định 2 biên đường để đảm bảo xe luôn đi trong đó. Đây là một bài toán xử lý ảnh cơ bản vì 2 làn đường có màu trắng trên nền đen và bỏ qua yếu tố ngoại cảnh như nhiễu hạt hay vật cản.&lt;/p&gt;
-
-&lt;p&gt;Ngoài ra, xe chỉ cần xác định đoạn đường trước nó không xa, nên mình cắt 1 nửa ảnh, lấy đoạn đường phía dưới để xử lý. Mình đã sử dụng lọc màu trên kênh HSV để làm nổi bật các đường màu trắng, sau đó sử dụng &lt;code class=&quot;highlighter-rouge&quot;&gt;thuật toán Canny&lt;/code&gt; để cho ra biên ảnh. Từ Canny mình có thể xác định được các đường thẳng trong ảnh =&amp;gt; chính là các làn đường trong ảnh.&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551603987/3.png&quot; alt=&quot;Xe tự lái&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Tham khảo thuật toán Canny &lt;a href=&quot;https://docs.opencv.org/3.1.0/da/d22/tutorial_py_canny.html&quot;&gt;tại đây.&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;xác-định-tâm-đường&quot;&gt;Xác định tâm đường&lt;/h3&gt;
-
-&lt;p&gt;Khi đã xác định được 2 làn đường, việc xác định tâm đường sẽ đơn giản với đoạn đường thẳng đó là lấy trung điểm của 2 làn đường.&lt;/p&gt;
-
-&lt;p&gt;Tại mỗi lần di chuyển, hình ảnh camera bắt được sẽ thay đổi theo thời gian nên tâm đường sẽ bị dịch chuyển, nhưng phải nằm trong giới hạn thay đổi nhất định, tâm đường mới không được quá lệch với tâm đường trước, thuật toán của bọn mình sẽ đặt ra 1 giới hạn để tránh tâm đường thay đổi đột ngột.&lt;/p&gt;
-
-&lt;p&gt;Tuy nhiên, có trường hợp đặc biệt là đoạn đường cong. Sẽ không thể lấy trung điểm nữa mà phải sử dụng thuật toán hồi quy để suy diễn từ các tâm đường trước đó.&lt;/p&gt;
-
-&lt;p&gt;Đây là thuật toán chính để giúp xe luôn đi trong đường quy định. Mình sẽ bổ sung thuật toán này sớm nhất khi nhớ lại source code huhu.&lt;/p&gt;
-
-&lt;h3 id=&quot;xe-di-chuyển&quot;&gt;Xe di chuyển&lt;/h3&gt;
-
-&lt;p&gt;Khi đã xác định được tâm đường, thì việc cho xe di chuyển chỉ là đi theo cái tâm ý, và cứ nhăm nhăm mà đi thôi. Chỉ khó ở việc cho xe rẽ ở đoạn đường cong, sẽ phải điều chỉnh độ nghiêng của bánh lớn hơn 2 lần. Tốc độ di chuyển giảm xuống khoảng 0.65&lt;/p&gt;
-
-&lt;h3 id=&quot;xác-định-vật-cản&quot;&gt;Xác định vật cản&lt;/h3&gt;
-
-&lt;p&gt;Trên đường đi, vật cản được quy định là &lt;code class=&quot;highlighter-rouge&quot;&gt;khối hộp màu xanh&lt;/code&gt; và &lt;code class=&quot;highlighter-rouge&quot;&gt;đỏ&lt;/code&gt; điều này khá dễ dàng để có thể nhận biết, chỉ 1 vài phép biến đổi ảnh đơn giản như Color Filter, &lt;a href=&quot;https://docs.opencv.org/3.1.0/dd/d49/tutorial_py_contour_features.html&quot;&gt;Convex Hull&lt;/a&gt; là sẽ ra. Thuật toán bạn tham khảo tại đây &lt;a href=&quot;https://docs.opencv.org/3.1.0/dd/d49/tutorial_py_contour_features.html&quot;&gt;tại đây&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;youtube-container&quot;&gt;
-    &lt;iframe src=&quot;https://www.youtube.com/embed/BaAmaIyCp2Y&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;xác-định-biển-báo-rẽ-đường&quot;&gt;Xác định biển báo rẽ đường&lt;/h3&gt;
-
-&lt;p&gt;Trong phần xác định biển báo rẽ trái hoặc rẽ phải. Mình sẽ dụng màu xanh nước biển là bộ lọc, sau đó xác định Contour và bao viền biển báo. Cái này cần ốp machine learning mạnh mẽ vào :v&lt;/p&gt;
-
-&lt;p&gt;Khi đã biết được biển báo ở đâu, mình sẽ sử dụng thuật toán trích đặc trưng của biển báo là HOG và đưa vào một bộ nhận dạng đã được huấn luyện từ trước là SVM để xác định xem biển báo là gì =&amp;gt; Lúc này sẽ biết được biển báo đó là rẽ trái hay rẽ phải và điều khiển xe theo hướng đó&lt;/p&gt;
-
-&lt;div class=&quot;wrapper-center&quot;&gt;
-    &lt;img src=&quot;/assets/images/loda1551603987/4.jpg&quot; alt=&quot;Xe tự lái&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Trên đây là toàn bộ những chia sẻ của mình về việc mình đã được tham gia lập trình một chiếc Xe tự hành ở level “đơn giản” như thế nào. Hy vọng là trong tương lai sẽ không còn là dạng “mô hình” hay “level đơn giản” nữa :D&lt;/p&gt;
-
-&lt;p&gt;Một lần nữa xin lỗi bạn đọc vì không có source code ở đây, nhưng mình sẽ bổ sung trong thời gian sớm nhất có thể. ít ra trong bài viết có những keywords khá quan trọng nếu bạn muốn tìm hiểu :D&lt;/p&gt;
-</description>
-        <pubDate>Fri, 22 Mar 2019 00:00:00 +0000</pubDate>
-        <link>https://loda.me/Minh-da-lam-xe-tu-lai-nhu-the-nao/</link>
-        <guid isPermaLink="true">https://loda.me/Minh-da-lam-xe-tu-lai-nhu-the-nao/</guid>
-        
-        <category>featured</category>
-        
-        
-        <category>Image Processing</category>
-        
-        <category>Machine Learning</category>
-        
-        <category>AI</category>
         
       </item>
     

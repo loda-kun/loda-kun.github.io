@@ -1,0 +1,207 @@
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "org.sonarqube"
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.13.RELEASE'
+        springContractVersion = '1.2.5.RELEASE'
+        springCloudVersion = 'Edgware.SR5'
+        springCloudStarterVersion = '1.2.2.RELEASE'
+        springCloudSecurityVersion = '1.2.1.RELEASE'
+        sonarqubeVersion = '2.6.1'
+        retrofitVersion = '2.3.0'
+        okhttpVersion = '3.9.0'
+        rxjavaVersion = '2.1.4'
+        javaJwtVersion = '3.2.0'
+        findBugs = '3.0.1'
+        junitVersion = '4.12'
+        assertJVersion = '3.8.0'
+        apacheCommonsLang3 = '3.6'
+        apachePoi = '3.17'
+        hikariCp = '2.7.4'
+        lettuceVersion = '4.5.0.Final'
+        guavaVersion = '23.0'
+        hibernateVersion = '5.0.12.Final'
+        javaEmojiVersion = '4.0.0'
+        icu4jVersion = '60.2'
+        jsoupVersion = '1.11.2'
+        superCsvVersion = '2.4.0'
+        flywayVersion = '5.2.0'
+        lombokVersion = '1.18.4'
+        quartzVersion = '2.2.3'
+        apacheCommonIOVersion = '2.6'
+        isBuildOnJenkins = System.env['BUILD_TAG']?.startsWith('jenkins-') ?: false
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'https://repo.spring.io/release' }
+        maven { url 'https://repo.spring.io/snapshot' }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url 'https://repo.spring.io/libs-snapshot' }
+        maven { url 'https://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.cloud:spring-cloud-contract-gradle-plugin:${springContractVersion}")
+        classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
+        classpath("net.rdrei.android.buildtimetracker:gradle-plugin:0.9.+")
+        classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarqubeVersion}")
+        classpath "gradle.plugin.com.scalified.plugins.gradle:metamodel:0.0.1"
+    }
+}
+
+
+configure(allprojects) {
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-maven'
+    apply plugin: 'propdeps-idea'
+    apply plugin: 'propdeps-eclipse'
+//    apply plugin: "com.dorongold.task-tree"
+}
+
+sonarqube {
+    def props = new Properties()
+    file("$projectDir/sonar.properties").withInputStream { props.load(it) }
+
+    properties {
+        props.each { prop ->
+            property prop.key, prop.value
+        }
+    }
+}
+
+allprojects {
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+    apply plugin: "build-time-tracker"
+
+
+    if (project.hasProperty('contractEnabled') && project.property('contractEnabled').toBoolean()) {
+        task genContract(type: GradleBuild) {
+            tasks = ['clean', 'generateContractTests']
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        maven { url 'https://repo.spring.io/release' }
+        maven { url 'https://repo.spring.io/snapshot' }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url 'https://repo.spring.io/libs-snapshot' }
+        maven { url 'https://repo.spring.io/plugins-release' }
+    }
+
+    configurations {
+        compile.exclude module: "tomcat-jdbc"
+    }
+
+    dependencies {
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+        // For https://github.com/FasterXML/jackson-databind/issues/1599
+        // TODO: Remove when spring uses the version 2.8.8.1 or later version.
+        compile "com.fasterxml.jackson.core:jackson-databind"
+        compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+
+        compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+        compile "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+
+        compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+        compile "com.squareup.retrofit2:converter-jackson:${retrofitVersion}"
+        compile "com.squareup.retrofit2:converter-scalars:${retrofitVersion}"
+        compile "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+        compile "io.reactivex.rxjava2:rxjava:${rxjavaVersion}"
+
+        compile "org.springframework.boot:spring-boot-starter"
+        compile "com.auth0:java-jwt:${javaJwtVersion}"
+
+        testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+        testCompile "com.squareup.retrofit2:retrofit-mock:${retrofitVersion}"
+        testCompile "com.squareup.okhttp3:mockwebserver:${okhttpVersion}"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+        testCompile "org.springframework.security:spring-security-test"
+        testCompile "org.assertj:assertj-core:${assertJVersion}"
+        testCompile "org.hsqldb:hsqldb"
+        testCompile "org.springframework.boot:spring-boot-starter-tomcat"
+        testCompile "junit:junit:${junitVersion}"
+
+    }
+
+
+    bootRun {
+        systemProperties System.properties
+    }
+
+    test {
+        systemProperties System.properties
+    }
+}
+
+project(":common") {
+    apply plugin: "com.scalified.plugins.gradle.metamodel"
+    metamodel {
+        hibernateVersion = "5.3.7.Final"
+    }
+    bootRepackage {
+        enabled = false
+    }
+
+    dependencies {
+        compile "org.springframework.boot:spring-boot-starter-web"
+        compile "org.springframework.boot:spring-boot-starter-aop"
+        compile "org.springframework.boot:spring-boot-starter-security"
+        compile "org.springframework.data:spring-data-commons"
+        compile "org.springframework.boot:spring-boot-starter-jdbc"
+        compile "org.springframework.boot:spring-boot-starter-data-jpa"
+        compile "org.springframework.cloud:spring-cloud-starter:${springCloudStarterVersion}"
+        compile "org.springframework.cloud:spring-cloud-security:${springCloudSecurityVersion}"
+        compile "org.springframework.cloud:spring-cloud-starter-oauth2:${springCloudStarterVersion}"
+        compile "org.springframework.cloud:spring-cloud-starter-security:${springCloudSecurityVersion}"
+        optional "org.springframework.boot:spring-boot-configuration-processor"
+    }
+
+    compileJava.dependsOn(processResources)
+}
+
+
+
+project(":web") {
+    apply plugin: 'spring-cloud-contract'
+
+    contracts {
+        packageWithBaseClasses = "com.example.controller"
+        basePackageForTests = "com.example"
+//        baseClassMappings {
+//            baseClassMapping('.*/controller/app/.*':'com.example.controller.app')
+//        }
+    }
+
+    dependencies {
+        compile project(":web-common")
+        compile "org.springframework.boot:spring-boot-starter-mobile"
+        testCompile("org.springframework.cloud:spring-cloud-starter-contract-verifier:${springContractVersion}")
+        testCompile("com.h2database:h2")
+        // https://mvnrepository.com/artifact/com.integralblue/log4jdbc-spring-boot-starter
+        testCompile group: 'com.integralblue', name: 'log4jdbc-spring-boot-starter', version: '1.0.2'
+        // https://mvnrepository.com/artifact/it.ozimov/embedded-redis
+        testCompile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:${springContractVersion}"
+        }
+    }
+}

@@ -15,20 +15,24 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <title>Buy me a coffee | Loda</title>
+    <title>「Java」Hướng dẫn tự tạo một Annotations | Loda</title>
 
     <!-- Begin Jekyll SEO tag v2.6.0 -->
-<title>Buy me a coffee | Loda</title>
+<title>「Java」Hướng dẫn tự tạo một Annotations | Loda</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Buy me a coffee" />
+<meta property="og:title" content="「Java」Hướng dẫn tự tạo một Annotations" />
+<meta name="author" content="loda" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất." />
-<meta property="og:description" content="Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất." />
-<link rel="canonical" href="https://loda.me/buy-me-a-coffee.html" />
-<meta property="og:url" content="https://loda.me/buy-me-a-coffee.html" />
+<meta name="description" content="Hướng dẫn cách tự tạo cho mình một Annotation để phục vụ mục đích cá nhân." />
+<meta property="og:description" content="Hướng dẫn cách tự tạo cho mình một Annotation để phục vụ mục đích cá nhân." />
+<link rel="canonical" href="https://loda.me/Huong-dan-tu-tao-mot-Annotations/" />
+<meta property="og:url" content="https://loda.me/Huong-dan-tu-tao-mot-Annotations/" />
 <meta property="og:site_name" content="Loda" />
+<meta property="og:image" content="https://loda.me/assets/images/loda1554297400922/1.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-03T00:00:00+00:00" />
 <script type="application/ld+json">
-{"description":"Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất.","@type":"WebPage","url":"https://loda.me/buy-me-a-coffee.html","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://loda.me/assets/images/logo.png"}},"headline":"Buy me a coffee","@context":"https://schema.org"}</script>
+{"description":"Hướng dẫn cách tự tạo cho mình một Annotation để phục vụ mục đích cá nhân.","author":{"@type":"Person","name":"loda"},"@type":"BlogPosting","url":"https://loda.me/Huong-dan-tu-tao-mot-Annotations/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://loda.me/assets/images/logo.png"},"name":"loda"},"image":"https://loda.me/assets/images/loda1554297400922/1.jpg","headline":"「Java」Hướng dẫn tự tạo một Annotations","dateModified":"2019-04-03T00:00:00+00:00","datePublished":"2019-04-03T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://loda.me/Huong-dan-tu-tao-mot-Annotations/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -114,11 +118,11 @@
 
     "@context": "https://schema.org/",
     "@type": "Book",
-    "name": "Buy me a coffee",
-    "description": "",
+    "name": "「Java」Hướng dẫn tự tạo một Annotations",
+    "description": "Hướng dẫn cách tự tạo cho mình một Annotation để phục vụ mục đích cá nhân.",
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "91",
+      "ratingValue": "95",
       "bestRating": "100",
       "ratingCount": "2"
     }
@@ -289,17 +293,17 @@ var documents = [{
     "id": 2,
     "url": "https://loda.me/author-jane.html",
     "title": "Jane",
-    "body": "                        Jane Follow:                                                    Posts by Jane:               "
+    "body": "                        {{page. title}} Follow:         {{ site. authors. jane. site }}         {{ site. authors. jane. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , jane  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
     }, {
     "id": 3,
     "url": "https://loda.me/author-sal.html",
     "title": "Sal",
-    "body": "                        Sal Follow:                                                    Posts by Sal:               "
+    "body": "                        {{page. title}} Follow:         {{ site. authors. sal. site }}         {{ site. authors. sal. bio }}                                   Posts by {{page. title}}:       {% assign posts = site. posts | where: author , sal  %}      {% for post in posts %}      {% include main-loop-card. html %}      {% endfor %}  "
     }, {
     "id": 4,
     "url": "https://loda.me/authors-list.html",
     "title": "Authors",
-    "body": "Authors:                                             loda :       (View Posts)      Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối. . . Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.                           &nbsp;       &nbsp;                                      "
+    "body": "{{page. title}}:     {% for author in site. authors %}                                         {{ author[1]. name }} :       (View Posts)      {{ author[1]. bio }}                          &nbsp;       &nbsp;                                    {% endfor %}  "
     }, {
     "id": 5,
     "url": "https://loda.me/buy-me-a-coffee.html",
@@ -597,21 +601,398 @@ function lunr_search(term) {
 
     <!-- Content -->
     <main role="main" class="site-content">
-        <div class="container">
-<h3 class="font-weight-bold spanborder"><span>Buy me a coffee</span></h3>
-<div class="page-content">
-<p>Hi! I am Sal, web designer &amp; developer at WowThemes.net. The free items I create are my side projects and <strong>Mundana for Jekyll</strong> is one of them. You can find <strong>all the work I release for free <a href="https://www.wowthemes.net/category/free-themes-templates/">here</a></strong>.</p>
+        
 
-<p>You have my permission to use the free items I develop in your personal, commercial or client projects. If you’d like to reward my work, I would be honored and I could dedicate more time maintaining the free projects.</p>
 
-<p>Thank you so much!</p>
 
-<p><a class="btn btn-danger" href="https://www.wowthemes.net/donate/">Buy me a coffee</a></p>
 
-<!-- Comments -->
 
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "NewsArticle",
+	"mainEntityOfPage": {
+	"@type": "WebPage",
+	"@id": "https://loda.me/Huong-dan-tu-tao-mot-Annotations/"
+	},
+	"headline": "「Java」Hướng dẫn tự tạo một Annotations",
+	"image": [
+	"https://loda.me/assets/images/loda1554297400922/1.jpg"
+	],
+	"datePublished": "2019-04-03 16:02:12 +0000",
+	"dateModified": "2019-04-03 16:02:12 +0000",
+	"author": {
+		"@type": "Person",
+		"name": "loda"
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "loda.me",
+		"logo":{
+			"@type":"ImageObject",
+			"url":"https://loda.me/assets/images/loda.png"
+		}
+	},
+	"description": "Hướng dẫn cách tự tạo cho mình một Annotation để phục vụ mục đích cá nhân.",
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "99",
+		"bestRating": "100",
+		"ratingCount": "2"
+	}
+}
+</script>
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#java">java</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">「Java」Hướng dẫn tự tạo một Annotations</h1>
+					<div class="d-flex align-items-center">
+                        
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="70"/>
+                        
+						<small class="ml-3"> loda <span><a target="_blank" href="https://www.facebook.com/loda.mee" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 03, 2019 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+    </span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/images/loda1554297400922/1.jpg" alt="「Java」Hướng dẫn tự tạo một Annotations">
+				</div>
+                
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=「Java」Hướng dẫn tự tạo một Annotations&url=https://loda.me/Huong-dan-tu-tao-mot-Annotations/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https://loda.me/Huong-dan-tu-tao-mot-Annotations/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://plus.google.com/share?url=https://loda.me/Huong-dan-tu-tao-mot-Annotations/" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <i class="fab fa-google"></i>
+        </a>
+        </li>
+        
+    </ul>
+    
+    <div class="sep">
+    </div>				
+    <ul>
+        <li> 
+        <a  class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
 </div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p><code class="highlighter-rouge">Annotation</code> (Chú thích) được sử dụng để <strong>chú thích</strong> trên một <code class="highlighter-rouge">class</code>, một trường (<code class="highlighter-rouge">field</code>) hoặc một <code class="highlighter-rouge">method</code> để cung cấp hoặc bổ sung các thông tin. Nó hoàn toàn không ảnh hưởng tới code của bạn.</p>
+
+<p>Trong bài có sử dụng các kiến thức:</p>
+
+<ol>
+  <li><a href="https://loda.me/Optional/">Optional</a></li>
+  <li><a href="https://loda.me/Functional-Interfaces-&amp;-Lambda-Expressions-cuc-de-hieu/">Functional Interface &amp; Lambda</a></li>
+  <li><a href="https://loda.me/Huong-dan-Java-Reflection/">Java Reflection</a></li>
+</ol>
+
+<p><code class="highlighter-rouge">Annotation</code> được sử dụng ở 3 dạng:</p>
+
+<ul>
+  <li>Chú thích cho trình biên dịch (Compiler)</li>
+  <li>Chú thích cho quá trình build</li>
+  <li>Chú thích trong quá trình chạy chương trình (Runtime)</li>
+</ul>
+
+<p>Hẳn bạn đã 1 lần từng thấy cái <code class="highlighter-rouge">@Override</code> phải không? nó là một <em>Annotation chú thích cho trình biên dịch</em>, để cho trình biên dịch biết hàm đó đã bị ghi đè.</p>
+
+<p>Còn <em>chú thích cho quá trình build</em> thì không hẳn có ví dụ cụ thể, nhưng bạn hãy nghĩ tới <code class="highlighter-rouge">Maven</code>, <code class="highlighter-rouge">Gradle</code> những công cụ build này sẽ có thêm thông tin khi build ứng dụng của bạn khi gặp một số <code class="highlighter-rouge">Annotation</code> đặc biệt, và sẽ bổ sung thêm code vào đó.</p>
+
+<p><em>Chú thích trong quá trình chạy chương trình</em> sẽ là nội dung chính của chúng ta hôm nay. Đây là những <code class="highlighter-rouge">Annotation</code> mà chỉ khi bạn chạy chương trình rồi thì nó mới tác động tới code. Cùng vào ví dụ để dễ hiểu nhé!</p>
+
+<h4 id="khai-báo-annotation">Khai báo Annotation</h4>
+
+<p>Cách khai báo <code class="highlighter-rouge">Annotation</code> là sử dụng <code class="highlighter-rouge">@interface</code></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nd">@interface</span> <span class="n">JsonName</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="nf">value</span><span class="o">();</span> <span class="c1">// các giá trị trong @interface đều dạng hàm abstract, không tham số</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>vậy là bạn đã có 1 <code class="highlighter-rouge">Annotation</code>. Giờ gọi nó ra và sử dụng:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@JsonName</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"super_man"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SuperMan</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Đơn giản phải không? Tuy nhiên, hiện tại <code class="highlighter-rouge">Annotation</code> chỉ hiển thị trong code như vậy thôi! chứ nó chả có tác dụng gì cả :))))</p>
+
+<p>Chúng ta cần viết thêm code để xử cái lý cái <code class="highlighter-rouge">@JsonName</code> này.</p>
+
+<h4 id="khai-báo-phạm-vi-cho-annotation">Khai báo phạm vi cho Annotation</h4>
+
+<p>Chúng ta có thể quy định phạm vi sử dụng của <code class="highlighter-rouge">Annotation</code> bằng cách:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span> <span class="c1">// Tồn tại trong lúc chạy chương trình</span>
+<span class="nd">@Target</span><span class="o">({</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">})</span> <span class="c1">// Được sử dụng trên class, interface, method, biến</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">JsonName</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="nf">value</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">@Retention</code>: Dùng để chú thích <strong>mức độ tồn tại</strong> của một annotation nào đó. 
+Cụ thể có 3 mức nhận thức tồn tại của vật được chú thích:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">RetentionPolicy.SOURCE</code>: Tồn tại trên code nguồn, và không được bộ dịch (compiler) nhận ra.</li>
+  <li><code class="highlighter-rouge">RetentionPolicy.CLASS</code>: Mức tồn tại được bộ dịch nhận ra, nhưng không được nhận biết bởi máy ảo tại thời điểm chạy (Runtime).</li>
+  <li><code class="highlighter-rouge">RetentionPolicy.RUNTIME</code>: Mức tồn tại lớn nhất, được bộ dịch (compiler) nhận biết, và máy ảo (jvm) cũng nhận ra khi chạy chương trình.</li>
+</ol>
+
+<p><code class="highlighter-rouge">@Target</code>: Dùng để chú thích <strong>phạm vi sử dụng</strong> của một <code class="highlighter-rouge">Annotation</code></p>
+
+<ol>
+  <li><code class="highlighter-rouge">ElementType.TYPE</code> - Cho phép chú thích trên Class, interface, enum, annotation.</li>
+  <li><code class="highlighter-rouge">ElementType.FIELD</code> - Cho phép chú thích trường (field), bao gồm cả các hằng số enum.</li>
+  <li><code class="highlighter-rouge">ElementType.METHOD</code> - Cho phép chú thích trên method.</li>
+  <li><code class="highlighter-rouge">ElementType.PARAMETER</code> - Cho phép chú thích trên parameter</li>
+  <li><code class="highlighter-rouge">ElementType.CONSTRUCTOR</code> - Cho phép chú thích trên constructor</li>
+  <li><code class="highlighter-rouge">ElementType.LOCAL_VARIABLE</code> - Cho phép chú thích trên biến địa phương.</li>
+  <li><code class="highlighter-rouge">ElementType.ANNOTATION_TYPE</code> - Cho phép chú thích trên Annotation khác</li>
+  <li><code class="highlighter-rouge">ElementType.PACKAGE</code> - Cho phép chú thích trên package.</li>
+</ol>
+
+<h4 id="xử-lý-annotation">Xử lý Annotation</h4>
+
+<p>Bước 1: Chú thích bất kì chỗ nào bạn thích :)))</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@JsonName</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"super_man"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SuperMan</span> <span class="o">{</span>
+    <span class="c1">// Không chú thích, thì chúng ta sẽ coi như lấy tên field là `name` luôn</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@JsonName</span><span class="o">(</span><span class="s">"date_of_birth"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">LocalDateTime</span> <span class="n">dateOfBirth</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">LocalDateTime</span> <span class="nf">getDateOfBirth</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dateOfBirth</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateOfBirth</span><span class="o">(</span><span class="n">LocalDateTime</span> <span class="n">dateOfBirth</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dateOfBirth</span> <span class="o">=</span> <span class="n">dateOfBirth</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Bước 2: Viết class xử lý <code class="highlighter-rouge">@JsonName</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JsonNameProcessor</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">toJson</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IllegalAccessException</span> <span class="o">{</span>
+        <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span> <span class="c1">// Dùng StringBuilder de tao json tu class</span>
+
+        <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">object</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+        <span class="n">JsonName</span> <span class="n">jsonClassName</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getDeclaredAnnotation</span><span class="o">(</span><span class="n">JsonName</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">// Lay ra annotation @JsonName tren Class</span>
+
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"{\n"</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\t\""</span><span class="o">)</span>
+          <span class="c1">// Lay gia tri cua Annotation, neu annotation la null thi lay ten Class de thay the</span>
+          <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">jsonClassName</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">JsonName:</span><span class="o">:</span><span class="n">value</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span><span class="n">clazz</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">()))</span>
+          <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\": {\n"</span><span class="o">);</span> <span class="c1">//</span>
+
+
+        <span class="n">Field</span> <span class="n">fields</span><span class="o">[]</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getDeclaredFields</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">fields</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Set setAccessible = true. De co the truy cap vao private field</span>
+            <span class="n">JsonName</span> <span class="n">jsonFieldName</span> <span class="o">=</span> <span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getDeclaredAnnotation</span><span class="o">(</span><span class="n">JsonName</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">// get annotation tren field</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\t\t\""</span><span class="o">)</span>
+              <span class="c1">// Lay gia tri cua Annotation, neu annotation la null thi lay ten field thay the</span>
+              <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">jsonFieldName</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">JsonName:</span><span class="o">:</span><span class="n">value</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span><span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">()))</span> <span class="c1">// L</span>
+              <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\": "</span><span class="o">)</span>
+              <span class="c1">// Neu field la String hoac Object. thi append dau ngoac kep vao</span>
+              <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getType</span><span class="o">()</span> <span class="o">==</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span> <span class="o">||</span> <span class="o">!</span><span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getType</span><span class="o">().</span><span class="na">isPrimitive</span><span class="o">()</span> <span class="o">?</span> <span class="s">"\""</span> <span class="o">:</span> <span class="s">""</span><span class="o">)</span>
+              <span class="c1">// Lay gia tri cua field</span>
+              <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="n">object</span><span class="o">))</span>
+              <span class="c1">// Neu field la String hoac Object. thi append dau ngoac kep vao</span>
+              <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getType</span><span class="o">()</span> <span class="o">==</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span> <span class="o">||</span> <span class="o">!</span><span class="n">fields</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getType</span><span class="o">().</span><span class="na">isPrimitive</span><span class="o">()?</span> <span class="s">"\""</span> <span class="o">:</span> <span class="s">""</span><span class="o">)</span>
+              <span class="c1">// Nếu là field cuối cùng, thì không append dấu ","</span>
+              <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">fields</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="s">",\n"</span> <span class="o">:</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\t}\n"</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"}"</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Bước 3: Chạy thử:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IllegalAccessException</span> <span class="o">{</span>
+    <span class="n">SuperMan</span> <span class="n">superMan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SuperMan</span><span class="o">();</span> <span class="c1">// Tao doi tuong super man</span>
+    <span class="n">superMan</span><span class="o">.</span><span class="na">setDateOfBirth</span><span class="o">(</span><span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+    <span class="n">superMan</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"loda"</span><span class="o">);</span>
+
+    <span class="n">String</span> <span class="n">json</span> <span class="o">=</span><span class="n">JsonNameProcessor</span><span class="o">.</span><span class="na">toJson</span><span class="o">(</span><span class="n">superMan</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="c1">// OUTPUT:</span>
+<span class="cm">/*
+{
+	"super_man": {
+		"name": "loda",
+		"date_of_birth": "2019-04-03T21:07:23.983"
+	}
+}
+*/</span>
+</code></pre></div></div>
+
+<p>Vậy là các bạn đã thành công cho việc tự tạo cho mình 1 <code class="highlighter-rouge">Annotation</code> rồi :v</p>
+
+<p>Chúc các bạn học tập tốt hihi :3</p>
+
+                
+			</article>
+			
+			<!-- Your like button code -->
+<div
+  class="fb-like"
+  data-href="https://loda.me/Huong-dan-tu-tao-mot-Annotations/"
+  data-layout="standard"
+  data-action="like"
+  data-show-faces="true"
+></div><br>
+<div class="fb-share-button" 
+data-href="https://loda.me/Huong-dan-tu-tao-mot-Annotations/" 
+data-layout="button"
+  data-size="small">
+  <a target="_blank"
+    href="https://www.facebook.com/sharer/sharer.php?u=https://loda.me/Huong-dan-tu-tao-mot-Annotations/&amp;src=sdkpreparse"
+    class="fb-xfbml-parse-ignore">Chia sẻ</a>
+</div>
+             
+            
+             <!-- Author Box -->
+                				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by loda <span><a target="_blank" href="https://www.facebook.com/loda.mee" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Là chàng coder :'( yêu màu tím , thích màu hồng, sống nội tâm, hay khóc thầm, ghét sự giả dối... Mong muốn chia sẻ cho cộng đồng các kiến thức mới về lâp trình nói chung và đời sống nói riêng.					
+					</div>
+				</div>				
+				
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <!-- <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'loda-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript> -->
+    <div 
+        class="fb-comments" 
+        data-width="100%"
+        data-href="https://loda.me/Huong-dan-tu-tao-mot-Annotations/" 
+        data-numposts="5">
+    </div>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar" class="display:block">
+	<div class="container">
+		<div class="row prevnextlinks small font-weight-bold">
+			
+			<div class="col-md-6 rightborder pl-0">
+				<a class="text-dark" href="/Huong-dan-Java-Reflection/"> <img height="30px" class="mr-1" src="/assets/images/loda1554301692892/1.jpg">  「Java」Hướng dẫn Java Reflection</a>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+					
     </main>
 
 

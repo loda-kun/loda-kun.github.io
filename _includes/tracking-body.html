@@ -19,13 +19,10 @@
 </script>
 
 <!-- Google Adsense -->
-<script
-  async
-  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "{{site.google_adsense}}",
+    google_ad_client: "ca-pub-1825244585932187",
     enable_page_level_ads: true
   });
 </script>
@@ -45,11 +42,6 @@
 <!-- GOOGLE STRUCTURE DATA. FOR SEO
 <script type="application/ld+json">
   {
-    {% assign min = 85 %}
-    {% assign max = 100 %}
-    {% assign diff = max | minus: min %}
-    {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
-
     "@context": "https://schema.org/",
     "@type": "Book",
     "name": "{{page.title}}",

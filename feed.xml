@@ -5,8 +5,8 @@
     <description>Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất.</description>
     <link>https://loda.me/</link>
     <atom:link href="https://loda.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 06 Apr 2019 05:26:38 +0000</pubDate>
-    <lastBuildDate>Sat, 06 Apr 2019 05:26:38 +0000</lastBuildDate>
+    <pubDate>Sat, 06 Apr 2019 05:28:36 +0000</pubDate>
+    <lastBuildDate>Sat, 06 Apr 2019 05:28:36 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -247,8 +247,14 @@
 
 &lt;p&gt;Chúc các bạn học tập thật tốt! ahuu&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-su-dung-@OneToOne-Relationship/&quot;&gt;Hướng dẫn sử dụng @OneToOne&lt;/a&gt;
-&lt;a href=&quot;https://loda.me/Huong-dan-@ManyToMany/&quot;&gt;Hướng dẫn sử dụng @ManyToMany&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-su-dung-@OneToOne-Relationship/&quot;&gt;Hướng dẫn sử dụng @OneToOne&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-@ManyToMany/&quot;&gt;Hướng dẫn sử dụng @ManyToMany&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 </description>
         <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
@@ -535,8 +541,14 @@ Ngoài ra, sẽ tạo ra một bảng trung gian ở giữa liên kết hai bả
 
 &lt;p&gt;Chúc các bạn học tập thật tốt! ahuu&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-su-dung-@OneToOne-Relationship/&quot;&gt;Hướng dẫn sử dụng @OneToOne&lt;/a&gt;
-&lt;a href=&quot;https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/&quot;&gt;Hướng dẫn sử dụng @OneToMany và @ManyToOne&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-su-dung-@OneToOne-Relationship/&quot;&gt;Hướng dẫn sử dụng @OneToOne&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/&quot;&gt;Hướng dẫn sử dụng @OneToMany và @ManyToOne&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 </description>
         <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
@@ -761,8 +773,10 @@ Ngoài ra, sẽ tạo ra một bảng trung gian ở giữa liên kết hai bả
 
 &lt;p&gt;Chúc các bạn học tập tốt! ahuu&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/&quot;&gt;Hướng dẫn sử dụng @OneToMany&lt;/a&gt;
-&lt;a href=&quot;https://loda.me/Huong-dan-@ManyToMany/&quot;&gt;Hướng dẫn sử dụng @ManyToMany&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/&quot;&gt;Hướng dẫn sử dụng @OneToMany&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://loda.me/Huong-dan-@ManyToMany/&quot;&gt;Hướng dẫn sử dụng @ManyToMany&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 </description>
         <pubDate>Fri, 05 Apr 2019 00:00:00 +0000</pubDate>

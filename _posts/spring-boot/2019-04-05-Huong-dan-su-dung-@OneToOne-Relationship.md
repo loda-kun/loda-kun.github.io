@@ -223,8 +223,8 @@ Bài viết của mình không còn gì để ngắn hơn được nữa :((( th
 
 Chúc các bạn học tập tốt! ahuu
 
-[Hướng dẫn sử dụng @OneToMany][link-onetomany]
-[Hướng dẫn sử dụng @ManyToMany][link-manytomany]
+1. [Hướng dẫn sử dụng @OneToMany][link-onetomany]
+2. [Hướng dẫn sử dụng @ManyToMany][link-manytomany]
 
 [link-hibernate]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
 [link-lombok]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/

@@ -296,8 +296,9 @@ Bài viết của mình không còn gì để ngắn hơn được nữa :((( th
 
 Chúc các bạn học tập thật tốt! ahuu
 
-[Hướng dẫn sử dụng @OneToOne][link-onetoone]
-[Hướng dẫn sử dụng @OneToMany và @ManyToOne][link-onetomany]
+1. [Hướng dẫn sử dụng @OneToOne][link-onetoone]
+
+2. [Hướng dẫn sử dụng @OneToMany và @ManyToOne][link-onetomany]
 
 [link-hibernate]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
 [link-lombok]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/

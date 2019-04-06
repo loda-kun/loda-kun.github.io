@@ -109,6 +109,14 @@
 <lastmod>2019-04-05T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>https://loda.me/Huong-dan-@ManyToMany/</loc>
+<lastmod>2019-04-06T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/</loc>
+<lastmod>2019-04-06T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>https://loda.me/404</loc>
 </url>
 <url>
@@ -179,5 +187,8 @@
 </url>
 <url>
 <loc>https://loda.me/spring-boot/</loc>
+</url>
+<url>
+<loc>https://loda.me/spring-boot/page/2/</loc>
 </url>
 </urlset>

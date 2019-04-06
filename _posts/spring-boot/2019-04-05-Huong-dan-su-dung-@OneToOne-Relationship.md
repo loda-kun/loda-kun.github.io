@@ -29,7 +29,7 @@ Chúng ta sẽ sử dụng `Gradle` để tạo một project có khai báo `Spr
 
 Các bạn có thể tự tạo 1 project Spring-boot với gradle đơn giản tại: [https://start.spring.io](https://start.spring.io)
 
-```java
+```groovy
 plugins {
     id 'org.springframework.boot' version '2.1.4.RELEASE'
     id 'java'
@@ -76,6 +76,15 @@ Khi tạo xong project, sẽ có thư mục như sau:
 Để tạo table, chúng ta tạo ra các `Class` tương ứng.
 
 ```java
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import lombok.Builder;
+import lombok.Data;
+
 @Entity // Hibernate entity
 @Data // Lombok 
 @Builder // Lombok
@@ -146,6 +155,8 @@ Bạn sẽ thấy nó tạo table giống với mô tả ở đầu bài. Với 
 Để thêm dữ liệu vào database, chúng ta sẽ dùng tới `Jpa`.
 
 ```java
+import org.springframework.data.jpa.repository.JpaRepository;
+
 public interface AddressRepository extends JpaRepository<Address,Long> {
 }
 public interface PersonRepository extends JpaRepository<Person, Long> {
@@ -155,6 +166,16 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 Chúng ta sẽ tạo một chương trình `Spring Boot` đơn giản bằng cách sử dụng `CommandLineRunner` để chạy code ngay khi khởi động.
 
 ```java
+import javax.transaction.Transactional;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.google.common.collect.Lists;
+
+import lombok.RequiredArgsConstructor;
+
 @SpringBootApplication
 @RequiredArgsConstructor
 public class OneToOneExampleApplication implements CommandLineRunner {
@@ -200,9 +221,12 @@ Bài viết của mình không còn gì để ngắn hơn được nữa :((( th
 
  [github.com/loda-kun/java-all](github.com/loda-kun/java-all)
 
-Chúc các bạn học tập tốt!
+Chúc các bạn học tập tốt! ahuu
 
-
+[Hướng dẫn sử dụng @OneToMany][link-onetomany]
+[Hướng dẫn sử dụng @ManyToMany][link-manytomany]
 
 [link-hibernate]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
 [link-lombok]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
+[link-onetomany]: https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/
+[link-manytomany]: https://loda.me/Huong-dan-@ManyToMany/

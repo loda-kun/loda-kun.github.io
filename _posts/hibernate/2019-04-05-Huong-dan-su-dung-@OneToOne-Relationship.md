@@ -226,7 +226,7 @@ Chúc các bạn học tập tốt! ahuu
 1. [Hướng dẫn sử dụng @OneToMany][link-onetomany]
 2. [Hướng dẫn sử dụng @ManyToMany][link-manytomany]
 
-[link-hibernate]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
+[link-hibernate]: https://loda.me/Hibernate-la-gi/
 [link-lombok]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
 [link-onetomany]: https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/
 [link-manytomany]: https://loda.me/Huong-dan-@ManyToMany/

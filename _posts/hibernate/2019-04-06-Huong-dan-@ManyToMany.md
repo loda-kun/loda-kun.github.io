@@ -300,7 +300,7 @@ Chúc các bạn học tập thật tốt! ahuu
 
 2. [Hướng dẫn sử dụng @OneToMany và @ManyToOne][link-onetomany]
 
-[link-hibernate]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
+[link-hibernate]: https://loda.me/Hibernate-la-gi/
 [link-lombok]: https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/
 [link-onetoone]: https://loda.me/Huong-dan-su-dung-@OneToOne-Relationship/
 [link-onetomany]: https://loda.me/Huong-dan-@OneToMany-va-@ManyToOne/

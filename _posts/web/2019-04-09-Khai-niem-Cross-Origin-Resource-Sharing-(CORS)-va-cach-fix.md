@@ -22,6 +22,9 @@ Tuy nhiên, với nhu cầu phát triển, chúng ta sẽ có lúc cần phải 
 
 #### CORS
 
+![cors](/assets/images/loda1554795977503/3.png){:class="center-image"}
+
+
 CORS là một cơ chế xác nhận thông qua Header của request. Cụ thể là trên Server sẽ nói với browser về quy định chấp nhận những request từ domain nào và phương thức ra sao (GET, POST, PUT, v.v..)
 
 * **Access-Control-Allow-Origin**: Những `origin` mà server cho phép. (ví dụ server `loda.his` chỉ chấp nhận `loda.me` request lên)

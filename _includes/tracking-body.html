@@ -45,11 +45,6 @@
 <!-- GOOGLE STRUCTURE DATA. FOR SEO
 <script type="application/ld+json">
   {
-    {% assign min = 85 %}
-    {% assign max = 100 %}
-    {% assign diff = max | minus: min %}
-    {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
-
     "@context": "https://schema.org/",
     "@type": "Book",
     "name": "{{page.title}}",

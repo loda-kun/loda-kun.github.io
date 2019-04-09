@@ -15,24 +15,24 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <title>Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle | Loda</title>
+    <title>Khái niệm ThreadPool và Executor trong Java | Loda</title>
 
     <!-- Begin Jekyll SEO tag v2.6.0 -->
-<title>Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle | Loda</title>
+<title>Khái niệm ThreadPool và Executor trong Java | Loda</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle" />
+<meta property="og:title" content="Khái niệm ThreadPool và Executor trong Java" />
 <meta name="author" content="loda" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Hướng dẫn sử dụng Gradle để tạo một project Spring Boot với nhiều module con." />
-<meta property="og:description" content="Hướng dẫn sử dụng Gradle để tạo một project Spring Boot với nhiều module con." />
-<link rel="canonical" href="https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/" />
-<meta property="og:url" content="https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/" />
+<meta name="description" content="Hướng dẫn cách sử dụng ThreadPoolExecutor và hiểu cách vận hành của nó." />
+<meta property="og:description" content="Hướng dẫn cách sử dụng ThreadPoolExecutor và hiểu cách vận hành của nó." />
+<link rel="canonical" href="https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/" />
+<meta property="og:url" content="https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/" />
 <meta property="og:site_name" content="Loda" />
-<meta property="og:image" content="https://loda.me/assets/images/loda1553919997213/1.jpg" />
+<meta property="og:image" content="https://loda.me/assets/images/loda1554800053212/1.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-03-30T00:00:00+00:00" />
+<meta property="article:published_time" content="2019-04-09T00:00:00+00:00" />
 <script type="application/ld+json">
-{"description":"Hướng dẫn sử dụng Gradle để tạo một project Spring Boot với nhiều module con.","author":{"@type":"Person","name":"loda"},"@type":"BlogPosting","url":"https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://loda.me/assets/images/logo.png"},"name":"loda"},"image":"https://loda.me/assets/images/loda1553919997213/1.jpg","headline":"Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle","dateModified":"2019-03-30T00:00:00+00:00","datePublished":"2019-03-30T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/"},"@context":"https://schema.org"}</script>
+{"description":"Hướng dẫn cách sử dụng ThreadPoolExecutor và hiểu cách vận hành của nó.","author":{"@type":"Person","name":"loda"},"@type":"BlogPosting","url":"https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://loda.me/assets/images/logo.png"},"name":"loda"},"image":"https://loda.me/assets/images/loda1554800053212/1.jpg","headline":"Khái niệm ThreadPool và Executor trong Java","dateModified":"2019-04-09T00:00:00+00:00","datePublished":"2019-04-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -113,8 +113,8 @@
   {
     "@context": "https://schema.org/",
     "@type": "Book",
-    "name": "Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle",
-    "description": "Hướng dẫn sử dụng Gradle để tạo một project Spring Boot với nhiều module con.",
+    "name": "Khái niệm ThreadPool và Executor trong Java",
+    "description": "Hướng dẫn cách sử dụng ThreadPoolExecutor và hiểu cách vận hành của nó.",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "",
@@ -438,7 +438,7 @@ var documents = [{
     "id": 32,
     "url": "https://loda.me/Cai-dat-viet-chuong-trinh-Hello-World-voi-Vue.js/",
     "title": "[Vue #1] Cài đặt, viết chương trình Hello World với Vue.js",
-    "body": "2019/04/08 - Vue (phát âm là /vjuː/, giống như view trong tiếng Anh). Vue. js là một framework giúp chúng ta xây dựng giao diện người dùng nhanh hơn và thuận tiện hơn. Cứ ví dụ như bạn code một trang web bình thường khi chưa có vue. js. Thì sẽ có một số thao tác như sử dụng Jquery chọn đối tượng và lắng nghe sự kiện của đối tượng đó để thay đổi các giá trị khác. Nếu đối tượng này thay đổi chúng ta phải thay đổi đối tượng kia, các kiểu, các kiểu. Nói chung là không khó nhưng nó lâu và rườm rà. Từ đó các framework frontend thi nhau ra đời, giảm thiểu thời gian cho những đoạn code quản lý thừa thãi và module hóa trang web của bạn, giúp bạn tập trung vào logic nhiều hơn, còn lại để framework lo. Vue. js là một trong số đó. Điểm mạnh của Vue. js là nó rất nhanh, dễ học (dễ học nhất trong các loại frontend framework) và đơn giản hóa cho người sử dụng. Cài đặt: Có 2 cách cài đặt: #1. Sử dụng CDN: &lt;!-- Bạn thêm một thư viện, nhưng nó cao cấp hơn Jquery thôi :v --&gt;&lt;script src= https://cdn. jsdelivr. net/npm/vue/dist/vue. js &gt;&lt;/script&gt;#2. Sử dụng NPM: Cái này sẽ dành cho các bạn đã có nền tảng về npm (có thể là webpack nữa) npm install vueNếu bạn lần đầu đến với Vue. js nhưng đã có nền tảng từ trước thì hãy làm việc với npm cho đơn giản, dễ quản lý thư viện. Còn nếu đây là lần đầu bạn tới frontend framework và Vue. js thì trước tiên hãy sử dụng CDN cho đơn giản đã nhé. Khi nắm đc căn bản, thì chuyển qa xài npm và vue-cli Chương trình đầu tiên: Bạn tạo ra một file index. html đơn giản: &lt;!doctype html&gt;&lt;html&gt; &lt;head&gt;  &lt;title&gt;Getting Started&lt;/title&gt; &lt;/head&gt; &lt;body&gt;  &lt;div id= app &gt;    &lt;h2&gt;{{msg}}&lt;/h2&gt;  &lt;/div&gt;  &lt;!-- Thêm vue. js vào trang web của bạn --&gt;  &lt;script src= https://cdn. jsdelivr. net/npm/vue/dist/vue. js &gt;&lt;/script&gt;  &lt;script&gt;    new Vue({      el:  #app ,      data: {        msg: 'Hello Loda'      }    });  &lt;/script&gt; &lt;/body&gt;&lt;/html&gt;Mở file này trên trình duyệt web của bạn và đón nhận sự thành công cho trang web đầu tiên bằng Vue. js của mình :))) Góc lý thuyết: Đầu tiên, khi mở trang index. html ở trên bạn sẽ thấy một dòng chữ “Hello Loda”. Hẳn bạn cũng đoán ra là cái {% raw %}{{msg}}{% endraw %} đã bị thay thế bằng dòng chữ này. Từ đây chúng ta đi xuống dưới. Để tạo ra một đối tượng Vue (Một trang web có thể có nhiều đối tượng Vue). Chúng ta cần gắn đối tượng Vue này vào một element cụ thể. Ở đây, tôi gắn vào đối tượng &lt;div id= app &gt;&lt;/div&gt;. new Vue({  el:  #app  // el ám chỉ element. gắn tới id= app  ở trên});Tiếp đến, bây giờ mọi thứ trong &lt;div id= app &gt;&lt;/div&gt; sẽ chịu sự quản lý của Vue. Và nếu tôi muốn gắn một giá trị vào bên trong div này, tôi sẽ sử dụng 2 dấu ngoặc kép {% raw %}{{msg}}{% endraw %}. Giá trị này sẽ được khai báo trong trường data. new Vue({  el:  #app ,  data: {    msg: 'Hello Loda'  }});Vậy đóa, hết sức đươn giản. Một đối tượng Vue có thể có nhiều biến, như thế này: new Vue({  el:  #app ,  data: {    msg: 'Hello Loda',    msg2: 'haha',    isCompleted: true  }});Ở trong phạm vi #app bạn đã trỏ tới, bạn có thể gọi các biến này ra bằng tên của biến. Bài 1 kết thúc ở đây, chúc các bạn học tốt! Bài 2: Đối tượng Vue, thuộc tính và phương thức "
+    "body": "2019/04/08 - Vue (phát âm là /vjuː/, giống như view trong tiếng Anh). Vue. js là một framework giúp chúng ta xây dựng giao diện người dùng nhanh hơn và thuận tiện hơn. Cứ ví dụ như bạn code một trang web bình thường khi chưa có vue. js. Thì sẽ có một số thao tác như sử dụng Jquery chọn đối tượng và lắng nghe sự kiện của đối tượng đó để thay đổi các giá trị khác. Nếu đối tượng này thay đổi chúng ta phải thay đổi đối tượng kia, các kiểu, các kiểu. Nói chung là không khó nhưng nó lâu và rườm rà. Từ đó các framework frontend thi nhau ra đời, giảm thiểu thời gian cho những đoạn code quản lý thừa thãi và module hóa trang web của bạn, giúp bạn tập trung vào logic nhiều hơn, còn lại để framework lo. Vue. js là một trong số đó. Điểm mạnh của Vue. js là nó rất nhanh, dễ học (dễ học nhất trong các loại frontend framework) và đơn giản hóa cho người sử dụng. Cài đặt: Có 2 cách cài đặt: #1. Sử dụng CDN: &lt;!-- Bạn thêm một thư viện, nhưng nó cao cấp hơn Jquery thôi :v --&gt;&lt;script src= https://cdn. jsdelivr. net/npm/vue/dist/vue. js &gt;&lt;/script&gt;#2. Sử dụng NPM: Cái này sẽ dành cho các bạn đã có nền tảng về npm (có thể là webpack nữa) npm install vueNếu bạn lần đầu đến với Vue. js nhưng đã có nền tảng từ trước thì hãy làm việc với npm cho đơn giản, dễ quản lý thư viện. Còn nếu đây là lần đầu bạn tới frontend framework và Vue. js thì trước tiên hãy sử dụng CDN cho đơn giản đã nhé. Khi nắm đc căn bản, thì chuyển qa xài npm và vue-cli Chương trình đầu tiên: Bạn tạo ra một file index. html đơn giản: &lt;!doctype html&gt;&lt;html&gt; &lt;head&gt;  &lt;title&gt;Getting Started&lt;/title&gt; &lt;/head&gt; &lt;body&gt;  &lt;div id= app &gt;    &lt;h2&gt;&lt;/h2&gt;  &lt;/div&gt;  &lt;!-- Thêm vue. js vào trang web của bạn --&gt;  &lt;script src= https://cdn. jsdelivr. net/npm/vue/dist/vue. js &gt;&lt;/script&gt;  &lt;script&gt;    new Vue({      el:  #app ,      data: {        msg: 'Hello Loda'      }    });  &lt;/script&gt; &lt;/body&gt;&lt;/html&gt;Mở file này trên trình duyệt web của bạn và đón nhận sự thành công cho trang web đầu tiên bằng Vue. js của mình :))) Góc lý thuyết: Đầu tiên, khi mở trang index. html ở trên bạn sẽ thấy một dòng chữ “Hello Loda”. Hẳn bạn cũng đoán ra là cái {{msg}} đã bị thay thế bằng dòng chữ này. Từ đây chúng ta đi xuống dưới. Để tạo ra một đối tượng Vue (Một trang web có thể có nhiều đối tượng Vue). Chúng ta cần gắn đối tượng Vue này vào một element cụ thể. Ở đây, tôi gắn vào đối tượng &lt;div id= app &gt;&lt;/div&gt;. new Vue({  el:  #app  // el ám chỉ element. gắn tới id= app  ở trên});Tiếp đến, bây giờ mọi thứ trong &lt;div id= app &gt;&lt;/div&gt; sẽ chịu sự quản lý của Vue. Và nếu tôi muốn gắn một giá trị vào bên trong div này, tôi sẽ sử dụng 2 dấu ngoặc kép {{msg}}. Giá trị này sẽ được khai báo trong trường data. new Vue({  el:  #app ,  data: {    msg: 'Hello Loda'  }});Vậy đóa, hết sức đươn giản. Một đối tượng Vue có thể có nhiều biến, như thế này: new Vue({  el:  #app ,  data: {    msg: 'Hello Loda',    msg2: 'haha',    isCompleted: true  }});Ở trong phạm vi #app bạn đã trỏ tới, bạn có thể gọi các biến này ra bằng tên của biến. Bài 1 kết thúc ở đây, chúc các bạn học tốt! Bài 2: Đối tượng Vue, thuộc tính và phương thức "
     }, {
     "id": 33,
     "url": "https://loda.me/Webpack-la-gi/",
@@ -674,11 +674,11 @@ function lunr_search(term) {
 	"@type": "NewsArticle",
 	"mainEntityOfPage": {
 	"@type": "WebPage",
-	"@id": "https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/"
+	"@id": "https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/"
 	},
-	"headline": "Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle",
+	"headline": "Khái niệm ThreadPool và Executor trong Java",
 	"image": [
-	"https://loda.me/assets/images/loda1553919997213/1.jpg"
+	"https://loda.me/assets/images/loda1554800053212/1.jpg"
 	],
 	"datePublished": "2019-04-09 14:31:43 +0000",
 	"dateModified": "2019-04-09 14:31:43 +0000",
@@ -694,7 +694,7 @@ function lunr_search(term) {
 			"url":"https://loda.me/assets/images/loda.png"
 		}
 	},
-	"description": "Hướng dẫn sử dụng Gradle để tạo một project Spring Boot với nhiều module con.",
+	"description": "Hướng dẫn cách sử dụng ThreadPoolExecutor và hiểu cách vận hành của nó.",
 	"aggregateRating": {
 		"@type": "AggregateRating",
 		"ratingValue": "94",
@@ -713,22 +713,18 @@ function lunr_search(term) {
 						
                           <a class="sscroll text-danger" href="/categories.html#java">java</a><span class="sep">, </span>
                         
-                          <a class="sscroll text-danger" href="/categories.html#spring boot">spring boot</a><span class="sep">, </span>
-                        
-                          <a class="sscroll text-danger" href="/categories.html#gradle">gradle</a><span class="sep">, </span>
-                        
                         </span>
 					</p>
-					<h1 class="display-4 mb-4 article-headline">Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle</h1>
+					<h1 class="display-4 mb-4 article-headline">Khái niệm ThreadPool và Executor trong Java</h1>
 					<div class="d-flex align-items-center">
                         
                         <img class="rounded-circle" src="/assets/images/loda.jpg" alt="loda" width="70"/>
                         
 						<small class="ml-3"> loda <span><a target="_blank" href="https://www.facebook.com/loda.mee" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
-                            <span class="text-muted d-block mt-1">Mar 30, 2019 · <span class="reading-time">
+                            <span class="text-muted d-block mt-1">Apr 09, 2019 · <span class="reading-time">
   
   
-    7 mins read
+    9 mins read
   
 </span>
     </span>
@@ -737,7 +733,7 @@ function lunr_search(term) {
 				</div>
                 
 				<div class="col-md-6 pr-0 align-self-center">
-					<img class="rounded" src="/assets/images/loda1553919997213/1.jpg" alt="Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle">
+					<img class="rounded" src="/assets/images/loda1554800053212/1.jpg" alt="Khái niệm ThreadPool và Executor trong Java">
 				</div>
                 
 			</div>
@@ -762,19 +758,19 @@ function lunr_search(term) {
     </p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Hướng dẫn tạo Spring Boot với nhiều modules bằng Gradle&url=https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Khái niệm ThreadPool và Executor trong Java&url=https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://plus.google.com/share?url=https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://plus.google.com/share?url=https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
         <i class="fab fa-google"></i>
         </a>
         </li>
@@ -798,283 +794,206 @@ function lunr_search(term) {
             
             <!-- Article -->
 			<article class="article-post">                
-			<p><code class="highlighter-rouge">Gradle</code> là một open-source có nhiệm vụ tự động hóa quá trình đóng gói một dự án với ưu điểm chính khả năng tùy biến cao và cho hiệu năng tốt.</p>
+			<p><code class="highlighter-rouge">Thread Pool</code> Là một trong những yếu tố chính tác động tới hiệu năng của các chương trình lớn, đòi hỏi xử lý đồng thời nhiều nhiệm vụ cùng lúc.</p>
 
-<p><code class="highlighter-rouge">Gradle</code> ra đời sau và cải thiện các phần còn yếu của <code class="highlighter-rouge">Maven</code> như cú pháp khai báo rườm rà, khó quản lý, tốc độ build và test còn chưa được tối ưu.</p>
+<p>Nếu bạn chưa rõ Thread trong Java, thì hãy đọc bài này trước:</p>
 
-<p>Để tận dụng những lợi thế này, hôm nay chúng ta sẽ tạo ra một project <code class="highlighter-rouge">Spring boot</code> với nhiều <code class="highlighter-rouge">module</code> với <code class="highlighter-rouge">Gradle</code> thay vì là <code class="highlighter-rouge">Maven</code> như truyền thống.</p>
+<ol>
+  <li>Thread và xử lý đa luồng trong Java</li>
+  <li>Kiến thức nâng cao, sau khi đọc xong bài này: <a href="https://loda.me/ThreadPoolExecutor-va-nguyen-tac-quan-ly-pool-size/">ThreadPoolExecutor</a></li>
+</ol>
 
-<h4 id="spring-initializr">Spring Initializr</h4>
+<p>Một ví dụ đơn giản nhé (Trong thực tế sẽ khác, hãy coi đây là ví dụ nha):</p>
 
-<p>Để tạo ra một project Spring, việc tạo bằng tay là hơi vất vả, vì thế chúng ta sẽ dùng <code class="highlighter-rouge">Spring Initializr</code> do Spring cung cấp.</p>
+<p>Bây giờ, giả sử bạn có một Server Web. Nếu chúng ta nhận 1 request từ client, chúng ta sẽ xử lý mất 0.5s và trả về kết quả cho người dùng.</p>
 
-<p>Bạn truy cập vào: <a href="https://start.spring.io">https://start.spring.io</a></p>
+<p>Thế nếu có 2 người request cùng lúc? =&gt; giải quyết bằng cách mỗi một request sẽ xử lý ở 1 thread, đơn giản.</p>
 
-<p>Và đặt tên cho project và chọn build bằng <code class="highlighter-rouge">Gradle</code> như hình:</p>
+<p>Thế nếu có 100 người request cùng lúc? =&gt; mỗi người tạo một thre… wait a minute…. (nếu 1 tháng có 10M lượt request =&gt; tạo ra 10M thread)</p>
 
-<p><img src="/assets/images/loda1553919997213/2.jpg" alt="spring-gradle" class="center-image" /></p>
+<p>Nếu bạn tạo 1-2 thread mới, chả ai trách gì bạn cả. Nhưng nếu bạn tạo liên tục và tới hàng trăm cái mới mỗi lần nhưng lại giải quyết cùng 1 vấn đề thì có lỗ hổng đấy. Vì chi phí của việc tạo 1 thread là tương đối lớn, thường dẫn tới các vấn đề về hiệu năng và cấp phát dữ liệu.</p>
 
-<p>Tiếp đến, chọn các <code class="highlighter-rouge">dependencies</code> đi kèm, và <code class="highlighter-rouge">Generate Project</code></p>
+<p>Với việc xử lý các tác vụ liên tục như vậy, có một giải pháp là sử dụng <code class="highlighter-rouge">Thread Pool</code>.</p>
 
-<p><img src="/assets/images/loda1553919997213/3.jpg" alt="spring-gradle" class="center-image" /></p>
+<p>Ở ví dụ trên, Bây giờ tôi sẽ chỉ sử dụng 30 thread thôi! Và đặt 30 thread này ở trạng thái không làm gì và vứt vào 1 cái <code class="highlighter-rouge">Pool</code> (1 cái bể chứa, kiểu vậy). Với mỗi request đến, tôi sẽ lấy trong <code class="highlighter-rouge">Pool</code> ra 1 thread và xử lý công việc, xử lý xong, thì cất thread vào ngược trở lại pool. Đơn giản vậy thôi, như thế chúng ta sẽ không phải tạo mới Thread nữa. Tránh tình tốn chi phí và hiệu năng.</p>
 
-<p>Tải project về, và mở bằng <code class="highlighter-rouge">Intellij IDEA</code></p>
+<p>Vấn đề là giả sử có hơn 31 request tới cùng lúc thì sao? rất đúng, trường hợp này là chắc chắn có. Lúc này <code class="highlighter-rouge">Pool</code> sẽ không còn thread nào sẵn có nữa. Nên 1 request còn lại sẽ bị đẩy vào 1 hàng đợi <code class="highlighter-rouge">BlockingQueue</code>. Nó sẽ đợi ở đó, bao giờ <code class="highlighter-rouge">Pool</code> có 1 thread rảnh rỗi thì sẽ quay lại xử lý nốt =))) Chịu thôi, cứ ví dụ vậy hah.</p>
 
-<p><img src="/assets/images/loda1553919997213/4.jpg" alt="spring-gradle" class="center-image" /></p>
+<p><img src="/assets/images/loda1554800053212/3.png" alt="thread-pool" class="center-image" /></p>
 
-<p>Lần đầu nó sẽ phải download <code class="highlighter-rouge">Gradle Wrapper</code> nên hơi lâu chút, bạn ráng chờ hah. Sau khi nó sync xong thì sẽ được một project như này.</p>
+<p>Đó là concept của <code class="highlighter-rouge">ThreadPool</code> đó các bạn.</p>
 
-<p><img src="/assets/images/loda1553919997213/5.jpg" alt="spring-gradle" class="center-image" /></p>
+<h4 id="cách-tạo-threadpool-trong-java">Cách tạo ThreadPool trong Java</h4>
 
-<p>Okay, thế là xong phần khởi tạo 1 project rồi!</p>
+<p>Java Concurrency API hỗ trợ một vài loại <code class="highlighter-rouge">ThreadPool</code> sau:</p>
 
-<h4 id="tạo-module">Tạo module</h4>
+<ul>
+  <li><strong>Cached thread pool</strong>: Mỗi nhiệm vụ sẽ tạo ra thread mới nếu cần, nhưng sẽ tái sử dụng lại các thread cũ. (Cái này vẫn nguy hiểm nhé, nên áp dụng với các task nhỏ, tốn ít tính toán)</li>
+  <li>
+    <p><strong>Fixed thread pool</strong>: giới hạn số lượng tối đa của các Thread được tạo ra. Các task khác đến sau phải chờ trong hàng đợi (BlockingQueue). (Ví dụ đầu bài)</p>
+  </li>
+  <li><strong>Single-threaded pool</strong>: chỉ giữ một Thread thực thi một nhiệm vụ một lúc.</li>
+  <li><strong>Fork/Join pool</strong>: một Thread đặc biệt sử dụng Fork/ Join Framework bằng cách tự động chia nhỏ công việc tính toán cho các core xử lý. (Tính toán song song)</li>
+</ul>
 
-<p>Để phục vụ cho các mục đích khác nhau, mình sẽ chia project này thành 2 module là:</p>
+<h4 id="executor">Executor</h4>
+
+<p><code class="highlighter-rouge">Executor</code> là một class đi kèm trong gói <code class="highlighter-rouge">java.util.concurrent</code>, là một đối tượng chịu trách nhiệm quản lý các luồng và thực hiện các tác vụ Runnable được yêu cầu xử lý. Nó tách riêng các chi tiết của việc tạo Thread, lập kế hoạch (scheduling), … để chúng ta có thể tập trung phát triển logic của tác vụ mà không quan tâm đến các chi tiết quản lý Thread.</p>
+
+<p><img src="/assets/images/loda1554800053212/2.png" alt="cors" class="center-image" /></p>
+
+<p>Nói chung nó là thằng wrapper các các bước mình nói ở trên, và quản lý hộ chúng ta.</p>
+
+<p>Chúng có thể tạo một Executor bằng cách sử dụng một trong các phương thức được cung cấp bởi lớp tiện ích <code class="highlighter-rouge">Executors</code> như sau:</p>
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">common</code>: Mục đích là để chứa <code class="highlighter-rouge">model</code> dùng chung và <code class="highlighter-rouge">repository</code> của nó</p>
+    <p><strong>newSingleThreadExecutor()</strong>: trong ThreadPool chỉ có 1 Thread và các task (nhiệm vụ) sẽ được xử lý một cách tuần tự.</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">service</code>: Xử lý mọi thử ở đây</p>
+    <p><strong>newCachedThreadPool()</strong>: như giải thích ở trên, nó sẽ có 1 số lượng nhất định thread để sử dụng lại, nhưng vẫn sẽ tạo mới thread nếu cần. Mặc định nếu một Thread không được sử dụng trong vòng 60 giây thì Thread đó sẽ bị tắt.</p>
   </li>
+  <li><strong>newFixedThreadPool(int n)</strong>: trong Pool chỉ có n Thread để xử lý nhiệm vụ, các yêu cầu tới sau bị đẩy vào hàng đợi</li>
+  <li><strong>newScheduledThreadPool(int corePoolSize)</strong>: tương tự như <code class="highlighter-rouge">newCachedThreadPool()</code> nhưng sẽ có thời gian delay giữa các Thread.</li>
+  <li><strong>newSingleThreadScheduledExecutor()</strong>: tương tự như <code class="highlighter-rouge">newSingleThreadExecutor()</code> nhưng sẽ có khoảng thời gian delay giữa các Thread.</li>
 </ul>
 
-<p>bạn tạo module bằng cách: <code class="highlighter-rouge">Chuột phải</code> &gt; <code class="highlighter-rouge">New</code> &gt; <code class="highlighter-rouge">New Module</code></p>
+<h4 id="code-chạy-thử">Code chạy thử</h4>
 
-<p><img src="/assets/images/loda1553919997213/6.jpg" alt="spring-gradle" class="center-image" /></p>
+<p>Chúng ta sẽ lấy ví dụ đầu bài để code luôn nhé.</p>
 
-<p>Sau đó chọn, module là <code class="highlighter-rouge">gradle</code> &gt; <code class="highlighter-rouge">java</code> và nhập tên module:</p>
+<p>Tạo một class implement <code class="highlighter-rouge">Runnable</code> để xử lý request đến. (phân biệt <code class="highlighter-rouge">Runnable</code> và <code class="highlighter-rouge">Thread</code> nhé các bạn)</p>
 
-<p><img src="/assets/images/loda1553919997213/7.jpg" alt="spring-gradle" class="center-image" /></p>
-
-<p>Như vậy là chúng ta có 2 cái module nho nhỏ như này:</p>
-
-<p><img src="/assets/images/loda1553919997213/8.jpg" alt="spring-gradle" class="center-image" /></p>
-
-<h4 id="config-buildgradle">Config Build.gradle</h4>
-
-<p>Bây giờ chúng ta sẽ config lại <code class="highlighter-rouge">build.gradle</code> của từng module.</p>
-
-<p>Các file <code class="highlighter-rouge">build.gradle</code> đều có sẵn thông tin trong đó, nhưng bạn xóa hết đi và thêm lại như mình hướng dẫn ở dưới</p>
-
-<p>Tại <code class="highlighter-rouge">build.gradle</code> ở thư mục gốc. (<code class="highlighter-rouge">multiple-module-gradle/build.gradle</code>):</p>
-
-<div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Tại build.gradle gốc, chúng ta config để các thằng module con có thể có chung cấu hình, kế thừa plugin và dependencies của thằng cha này luôn.</span>
-
-<span class="c1">// Như vậy thì lúc sau các module không cần config gì nữa.</span>
-<span class="k">allprojects</span> <span class="o">{</span>
-	<span class="n">group</span> <span class="s1">'me.loda.springboot'</span>
-	<span class="n">version</span> <span class="s1">'1.0-SNAPSHOT'</span>
-
-	<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'java'</span>
-	<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'idea'</span>
-
-	<span class="k">repositories</span> <span class="o">{</span>
-		<span class="n">mavenCentral</span><span class="o">()</span>
-		<span class="n">jcenter</span><span class="o">()</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-<span class="k">buildscript</span> <span class="o">{</span>
-	<span class="n">ext</span> <span class="o">{</span>
-		<span class="n">springBootVersion</span> <span class="o">=</span> <span class="s1">'2.1.3.RELEASE'</span>
-		<span class="n">springManagementVersion</span> <span class="o">=</span> <span class="s1">'1.0.7.RELEASE'</span>
-		<span class="n">lombokVersion</span> <span class="o">=</span> <span class="s1">'1.18.4'</span>
-
-		<span class="n">guavaVersion</span> <span class="o">=</span> <span class="s1">'27.1-jre'</span>
-		<span class="n">commonLang3Version</span> <span class="o">=</span> <span class="s1">'3.8.1'</span>
-	<span class="o">}</span>
-	<span class="k">repositories</span> <span class="o">{</span>
-		<span class="n">mavenCentral</span><span class="o">()</span>
-		<span class="n">jcenter</span><span class="o">()</span>
-	<span class="o">}</span>
-	<span class="k">dependencies</span> <span class="o">{</span>
-		<span class="n">classpath</span><span class="o">(</span><span class="s2">"org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"</span><span class="o">)</span>
-		<span class="n">classpath</span><span class="o">(</span><span class="s2">"io.spring.gradle:dependency-management-plugin:${springManagementVersion}"</span><span class="o">)</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-<span class="k">subprojects</span> <span class="o">{</span>
-	<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'io.spring.dependency-management'</span>
-	<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'org.springframework.boot'</span>
-
-	<span class="n">sourceCompatibility</span> <span class="o">=</span> <span class="mf">1.8</span>
-	<span class="n">targetCompatibility</span> <span class="o">=</span> <span class="mf">1.8</span>
-
-	<span class="kt">def</span> <span class="n">defaultEncoding</span> <span class="o">=</span> <span class="s1">'UTF-8'</span>
-	<span class="n">tasks</span><span class="o">.</span><span class="na">withType</span><span class="o">(</span><span class="n">AbstractCompile</span><span class="o">).</span><span class="na">each</span> <span class="o">{</span> <span class="n">it</span><span class="o">.</span><span class="na">options</span><span class="o">.</span><span class="na">encoding</span> <span class="o">=</span> <span class="n">defaultEncoding</span> <span class="o">}</span>
-
-	<span class="n">javadoc</span> <span class="o">{</span>
-		<span class="n">options</span><span class="o">.</span><span class="na">encoding</span> <span class="o">=</span> <span class="n">defaultEncoding</span>
-		<span class="n">options</span><span class="o">.</span><span class="na">addBooleanOption</span><span class="o">(</span><span class="s1">'Xdoclint:none'</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
-	<span class="o">}</span>
-
-	<span class="n">compileJava</span><span class="o">.</span><span class="na">dependsOn</span><span class="o">(</span><span class="n">processResources</span><span class="o">)</span>
-
-	<span class="n">springBoot</span> <span class="o">{</span>
-		<span class="n">buildInfo</span><span class="o">()</span>
-	<span class="o">}</span>
-
-	<span class="k">dependencies</span><span class="o">{</span>
-		<span class="n">annotationProcessor</span> <span class="s2">"org.springframework.boot:spring-boot-configuration-processor"</span>
-		<span class="n">annotationProcessor</span> <span class="s2">"org.projectlombok:lombok:${lombokVersion}"</span>
-		<span class="n">compileOnly</span> <span class="s2">"org.springframework.boot:spring-boot-configuration-processor"</span>
-		<span class="n">compileOnly</span> <span class="s2">"org.projectlombok:lombok:${lombokVersion}"</span>
-
-		<span class="c1">// SPRING DEPENDENCIES</span>
-		<span class="n">implementation</span> <span class="s1">'org.springframework.boot:spring-boot-starter-data-jpa'</span>
-		<span class="n">runtimeOnly</span> <span class="s1">'mysql:mysql-connector-java'</span>
-
-		<span class="c1">// Utilities</span>
-		<span class="n">compile</span> <span class="nl">group:</span> <span class="s1">'com.google.guava'</span><span class="o">,</span> <span class="nl">name:</span> <span class="s1">'guava'</span><span class="o">,</span> <span class="nl">version:</span> <span class="s2">"${guavaVersion}"</span>
-		<span class="n">compile</span> <span class="nl">group:</span> <span class="s1">'org.apache.commons'</span><span class="o">,</span> <span class="nl">name:</span> <span class="s1">'commons-lang3'</span><span class="o">,</span> <span class="nl">version:</span> <span class="s2">"${commonLang3Version}"</span>
-
-
-		<span class="c1">// TEST</span>
-		<span class="n">testImplementation</span> <span class="s1">'org.springframework.boot:spring-boot-starter-test'</span>
-	<span class="o">}</span>
-
-<span class="o">}</span>
-
-<span class="n">project</span><span class="o">(</span><span class="s1">':service'</span><span class="o">)</span> <span class="o">{</span>
-	<span class="k">dependencies</span> <span class="o">{</span>
-		<span class="n">implementation</span> <span class="nf">project</span><span class="o">(</span><span class="s1">':common'</span><span class="o">)</span>
-		<span class="n">compile</span><span class="o">(</span><span class="s1">'org.springframework.boot:spring-boot-starter-web'</span><span class="o">)</span>
-		<span class="n">compile</span><span class="o">(</span><span class="s1">'org.springframework.boot:spring-boot-devtools'</span><span class="o">)</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-<span class="n">project</span><span class="o">(</span><span class="s1">':common'</span><span class="o">){</span>
-
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<p>Tại <code class="highlighter-rouge">build.gradle</code> ở module <code class="highlighter-rouge">service</code>. (<code class="highlighter-rouge">multiple-module-gradle/service/build.gradle</code>):</p>
-
-<div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// thằng này bỏ trống các bạn ạ, sau có cần gì thì bổ sung thêm</span>
-</code></pre></div></div>
-
-<p>Tại <code class="highlighter-rouge">build.gradle</code> ở module <code class="highlighter-rouge">common</code>. (<code class="highlighter-rouge">multiple-module-gradle/common/build.gradle</code>):</p>
-
-<div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bootJar</span><span class="o">.</span><span class="na">enabled</span><span class="o">=</span><span class="kc">false</span>
-<span class="n">jar</span><span class="o">.</span><span class="na">enabled</span><span class="o">=</span><span class="kc">true</span>
-<span class="c1">// thằng common này mình disable cái bootJar đi</span>
-</code></pre></div></div>
-
-<h4 id="viết-chương-trình-demo">Viết chương trình demo</h4>
-
-<p>Chúng ta sẽ tạo ra một project đơn giản:</p>
-
-<ul>
-  <li>
-    <p><code class="highlighter-rouge">common</code>: Chưa thông tin model <code class="highlighter-rouge">User</code>.</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">service</code>: Tạo ra <code class="highlighter-rouge">User</code> và dùng tầng <code class="highlighter-rouge">common</code> để lưu nó</p>
-  </li>
-</ul>
-
-<h4 id="common">Common</h4>
-
-<p>Cấu trúc module <code class="highlighter-rouge">common</code>:</p>
-
-<p><img src="/assets/images/loda1553919997213/9.jpg" alt="spring-gradle" class="center-image" /></p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// User.java</span>
-<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.persistence.GeneratedValue</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
-
-<span class="nd">@Entity</span>
-<span class="nd">@Data</span>
-<span class="nd">@RequiredArgsConstructor</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-
-    <span class="nd">@Id</span>
-    <span class="nd">@GeneratedValue</span>
-    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// UserRepository</span>
-
-<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Chúng ta chỉ làm demo để chứng minh là các <code class="highlighter-rouge">module</code> đã hoạt động thôi :))))</p>
-
-<p>Ở đây mình sử dụng <code class="highlighter-rouge">H2 Database</code>, là một dạng database lưu trữ trên bộ nhớ, được autoconfig trong <code class="highlighter-rouge">Springboot</code> rồi, nên các bạn chỉ cần tạo lớp <code class="highlighter-rouge">User</code> như kia, rồi chạy chương trình là nó tự tạo <code class="highlighter-rouge">table</code> tương ứng</p>
-
-<p>Còn Các <code class="highlighter-rouge">annotation</code> ngoại lai kia chính là của <code class="highlighter-rouge">Lombok</code>. Để hiểu nó có ý nghĩa gì và sức mạnh của <code class="highlighter-rouge">Lombok</code> bạn xem bài viết sau:</p>
-
-<p><a href="https://loda.me/Huong-dan-su-dung-Lombok-giup-code-Java-nhanh-hon-69/">Hướng dẫn sử dụng Lombok, giúp code Java nhanh hơn 69%</a></p>
-
-<h4 id="service">Service</h4>
-
-<p>Bên module <code class="highlighter-rouge">service</code> chúng ta sẽ lấy tầng <code class="highlighter-rouge">common</code> ra xài:</p>
-
-<p><img src="/assets/images/loda1553919997213/10.jpg" alt="spring-gradle" class="center-image" /></p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Application.java</span>
-
-<span class="kn">import</span> <span class="nn">javax.transaction.Transactional</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.springframework.boot.CommandLineRunner</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
-
-<span class="nd">@SpringBootApplication</span>
-<span class="nd">@RequiredArgsConstructor</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="kd">implements</span> <span class="n">CommandLineRunner</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">Application</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestHandler</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">RequestHandler</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
     <span class="o">}</span>
-
-<span class="c1">// Không cần @Autowired, vì chúng ta có @RequiredArgsConstructor rồi</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">UserRepository</span> <span class="n">userRepository</span><span class="o">;</span>
 
     <span class="nd">@Override</span>
-    <span class="nd">@Transactional</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="s">"loda"</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">// Bắt đầu xử lý request đến</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" Starting process "</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+            <span class="c1">// cho ngủ 500 milis để ví dụ là quá trình xử lý mất 0,5 s</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">500</span><span class="o">);</span>
+            <span class="c1">// Kết thúc xử lý request</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" Finished process "</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-        <span class="n">user</span> <span class="o">=</span> <span class="n">userRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+<h5 id="newsinglethreadexecutor">newSingleThreadExecutor</h5>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.concurrent.ExecutorService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.Executors</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleThreadPoolExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span><span class="o">.</span><span class="na">newSingleThreadExecutor</span><span class="o">();</span>
+
+        <span class="c1">// Có 100 request tới cùng lúc</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">RequestHandler</span><span class="o">(</span><span class="s">"request-"</span> <span class="o">+</span> <span class="n">i</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span> <span class="c1">// Không cho threadpool nhận thêm nhiệm vụ nào nữa</span>
+
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">executor</span><span class="o">.</span><span class="na">isTerminated</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// Chờ xử lý hết các request còn chờ trong Queue ...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// OUTPUT:</span>
+<span class="cm">/*
+..
+..
+pool-1-thread-1 Starting process request-98
+pool-1-thread-1 Finished process request-98
+pool-1-thread-1 Starting process request-99
+pool-1-thread-1 Finished process request-99
+*/</span>
+</code></pre></div></div>
+<p>Cả chương trình chỉ có 1 pool, 1 thread duy nhất, xử lý toàn bộ request đến. Cái nào đến sau thì đợi thôi.</p>
+
+<h5 id="newfixedthreadpool">newFixedThreadPool()</h5>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FixedThreadPoolExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span><span class="o">.</span><span class="na">newFixedThreadPool</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+
+        <span class="c1">// Có 100 request tới cùng lúc</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">RequestHandler</span><span class="o">(</span><span class="s">"request-"</span> <span class="o">+</span> <span class="n">i</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span> <span class="c1">// Không cho threadpool nhận thêm nhiệm vụ nào nữa</span>
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">executor</span><span class="o">.</span><span class="na">isTerminated</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// Chờ xử lý hết các request còn chờ trong Queue ...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// OUTPUT:</span>
+<span class="cm">/*
+..
+..
+pool-1-thread-2 Finished process request-96
+pool-1-thread-5 Starting process request-99
+pool-1-thread-3 Finished process request-97
+pool-1-thread-4 Finished process request-98
+pool-1-thread-5 Finished process request-99
+*/</span>
+</code></pre></div></div>
+
+<p>Loại này thì chúng ta cố định 5 thread, và nó cử mặc định như vậy mà xài thôi, thiếu thread thì phải chờ tới khi có</p>
+
+<h5 id="newcachedthreadpool">newCachedThreadPool()</h5>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CachedThreadPoolExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span><span class="o">.</span><span class="na">newCachedThreadPool</span><span class="o">();</span>
+
+        <span class="c1">// Có 100 request tới cùng lúc</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">RequestHandler</span><span class="o">(</span><span class="s">"request-"</span> <span class="o">+</span> <span class="n">i</span><span class="o">));</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">200</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span> <span class="c1">// Không cho threadpool nhận thêm nhiệm vụ nào nữa</span>
+
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">executor</span><span class="o">.</span><span class="na">isTerminated</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// Chờ xử lý hết các request còn chờ trong Queue ...</span>
+        <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
+<span class="c1">//OUTPUT:</span>
+<span class="cm">/*
+..
+..
+pool-1-thread-3 Starting process request-98
+pool-1-thread-1 Finished process request-96
+pool-1-thread-1 Starting process request-99
+pool-1-thread-2 Finished process request-97
+pool-1-thread-3 Finished process request-98
+pool-1-thread-1 Finished process request-99
+*/</span>
 </code></pre></div></div>
 
-<p>Chạy chương trình:</p>
+<p>Có chút khởi sắc, chương trình chạy nhanh hơn hẳn. Vì nó được tạo số thread thoải mái nếu cần :)))) Rất nguy hiểm. Nhưng bạn sẽ thấy là có chỗ nó sử dụng lại các thread đã xong trước đó.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Output</span>
-<span class="c1">// User(id=1, name=loda)</span>
+<p>Bài viết tới đây kết thúc, Đây là một kiến thức rất quan trọng nên các bạn cố gắng nắm vững nhé.</p>
 
-<span class="c1">// user được insert vào database là có id = 1.</span>
-<span class="c1">// project chạy thành công!</span>
-</code></pre></div></div>
+<p>toàn bộ code mình để tại GITHUB loda-kun: <a href="https://github.com/loda-kun/java-all/tree/master/java-thread-pool-executor">CODE</a></p>
 
-<h4 id="lời-kết">Lời kết</h4>
-
-<p>Vậy là chúng ta đã tạo ra một project với nhiều module bằng <code class="highlighter-rouge">Gradle</code> và <code class="highlighter-rouge">Spring boot</code>. Có thể thấy <code class="highlighter-rouge">Gradle</code> cho phép chúng ta khai báo khá dễ đọc, và gọn gàng. Ngoài ra bản thân nó còn được cộng đồng open-source cung cấp nhiều <code class="highlighter-rouge">plugin</code> nên gần như chúng ta không cần làm gì nhiều, chỉ cần apply plugin là xong!</p>
-
-<p>Chi tiết project mình để tại <a href="https://github.com/loda-kun/multiple-module-gradle">Github</a>.</p>
-
-<p>Chúc các bạn thành công! chớ quên like or share ủng hộ mềnh nha ahoho!:3</p>
+<p>chúc các bạn học tập tốt! ohoho</p>
 
                 
 			</article>
@@ -1082,17 +1001,17 @@ function lunr_search(term) {
 			<!-- Your like button code -->
 <div
   class="fb-like"
-  data-href="https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/"
+  data-href="https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/"
   data-layout="standard"
   data-action="like"
   data-show-faces="true"
 ></div><br>
 <div class="fb-share-button" 
-data-href="https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/" 
+data-href="https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/" 
 data-layout="button"
   data-size="small">
   <a target="_blank"
-    href="https://www.facebook.com/sharer/sharer.php?u=https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/&amp;src=sdkpreparse"
+    href="https://www.facebook.com/sharer/sharer.php?u=https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/&amp;src=sdkpreparse"
     class="fb-xfbml-parse-ignore">Chia sẻ</a>
 </div>
              
@@ -1134,7 +1053,7 @@ data-layout="button"
     <div 
         class="fb-comments" 
         data-width="100%"
-        data-href="https://loda.me/Huong-dan-tao-Spring-Boot-voi-nhieu-modules-bang-Gradle/" 
+        data-href="https://loda.me/Khai-niem-ThreadPool-va-Executor-trong-Java/" 
         data-numposts="5">
     </div>
 </div>
@@ -1152,12 +1071,12 @@ data-layout="button"
 		<div class="row prevnextlinks small font-weight-bold">
 			
 			<div class="col-md-6 rightborder pl-0">
-				<a class="text-dark" href="/Huong-dan-Stream-API/"> <img height="30px" class="mr-1" src="/assets/images/loda1553677531692/1.jpg">  「Java 8」Hướng dẫn Stream API</a>
+				<a class="text-dark" href="/Doi-tuong-Vue-thuoc-tinh-va-phuong-thuc/"> <img height="30px" class="mr-1" src="/assets/images/loda1554733614285/1.jpg">  [Vue #2] Đối tượng Vue, thuộc tính và phương thức</a>
 			</div>
 			
 			
 			<div class="col-md-6 text-right pr-0">
-				<a class="text-dark" href="/Huong-dan-Java-Reflection/"> 「Java」Hướng dẫn Java Reflection  <img height="30px" class="ml-1" src="/assets/images/loda1554301692892/1.jpg"> </a>
+				<a class="text-dark" href="/ThreadPoolExecutor-va-nguyen-tac-quan-ly-pool-size/"> ThreadPoolExecutor và nguyên tắc quản lý pool size  <img height="30px" class="ml-1" src="/assets/images/loda1554816034602/1.jpg"> </a>
 			</div>
 			
 		</div>

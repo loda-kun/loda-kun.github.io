@@ -25,3 +25,5 @@ rating: 0 // Số sao cho bài viết này. nếu là số nguyên thì viết 4
 <div class="youtube-container">
     <iframe src="https://www.youtube.com/embed/BaAmaIyCp2Y" frameborder="0" allowfullscreen></iframe>
 </div>
+
+// Atom PTIT
